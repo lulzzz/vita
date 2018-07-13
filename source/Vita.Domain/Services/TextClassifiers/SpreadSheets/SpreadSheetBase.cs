@@ -16,7 +16,7 @@ namespace Vita.Domain.Services.TextClassifiers.SpreadSheets
       {
         if (!LicenseSet)
         {
-          string license = AsyncUtil.RunSync(SecretMan.SpreadsheetGearLicense);
+          string license = SecretMan.Get("SpreadsheetGearLicense");
           Factory.SetSignedLicense(license);
           LicenseSet = true;
         }
