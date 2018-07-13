@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;Production</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include="GoogleApi" Version="3.4.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include="microsoft.azure.search.common" Version="5.0.1" />
+    <PackageReference Include="microsoft.azure.search.service" Version="5.0.1" />
+    <PackageReference Include="mongodb.bson" Version="2.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GoogleApi">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\googleapi\3.3.0\lib\netstandard1.1\GoogleApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Service">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.azure.search.service\5.0.0\lib\netstandard1.4\Microsoft.Azure.Search.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

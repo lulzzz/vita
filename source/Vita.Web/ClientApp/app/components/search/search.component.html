@@ -1,0 +1,214 @@
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-lg-12 col-md-12">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="/assets/img/OnlineMarketing.jpg" alt="..." />
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <img class="avatar border-white" src="/assets/img/SearchMagnify.png" alt="..." />
+                        <h4 class="title">
+                            Search
+                            <br />
+                            <a href="#">
+                                <small>Enter in the business name</small>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="description text-center">
+                        <div class="row">
+                            <div class="col-md-7 col-md-offset-2">
+                                <div class="form-group">
+                                    <!-- <label>Search</label> -->
+                                    <input type="text"
+                                           [(ngModel)]="keyword"
+                                           class="form-control border-input"
+                                           placeholder="Enter in the company name..." />
+                                </div>
+                            </div>
+                            <div class="col-md-1 text-right">
+                                <button class="btn btn-sm btn-success btn-icon"
+                                        [@myAwesomeAnimation]='state'
+                                        (click)="search()">
+                                    <!---->
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+
+                        <div class="bs-component" *ngIf="isSearching">
+                            <div class="progress progress-striped active ">
+                                <div class="progress-bar" style="width: 100%;">
+                                    <div style="margin-bottom:8px;">Please wait a moment, just searching for your term...<br /></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div>{{isSearching}}</div>
+                        <div>{{keyword}}</div>-->
+                    </div>
+                </div>
+                <!-- <hr>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            <h5>12<br /><small>Files</small></h5>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>2GB<br /><small>Used</small></h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>24,6$<br /><small>Spent</small></h5>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+
+            <div class="card animated slideInDown" *ngIf="showResults">
+                <div class="header">
+                    <h4 class="title">Suggested Results</h4>
+                </div>
+                <div class="content">
+                    <ul class="list-unstyled team-members">
+                        <li *ngFor="let result of results">
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <div class="avatar">
+                                        <img src="/assets/img/SearchBook.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    {{result.who.companyName}} ({{result.what}})
+                                    <br />
+                                    <span class="text-muted">
+                                        <small>
+                                            {{result.why.subCategory}}
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <button class="btn btn-sm btn-success btn-icon">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h3>Who</h3>
+                                    <div>Name: {{result.who.companyName}}</div>
+                                    <div>ACN: {{result.who.australianCompanyNumber}}</div>
+                                    <div>Type: {{result.who.companyType}}</div>
+                                    <div>Class: {{result.who.companyClass}}</div>
+                                    <div>Registered: {{result.who.dateOfRegistration}}</div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h3>Where</h3>
+                                    <div>Postcode: {{result.where.postcode}}</div>
+                                    <div>Suburb: {{result.where.suburb}}</div>
+                                    <div>australianState: {{result.where.australianState}}</div>
+                                    <div>latitude: {{result.where.latitude}}</div>
+                                    <div>longitude: {{result.where.longitude}}</div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h3>Why</h3>
+                                    <div>SubCategory: {{result.why.subCategory}}</div>
+                                    <div>
+                                        Keywords:
+                                        <div *ngFor="let keyword of result.why.keywords">
+                                            - {{keyword}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h3>Other</h3>
+                                    <div>Match: {{result.isChargeId}}</div>
+                                    <div>When: {{result.when}}</div>
+                                    <div>What: {{result.what}}</div>
+                                    <div>Payment: {{result.paymentMethodType}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--<div class="card animated slideInDown" *ngIf="showResults">
+                <div class="header">
+                    <h4 class="title">Suggested Results</h4>
+                </div>
+                <div class="content">
+                    <ul class="list-unstyled team-members">
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <div class="avatar">
+                                        <img src="/assets/img/SearchBook.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    Peter's Icecream
+                                    <br />
+                                    <span class="text-muted">
+                                        <small>Shopping</small>
+                                    </span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <button class="btn btn-sm btn-success btn-icon">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <div class="avatar">
+                                        <img src="/assets/img/SearchCamera.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    Peters By The Sea
+                                    <br />
+                                    <span class="text-success">
+                                        <small>Entertainment</small>
+                                    </span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <button class="btn btn-sm btn-success btn-icon">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <div class="avatar">
+                                        <img src="/assets/img/SearchCase.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    Peters, Jones and Smith
+                                    <br />
+                                    <span class="text-danger">
+                                        <small>Business</small>
+                                    </span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <button class="btn btn-sm btn-success btn-icon">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>

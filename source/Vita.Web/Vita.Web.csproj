@@ -1,0 +1,127 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app\components\vita.api.ts" />
+    <None Remove="ClientApp\app\vita.util.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\demo.css" />
+    <None Include="wwwroot\assets\css\paper-dashboard.css" />
+    <None Include="wwwroot\assets\css\paper-dashboard.css.map" />
+    <None Include="wwwroot\assets\css\themify-icons.css" />
+    <None Include="wwwroot\assets\fonts\themify.eot" />
+    <None Include="wwwroot\assets\fonts\themify.svg" />
+    <None Include="wwwroot\assets\fonts\themify.ttf" />
+    <None Include="wwwroot\assets\fonts\themify.woff" />
+    <None Include="wwwroot\assets\img\angular.png" />
+    <None Include="wwwroot\assets\img\angular2-logo-white.png" />
+    <None Include="wwwroot\assets\img\angular2-logo.png" />
+    <None Include="wwwroot\assets\img\apple-icon.png" />
+    <None Include="wwwroot\assets\img\background.jpg" />
+    <None Include="wwwroot\assets\img\faces\face-0.jpg" />
+    <None Include="wwwroot\assets\img\faces\face-1.jpg" />
+    <None Include="wwwroot\assets\img\faces\face-2.jpg" />
+    <None Include="wwwroot\assets\img\faces\face-3.jpg" />
+    <None Include="wwwroot\assets\img\favicon.png" />
+    <None Include="wwwroot\assets\img\new_logo.png" />
+    <None Include="wwwroot\assets\img\OnlineMarketing.jpg" />
+    <None Include="wwwroot\assets\img\SearchBook.png" />
+    <None Include="wwwroot\assets\img\SearchCamera.png" />
+    <None Include="wwwroot\assets\img\SearchCase.png" />
+    <None Include="wwwroot\assets\img\SearchMagnify.png" />
+    <None Include="wwwroot\assets\img\tim_80x80.png" />
+    <None Include="wwwroot\assets\sass\paper-dashboard.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_buttons.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_cards.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_chartist.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_icons.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_inputs.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_labels.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_navbars.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_sidebar.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_tabs.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_transparency.scss" />
+    <None Include="wwwroot\assets\sass\paper\mixins\_vendor-prefixes.scss" />
+    <None Include="wwwroot\assets\sass\paper\plugins\_fixed-plugin.scss" />
+    <None Include="wwwroot\assets\sass\paper\_alerts.scss" />
+    <None Include="wwwroot\assets\sass\paper\_animate.scss" />
+    <None Include="wwwroot\assets\sass\paper\_buttons.scss" />
+    <None Include="wwwroot\assets\sass\paper\_cards.scss" />
+    <None Include="wwwroot\assets\sass\paper\_chartist.scss" />
+    <None Include="wwwroot\assets\sass\paper\_checkbox-radio.scss" />
+    <None Include="wwwroot\assets\sass\paper\_dropdown.scss" />
+    <None Include="wwwroot\assets\sass\paper\_footers.scss" />
+    <None Include="wwwroot\assets\sass\paper\_inputs.scss" />
+    <None Include="wwwroot\assets\sass\paper\_misc.scss" />
+    <None Include="wwwroot\assets\sass\paper\_mixins.scss" />
+    <None Include="wwwroot\assets\sass\paper\_navbars.scss" />
+    <None Include="wwwroot\assets\sass\paper\_responsive.scss" />
+    <None Include="wwwroot\assets\sass\paper\_sidebar-and-main-panel.scss" />
+    <None Include="wwwroot\assets\sass\paper\_tables.scss" />
+    <None Include="wwwroot\assets\sass\paper\_typography.scss" />
+    <None Include="wwwroot\assets\sass\paper\_variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vita.Domain\Vita.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.1.0" />
+    <TypeScriptCompile Include="ClientApp\app\vita.util.ts" />
+    <TypeScriptCompile Include="ClientApp\app\vita.api.ts" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <!-- In development, the dist files won't exist on the first run or when cloning to
+         a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

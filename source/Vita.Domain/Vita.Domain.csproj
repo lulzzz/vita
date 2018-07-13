@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;Production</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Search\**" />
+    <EmbeddedResource Remove="Search\**" />
+    <None Remove="Search\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\TextClassifiers\SpreadSheets\keywords.xlsx" />
+    <None Remove="Services\TextClassifiers\SpreadSheets\localities.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Services\TextClassifiers\SpreadSheets\keywords.xlsx" />
+    <EmbeddedResource Include="Services\TextClassifiers\SpreadSheets\localities.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="extensionminder" Version="3.0.1" />
+    <PackageReference Include="Flurl" Version="2.7.1" />
+    <PackageReference Include="Flurl.Http" Version="2.3.1" />
+    <PackageReference Include="GoogleApi" Version="3.4.0" />
+    <PackageReference Include="LiteDB" Version="4.1.4" />
+    <PackageReference Include="MassTransit.Autofac" Version="5.1.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.2" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB" Version="1.22.0" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="1.9.1" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.TransientFaultHandling" Version="1.5.0" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.0.3" />
+    <PackageReference Include="Microsoft.ML" Version="0.3.0" />
+    <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Polly" Version="6.0.1" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
+    <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.7" />
+    <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Polly" Version="6.0.1" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
+    <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
+    <PackageReference Include="StackExchange.Redis.StrongName" Version="1.2.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vita.Contracts\Vita.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Flurl.Http">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\flurl.http\2.3.1\lib\netstandard2.0\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleApi">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\googleapi\3.3.0\lib\netstandard1.1\GoogleApi.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\litedb\4.1.2\lib\netstandard2.0\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\masstransit\5.0.1.1500-develop\lib\netstandard2.0\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Common">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.azure.search.common\5.0.0\lib\netstandard1.4\Microsoft.Azure.Search.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Service">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.azure.search.service\5.0.0\lib\netstandard1.4\Microsoft.Azure.Search.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\system.configuration.configurationmanager\4.4.0\ref\netstandard2.0\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Category\" />
+    <Folder Include="Infrastructure\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Infrastructure\Data\Classifier.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Infrastructure\Data\company.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Infrastructure\Data\Locality.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

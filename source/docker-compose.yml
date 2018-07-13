@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  vita.api:
+    image: vitaapi
+    build:
+      context: .
+      dockerfile: Vita.Api\Dockerfile
+
+  vita.api.chargeid:
+    image: vitaapichargeid
+    build:
+      context: .
+      dockerfile: Vita.Api.ChargeId\Dockerfile
+

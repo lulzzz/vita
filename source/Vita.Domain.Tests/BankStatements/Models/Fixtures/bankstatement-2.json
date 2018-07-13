@@ -1,0 +1,5559 @@
+﻿{
+  "accounts": [
+    {
+      "name": "Credit Card",
+      "accountNumber": "4509 49xx xxxx 0220",
+      "id": 0,
+      "bsb": "",
+      "balance": "-924.57",
+      "available": "20922.20",
+      "accountType": "credit card",
+      "accountHolder": "MR Fred Flintstone",
+      "statementData": {
+        "details": [
+          {
+            "dateObj": {
+              "date": "2018-05-31 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "31-05-2018",
+            "text": "COLES EXPRESS 6902 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 59.73,
+            "type": "Debit",
+            "balance": "916.58",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-30 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "30-05-2018",
+            "text": "KILLERBY WINES WILYABRUP",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 20,
+            "type": "Debit",
+            "balance": "856.85",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-29 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "29-05-2018",
+            "text": "XERO AUSTRALIA PTY LTD HAWTHORN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 42.5,
+            "type": "Debit",
+            "balance": "836.85",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-28 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "28-05-2018",
+            "text": "THE YARD WINE COMPANY SUBIACO",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 21,
+            "type": "Debit",
+            "balance": "794.35",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-28 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "28-05-2018",
+            "text": "THE POUR HOUSE BAR A DUNSBOROUGH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 100.5,
+            "type": "Debit",
+            "balance": "773.35",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-28 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "28-05-2018",
+            "text": "VANS CAFE AND DELI COTTESLOE",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 110,
+            "type": "Debit",
+            "balance": "672.85",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-05-2018",
+            "text": "TRANSPERTH TICKET SWAN COTTESLOE",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 12.6,
+            "type": "Debit",
+            "balance": "562.85",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-05-2018",
+            "text": "EVENT CINEMAS INNALO INNALOO",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 72.5,
+            "type": "Debit",
+            "balance": "550.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-05-2018",
+            "text": "DOMINOS ESTORE 0222 MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 81.75,
+            "type": "Debit",
+            "balance": "477.75",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-05-2018",
+            "text": "PAYMENT - THANK YOU",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 774.05,
+            "type": "Credit",
+            "balance": "396.00",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-05-2018",
+            "text": "DASHMESH G PTY LTD FLOREAT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 18.5,
+            "type": "Debit",
+            "balance": "1170.05",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-15 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "15-05-2018",
+            "text": "DAN MURPHYS 1038 MOSMAN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 39.99,
+            "type": "Debit",
+            "balance": "1151.55",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-10 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "10-05-2018",
+            "text": "APPLE ITUNES STORE SYDNEY",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 11.98,
+            "type": "Debit",
+            "balance": "1111.56",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-08 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "08-05-2018",
+            "text": "PETER ALXANDER X74 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 111.92,
+            "type": "Debit",
+            "balance": "1099.58",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-07 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "07-05-2018",
+            "text": "COLES EXPRESS 6902 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 55.54,
+            "type": "Debit",
+            "balance": "987.66",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-07 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "07-05-2018",
+            "text": "Thai Tation Floreat",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 158.07,
+            "type": "Debit",
+            "balance": "932.12",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-27 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "27-04-2018",
+            "text": "XERO AUSTRALIA PTY LTD HAWTHORN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 42.5,
+            "type": "Debit",
+            "balance": "774.05",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-27 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "27-04-2018",
+            "text": "APPLE ITUNES STORE SYDNEY",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 4.99,
+            "type": "Debit",
+            "balance": "731.55",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-04-2018",
+            "text": "CATABY ROADHOUSE CATABY",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 112.48,
+            "type": "Debit",
+            "balance": "726.56",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "19-04-2018",
+            "text": "PAYMENT - THANK YOU",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 1149.17,
+            "type": "Credit",
+            "balance": "614.08",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "19-04-2018",
+            "text": "WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 19.85,
+            "type": "Debit",
+            "balance": "1763.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-04-2018",
+            "text": "ARIRANG RESTAURANT PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 47,
+            "type": "Debit",
+            "balance": "1743.40",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-04-2018",
+            "text": "WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.34,
+            "type": "Debit",
+            "balance": "1696.40",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-04-2018",
+            "text": "BUNNINGS 483000 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 1.37,
+            "type": "Credit",
+            "balance": "1683.06",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-04-2018",
+            "text": "BUNNINGS 483000 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 96.18,
+            "type": "Debit",
+            "balance": "1684.43",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-04-2018",
+            "text": "CLAREMONT POOL SVCS CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 80,
+            "type": "Debit",
+            "balance": "1588.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-17 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "17-04-2018",
+            "text": "Claremont Hotel Claremont",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 49.99,
+            "type": "Debit",
+            "balance": "1508.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "16-04-2018",
+            "text": "KMART 1024 KARDINYA",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 33.5,
+            "type": "Debit",
+            "balance": "1458.26",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "16-04-2018",
+            "text": "COLES 0392 MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 43.14,
+            "type": "Debit",
+            "balance": "1424.76",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "16-04-2018",
+            "text": "BP BALDIVIS NB7375 BALDIVIS",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 54.89,
+            "type": "Debit",
+            "balance": "1381.62",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-13 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "13-04-2018",
+            "text": "BELLINI HAIRSTYLING PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 30,
+            "type": "Debit",
+            "balance": "1326.73",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-12 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "12-04-2018",
+            "text": "COLES EXPRESS 6919 MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 30.06,
+            "type": "Debit",
+            "balance": "1296.73",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-11 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "11-04-2018",
+            "text": "CORRIGIN HOTEL CORRIGIN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 36,
+            "type": "Debit",
+            "balance": "1266.67",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-10 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "10-04-2018",
+            "text": "BP BALDIVIS NB7375 BALDIVIS",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 77.63,
+            "type": "Debit",
+            "balance": "1230.67",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-09 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "09-04-2018",
+            "text": "WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 2.5,
+            "type": "Debit",
+            "balance": "1153.04",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-05 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "05-04-2018",
+            "text": "ROTTNEST EXPRESS FRE FREMANTLE",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 173.8,
+            "type": "Debit",
+            "balance": "1150.54",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-05 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "05-04-2018",
+            "text": "JANE BROOK FRESH MIDDLE SWAN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 25.49,
+            "type": "Debit",
+            "balance": "976.74",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-04-2018",
+            "text": "PENGUIN ISLAND CRUISES SHOALWATER",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 127,
+            "type": "Debit",
+            "balance": "951.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-04-2018",
+            "text": "PENGUIN ISLAND CRUISES SHOALWATER",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 3.2,
+            "type": "Debit",
+            "balance": "824.25",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-04-2018",
+            "text": "APPLE ITUNES STORE SYDNEY",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 6.99,
+            "type": "Debit",
+            "balance": "821.05",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-04-2018",
+            "text": "BUNNINGS 483000 CLAREMONT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 29.94,
+            "type": "Debit",
+            "balance": "814.06",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-28 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "28-03-2018",
+            "text": "VENUESLIVE MANAGEMENT BURSWOOD",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 14,
+            "type": "Debit",
+            "balance": "784.12",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-27 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "27-03-2018",
+            "text": "XERO AUSTRALIA PTY LTD HAWTHORN",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 42.5,
+            "type": "Debit",
+            "balance": "770.12",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-26 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "26-03-2018",
+            "text": "BIG FIVE DUTY FREE JOHANNESBURG 1070.00 ZAR 3.58 AUD",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 122.97,
+            "type": "Debit",
+            "balance": "727.62",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-03-2018",
+            "text": "TICKETMASTER COM MELBOURNE",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 252.75,
+            "type": "Debit",
+            "balance": "604.65",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-03-2018",
+            "text": "CRAFTERS MARKET MENLO P PRETORIA 633.90 ZAR 2.07 AUD",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 71.12,
+            "type": "Debit",
+            "balance": "351.90",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-03-2018",
+            "text": "EXCLUSIVE BOOKS MENLYN P PRETORIA 370.00 ZAR 1.21 AUD",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 41.51,
+            "type": "Debit",
+            "balance": "280.78",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-03-2018",
+            "text": "ZARA MENLYN MENLYN PARL 927.00 ZAR 3.03 AUD",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 104.01,
+            "type": "Debit",
+            "balance": "239.27",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "19-03-2018",
+            "text": "PAYMENT - THANK YOU",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 1468.24,
+            "type": "Credit",
+            "balance": "135.26",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-13 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "13-03-2018",
+            "text": "FREMANTLE SAILING CLUB SOUTH FREMANT",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 9.7,
+            "type": "Debit",
+            "balance": "1603.50",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-12 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "12-03-2018",
+            "text": "GOOGLE *Navionics g.co/helppay#",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 27.8,
+            "type": "Debit",
+            "balance": "1593.80",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-09 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "09-03-2018",
+            "text": "COLES EXPRESS 2143 LAKELANDS",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 58.56,
+            "type": "Debit",
+            "balance": "1566.00",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-09 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "09-03-2018",
+            "text": "CHOUX CAFE SWANBOURNE",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 4.2,
+            "type": "Debit",
+            "balance": "1507.44",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-08 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "08-03-2018",
+            "text": "POST PERTH ST GEOR PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 11,
+            "type": "Debit",
+            "balance": "1503.24",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-08 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "08-03-2018",
+            "text": "BAKERS DELIGHT MOS P MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 16,
+            "type": "Debit",
+            "balance": "1492.24",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-06 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "06-03-2018",
+            "text": "COLES 0392 MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 8,
+            "type": "Debit",
+            "balance": "1476.24",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-05 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "05-03-2018",
+            "text": "COLES 0392 MOSMAN PARK",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 10.83,
+            "type": "Debit",
+            "balance": "1468.24",
+            "tags": []
+          }
+        ],
+        "totalCredits": "3392.83",
+        "totalDebits": "-2852.00",
+        "openingBalance": "1479.07",
+        "closingBalance": "916.58",
+        "startDate": "04/03/2018",
+        "endDate": "02/06/2018",
+        "minBalance": "-924.57",
+        "maxBalance": "1763.25",
+        "dayEndBalances": [
+          {
+            "date": "2018-06-02",
+            "balance": "916.58"
+          },
+          {
+            "date": "2018-06-01",
+            "balance": "916.58"
+          },
+          {
+            "date": "2018-05-31",
+            "balance": "916.58"
+          },
+          {
+            "date": "2018-05-30",
+            "balance": "856.85"
+          },
+          {
+            "date": "2018-05-29",
+            "balance": "836.85"
+          },
+          {
+            "date": "2018-05-28",
+            "balance": "794.35"
+          },
+          {
+            "date": "2018-05-27",
+            "balance": "562.85"
+          },
+          {
+            "date": "2018-05-26",
+            "balance": "562.85"
+          },
+          {
+            "date": "2018-05-25",
+            "balance": "562.85"
+          },
+          {
+            "date": "2018-05-24",
+            "balance": "562.85"
+          },
+          {
+            "date": "2018-05-23",
+            "balance": "562.85"
+          },
+          {
+            "date": "2018-05-22",
+            "balance": "396.00"
+          },
+          {
+            "date": "2018-05-21",
+            "balance": "396.00"
+          },
+          {
+            "date": "2018-05-20",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-19",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-18",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-17",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-16",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-15",
+            "balance": "1151.55"
+          },
+          {
+            "date": "2018-05-14",
+            "balance": "1111.56"
+          },
+          {
+            "date": "2018-05-13",
+            "balance": "1111.56"
+          },
+          {
+            "date": "2018-05-12",
+            "balance": "1111.56"
+          },
+          {
+            "date": "2018-05-11",
+            "balance": "1111.56"
+          },
+          {
+            "date": "2018-05-10",
+            "balance": "1111.56"
+          },
+          {
+            "date": "2018-05-09",
+            "balance": "1099.58"
+          },
+          {
+            "date": "2018-05-08",
+            "balance": "1099.58"
+          },
+          {
+            "date": "2018-05-07",
+            "balance": "987.66"
+          },
+          {
+            "date": "2018-05-06",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-05-05",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-05-04",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-05-03",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-05-02",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-05-01",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-04-30",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-04-29",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-04-28",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-04-27",
+            "balance": "774.05"
+          },
+          {
+            "date": "2018-04-26",
+            "balance": "726.56"
+          },
+          {
+            "date": "2018-04-25",
+            "balance": "726.56"
+          },
+          {
+            "date": "2018-04-24",
+            "balance": "726.56"
+          },
+          {
+            "date": "2018-04-23",
+            "balance": "726.56"
+          },
+          {
+            "date": "2018-04-22",
+            "balance": "614.08"
+          },
+          {
+            "date": "2018-04-21",
+            "balance": "614.08"
+          },
+          {
+            "date": "2018-04-20",
+            "balance": "614.08"
+          },
+          {
+            "date": "2018-04-19",
+            "balance": "614.08"
+          },
+          {
+            "date": "2018-04-18",
+            "balance": "1743.40"
+          },
+          {
+            "date": "2018-04-17",
+            "balance": "1508.25"
+          },
+          {
+            "date": "2018-04-16",
+            "balance": "1458.26"
+          },
+          {
+            "date": "2018-04-15",
+            "balance": "1326.73"
+          },
+          {
+            "date": "2018-04-14",
+            "balance": "1326.73"
+          },
+          {
+            "date": "2018-04-13",
+            "balance": "1326.73"
+          },
+          {
+            "date": "2018-04-12",
+            "balance": "1296.73"
+          },
+          {
+            "date": "2018-04-11",
+            "balance": "1266.67"
+          },
+          {
+            "date": "2018-04-10",
+            "balance": "1230.67"
+          },
+          {
+            "date": "2018-04-09",
+            "balance": "1153.04"
+          },
+          {
+            "date": "2018-04-08",
+            "balance": "1150.54"
+          },
+          {
+            "date": "2018-04-07",
+            "balance": "1150.54"
+          },
+          {
+            "date": "2018-04-06",
+            "balance": "1150.54"
+          },
+          {
+            "date": "2018-04-05",
+            "balance": "1150.54"
+          },
+          {
+            "date": "2018-04-04",
+            "balance": "951.25"
+          },
+          {
+            "date": "2018-04-03",
+            "balance": "951.25"
+          },
+          {
+            "date": "2018-04-02",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-04-01",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-03-31",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-03-30",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-03-29",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-03-28",
+            "balance": "784.12"
+          },
+          {
+            "date": "2018-03-27",
+            "balance": "770.12"
+          },
+          {
+            "date": "2018-03-26",
+            "balance": "727.62"
+          },
+          {
+            "date": "2018-03-25",
+            "balance": "604.65"
+          },
+          {
+            "date": "2018-03-24",
+            "balance": "604.65"
+          },
+          {
+            "date": "2018-03-23",
+            "balance": "604.65"
+          },
+          {
+            "date": "2018-03-22",
+            "balance": "351.90"
+          },
+          {
+            "date": "2018-03-21",
+            "balance": "351.90"
+          },
+          {
+            "date": "2018-03-20",
+            "balance": "135.26"
+          },
+          {
+            "date": "2018-03-19",
+            "balance": "135.26"
+          },
+          {
+            "date": "2018-03-18",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-17",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-16",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-15",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-14",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-13",
+            "balance": "1603.50"
+          },
+          {
+            "date": "2018-03-12",
+            "balance": "1593.80"
+          },
+          {
+            "date": "2018-03-11",
+            "balance": "1566.00"
+          },
+          {
+            "date": "2018-03-10",
+            "balance": "1566.00"
+          },
+          {
+            "date": "2018-03-09",
+            "balance": "1566.00"
+          },
+          {
+            "date": "2018-03-08",
+            "balance": "1503.24"
+          },
+          {
+            "date": "2018-03-07",
+            "balance": "1476.24"
+          },
+          {
+            "date": "2018-03-06",
+            "balance": "1476.24"
+          },
+          {
+            "date": "2018-03-05",
+            "balance": "1468.24"
+          },
+          {
+            "date": "2018-03-04",
+            "balance": "1479.07"
+          }
+        ],
+        "minDayEndBalance": "-924.57",
+        "maxDayEndBalance": "1743.40",
+        "daysInNegative": 0,
+        "errorMessage": "",
+        "analysis": {
+          "Income": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Wages": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Rent": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Interest": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Benefits": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Maternity Payment": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Family Benefits": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Schoolkids Bonus": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Parenting Payment": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Carers Benefits": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Youth Allowance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Newstart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Pension": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AusStudy": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Medicare": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Other": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Dishonours": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Overdrawn": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Dishonour": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Return": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Reversal": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Loans": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Amazing Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AMX Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aus Financial": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aussie": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aussie Cash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Baycorp": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cannon Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Advance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Converters": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Doctors": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash First": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash in a Flash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Now": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Oz": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Solutions": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Smart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Stop": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "CashToday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Train": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Center One": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Champion Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Champion Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "City Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Clear Cash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Credit24": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Credit Corp": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Debt Fix": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Dollars Direct": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Easy Financing": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Fair Go Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Ferratum": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "First Stop Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Fox Symes": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "FundCo": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Jacaranda Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Jet Lending": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "JP Creditline": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "K24": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kangaroo Payday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kreditech": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kwik Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Lion Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Loans by Phone": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Loan Ranger": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Max Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Max Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyCentre": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyMe": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Money Now": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyPlus": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Money3": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyStart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Morgan Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "My Budget": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Needy Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Nimble": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "OK Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday King": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday Land": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday Mate": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday247": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Perfect Payday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Personal Finance Co": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Prime Lenders": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Rapid Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Secure Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Speedy Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Speedy Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Spot Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "SRG Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Stress Less": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sunshine Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Swoosh Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tele Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Thorn": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Victory Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Web Moneyline": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Yes Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Collection House": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Toyota Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Impact Financial": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Yamaha Motor Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Home Loan": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Generic": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Rent": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Rent": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Gambling": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "10Bet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AusBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Bet365": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "BetFair": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "BetStar": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Bookmaker": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Centrebet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "ClassicBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "CrownBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "DigiMedia": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Ladbrokes": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "LeoVegas": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Luxbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "OzBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Palmerbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Punters": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Pokerstars": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Roxy Palace": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportsbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportsbetting": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportingbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "TABTouch": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tatts": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "The Palace Group": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tom Waterhouse": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "UBET": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Unibet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "William Hill": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Casino": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Lottery": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Other Debits": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Paygate Payments": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "SPER": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Certegy": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          }
+        }
+      },
+      "institution": "ANZ"
+    },
+    {
+      "name": "ANZ Access Advantage",
+      "accountNumber": "401415303",
+      "id": 1,
+      "bsb": "016002",
+      "balance": "542.48",
+      "available": "515.14",
+      "accountType": "transaction",
+      "accountHolder": "WALSHE PAUL DENNIS",
+      "statementData": {
+        "details": [
+          {
+            "dateObj": {
+              "date": "2018-06-01 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "01-06-2018",
+            "text": "TRANSFER FROM FAIR GO FINANCE PETTY CASH BAU04",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 500,
+            "type": "Credit",
+            "balance": "542.48",
+            "tags": [ "Loans", "Short Term Lender" ]
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-31 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "31-05-2018",
+            "text": "ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS NOT RECEIVED",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 5,
+            "type": "Debit",
+            "balance": "42.48",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 2,
+            "type": "Debit",
+            "balance": "47.48",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-21 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "21-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 THE LUCKY SHAG WATER PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 72,
+            "type": "Debit",
+            "balance": "49.48",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "18-05-2018",
+            "text": "DEBIT INTEREST CHARGED",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 0.07,
+            "type": "Debit",
+            "balance": "121.48",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-14 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "14-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 7.85,
+            "type": "Debit",
+            "balance": "121.55",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-09 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "09-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 CLICKSEND.COM RECHARGE APPLECROSS",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 50,
+            "type": "Debit",
+            "balance": "129.40",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-07 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "07-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 APPEAR.IN PERSONAL PRO 4797600631 9.99 USD INC O/S FEE $0.40",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.74,
+            "type": "Debit",
+            "balance": "179.40",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-07 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "07-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 SENDGRID 303-5520653 9.95 USD INC O/S FEE $0.39",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.7,
+            "type": "Debit",
+            "balance": "193.14",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 APPVEYOR VICTORIA 99.00 USD INC O/S FEE $3.97",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 136.5,
+            "type": "Debit",
+            "balance": "206.84",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 BUNNY INC. VOICEBUNNY 14157499221 200.00 USD INC O/S FEE $8.03",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 275.74,
+            "type": "Debit",
+            "balance": "343.34",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-02 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "02-05-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 11.2,
+            "type": "Debit",
+            "balance": "619.08",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-05-01 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "01-05-2018",
+            "text": "TRANSFER FROM FAIR GO FINANCE TRANSFER ANZ CC",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 500,
+            "type": "Credit",
+            "balance": "630.28",
+            "tags": [ "Loans", "Short Term Lender" ]
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-30 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "30-04-2018",
+            "text": "ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS NOT RECEIVED",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 5,
+            "type": "Debit",
+            "balance": "130.28",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "16-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 8,
+            "type": "Debit",
+            "balance": "135.28",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-13 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "13-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 EZI*FAIR GO FINANCE MANDURAH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 1,
+            "type": "Debit",
+            "balance": "143.28",
+            "tags": [ "Loans", "Short Term Lender" ]
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-06 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "06-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 APPEAR.IN PERSONAL PRO 4797600631 9.99 USD INC O/S FEE $0.39",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.43,
+            "type": "Debit",
+            "balance": "144.28",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-04 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "04-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 8,
+            "type": "Debit",
+            "balance": "157.71",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-04 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "04-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 SENDGRID 303-5520653 9.95 USD INC O/S FEE $0.39",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.4,
+            "type": "Debit",
+            "balance": "165.71",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-04-03 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "03-04-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 APPVEYOR VICTORIA 99.00 USD INC O/S FEE $3.87",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 132.93,
+            "type": "Debit",
+            "balance": "179.11",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-29 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "29-03-2018",
+            "text": "ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS NOT RECEIVED",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 5,
+            "type": "Debit",
+            "balance": "312.04",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-26 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "26-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 11.5,
+            "type": "Debit",
+            "balance": "317.04",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-23 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "23-03-2018",
+            "text": "TRANSFER FROM FAIR GO FINANCE PERTH PETTY CASH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 300,
+            "type": "Credit",
+            "balance": "328.54",
+            "tags": [ "Loans", "Short Term Lender" ]
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-22 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "22-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.24,
+            "type": "Debit",
+            "balance": "28.54",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "16-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 REVELEYS PERTH GPO",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 7,
+            "type": "Debit",
+            "balance": "41.78",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-12 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "12-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 SENDGRID 303-5520653 7.70 USD INC O/S FEE $0.29",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 10.21,
+            "type": "Debit",
+            "balance": "48.78",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-07 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "07-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 WOOLWORTHS 4301 PERTH",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 6,
+            "type": "Debit",
+            "balance": "58.99",
+            "tags": []
+          },
+          {
+            "dateObj": {
+              "date": "2018-03-05 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Australia/Sydney"
+            },
+            "date": "05-03-2018",
+            "text": "VISA DEBIT PURCHASE CARD 6049 APPEAR.IN PERSONAL PRO FORNEBU 9.99 USD INC O/S FEE $0.38",
+            "notes": null,
+            "transactionHash": null,
+            "hashText": null,
+            "amount": 13.3,
+            "type": "Debit",
+            "balance": "64.99",
+            "tags": []
+          }
+        ],
+        "totalCredits": "1300.00",
+        "totalDebits": "-835.81",
+        "openingBalance": "78.29",
+        "closingBalance": "542.48",
+        "startDate": "04/03/2018",
+        "endDate": "02/06/2018",
+        "minBalance": "28.54",
+        "maxBalance": "630.28",
+        "dayEndBalances": [
+          {
+            "date": "2018-06-02",
+            "balance": "542.48"
+          },
+          {
+            "date": "2018-06-01",
+            "balance": "542.48"
+          },
+          {
+            "date": "2018-05-31",
+            "balance": "42.48"
+          },
+          {
+            "date": "2018-05-30",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-29",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-28",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-27",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-26",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-25",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-24",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-23",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-22",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-21",
+            "balance": "47.48"
+          },
+          {
+            "date": "2018-05-20",
+            "balance": "121.48"
+          },
+          {
+            "date": "2018-05-19",
+            "balance": "121.48"
+          },
+          {
+            "date": "2018-05-18",
+            "balance": "121.48"
+          },
+          {
+            "date": "2018-05-17",
+            "balance": "121.55"
+          },
+          {
+            "date": "2018-05-16",
+            "balance": "121.55"
+          },
+          {
+            "date": "2018-05-15",
+            "balance": "121.55"
+          },
+          {
+            "date": "2018-05-14",
+            "balance": "121.55"
+          },
+          {
+            "date": "2018-05-13",
+            "balance": "129.40"
+          },
+          {
+            "date": "2018-05-12",
+            "balance": "129.40"
+          },
+          {
+            "date": "2018-05-11",
+            "balance": "129.40"
+          },
+          {
+            "date": "2018-05-10",
+            "balance": "129.40"
+          },
+          {
+            "date": "2018-05-09",
+            "balance": "129.40"
+          },
+          {
+            "date": "2018-05-08",
+            "balance": "179.40"
+          },
+          {
+            "date": "2018-05-07",
+            "balance": "179.40"
+          },
+          {
+            "date": "2018-05-06",
+            "balance": "206.84"
+          },
+          {
+            "date": "2018-05-05",
+            "balance": "206.84"
+          },
+          {
+            "date": "2018-05-04",
+            "balance": "206.84"
+          },
+          {
+            "date": "2018-05-03",
+            "balance": "206.84"
+          },
+          {
+            "date": "2018-05-02",
+            "balance": "619.08"
+          },
+          {
+            "date": "2018-05-01",
+            "balance": "630.28"
+          },
+          {
+            "date": "2018-04-30",
+            "balance": "130.28"
+          },
+          {
+            "date": "2018-04-29",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-28",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-27",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-26",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-25",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-24",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-23",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-22",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-21",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-20",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-19",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-18",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-17",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-16",
+            "balance": "135.28"
+          },
+          {
+            "date": "2018-04-15",
+            "balance": "143.28"
+          },
+          {
+            "date": "2018-04-14",
+            "balance": "143.28"
+          },
+          {
+            "date": "2018-04-13",
+            "balance": "143.28"
+          },
+          {
+            "date": "2018-04-12",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-11",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-10",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-09",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-08",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-07",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-06",
+            "balance": "144.28"
+          },
+          {
+            "date": "2018-04-05",
+            "balance": "157.71"
+          },
+          {
+            "date": "2018-04-04",
+            "balance": "157.71"
+          },
+          {
+            "date": "2018-04-03",
+            "balance": "179.11"
+          },
+          {
+            "date": "2018-04-02",
+            "balance": "312.04"
+          },
+          {
+            "date": "2018-04-01",
+            "balance": "312.04"
+          },
+          {
+            "date": "2018-03-31",
+            "balance": "312.04"
+          },
+          {
+            "date": "2018-03-30",
+            "balance": "312.04"
+          },
+          {
+            "date": "2018-03-29",
+            "balance": "312.04"
+          },
+          {
+            "date": "2018-03-28",
+            "balance": "317.04"
+          },
+          {
+            "date": "2018-03-27",
+            "balance": "317.04"
+          },
+          {
+            "date": "2018-03-26",
+            "balance": "317.04"
+          },
+          {
+            "date": "2018-03-25",
+            "balance": "328.54"
+          },
+          {
+            "date": "2018-03-24",
+            "balance": "328.54"
+          },
+          {
+            "date": "2018-03-23",
+            "balance": "328.54"
+          },
+          {
+            "date": "2018-03-22",
+            "balance": "28.54"
+          },
+          {
+            "date": "2018-03-21",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-20",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-19",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-18",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-17",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-16",
+            "balance": "41.78"
+          },
+          {
+            "date": "2018-03-15",
+            "balance": "48.78"
+          },
+          {
+            "date": "2018-03-14",
+            "balance": "48.78"
+          },
+          {
+            "date": "2018-03-13",
+            "balance": "48.78"
+          },
+          {
+            "date": "2018-03-12",
+            "balance": "48.78"
+          },
+          {
+            "date": "2018-03-11",
+            "balance": "58.99"
+          },
+          {
+            "date": "2018-03-10",
+            "balance": "58.99"
+          },
+          {
+            "date": "2018-03-09",
+            "balance": "58.99"
+          },
+          {
+            "date": "2018-03-08",
+            "balance": "58.99"
+          },
+          {
+            "date": "2018-03-07",
+            "balance": "58.99"
+          },
+          {
+            "date": "2018-03-06",
+            "balance": "64.99"
+          },
+          {
+            "date": "2018-03-05",
+            "balance": "64.99"
+          },
+          {
+            "date": "2018-03-04",
+            "balance": "78.29"
+          }
+        ],
+        "minDayEndBalance": "28.54",
+        "maxDayEndBalance": "630.28",
+        "daysInNegative": 0,
+        "errorMessage": "",
+        "analysis": {
+          "Income": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Wages": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Rent": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Interest": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Benefits": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Maternity Payment": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Family Benefits": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Schoolkids Bonus": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Parenting Payment": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Carers Benefits": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Youth Allowance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Newstart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Pension": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AusStudy": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Medicare": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Other": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Dishonours": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Overdrawn": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Dishonour": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Return": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Reversal": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Loans": {
+            "total": {
+              "transactionCount": 1,
+              "totalValue": 1,
+              "monthAvg": 0.33333333333333
+            },
+            "Amazing Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AMX Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aus Financial": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aussie": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Aussie Cash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Baycorp": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cannon Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Advance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Converters": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Doctors": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash First": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash in a Flash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Now": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Oz": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Solutions": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Smart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Stop": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "CashToday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Cash Train": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Center One": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Champion Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Champion Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "City Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Clear Cash": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Credit24": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Credit Corp": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Debt Fix": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Dollars Direct": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Easy Financing": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Fair Go Finance": {
+              "transactionCount": 1,
+              "totalValue": 1,
+              "monthAvg": 0.33333333333333,
+              "minValue": "1.00",
+              "maxValue": "1.00",
+              "firstTransaction": "13-04-2018",
+              "lastTransaction": "13-04-2018",
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": [
+                {
+                  "dateObj": {
+                    "date": "2018-04-13 00:00:00.000000",
+                    "timezone_type": 3,
+                    "timezone": "Australia/Sydney"
+                  },
+                  "date": "13-04-2018",
+                  "text": "VISA DEBIT PURCHASE CARD 6049 EZI*FAIR GO FINANCE MANDURAH",
+                  "notes": null,
+                  "transactionHash": null,
+                  "hashText": null,
+                  "amount": 1,
+                  "type": "Debit",
+                  "balance": "143.28",
+                  "tags": [ "Loans", "Short Term Lender" ]
+                }
+              ]
+            },
+            "Ferratum": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "First Stop Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Fox Symes": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "FundCo": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Jacaranda Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Jet Lending": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "JP Creditline": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "K24": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kangaroo Payday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kreditech": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Kwik Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Lion Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Loans by Phone": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Loan Ranger": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Max Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Max Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyCentre": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyMe": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Money Now": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyPlus": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Money3": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "MoneyStart": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Morgan Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "My Budget": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Needy Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Nimble": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "OK Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday King": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday Land": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday Mate": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Payday247": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Perfect Payday": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Personal Finance Co": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Prime Lenders": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Rapid Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Secure Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Speedy Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Speedy Money": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Spot Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "SRG Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Stress Less": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sunshine Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Swoosh Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tele Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Thorn": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Victory Funding": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Web Moneyline": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Yes Loans": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Collection House": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Toyota Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Impact Financial": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Yamaha Motor Finance": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Home Loan": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Generic": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Rent": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Rent": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Gambling": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "10Bet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "AusBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Bet365": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "BetFair": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "BetStar": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Bookmaker": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Centrebet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "ClassicBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "CrownBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "DigiMedia": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Ladbrokes": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "LeoVegas": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Luxbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "OzBet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Palmerbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Punters": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Pokerstars": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Roxy Palace": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportsbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportsbetting": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Sportingbet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "TABTouch": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tatts": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "The Palace Group": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Tom Waterhouse": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "UBET": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Unibet": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "William Hill": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Casino": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Lottery": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          },
+          "Other Debits": {
+            "total": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0
+            },
+            "Paygate Payments": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "SPER": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            },
+            "Certegy": {
+              "transactionCount": 0,
+              "totalValue": 0,
+              "monthAvg": 0,
+              "minValue": 0,
+              "maxValue": 0,
+              "firstTransaction": null,
+              "lastTransaction": null,
+              "period": 0,
+              "periodIsRegular": true,
+              "transactions": []
+            }
+          }
+        }
+      },
+      "institution": "ANZ"
+    }
+  ],
+  "user_token": "HHo7Z70YmRmCBQ2xEKYxgg",
+  "referral_code": "FGF-test"
+}

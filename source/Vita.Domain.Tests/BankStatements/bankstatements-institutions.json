@@ -1,0 +1,2252 @@
+﻿[
+  {
+    "slug": "adcu",
+    "name": "Australian Defence Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "adelaide",
+    "name": "Adelaide Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "advantedge",
+    "name": "Advantedge",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Loan ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "PIN",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "amex",
+    "name": "American Express",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "User ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "amp",
+    "name": "AMP",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "My AMP Username",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "email",
+        "optional": null
+      },
+      {
+        "name": "My AMP Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "anz",
+    "name": "ANZ",
+    "displayName": "1",
+    "credentials": [
+      {
+        "name": "Customer Registration Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "auswide",
+    "name": "Auswide Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Client Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": null,
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "awacu",
+    "name": "AWA Alliance Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bankaust",
+    "name": "Bank Australia",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bankmecu",
+    "name": "BankMeCU",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Net code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "banksyd",
+    "name": "Bank of Sydney",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bankwest",
+    "name": "Bankwest",
+    "displayName": "1",
+    "credentials": [
+      {
+        "name": "Personal Access Number (PAN)",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Secure Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bcu",
+    "name": "BCU",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member No or Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "beyondbank",
+    "name": "Beyond Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bhccu",
+    "name": "Broken Hill Community Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "bigsky",
+    "name": "Big Sky Building Society",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer No.",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cape",
+    "name": "Cape CU",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "capricornian",
+    "name": "The Capricornian",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cba",
+    "name": "Commonwealth Bank",
+    "displayName": "1",
+    "credentials": [
+      {
+        "name": "Client Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cfcu",
+    "name": "Country First Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "citibank",
+    "name": "Citibank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "User ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cmcu",
+    "name": "Central Murray Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Login ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "coastline",
+    "name": "Coastline Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "communityfirst",
+    "name": "Community First Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "communitymutual",
+    "name": "The Community Mutual Group",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "comtax",
+    "name": "Comtax Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cua",
+    "name": "CUA",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "CUA Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Web Access Code (WAC)",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cusa",
+    "name": "Credit Union SA",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "cwcu",
+    "name": "Central West Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "defencebank",
+    "name": "Defence Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "dnister",
+    "name": "Dnister Ukrainian Credit Co-operative",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "ecu",
+    "name": "ECU",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "eecu",
+    "name": "Exxon Employees Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "AccessPassword",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "firstchoice",
+    "name": "FirstChoice Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member/Eclient Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "firstoption",
+    "name": "First Option Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "NetCode",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "ford",
+    "name": "Ford Co-operative Credit Society",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "fscu",
+    "name": "Fire Service Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "gateway",
+    "name": "Gateway Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "gcmutual",
+    "name": "G&C Mutual Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "gmcu",
+    "name": "Goulburn Murray Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Logon ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "goldfields",
+    "name": "Goldfields Money",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Client Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Account Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "greater",
+    "name": "Greater Building Society",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Username",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "hccu",
+    "name": "Holiday Coast Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "heritage",
+    "name": "Heritage",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Login Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "horizon",
+    "name": "Horizon Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "imb",
+    "name": "IMB",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "intech",
+    "name": "Intech Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "macquarie",
+    "name": "Macquarie Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Macquarie Access Code (MAC)",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "mebank",
+    "name": "me Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "mmpcu",
+    "name": "Maritime Mining Power Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "User ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "move",
+    "name": "Move Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "nab",
+    "name": "NAB",
+    "displayName": "1",
+    "credentials": [
+      {
+        "name": "NAB ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "newcastle",
+    "name": "Newcastle Permanent",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "nicu",
+    "name": "Northern Inland Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "nova",
+    "name": "Nova Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "peopleschoicecu",
+    "name": "People's Choice Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "pepper",
+    "name": "Pepper",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Access Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "pnbank",
+    "name": "P&N Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "policecu",
+    "name": "Police Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "pulse",
+    "name": "Pulse Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qantas",
+    "name": "Qantas Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Staff/Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qbank",
+    "name": "QBANK",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qccu",
+    "name": "Queensland Country Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qpcu",
+    "name": "Queensland Police Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qtmb",
+    "name": "QT Mutual Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "qudos",
+    "name": "Qudos Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "queenslanders",
+    "name": "Queenslanders Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "railwaycu",
+    "name": "Railways Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "rams",
+    "name": "RAMS",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "regional",
+    "name": "Regional Australia Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "reliance",
+    "name": "Reliance Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "User ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "rock",
+    "name": "The Rock Building Society",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "text",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "sccu",
+    "name": "Southern Cross Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "scu",
+    "name": "Sydney Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "securitycu",
+    "name": "Security Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "shell",
+    "name": "Shell Employees Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "somb",
+    "name": "Service One Alliance Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member No.",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "summerland",
+    "name": "Summerland Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "swanhill",
+    "name": "Swan Hill Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Net Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "swcredit",
+    "name": "South West Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Client Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "swscu",
+    "name": "South West Slopes Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Login",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "tcu",
+    "name": "Traditional Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "theshire",
+    "name": "The Shire Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "UserId",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "tmbank",
+    "name": "Teachers Mutual Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member No",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "ubank",
+    "name": "UBank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Login email address",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "email",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "unibank",
+    "name": "Unibank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "victeach",
+    "name": "Victoria Teachers Mutual Bank",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Member Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Login Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "wcu",
+    "name": "Warwick Credit Union",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Customer Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "westpac",
+    "name": "Westpac",
+    "displayName": "1",
+    "credentials": [
+      {
+        "name": "Customer ID",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": "number",
+        "optional": null
+      },
+      {
+        "name": "Password",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": "default",
+        "optional": null
+      }
+    ]
+  },
+  {
+    "slug": "widebay",
+    "name": "Wide Bay Australia",
+    "displayName": "0",
+    "credentials": [
+      {
+        "name": "Client Number",
+        "fieldId": "username",
+        "type": "TEXT",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      },
+      {
+        "name": "Access Code",
+        "fieldId": "password",
+        "type": "password",
+        "description": "",
+        "values": "",
+        "keyboardType": null,
+        "optional": null
+      }
+    ]
+  }
+]

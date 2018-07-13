@@ -1,0 +1,41 @@
+﻿{
+  "runtime": "NetCore21",
+  "swaggerGenerator": {
+    "typesToSwagger": {
+      "classNames": [
+        "Vita.Contracts.SubCategories.Categories",
+        "Vita.Contracts.SubCategories.Categories+Kids",
+        "Vita.Contracts.SubCategories.Categories+Insurance",
+        "Vita.Contracts.SubCategories.Categories+Income",
+        "Vita.Contracts.SubCategories.Categories+HouseholdUtilities",
+        "Vita.Contracts.SubCategories.Categories+Home",
+        "Vita.Contracts.SubCategories.Categories+HolidayTravel",
+        "Vita.Contracts.SubCategories.Categories+HealthBeauty",
+        "Vita.Contracts.SubCategories.Categories+Groceries",
+        "Vita.Contracts.SubCategories.Categories+FoodDrinks",
+        "Vita.Contracts.SubCategories.Categories+Entertainment",
+        "Vita.Contracts.SubCategories.Categories+BankingFinance",
+        "Vita.Contracts.SubCategories.Categories+Miscellaneous",
+        "Vita.Contracts.SubCategories.Categories+Shopping",
+        "Vita.Contracts.SubCategories.Categories+TransferringMoney",
+        "Vita.Contracts.SubCategories.Categories+WorkStudy",
+        "Vita.Contracts.SubCategories.Categories+Transport"
+      ],
+      "defaultPropertyNameHandling": "Default",
+      "defaultReferenceTypeNullHandling": "Null",
+      "defaultEnumHandling": "Integer",
+      "flattenInheritanceHierarchy": false,
+      "ignoreObsoleteProperties": false,
+      "allowReferencesWithProperties": false,
+      "generateKnownTypes": true,
+      "generateXmlObjects": false,
+      "output": null,
+      "outputType": "Swagger2",
+      "assemblyPaths": [
+        "../source/Vita.Contracts/bin/Debug/netstandard2.0/Vita.Contracts.dll"
+      ],
+      "referencePaths": []
+    }
+  },
+  "codeGenerators": {}
+}
