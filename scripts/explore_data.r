@@ -8,6 +8,7 @@ source(paste0(getwd(), '/include.r'))
 
 data_path <- "C:/dev/vita/data/";
 
+data.sample = read.csv(paste0(data_path, "data-sample.csv"))
 
 # view original data sample
 #file <- paste0(data_path, "data-sample.csv")
