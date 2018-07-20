@@ -9,7 +9,7 @@ source(paste0(getwd(), '/include.r'))
 data_path <- "C:/dev/vita/data/";
 
 data.sample = read.csv(paste0(data_path, "data-sample.csv"))
-
+colnames(data.sample)
 # view original data sample
 #file <- paste0(data_path, "data-sample.csv")
 #csv <- read.csv.sql(file, sql = "select * from file", header = TRUE, sep = ",")

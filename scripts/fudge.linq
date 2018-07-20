@@ -30,16 +30,15 @@ void Main()
 		
 		//records.ToList().Dump();	
 		
-		var dist = records.ToList().Select(x=>x.accountnumber);
+		var dist = records.ToList().Select(x=>x.accountname);
 		contents = File.ReadAllText(path);
 
 		list.AddRange(dist);
 	}
-	foreach (var d in list)
-	{
-		contents = contents.Replace(d.Trim(), Guid.NewGuid().ToString());
-	}
+	int acc = 0;
 	
+	contents = contents.Replace("Albemarle", "Investment Property");
+	contents.Dump();
 	File.WriteAllText(path, contents);
 }
 
