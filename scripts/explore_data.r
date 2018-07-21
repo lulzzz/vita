@@ -28,16 +28,16 @@ data.subcategories <- sqldf("select a.SubCategory, b.SubCategoRYAmount, count(a.
 #data.subcategories <- sqldf("select SubCategory from [data.all]")
 
 
-#data.subs = sqldf("select * from [data.subs] where total > 50")
-#g <- ggplot(data.subs, aes(x = subcategory, y = total)) +
-    #geom_bar(fill = "#0073C2FF", stat = "identity") +
-    #geom_text(aes(label = total), vjust = -0.3) +
-    #theme(axis.text.x = element_text(angle = 90, hjust = 1))
+data.cats = sqldf("select * from [data.cats] where total > 50 and category <> 'Uncategorised'")
+g <- ggplot(data.cats, aes(x = category, y = total)) +
+    geom_bar(fill = "#0073C2FF", stat = "identity") +
+    geom_text(aes(label = total), vjust = -0.3) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-#g
+g
 
 
 data.subcategories$SubCategoryAmount <- abs(data.subcategories$SubCategoryAmount)
-top20 <- sqldf("select * from [data.subcategories] order by SubCategoryAmount desc limit 20")
-
+top20 <- sqldf("select * from [data.subcategories] where count(subcategory) > 50 and subcategory <> 'Uncategorised' order by SubCategoryAmount desc limit 20")
+top20 <- sqldf("select * from [data.subcategories] where subcategory <> 'Uncategorised' order by SubCategoryAmount desc limit 15")
 pie3D(top20$SubCategoryAmount, labels = top20$SubCategory, main = "Amount per category", explode = 0., radius = .9, labelcex = .7, start = .6, theta = 1)
