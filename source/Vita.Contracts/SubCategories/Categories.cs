@@ -5,7 +5,7 @@
   {
 
     /// <summary>
-    ///   see linqpad script for auto creation of this class
+    ///   see linqpad script 'categories.linq' for auto creation of this class
     /// </summary>
     public static class BankingFinance
     {
