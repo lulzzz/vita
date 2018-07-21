@@ -12,12 +12,24 @@
   <Reference Relative="..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
   <NuGetReference>ExtensionMinder</NuGetReference>
   <NuGetReference>GoogleApi</NuGetReference>
+  <NuGetReference>Humanizer.Core</NuGetReference>
   <NuGetReference>LiteDB</NuGetReference>
   <NuGetReference>Microsoft.Azure.KeyVault</NuGetReference>
   <NuGetReference>Microsoft.Azure.Services.AppAuthentication</NuGetReference>
   <NuGetReference>Serilog</NuGetReference>
   <NuGetReference>SpreadsheetGear</NuGetReference>
   <Namespace>ExtensionMinder</Namespace>
+  <Namespace>Humanizer</Namespace>
+  <Namespace>Humanizer.Bytes</Namespace>
+  <Namespace>Humanizer.Configuration</Namespace>
+  <Namespace>Humanizer.DateTimeHumanizeStrategy</Namespace>
+  <Namespace>Humanizer.Inflections</Namespace>
+  <Namespace>Humanizer.Localisation</Namespace>
+  <Namespace>Humanizer.Localisation.CollectionFormatters</Namespace>
+  <Namespace>Humanizer.Localisation.DateToOrdinalWords</Namespace>
+  <Namespace>Humanizer.Localisation.Formatters</Namespace>
+  <Namespace>Humanizer.Localisation.NumberToWords</Namespace>
+  <Namespace>Humanizer.Localisation.Ordinalizers</Namespace>
   <Namespace>LiteDB</Namespace>
   <Namespace>LiteDB.Shell</Namespace>
   <Namespace>Serilog</Namespace>
@@ -44,7 +56,7 @@ void Main()
 {
 	var data = new Vita.Domain.Services.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
 	var cats = data.GroupBy(item => item.CategoryType)
-		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
+		.Select(group => new { CategoryType = group.Key.Humanize(), Items = group.ToList() })
 		.ToList();
 	cats.Dump();
 	var sb = new StringBuilder();
