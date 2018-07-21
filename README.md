@@ -1,4 +1,4 @@
-# Work in Progress (Demoware -- part 1 of 6 - talks coming)
+# Work in Progress (Demoware -- series of posts & talks coming to show how I built this)
 
 ## Introduction
 
