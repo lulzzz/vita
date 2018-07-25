@@ -13,7 +13,6 @@ using Serilog.Context;
 using Vita.Contracts;
 using Vita.Contracts.ChargeId;
 using Vita.Contracts.SubCategories;
-using Vita.Domain.Services.TextClassifiers;
 
 namespace Vita.Api.Controllers
 {

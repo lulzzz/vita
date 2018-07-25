@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using GoogleApi.Entities.Common.Enums;
 using MassTransit;
 using Serilog.Context;
+using Vita.Contracts;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Services;
 

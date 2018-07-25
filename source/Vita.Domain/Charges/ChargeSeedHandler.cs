@@ -6,7 +6,6 @@ using Microsoft.Azure.Documents;
 using Serilog.Context;
 using Vita.Contracts;
 using Vita.Domain.Infrastructure;
-using Vita.Domain.Services.TextClassifiers;
 
 namespace Vita.Domain.Charges
 {

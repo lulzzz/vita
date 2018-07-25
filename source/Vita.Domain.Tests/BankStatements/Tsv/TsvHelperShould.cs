@@ -6,8 +6,8 @@ using FluentAssertions;
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.BankStatements.Tsv;
 using Vita.Domain.Infrastructure.Importers;
-using Vita.Domain.Services.Predictions;
 using Vita.Domain.Tests.BankStatements.Models.Fixtures;
+using Vita.Predictor;
 using Xunit;
 
 namespace Vita.Domain.Tests.BankStatements.Tsv

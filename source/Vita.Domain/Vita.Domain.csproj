@@ -12,16 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Services\TextClassifiers\SpreadSheets\keywords.xlsx" />
-    <None Remove="Services\TextClassifiers\SpreadSheets\localities.xlsx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Services\TextClassifiers\SpreadSheets\keywords.xlsx" />
-    <EmbeddedResource Include="Services\TextClassifiers\SpreadSheets\localities.xlsx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TextClassifiers\SpreadSheets\keywords.xlsx" />
+    <None Remove="TextClassifiers\SpreadSheets\localities.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TextClassifiers\SpreadSheets\keywords.xlsx" />
+    <EmbeddedResource Include="TextClassifiers\SpreadSheets\localities.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vita.Contracts\Vita.Contracts.csproj" />
+    <ProjectReference Include="..\Vita.Domain\Vita.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\csvhelper\7.1.1\lib\netstandard2.0\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtensionMinder">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\extensionminder\3.0.1\lib\netstandard2.0\ExtensionMinder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.ml\0.3.0\lib\netstandard2.0\Microsoft.ML.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

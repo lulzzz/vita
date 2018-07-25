@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vita.Domain.Tests\Vita.Domain.Tests.csproj" />
+    <ProjectReference Include="..\Vita.Predictor\Vita.Predictor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\fluentassertions\5.4.1\lib\netcoreapp2.0\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.core">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\xunit.extensibility.core\2.4.0\lib\netstandard2.0\xunit.core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

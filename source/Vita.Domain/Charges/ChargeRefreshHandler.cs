@@ -11,7 +11,6 @@ using Vita.Contracts;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Places;
 using Vita.Domain.Services;
-using Vita.Domain.Services.TextClassifiers;
 
 
 namespace Vita.Domain.Charges

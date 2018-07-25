@@ -8,7 +8,7 @@ using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 using Vita.Contracts;
 using Vita.Domain.BankStatements.Models;
-using Vita.Domain.Services.TextClassifiers;
+using Vita.Domain.Infrastructure;
 
 namespace Vita.Domain.BankStatements.Tsv
 {

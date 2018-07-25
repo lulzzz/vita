@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +7,7 @@ using NSwag.Annotations;
 using Serilog;
 using Serilog.Context;
 using Vita.Contracts;
-using Vita.Contracts.ChargeId;
 using Vita.Domain.BankStatements;
-using Vita.Domain.Services.Predictions;
-using Vita.Domain.Services.TextClassifiers;
 
 namespace Vita.Api.Controllers
 {
@@ -19,9 +15,9 @@ namespace Vita.Api.Controllers
   [Route("[controller]")]
   public class PredictionController : Controller
   {
-    private readonly IPredictor _predictor;
+    private readonly IPredict _predictor;
 
-    public PredictionController(IPredictor predictor)
+    public PredictionController(IPredict predictor)
     {
       _predictor = predictor;
     }
@@ -37,18 +33,18 @@ namespace Vita.Api.Controllers
       {
         try
         {
-          var li = new BankStatementLineItem();
-          li.AccountName = request.AccountName;
-          li.AccountNumber = request.AccountNumber;
-          li.Description = request.Description;
-          li.Bank = request.Bank;
-          li.Notes = request.Notes;
-          li.Tags = request.Tags;
-          li.AccountType = request.AccountType;
-          li.Amount = request.Amount;
-          li.TransactionUtcDate = request.TransactionUtcDate;
+          //var li = new BankStatementLineItem();
+          //li.AccountName = request.AccountName;
+          //li.AccountNumber = request.AccountNumber;
+          //li.Description = request.Description;
+          //li.Bank = request.Bank;
+          //li.Notes = request.Notes;
+          //li.Tags = request.Tags;
+          //li.AccountType = request.AccountType;
+          //li.Amount = request.Amount;
+          //li.TransactionUtcDate = request.TransactionUtcDate;
           
-          var result = await _predictor.PredictAsync(li);
+          var result = await _predictor.PredictAsync(request);
           return Ok(result);
         }
         catch (Exception e)

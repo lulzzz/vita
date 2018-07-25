@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Vita.Contracts\Vita.Contracts.csproj" />
     <ProjectReference Include="..\Vita.Domain\Vita.Domain.csproj" />
+    <ProjectReference Include="..\Vita.Predictor\Vita.Predictor.csproj" />
   </ItemGroup>
 
 </Project>

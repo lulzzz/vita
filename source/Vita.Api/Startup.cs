@@ -19,6 +19,7 @@ using NSwag.AspNetCore;
 using Vita.Domain.Charges;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Infrastructure.Modules;
+using Vita.Predictor;
 
 namespace Vita.Api
 {
@@ -68,6 +69,7 @@ namespace Vita.Api
       var builder = new ContainerBuilder();
       builder.RegisterModule<LoggingModule>();
       builder.RegisterModule<CommonModule>();
+      builder.RegisterModule<PredictionModule>();
       builder.RegisterConsumers(Assembly.GetAssembly(typeof(ChargeClassifier)));
       builder.RegisterConsumers(Assembly.GetExecutingAssembly());
 
