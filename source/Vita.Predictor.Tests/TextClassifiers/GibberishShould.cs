@@ -18,6 +18,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
       {
         string text = "abcd123";
         Gibberish.IsGibberish(text).Should().Be(false);
+
       }
 
       [Fact]
