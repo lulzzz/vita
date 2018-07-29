@@ -29,9 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{511E
 		..\scripts\setup.r = ..\scripts\setup.r
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Predictor", "Vita.Predictor\Vita.Predictor.csproj", "{F5EB6D97-5315-47D2-BAA8-5D1C63B094D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Predictor", "Vita.Predictor\Vita.Predictor.csproj", "{F5EB6D97-5315-47D2-BAA8-5D1C63B094D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Predictor.Tests", "Vita.Predictor.Tests\Vita.Predictor.Tests.csproj", "{1A0FED9E-E88C-44B1-9D1C-C835834D156C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Predictor.Tests", "Vita.Predictor.Tests\Vita.Predictor.Tests.csproj", "{1A0FED9E-E88C-44B1-9D1C-C835834D156C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

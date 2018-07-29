@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\data\BankStatementModel.zip" Link="wwwroot\BankStatementModel.zip">
+    <None Include="..\..\data\vita-model-1.zip" Link="wwwroot\vita-model-1.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

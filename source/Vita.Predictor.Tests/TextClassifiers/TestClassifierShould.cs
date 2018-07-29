@@ -8,7 +8,7 @@ using FluentAssertions;
 using Microsoft.Azure.Search.Common;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
-using Vita.Domain.BankStatements.Tsv;
+using Vita.Domain.Infrastructure;
 using Vita.Predictor.TextClassifiers;
 using Xunit;
 
@@ -188,7 +188,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     public async Task Predict()
     {
       string contents = File.ReadAllText(PredictorSettings.GetFilePath(@"test.tsv"));
-      var data = TsvHelper.Read(contents);
+      var data = FileUtil.Read(contents);
       var plainClassifiers = new List<KeyValuePair<string, TextClassificationResult>>();
 
       foreach (var item in data)

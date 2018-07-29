@@ -39,6 +39,7 @@
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
+  <Namespace>Vita.Domain.Infrastructure</Namespace>
 </Query>
 
 const string PlacePath = @"D:\Dropbox\Dropbox (Personal)\Red-Trout\chargeid\data\Place.db";
@@ -197,7 +198,7 @@ private async System.Threading.Tasks.Task RunSearch() {
 private void RunFromTsv()
 {
 	string contents = File.ReadAllText(@"C:\dev\vita\data\test.tsv");
-	var tsv = Vita.Domain.BankStatements.Tsv.TsvHelper.Read(contents);
+	var tsv = FileUtil.Read(contents);
 	foreach (var x in tsv)
 	{
 		string searchPhrase = x.Description.ToLowerInvariant();

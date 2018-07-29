@@ -33,6 +33,6 @@ namespace Vita.Predictor
         }
 
         //private static string AppPath => @"c:\dev\vita\data\";
-        public static string ModelPath => GetFilePath("BankStatementModel.zip");
+        public static string Model1Path => GetFilePath("vita-model-1.zip");
     }
 }

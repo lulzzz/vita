@@ -7,18 +7,18 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 using Vita.Contracts;
+using Vita.Domain.BankStatements;
 using Vita.Domain.BankStatements.Models;
-using Vita.Domain.Infrastructure;
 
-namespace Vita.Domain.BankStatements.Tsv
+namespace Vita.Domain.Infrastructure
 {
-  public static class TsvHelper
+  public static class FileUtil
   {
-    public static string Create(IEnumerable<BankStatementLineItem> data)
+
+      public static string Create(IEnumerable<BankStatementLineItem> data, string delimiter = ",")
     {
       if (data == null) return null;
       var sb = new StringBuilder();
-      const string delimiter = "\t";
 
       var tmp = new BankStatementLineItem();
       sb.AppendLine(nameof(tmp.SubCategory) + delimiter + nameof(tmp.Description) + delimiter + nameof(tmp.Bank) +
@@ -59,7 +59,7 @@ namespace Vita.Domain.BankStatements.Tsv
       }
 
       var sb = new StringBuilder();
-      const string delimiter = "\t";
+      const string delimiter = ",";
 
       var tmp = new BankStatementLineItem();
       sb.AppendLine(nameof(tmp.SubCategory) + delimiter + nameof(tmp.Description) + delimiter + nameof(tmp.Bank) +
@@ -75,7 +75,7 @@ namespace Vita.Domain.BankStatements.Tsv
       return sb.ToString();
     }
 
-    public static string Create(IEnumerable<PocketBook> pbs)
+    public static string Create(IEnumerable<PocketBook> pbs,string delimiter = ",")
     {
       
       if (pbs == null) return null;
@@ -99,7 +99,6 @@ namespace Vita.Domain.BankStatements.Tsv
       }
 
       var sb = new StringBuilder();
-      const string delimiter = "\t";
 
       var tmp = new BankStatementLineItem();
       sb.AppendLine(nameof(tmp.SubCategory) + delimiter + nameof(tmp.Description) + delimiter + nameof(tmp.Bank) +
@@ -115,12 +114,12 @@ namespace Vita.Domain.BankStatements.Tsv
       return sb.ToString();
     }
 
-    public static IEnumerable<BankStatementLineItem> Read(string contents)
+    public static IEnumerable<BankStatementLineItem> Read(string contents, string delimiter = ",")
     {
       using (var reader = new StringReader(contents))
       using (var csv = new CsvReader(reader))
       {
-        csv.Configuration.Delimiter = "\t";
+        csv.Configuration.Delimiter = delimiter;
         csv.Configuration.HeaderValidated = null;
         csv.Configuration.HasHeaderRecord = true;
         csv.Configuration.IgnoreBlankLines = true;

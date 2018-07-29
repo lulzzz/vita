@@ -9,7 +9,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     public const string Sentence = "hello this is an example sentence. I hope it handles words well. ain't that the truth!";
 
     [Fact]
-    public void NGramProcessor_handles_trigrams()
+    public void Handle_trigrams()
     {
       var results = NGramProcessor.MakeNgrams(Sentence, 3);
       results.Should().Contain("hello this is");
@@ -19,7 +19,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     }
 
     [Fact]
-    public void NGramProcessor_handles_bigrams()
+    public void Handle_bigrams()
     {
       var results = NGramProcessor.MakeNgrams(Sentence, 2);
       results.Should().Contain("hello this");

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.ML.Models;
 
 namespace Vita.Contracts
 {
@@ -6,5 +7,6 @@ namespace Vita.Contracts
   {
     Task<string> PredictAsync(PredictionRequest item);
     Task<string> TrainAsync(string trainpath, string testpath = null);
+    Task<ClassificationMetrics> EvaluateAsync(string testPath);
   }
 }

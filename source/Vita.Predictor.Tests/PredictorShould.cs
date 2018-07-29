@@ -5,8 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Vita.Contracts;
+using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements;
-using Vita.Domain.BankStatements.Tsv;
+using Vita.Domain.Infrastructure;
 using Xunit;
 
 namespace Vita.Predictor.Tests
@@ -14,25 +15,32 @@ namespace Vita.Predictor.Tests
     public class PredictorShould
     {
         public static string Data = PredictorSettings.GetFilePath("data-sample.csv");
-        public static string Train = PredictorSettings.GetFilePath("train.tsv");
-        public static string Test = PredictorSettings.GetFilePath("train.tsv");
+        public static string Train = PredictorSettings.GetFilePath("train.csv");
+        public static string Test = PredictorSettings.GetFilePath("test.csv");
 
-        
-        //[Fact(Skip = "run on demand")]
-        [Fact]
+        private IPredict _predict;
+
+        public PredictorShould()
+        {
+            _predict = new Predict();
+        }
+
+        [Fact(Skip = "run on demand")]
+        //[Fact]
         public async Task Train_model()
         {
-            var model = await new Predict().TrainAsync(Train);
-            model.Length.Should().NotBe(0);
-            File.Exists(model).Should().Be(true);
+            var modelpath = await _predict.TrainAsync(Train);
+            modelpath.Length.Should().NotBe(0);
+            File.Exists(modelpath).Should().Be(true);
+            Console.WriteLine(modelpath);
         }
 
         [Fact]
-        public async Task Predict()
+        public async Task Predict_test()
         {
             var contents = File.ReadAllText(Test);
             var list = new List<KeyValuePair<string, string>>();
-            var data = TsvHelper.Read(contents);
+            var data = FileUtil.Read(contents);
 
             foreach (var item in data)
             {
@@ -57,26 +65,37 @@ namespace Vita.Predictor.Tests
             var percentage = correct / over;
             Console.WriteLine(percentage.ToString("P5"));
 
-            percentage.Should().BeGreaterThan(.3);
+            percentage.Should().BeGreaterThan(.8);
         }
 
-        [Fact]
-        public async Task Predict_single()
+        [Theory]
+        [InlineData("EFTPOS ALDI 27 CARRUM DOWNS AU","ANZ",Categories.Groceries.Supermarkets)]
+        [InlineData("Kmart Cannington Aus","ANZ",Categories.Shopping.OtherShopping)]
+        [InlineData("Bunnings Innaloo","ANZ",Categories.Home.HomeImprovement)]
+        [InlineData("City Of Perth Park1 Perth","ParkingTolls",Categories.Transport.ParkingTolls)]
+        [InlineData("Virgin Australia Airli Spring Hill Aus","WESTPAC_INTERNET_BANKING",Categories.HolidayTravel.Flights)]
+        [InlineData("My Healthy Place Floreat","WESTPAC_INTERNET_BANKING",Categories.HealthBeauty.Chemists)]
+        public async Task Predict_test_sample(string description, string bank, string subcategory)
         {
-            var result = await new Predict().PredictAsync(new PredictionRequest()
+            var result = await _predict.PredictAsync(new PredictionRequest()
             {
-                Description = "EFTPOS ALDI 27 CARRUM DOWNS AU",
-                Bank = "ANZ"
+                Description = description,
+                Bank =bank
             });
 
             Console.WriteLine(result);
+            result.Should().Be(subcategory);
         }
 
         [Fact]
-        public async Task Evaluate_gives_good_prediction_results()
+        public async Task Evaluate_accuracy_greater_than_80_percent()
         {
-            var model = await new Predict().EvaluateAsync(Test);
-            model.AccuracyMacro.Should().BeGreaterOrEqualTo(0.5);
+            var metrics = await _predict.EvaluateAsync(Test);
+            Console.WriteLine();
+            Console.WriteLine("PredictionModel quality metrics evaluation");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"confusion matrix: {metrics.ConfusionMatrix}");
+            metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.8);
         }
     }
 }

@@ -1,7 +1,8 @@
 <Query Kind="Program">
   <Output>DataGrids</Output>
-  <Reference Relative="..\source\Vita.Web\bin\Debug\netcoreapp2.1\Vita.Contracts.dll">C:\dev\vita\source\Vita.Web\bin\Debug\netcoreapp2.1\Vita.Contracts.dll</Reference>
-  <Reference Relative="..\source\Vita.Web\bin\Debug\netcoreapp2.1\Vita.Domain.dll">C:\dev\vita\source\Vita.Web\bin\Debug\netcoreapp2.1\Vita.Domain.dll</Reference>
+  <Reference Relative="..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Contracts.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Contracts.dll</Reference>
+  <Reference Relative="..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Domain.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Domain.dll</Reference>
+  <Reference Relative="..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Predictor.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Predictor.dll</Reference>
   <NuGetReference>CsvHelper</NuGetReference>
   <NuGetReference>ExtensionMinder</NuGetReference>
   <NuGetReference>GoogleApi</NuGetReference>
@@ -39,19 +40,54 @@
   <Namespace>GoogleApi.Entities.Maps.Geocoding.PlusCode.Response</Namespace>
   <Namespace>GoogleApi.Entities.Maps.Geolocation.Request</Namespace>
   <Namespace>GoogleApi.Entities.Maps.Geolocation.Request.Enums</Namespace>
+  <Namespace>System.Diagnostics</Namespace>
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
+  <Namespace>Vita.Domain.BankStatements.Tsv</Namespace>
   <Namespace>Vita.Domain.Infrastructure</Namespace>
+  <Namespace>Vita.Domain.Infrastructure.Importers</Namespace>
+  <Namespace>Vita.Predictor</Namespace>
+  <Namespace>Vita.Predictor.TextClassifiers</Namespace>
 </Query>
 
 const string path = @"C:\dev\vita\data\data-sample.csv";
+public static string Data = PredictorSettings.GetFilePath("data-sample.csv", false);
+public static string Train = PredictorSettings.GetFilePath("train.tsv", false, false);
+public static string Test = PredictorSettings.GetFilePath("test.tsv", false, false)
+;
 
 void Main()
 {
+	var data = PocketBookImporter.Import(Data);
+
+	int percent = (int)(data.Count() * .8);
+
+	data = data.Shuffle();
+
+	var train = data.Take(percent);
+	var test = data.Except(train);
+
+	var train1 = TsvHelper.Create(train);
+	File.WriteAllText(Train, train1);
+
+	var test1 = TsvHelper.Create(test);
+	File.WriteAllText(Test, test1);
+
+	var traintsv = TsvHelper.Read(train1);
+	Debug.Assert(traintsv.Count() == train.Count());
+
+	var testtsv = TsvHelper.Read(test1);
+	Debug.Assert(testtsv.Count() == test1.Count());
+}
+
+
+void MakeSubCategoriesCsv()
+{
+
 	var cats = new List<CategoryType>();
 	var subs = new List<string>();
-	
+
 	var list = new List<string>();
 	using (StreamReader sr = new StreamReader(path))
 	using (var csv = new CsvReader(sr))
@@ -63,24 +99,21 @@ void Main()
 		csv.Configuration.IgnoreBlankLines = true;
 		// csv.Configuration.MissingFieldFound = null;
 		csv.Configuration.TrimOptions = TrimOptions.Trim;
-		//csv.Configuration.TypeConverterCache.<string>(new SubCategoryTypeConverter());
-
-		//csv.Configuration.RegisterClassMap<BankStatement>();
-
 		var records = csv.GetRecords<BankStatement>();
 
-		foreach (var r in records) {
+		foreach (var r in records)
+		{
 			cats.Add(CategoryTypeConverter.Convert(r.category));
 			subs.Add(CategoryTypeConverter.ExtractSubCategory(r.category));
 		}
-		
+
 		cats.Count.Dump("cats");
 		subs.Count.Dump("subs");
 
-		var d1 = cats.GroupBy(x => x).Select(x => new {Category = x.Key, Total = x.Count()}).Dump();
-		var d2 = subs.GroupBy(x => x).Select(x => new {SubCategory = x.Key, Total = x.Count()}).Dump();
+		var d1 = cats.GroupBy(x => x).Select(x => new { Category = x.Key, Total = x.Count() }).Dump();
+		var d2 = subs.GroupBy(x => x).Select(x => new { SubCategory = x.Key, Total = x.Count() }).Dump();
 
-		string file1 =  @"c:/dev/vita/data/subs.csv";
+		string file1 = @"c:/dev/vita/data/subs.csv";
 
 		using (var textWriter = new StreamWriter(file1))
 		{
@@ -96,41 +129,6 @@ void Main()
 		}
 
 	}
-
-}
-
-void ReplaceStuff()
-{
-	string contents = "";
-	var list = new List<string>();
-	using (StreamReader sr = new StreamReader(path))
-	using (var csv = new CsvReader(sr))
-	{
-		//string sss = sr.ReadToEnd();
-		csv.Configuration.Delimiter = ",";
-		csv.Configuration.HeaderValidated = null;
-		csv.Configuration.HasHeaderRecord = true;
-		csv.Configuration.IgnoreBlankLines = true;
-		// csv.Configuration.MissingFieldFound = null;
-		csv.Configuration.TrimOptions = TrimOptions.Trim;
-		//csv.Configuration.TypeConverterCache.<string>(new SubCategoryTypeConverter());
-
-		//csv.Configuration.RegisterClassMap<BankStatement>();
-
-		var records = csv.GetRecords<BankStatement>();
-
-		//records.ToList().Dump();	
-
-		var dist = records.ToList().Select(x => x.accountname);
-		contents = File.ReadAllText(path);
-
-		list.AddRange(dist);
-	}
-	int acc = 0;
-
-	contents = contents.Replace("Albemarle", "Investment Property");
-	contents.Dump();
-	File.WriteAllText(path, contents);
 }
 
 public class BankStatement

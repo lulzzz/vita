@@ -38,6 +38,5 @@ g
 
 
 data.subcategories$SubCategoryAmount <- abs(data.subcategories$SubCategoryAmount)
-top20 <- sqldf("select * from [data.subcategories] where count(subcategory) > 50 and subcategory <> 'Uncategorised' order by SubCategoryAmount desc limit 20")
-top20 <- sqldf("select * from [data.subcategories] where subcategory <> 'Uncategorised' order by SubCategoryAmount desc limit 15")
+top20 <- sqldf("select * from [data.subcategories] where subcategory <> 'Uncategorised' order by SubCategoryAmount desc limit 20")
 pie3D(top20$SubCategoryAmount, labels = top20$SubCategory, main = "Amount per category", explode = 0., radius = .9, labelcex = .7, start = .6, theta = 1)

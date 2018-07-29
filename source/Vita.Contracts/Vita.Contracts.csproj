@@ -25,6 +25,9 @@
     <Reference Include="Microsoft.Azure.Search.Service">
       <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.azure.search.service\5.0.0\lib\netstandard1.4\Microsoft.Azure.Search.Service.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ML">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\microsoft.ml\0.3.0\lib\netstandard2.0\Microsoft.ML.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\Users\chris\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
