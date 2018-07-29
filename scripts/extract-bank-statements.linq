@@ -8,19 +8,24 @@
   </Connection>
 </Query>
 
-
+const string path = @"C:\dev\vita\data\data-sample.csv";
 List<string> AccountIds = new List<string>();
 
 void Main()
 {
 	// Join with query expression.
-	var results = from a in BsAccounts.Take(100)
+	var results = from a in BsAccounts.Take(1)
 				 join b in BsAccountTransactions on a.BsAccountId equals b.BsAccountId
 				 where a.BsAccountId.Length > 5
 				 select new {b.Date, Description = b.Text, Amount = b.Amount, b.Notes, b.Tags, Bank = a.Institution, AccountName = a.AccountName, AccountNumer = a.AccountNumber};
 				
 				 
- 	results.Dump();
+ 	results.Distinct().Dump();
+
+	foreach (var item in results) {
+		
+	}
+	
 	
 }
 

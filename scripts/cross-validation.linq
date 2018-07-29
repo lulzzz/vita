@@ -44,7 +44,6 @@
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
-  <Namespace>Vita.Domain.BankStatements.Tsv</Namespace>
   <Namespace>Vita.Domain.Infrastructure</Namespace>
   <Namespace>Vita.Domain.Infrastructure.Importers</Namespace>
   <Namespace>Vita.Predictor</Namespace>
@@ -53,8 +52,8 @@
 
 const string path = @"C:\dev\vita\data\data-sample.csv";
 public static string Data = PredictorSettings.GetFilePath("data-sample.csv", false);
-public static string Train = PredictorSettings.GetFilePath("train.tsv", false, false);
-public static string Test = PredictorSettings.GetFilePath("test.tsv", false, false)
+public static string Train = PredictorSettings.GetFilePath("train.csv", false, false);
+public static string Test = PredictorSettings.GetFilePath("test.csv", false, false)
 ;
 
 void Main()
@@ -68,16 +67,16 @@ void Main()
 	var train = data.Take(percent);
 	var test = data.Except(train);
 
-	var train1 = TsvHelper.Create(train);
+	var train1 = FileUtil.Create(train);
 	File.WriteAllText(Train, train1);
 
-	var test1 = TsvHelper.Create(test);
+	var test1 = FileUtil.Create(test);
 	File.WriteAllText(Test, test1);
 
-	var traintsv = TsvHelper.Read(train1);
+	var traintsv = FileUtil.Read(train1);
 	Debug.Assert(traintsv.Count() == train.Count());
 
-	var testtsv = TsvHelper.Read(test1);
+	var testtsv = FileUtil.Read(test1);
 	Debug.Assert(testtsv.Count() == test1.Count());
 }
 
