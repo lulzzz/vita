@@ -5,8 +5,8 @@ namespace Vita.Contracts
 {
   public interface IPredict
   {
-    Task<string> PredictAsync(PredictionRequest item);
-    Task<string> TrainAsync(string trainpath, string testpath = null);
+    Task<string> PredictAsync(PredictionRequest request);
+    Task<string> TrainAsync(string trainpath);
     Task<ClassificationMetrics> EvaluateAsync(string testPath);
   }
 }

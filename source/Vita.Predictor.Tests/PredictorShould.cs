@@ -88,14 +88,14 @@ namespace Vita.Predictor.Tests
         }
 
         [Fact]
-        public async Task Evaluate_accuracy_greater_than_80_percent()
+        public async Task Evaluate_accuracy_greater_than_95_percent()
         {
             var metrics = await _predict.EvaluateAsync(Test);
             Console.WriteLine();
             Console.WriteLine("PredictionModel quality metrics evaluation");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"confusion matrix: {metrics.ConfusionMatrix}");
-            metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.8);
+            metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.95);
         }
     }
 }
