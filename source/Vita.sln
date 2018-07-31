@@ -33,6 +33,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Predictor", "Vita.Pred
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Predictor.Tests", "Vita.Predictor.Tests\Vita.Predictor.Tests.csproj", "{1A0FED9E-E88C-44B1-9D1C-C835834D156C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "banks", "banks", "{98B72A5A-7149-492A-8004-3DB3461526FF}"
+	ProjectSection(SolutionItems) = preProject
+		..\scripts\banks\anz.fsx = ..\scripts\banks\anz.fsx
+		..\scripts\banks\demo.fsx = ..\scripts\banks\demo.fsx
+		..\scripts\banks\install.fsx = ..\scripts\banks\install.fsx
+		..\scripts\banks\refs.fsx = ..\scripts\banks\refs.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +100,7 @@ Global
 		{A0B01F2A-2F9D-45B0-8A7D-26C47FB497A2} = {6164E646-3EDD-4158-AC19-C6AE42C7D930}
 		{F5EB6D97-5315-47D2-BAA8-5D1C63B094D6} = {6164E646-3EDD-4158-AC19-C6AE42C7D930}
 		{1A0FED9E-E88C-44B1-9D1C-C835834D156C} = {6164E646-3EDD-4158-AC19-C6AE42C7D930}
+		{98B72A5A-7149-492A-8004-3DB3461526FF} = {511EFB56-22C2-457A-98F2-17E481F5D0C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52312115-1681-4F2D-BA1B-3881F677592E}
