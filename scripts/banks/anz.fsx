@@ -15,9 +15,9 @@ start chrome
 describe "ANZ Login"
 url "https://www.anz.com/INETBANK/login.asp"
 //click "#skip_logon"
-sleep 10 
+sleep 1 
 "#crn" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-test-username")
 "#Password" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-test-password")
 click "#SignonButton"
-sleep 100
+sleep 10
 quit()
