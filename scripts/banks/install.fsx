@@ -10,6 +10,7 @@ open System.Text.RegularExpressions
 
 let currentDir = Environment.CurrentDirectory
 let packages = currentDir + "/packages"
+
 let paket = currentDir + "/paket.exe"
 let refs = currentDir + "/refs.fsx"
 let demo = currentDir + "/demo.fsx"
