@@ -27,7 +27,7 @@ namespace Vita.Predictor.Tests
         }
 
         [Fact(Skip = "run on demand")]
-        //[Fact]
+       // [Fact]
         public async Task Train_model()
         {
             var modelpath = await _predict.TrainAsync(Train);
