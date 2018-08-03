@@ -7,43 +7,41 @@ using NSwag.Annotations;
 using Serilog;
 using Serilog.Context;
 using Vita.Contracts;
-using Vita.Domain.BankStatements;
 
 namespace Vita.Api.Controllers
 {
-  [Produces("application/json")]
-  [Route("[controller]")]
-  public class PredictionController : Controller
-  {
-    private readonly IPredict _predictor;
-
-    public PredictionController(IPredict predictor)
+    [Produces("application/json")]
+    [Route("[controller]")]
+    public class PredictionController : Controller
     {
-      _predictor = predictor;
-    }
+        private readonly IPredict _predictor;
 
-    [HttpPost("predict/")]
-    [SwaggerResponse(HttpStatusCode.OK,typeof(string))]
-    public async Task<IActionResult> Search(PredictionRequest request)
-    {
-      Guard.AgainstNull(request);
-      var requestId = Guid.NewGuid();
-      using (LogContext.PushProperty("request", request.ToJson()))
-      using (LogContext.PushProperty("requestId", requestId))
-      {
-        try
-        { 
-          var result = await _predictor.PredictAsync(request);
-          return Ok(result);
-        }
-        catch (Exception e)
+        public PredictionController(IPredict predictor)
         {
-          Console.WriteLine(e);
-          Log.Warning(e, "PredictionController error {request}", request.ToJson());
-          return NoContent();
+            _predictor = predictor;
         }
-      }
-    }
 
-  }
+        [HttpPost("predict/")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(string))]
+        public async Task<IActionResult> Search(PredictionRequest request)
+        {
+            Guard.AgainstNull(request);
+            var requestId = Guid.NewGuid();
+            using (LogContext.PushProperty("request", request.ToJson()))
+            using (LogContext.PushProperty("requestId", requestId))
+            {
+                try
+                {
+                    var result = await _predictor.PredictAsync(request);
+                    return Ok(result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Log.Warning(e, "PredictionController error {request}", request.ToJson());
+                    return NoContent();
+                }
+            }
+        }
+    }
 }
