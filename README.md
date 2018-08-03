@@ -6,14 +6,20 @@ A solution that uses ML.Net to classify spending patterns. Utlising Azure featur
 
 
 
-For more info
+#### For more info
 
 <a href="http://mckelt.com/blog/?p=460" target="_blank">Charge Id – scratching the tech itch [ part 1 ]</a>
+
 <a href="http://mckelt.com/blog/?p=485" target="_blank">Charge Id – lean canvas [ part 2 ]</a>
+
 <a href="http://mckelt.com/blog/?p=505" target="_blank">Charge Id – solution overview [ part 3 ]</a>
+
 <a href="http://mckelt.com/blog/?p=507" target="_blank">Charge Id – analysing the data [ part 4 ]</a>
+
 <a href="http://mckelt.com/blog/?p=668" target="_blank">Charge Id – the prediction model [ part 5 ]</a>
+
 <a href="http://mckelt.com/blog/?p=705" target="_blank">Charge Id – deploying a ML.Net Model to Azure [ part 6 ]</a>
+
 
 
 #### Code
@@ -36,7 +42,7 @@ For more info
 - CosmosDB backing onto Azure Search for quick lookup of data (Australian companies, suburbs and Google place information) [doing]
 - 
 
-see Roadmap
+Project board
 
 <a href="https://github.com/chrismckelt/vita/projects/1" target="_blank">https://github.com/chrismckelt/vita/projects/1</a>
 
