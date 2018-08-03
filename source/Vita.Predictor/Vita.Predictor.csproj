@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="..\..\data\vita-model-1.zip" Link="vita-model-1.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="ExtensionMinder" Version="3.0.1" />

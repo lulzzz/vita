@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using MongoDB.Bson.IO;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements;
@@ -14,9 +15,9 @@ namespace Vita.Predictor.Tests
 {
     public class PredictorShould
     {
-        public static string Data = PredictorSettings.GetFilePath("data-sample.csv");
-        public static string Train = PredictorSettings.GetFilePath("train.csv");
-        public static string Test = PredictorSettings.GetFilePath("test.csv");
+        public static string Data = PredictionModelWrapper.GetFilePath("data-sample.csv");
+        public static string Train = PredictionModelWrapper.GetFilePath("train.csv");
+        public static string Test = PredictionModelWrapper.GetFilePath("test.csv");
 
         private IPredict _predict;
 
@@ -97,5 +98,19 @@ namespace Vita.Predictor.Tests
             Console.WriteLine($"confusion matrix: {metrics.ConfusionMatrix}");
             metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.95);
         }
+
+      [Fact]
+      public void PredictionRequest_payload()
+      {
+        var request = new PredictionRequest();
+        request.Bank = "ANZ";
+        request.AccountName = "savings";
+        request.Amount = 99;
+        request.Description = "Coles Bunbury";
+        request.TransactionUtcDate = DateTime.Today;
+
+        string content = Newtonsoft.Json.JsonConvert.SerializeObject(request);
+        Console.WriteLine(content);
+      }
     }
 }

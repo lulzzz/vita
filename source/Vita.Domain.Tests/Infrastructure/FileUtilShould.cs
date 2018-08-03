@@ -14,9 +14,9 @@ namespace Vita.Domain.Tests.BankStatements.Tsv
     public class FileUtilShould
 
     {
-        public static string Data = PredictorSettings.GetFilePath("data-sample.csv", false);
-        public static string Train = PredictorSettings.GetFilePath("train.csv", false,false);
-        public static string Test = PredictorSettings.GetFilePath("test.csv",false,false);
+        public static string Data = PredictionModelWrapper.GetFilePath("data-sample.csv", false);
+        public static string Train = PredictionModelWrapper.GetFilePath("train.csv", false,false);
+        public static string Test = PredictionModelWrapper.GetFilePath("test.csv",false,false);
 
         [Fact]
         public void Create_list_of_bank_statement_list_item_from_fetch_all_response()

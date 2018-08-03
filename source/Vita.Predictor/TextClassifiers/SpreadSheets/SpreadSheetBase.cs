@@ -28,13 +28,6 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
     public void LoadExcelSheet(string resourcename = null)
     {
       var assembly = Assembly.GetAssembly(typeof(KeywordsSpreadsheet));
-      // var path = @"C:\dev\FairGo.Pricing\source\FairGo.Pricing\Spreadsheets\Products_and_Pricing.xlsm";
-      //Workbook = ExcelFile.Load(path);
-
-      //foreach (var name in assembly.GetManifestResourceNames())
-      //{
-      //  Console.WriteLine(name);
-      //}
 
       if (string.IsNullOrWhiteSpace(resourcename))
       {

@@ -28,5 +28,25 @@ namespace Vita.Domain.BankStatements
     public AccountType? AccountType { get; set; }
     public string AccountNumber { get; set; }
     public DateTime TransactionUtcDate  { get; set; }
+
+    public static BankStatementLineItem ToBankStatementLineItem(PredictionRequest request)
+    {
+      var item = new BankStatementLineItem
+      {
+        Description = request.Description,
+        Amount = request.Amount,
+        Bank = request.Bank,
+        Tags = request.Tags,
+        Notes = request.Notes,
+        AccountType = request.AccountType,
+        AccountName = request.AccountName,
+        AccountNumber = request.AccountName,
+        TransactionUtcDate = request.TransactionUtcDate
+      };
+      return item;
+
+    }
   }
+
+ 
 }

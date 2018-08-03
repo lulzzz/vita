@@ -187,7 +187,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [Fact]
     public async Task Predict()
     {
-      string contents = File.ReadAllText(PredictorSettings.GetFilePath(@"test.tsv"));
+      string contents = File.ReadAllText(PredictionModelWrapper.GetFilePath(@"test.tsv"));
       var data = FileUtil.Read(contents);
       var plainClassifiers = new List<KeyValuePair<string, TextClassificationResult>>();
 

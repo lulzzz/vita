@@ -46,21 +46,21 @@ namespace Vita.Predictor
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             _model = pipeline.Train<BankStatementLineItem, PredictedLabel>();
-            await _model.WriteAsync(PredictorSettings.Model1Path);
+            await _model.WriteAsync(PredictionModelWrapper.Model1Path);
 
             watch.Stop();
             Console.WriteLine($"=============== End training ===============");
             Console.WriteLine($"training took {watch.ElapsedMilliseconds} milliseconds");
-            Console.WriteLine("The model is saved to {0}", PredictorSettings.Model1Path);
+            Console.WriteLine("The model is saved to {0}", PredictionModelWrapper.Model1Path);
 
-            return PredictorSettings.Model1Path;
+            return PredictionModelWrapper.Model1Path;
         }
 
         public async Task<string> PredictAsync(PredictionRequest request)
         {
             if (_model == null)
             {
-                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictorSettings.Model1Path);
+                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.GetModel());
             }
 
             var item = new BankStatementLineItem
@@ -88,7 +88,7 @@ namespace Vita.Predictor
 
             if (_model == null)
             {
-                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictorSettings.Model1Path);
+                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.Model1Path);
             }
 
             var metrics = evaluator.Evaluate(_model, testData);
