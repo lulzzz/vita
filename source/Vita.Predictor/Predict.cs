@@ -66,9 +66,9 @@ namespace Vita.Predictor
             var item = new BankStatementLineItem
             {
                 Description = request.Description,
-                AccountName = request.AccountName,
                 Amount = request.Amount,
-                AccountNumber = request.AccountNumber,
+                //AccountNumber = request.AccountNumber,
+                //AccountName = request.AccountName,
                 Bank = request.Bank,
                 TransactionUtcDate = request.TransactionUtcDate,
                 Notes = request.Notes,

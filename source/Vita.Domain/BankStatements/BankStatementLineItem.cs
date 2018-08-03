@@ -39,8 +39,8 @@ namespace Vita.Domain.BankStatements
         Tags = request.Tags,
         Notes = request.Notes,
         AccountType = request.AccountType,
-        AccountName = request.AccountName,
-        AccountNumber = request.AccountName,
+        //AccountName = request.AccountName,
+        //AccountNumber = request.AccountName,
         TransactionUtcDate = request.TransactionUtcDate
       };
       return item;

@@ -27,7 +27,7 @@ namespace Vita.Predictor.Tests
         }
 
         [Fact(Skip = "run on demand")]
-       // [Fact]
+        //[Fact]
         public async Task Train_model()
         {
             var modelpath = await _predict.TrainAsync(Train);
@@ -49,10 +49,10 @@ namespace Vita.Predictor.Tests
                 {
                     Description = item.Description,
                     Amount = item.Amount,
-                    AccountName = item.AccountName,
                     Tags = item.Tags,
                     Notes = item.Notes,
-                    AccountNumber = item.AccountNumber,
+                    //AccountNumber = item.AccountNumber,
+                    //AccountName = item.AccountName,
                     Bank = item.Bank,
                     AccountType = item.AccountType,
                     TransactionUtcDate = item.TransactionUtcDate
@@ -104,7 +104,7 @@ namespace Vita.Predictor.Tests
       {
         var request = new PredictionRequest();
         request.Bank = "ANZ";
-        request.AccountName = "savings";
+        //request.AccountName = "savings";
         request.Amount = 99;
         request.Description = "Coles Bunbury";
         request.TransactionUtcDate = DateTime.Today;

@@ -32,18 +32,7 @@ namespace Vita.Api.Controllers
       using (LogContext.PushProperty("requestId", requestId))
       {
         try
-        {
-          //var li = new BankStatementLineItem();
-          //li.AccountName = request.AccountName;
-          //li.AccountNumber = request.AccountNumber;
-          //li.Description = request.Description;
-          //li.Bank = request.Bank;
-          //li.Notes = request.Notes;
-          //li.Tags = request.Tags;
-          //li.AccountType = request.AccountType;
-          //li.Amount = request.Amount;
-          //li.TransactionUtcDate = request.TransactionUtcDate;
-          
+        { 
           var result = await _predictor.PredictAsync(request);
           return Ok(result);
         }
