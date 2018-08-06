@@ -17,12 +17,16 @@ namespace Vita.Predictor
 
         public async Task<string> TrainAsync(string trainpath, bool writeToDisk = true)
         {
-            // pipeline
+            // pipeline encapsulates the data loading, data processing/featurization, and learning algorithm
             var pipeline = new LearningPipeline
             {
                 // load from CSV --> SubCategory manually classified), Description, Bank, Amount,
                 new TextLoader(trainpath).CreateFrom<BankStatementLineItem>(separator: ',', useHeader: true),
-                new Dictionarizer(("SubCategory", "Label")), //Converts input values (words, numbers, etc.) to index in a dictionary.
+                
+                //Converts input values (words, numbers, etc.) to index in a dictionary.
+                new Dictionarizer(("SubCategory", "Label")), 
+                
+                // convert the data columns to the feature. For that TextFeaturizer
                 // ngram analysis over the transaction description
                 new TextFeaturizer("Description", "Description")
                 {
@@ -39,16 +43,21 @@ namespace Vita.Predictor
                 // feature column using bank and description
                 new ColumnConcatenator("Features", "Bank", "Description"),
 
+                //********************************************************************
                 // classifiers
-
+                //********************************************************************
                 //new NaiveBayesClassifier(),
                 new StochasticDualCoordinateAscentClassifier(){Shuffle = false, NumThreads = 1}, 
                 //new LightGbmClassifier(),                
+                //********************************************************************
+
                 //Transforms a predicted label column to its original values, unless it is of type bool
                 new PredictedLabelColumnOriginalValueConverter() {PredictedLabelColumn = "PredictedLabel"}
             };
 
+            //********************************************************************
             // training 
+            //********************************************************************
             Console.WriteLine("=============== Start training ===============");
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -59,6 +68,7 @@ namespace Vita.Predictor
             Console.WriteLine($"=============== End training ===============");
             Console.WriteLine($"training took {watch.ElapsedMilliseconds} milliseconds");
             Console.WriteLine("The model is saved to {0}", PredictionModelWrapper.Model1Path);
+            //********************************************************************
 
             return PredictionModelWrapper.Model1Path;
         }
@@ -67,7 +77,7 @@ namespace Vita.Predictor
         {
             if (_model == null)
             {
-                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.GetFilePath(PredictionModelWrapper.Model1Path));
+                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.GetModel());
             }
 
             var item = new BankStatementLineItem

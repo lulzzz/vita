@@ -32,7 +32,7 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
 
         var sheet = Workbook.Worksheets[cat.ToString()];
         if (sheet == null) throw new ArgumentException(cat.ToString());
-        Log.Debug("spreadsheet LoadCategoryKeywords ok {cat}", cat);
+        Log.Debug("spreadsheet LoadCategoryKeywords ok {cat}", cat);  // add a worksheet for this keyword
 
         foreach (var letter in Letters)
         {

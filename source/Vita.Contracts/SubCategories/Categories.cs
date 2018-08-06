@@ -101,6 +101,8 @@
       public const string Jewellery = "Jewellery";
       public const string OtherShopping = "OtherShopping";
       public const string SportsOutdoor = "SportsOutdoor";
+      public const string Gifts = "Gifts";
+
     }
     public static class TransferringMoney
     {
