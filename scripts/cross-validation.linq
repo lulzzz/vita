@@ -66,7 +66,7 @@ void Main()
 		subs.Add(CategoryTypeConverter.ExtractSubCategory(r.Category));
 	}
 
-	int percent = (int)(data.Count() * .8);
+	int percent = (int)(data.Count() * .7);
 
 	data = data.Shuffle();
 

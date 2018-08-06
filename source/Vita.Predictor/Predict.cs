@@ -41,11 +41,9 @@ namespace Vita.Predictor
 
                 // classifiers
 
-                //The SDCA method combines several of the best properties and capabilities of logistic regression and SVM algorithms
-                //new StochasticDualCoordinateAscentClassifier(){Shuffle = false, NumThreads = 1},
-                new StochasticDualCoordinateAscentClassifier(),
-                // pipeline.Add(new StochasticDualCoordinateAscentClassifier(BiasLearningRate = 0.1f, ConvergenceTolerance = 0.3f)
-                
+                //new NaiveBayesClassifier(),
+                new StochasticDualCoordinateAscentClassifier(){Shuffle = false, NumThreads = 1}, 
+                //new LightGbmClassifier(),                
                 //Transforms a predicted label column to its original values, unless it is of type bool
                 new PredictedLabelColumnOriginalValueConverter() {PredictedLabelColumn = "PredictedLabel"}
             };

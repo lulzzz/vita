@@ -4,10 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using MongoDB.Bson.IO;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
-using Vita.Domain.BankStatements;
 using Vita.Domain.Infrastructure;
 using Xunit;
 
@@ -86,15 +84,36 @@ namespace Vita.Predictor.Tests
             result.Should().Be(subcategory);
         }
 
+        ///https://docs.microsoft.com/en-us/dotnet/api/microsoft.ml.models.classificationmetrics?view=ml-dotnet
         [Fact]
-        public async Task Evaluate_accuracy_greater_than_95_percent()
+        public async Task Evaluate_accuracy_micro_greater_than_95_percent()
         {
             var metrics = await _predict.EvaluateAsync(Test);
             Console.WriteLine();
             Console.WriteLine("PredictionModel quality metrics evaluation");
             Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"AccuracyMacro: {metrics.AccuracyMacro}");
+            Console.WriteLine();
+            Console.WriteLine("the number of correctly predicted instances in the class, divided by the total number of instances in the class");
+            Console.WriteLine();
+            Console.WriteLine($"AccuracyMicro: {metrics.AccuracyMicro}");
+            Console.WriteLine("aggregate the contributions of all classes to compute the average metric");
+            Console.WriteLine();
+            Console.WriteLine($"LogLoss: {metrics.LogLoss}");
+            Console.WriteLine("Log Loss quantifies the accuracy of a classifier by penalising false classifications. Minimising the Log Loss is basically equivalent to maximising the accuracy of the classifier but has a twist see https://www.r-bloggers.com/making-sense-of-logarithmic-loss/");
+            Console.WriteLine();
+            Console.WriteLine($"TopKAccuracy: {metrics.TopKAccuracy}");
+            Console.WriteLine("Log Loss quantifies the accuracy of a classifier by penalising false classifications. Minimising the Log Loss is basically equivalent to maximising the accuracy of the classifier but has a twist see https://www.r-bloggers.com/making-sense-of-logarithmic-loss/");
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"confusion matrix: {metrics.ConfusionMatrix}");
-            metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.95);
+
+            metrics.AccuracyMicro.Should().BeGreaterOrEqualTo(0.95);
+
+            /*
+             *
+             * Micro- and macro-averages (for whatever metric) will compute slightly different things, and thus their interpretation differs. A macro-average will compute the metric independently for each class and then take the average (hence treating all classes equally), whereas a micro-average will aggregate the contributions of all classes to compute the average metric. In a multi-class classification setup, micro-average is preferable if you suspect there might be class imbalance (i.e you may have many more examples of one class than of other classes).
+             */
         }
 
     }
