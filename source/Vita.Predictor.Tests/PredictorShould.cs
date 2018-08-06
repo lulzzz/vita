@@ -19,15 +19,15 @@ namespace Vita.Predictor.Tests
         public static string Train = PredictionModelWrapper.GetFilePath("train.csv");
         public static string Test = PredictionModelWrapper.GetFilePath("test.csv");
 
-        private IPredict _predict;
+        private readonly IPredict _predict;
 
         public PredictorShould()
         {
             _predict = new Predict();
         }
 
-        [Fact(Skip = "run on demand")]
-        //[Fact]
+       // [Fact(Skip = "run on demand")]
+        [Fact]
         public async Task Train_model()
         {
             var modelpath = await _predict.TrainAsync(Train);
@@ -49,10 +49,8 @@ namespace Vita.Predictor.Tests
                 {
                     Description = item.Description,
                     Amount = item.Amount,
-                    Tags = item.Tags,
-                    Notes = item.Notes,
-                    //AccountNumber = item.AccountNumber,
-                    //AccountName = item.AccountName,
+                    //Tags = item.Tags,
+                    //Notes = item.Notes,
                     Bank = item.Bank,
                     AccountType = item.AccountType,
                     TransactionUtcDate = item.TransactionUtcDate
@@ -99,18 +97,5 @@ namespace Vita.Predictor.Tests
             metrics.AccuracyMacro.Should().BeGreaterOrEqualTo(0.95);
         }
 
-      [Fact]
-      public void PredictionRequest_payload()
-      {
-        var request = new PredictionRequest();
-        request.Bank = "ANZ";
-        //request.AccountName = "savings";
-        request.Amount = 99;
-        request.Description = "Coles Bunbury";
-        request.TransactionUtcDate = DateTime.Today;
-
-        string content = Newtonsoft.Json.JsonConvert.SerializeObject(request);
-        Console.WriteLine(content);
-      }
     }
 }

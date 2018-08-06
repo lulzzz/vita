@@ -15,19 +15,22 @@ namespace Vita.Predictor
     {
         private static PredictionModel<BankStatementLineItem, PredictedLabel> _model;
 
-        public async Task<string> TrainAsync(string trainpath)
+        public async Task<string> TrainAsync(string trainpath, bool writeToDisk = true)
         {
             // pipeline
             var pipeline = new LearningPipeline
             {
-                // load from CSV --> SubCategory manually classified), Description, Bank, Amount, AccountName, Notes, Tags
+                // load from CSV --> SubCategory manually classified), Description, Bank, Amount,
                 new TextLoader(trainpath).CreateFrom<BankStatementLineItem>(separator: ',', useHeader: true),
                 new Dictionarizer(("SubCategory", "Label")), //Converts input values (words, numbers, etc.) to index in a dictionary.
                 // ngram analysis over the transaction description
                 new TextFeaturizer("Description", "Description")
                 {
                     TextCase = TextNormalizerTransformCaseNormalizationMode.Lower,
-                    WordFeatureExtractor = new NGramNgramExtractor(){Weighting = NgramTransformWeightingCriteria.TfIdf}
+                    WordFeatureExtractor = new NGramNgramExtractor()
+                    {
+                        Weighting = NgramTransformWeightingCriteria.TfIdf,
+                    }
                 },
                 new TextFeaturizer("Bank", "Bank")
                 {
@@ -35,8 +38,14 @@ namespace Vita.Predictor
                 },
                 // feature column using bank and description
                 new ColumnConcatenator("Features", "Bank", "Description"),
+
+                // classifiers
+
                 //The SDCA method combines several of the best properties and capabilities of logistic regression and SVM algorithms
-                new StochasticDualCoordinateAscentClassifier(){Shuffle = false, NumThreads = 1},
+                //new StochasticDualCoordinateAscentClassifier(){Shuffle = false, NumThreads = 1},
+                new StochasticDualCoordinateAscentClassifier(),
+                // pipeline.Add(new StochasticDualCoordinateAscentClassifier(BiasLearningRate = 0.1f, ConvergenceTolerance = 0.3f)
+                
                 //Transforms a predicted label column to its original values, unless it is of type bool
                 new PredictedLabelColumnOriginalValueConverter() {PredictedLabelColumn = "PredictedLabel"}
             };
@@ -60,7 +69,7 @@ namespace Vita.Predictor
         {
             if (_model == null)
             {
-                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.GetModel());
+                _model = await PredictionModel.ReadAsync<BankStatementLineItem, PredictedLabel>(PredictionModelWrapper.GetFilePath(PredictionModelWrapper.Model1Path));
             }
 
             var item = new BankStatementLineItem
@@ -71,8 +80,8 @@ namespace Vita.Predictor
                 //AccountName = request.AccountName,
                 Bank = request.Bank,
                 TransactionUtcDate = request.TransactionUtcDate,
-                Notes = request.Notes,
-                Tags = request.Tags
+                //Notes = request.Notes,
+                //Tags = request.Tags
             };
 
             var prediction = _model.Predict(item);

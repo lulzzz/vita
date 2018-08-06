@@ -8,8 +8,8 @@ namespace Vita.Contracts
       public string Bank { get; set; }
       public double Amount { get; set; }
       //public string AccountName { get; set; }
-      public string Notes { get; set; }
-      public string Tags { get; set; }
+      //public string Notes { get; set; }
+      //public string Tags { get; set; }
       public AccountType? AccountType { get; set; }
       //public string AccountNumber { get; set; }
       public DateTime TransactionUtcDate  { get; set; }

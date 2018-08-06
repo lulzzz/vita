@@ -106,7 +106,7 @@ namespace Vita.Domain.Infrastructure
         case PlaceLocationType.Jewelry_Store:
         case PlaceLocationType.Pet_Store:
         case PlaceLocationType.Home_Goods_Store:
-        case PlaceLocationType.Store:
+        case PlaceLocationType.Store:        
           return CategoryType.Shopping;
 
         case PlaceLocationType.Electrician:

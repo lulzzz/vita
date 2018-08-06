@@ -42,11 +42,11 @@ namespace Vita.Domain.Infrastructure.Importers
       Map(m => m.Description).Index(1);
       Map(m => m.Category).Index(2);
       Map(m => m.Amount).Index(3);
-      Map(m => m.Notes).Index(4);
-      Map(m => m.Tags).Index(5);
-      Map(m => m.Bank).Index(6);
-      Map(m => m.AccountName).Index(7);
-      Map(m => m.AccountNumber).Index(8);
+      //Map(m => m.Notes).Index(4);
+      //Map(m => m.Tags).Index(5);
+      Map(m => m.Bank).Index(4);
+      //Map(m => m.AccountName).Index(7);
+      //Map(m => m.AccountNumber).Index(8);
 
     }
   }

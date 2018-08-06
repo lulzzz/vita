@@ -7,6 +7,7 @@ namespace Vita.Contracts
     [Description("Banking & Finance")] BankingFinance,
     [Description("Entertainment")] Entertainment,
     [Description("Food & Drinks")] FoodDrinks,
+    [Description("Gifts")] Gifts,
     [Description("Groceries")] Groceries,
     [Description("Health & Beauty")] HealthBeauty,
     [Description("Holiday & Travel")] HolidayTravel,

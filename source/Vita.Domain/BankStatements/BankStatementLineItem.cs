@@ -25,6 +25,9 @@ namespace Vita.Domain.BankStatements
 
     [Column(ordinal: "6")] public string Tags;
 
+
+
+
     public AccountType? AccountType { get; set; }
     public string AccountNumber { get; set; }
     public DateTime TransactionUtcDate  { get; set; }
@@ -36,8 +39,8 @@ namespace Vita.Domain.BankStatements
         Description = request.Description,
         Amount = request.Amount,
         Bank = request.Bank,
-        Tags = request.Tags,
-        Notes = request.Notes,
+        //Tags = request.Tags,
+        //Notes = request.Notes,
         AccountType = request.AccountType,
         //AccountName = request.AccountName,
         //AccountNumber = request.AccountName,

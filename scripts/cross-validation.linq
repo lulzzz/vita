@@ -44,21 +44,27 @@
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
+  <Namespace>Vita.Domain</Namespace>
   <Namespace>Vita.Domain.Infrastructure</Namespace>
-  <Namespace>Vita.Domain.Infrastructure.Importers</Namespace>
-  <Namespace>Vita.Predictor</Namespace>
-  <Namespace>Vita.Predictor.TextClassifiers</Namespace>
 </Query>
 
 const string path = @"C:\dev\vita\data\data-sample.csv";
-public static string Data = PredictorSettings.GetFilePath("data-sample.csv", false);
-public static string Train = PredictorSettings.GetFilePath("train.csv", false, false);
-public static string Test = PredictorSettings.GetFilePath("test.csv", false, false)
+public static string Data = Vita.Predictor.PredictionModelWrapper.GetFilePath("data-sample.csv", false);
+public static string Train = Vita.Predictor.PredictionModelWrapper.GetFilePath("train.csv", false, false);
+public static string Test = Vita.Predictor.PredictionModelWrapper.GetFilePath("test.csv", false, false)
 ;
 
 void Main()
 {
-	var data = PocketBookImporter.Import(Data);
+	var data = Vita.Domain.Infrastructure.Importers.PocketBookImporter.Import(Data);
+	//data.Dump();
+	var cats = new List<CategoryType>();
+	var subs = new List<string>();
+	foreach (var r in data)
+	{
+		cats.Add(CategoryTypeConverter.Convert(r.Category));
+		subs.Add(CategoryTypeConverter.ExtractSubCategory(r.Category));
+	}
 
 	int percent = (int)(data.Count() * .8);
 
@@ -78,6 +84,9 @@ void Main()
 
 	var testtsv = FileUtil.Read(test1);
 	Debug.Assert(testtsv.Count() == test1.Count());
+	
+	
+	MakeSubCategoriesCsv();
 }
 
 
@@ -110,11 +119,23 @@ void MakeSubCategoriesCsv()
 		subs.Count.Dump("subs");
 
 		var d1 = cats.GroupBy(x => x).Select(x => new { Category = x.Key, Total = x.Count() }).Dump();
+		using (var textWriter = new StreamWriter(@"c:/dev/vita/data/cats.csv"))
+		{
+			var writer = new CsvWriter(textWriter);
+			writer.Configuration.Delimiter = ",";
+
+			foreach (var item in d1)
+			{
+				writer.WriteField(item.Category);
+				writer.WriteField(item.Total);
+				writer.NextRecord();
+			}
+		}
+
+
 		var d2 = subs.GroupBy(x => x).Select(x => new { SubCategory = x.Key, Total = x.Count() }).Dump();
 
-		string file1 = @"c:/dev/vita/data/subs.csv";
-
-		using (var textWriter = new StreamWriter(file1))
+		using (var textWriter = new StreamWriter( @"c:/dev/vita/data/subs.csv"))
 		{
 			var writer = new CsvWriter(textWriter);
 			writer.Configuration.Delimiter = ",";
@@ -136,10 +157,10 @@ public class BankStatement
 	public string description { get; set; }
 	public string category { get; set; }
 	public string amount { get; set; }
-	public string notes { get; set; }
-	public string tags { get; set; }
+	//public string notes { get; set; }
+	//public string tags { get; set; }
 	public string bank { get; set; }
-	public string accountname { get; set; }
-	public string accountnumber { get; set; }
+	//public string accountname { get; set; }
+	//public string accountnumber { get; set; }
 
 }

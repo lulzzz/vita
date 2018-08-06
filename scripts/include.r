@@ -78,6 +78,11 @@ read_file_tsv <- function(path) {
     data <- as.data.frame(fread(path))
 }
 
+read_file_csv <- function(path) {
+
+    data <- as.data.frame(fread(path))
+}
+
 #' Convert an RMD file to an R script. Removes all markdown so script is runnable
 #'
 #' @return
