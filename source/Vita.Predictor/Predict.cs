@@ -88,7 +88,7 @@ namespace Vita.Predictor
                 //AccountNumber = request.AccountNumber,
                 //AccountName = request.AccountName,
                 Bank = request.Bank,
-                TransactionUtcDate = request.TransactionUtcDate,
+                //TransactionUtcDate = request.TransactionUtcDate,
                 //Notes = request.Notes,
                 //Tags = request.Tags
             };

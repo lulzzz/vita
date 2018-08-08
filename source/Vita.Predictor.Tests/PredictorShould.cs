@@ -51,8 +51,8 @@ namespace Vita.Predictor.Tests
                     //Tags = item.Tags,
                     //Notes = item.Notes,
                     Bank = item.Bank,
-                    AccountType = item.AccountType,
-                    TransactionUtcDate = item.TransactionUtcDate
+                    //AccountType = item.AccountType,
+                    //TransactionUtcDate = item.TransactionUtcDate
                 };
                 var result = await new Predict().PredictAsync(request);
                 list.Add(new KeyValuePair<string, string>(item.SubCategory, result));

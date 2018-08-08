@@ -40,7 +40,7 @@ namespace Vita.Domain.Tests.BankStatements.Tsv
             File.Delete(file);
         }
 
-        [Fact]
+        [Fact(Skip = "run on demand")]
         public void Makes_test_and_training_data()
         {
             var data = Vita.Domain.Infrastructure.Importers.PocketBookImporter.Import(Data);

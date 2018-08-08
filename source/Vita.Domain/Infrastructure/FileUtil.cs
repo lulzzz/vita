@@ -42,15 +42,18 @@ namespace Vita.Domain.Infrastructure
 
       foreach (var account in response.Accounts)
       {
-        var item = new BankStatementLineItem {AccountType = AccountTypeConverter.Convert(account.AccountType)};
+        var item = new BankStatementLineItem
+        {
+            //AccountType = AccountTypeConverter.Convert(account.AccountType)
+        };
 
         foreach (var detail in account.StatementData.Details)
         {
-          item.TransactionUtcDate = detail.DateObj.Date.DateTime;
+         // item.TransactionUtcDate = detail.DateObj.Date.DateTime;
           item.Description = detail.Text;
           item.Amount = detail.Amount;
           item.Notes = Convert.ToString(detail.Notes);
-          item.AccountNumber = account.AccountNumber;
+         // item.AccountNumber = account.AccountNumber;
           item.Bank = account.Institution;
           item.Tags = string.Join(",",detail.Tags);
 
@@ -87,12 +90,12 @@ namespace Vita.Domain.Infrastructure
         var item = new BankStatementLineItem();
         item.SubCategory = CategoryTypeConverter.ExtractSubCategory(pb.Category);
         item.AccountName = pb.AccountName;
-        item.AccountNumber = pb.AccountNumber;
+        //item.AccountNumber = pb.AccountNumber;
         item.Description = pb.Description;
         item.Amount = Convert.ToDouble(pb.Amount);
         item.Tags = pb.Tags;
         item.Notes = pb.Tags;
-        item.TransactionUtcDate =  Convert.ToDateTime(pb.Date);
+      //  item.TransactionUtcDate =  Convert.ToDateTime(pb.Date);
         item.Bank = pb.Bank;
 
         list.Add(item);

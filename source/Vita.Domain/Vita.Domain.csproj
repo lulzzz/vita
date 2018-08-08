@@ -27,23 +27,23 @@
     <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="1.9.1" />
     <PackageReference Include="Microsoft.Azure.DocumentDB.TransientFaultHandling" Version="1.5.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Search" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Azure.Search" Version="5.0.2" />
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.0.3" />
-    <PackageReference Include="Microsoft.ML" Version="0.3.0" />
+    <PackageReference Include="Microsoft.ML" Version="0.4.0" />
     <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Polly" Version="6.0.1" />
     <PackageReference Include="Serilog" Version="2.7.1" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
-    <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.9" />
+    <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.10" />
     <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Polly" Version="6.0.1" />
+    <PackageReference Include="Polly" Version="6.1.0" />
     <PackageReference Include="Serilog" Version="2.7.1" />
     <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
     <PackageReference Include="StackExchange.Redis.StrongName" Version="1.2.6" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
     <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
