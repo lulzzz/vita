@@ -37,6 +37,7 @@ namespace Vita.Predictor.Tests
         [Fact]
         public async Task Predict_test()
         {
+            // run through the TEST file and predict each one
             var contents = File.ReadAllText(Test);
             var list = new List<KeyValuePair<string, string>>();
             var data = FileUtil.Read(contents);
@@ -57,12 +58,13 @@ namespace Vita.Predictor.Tests
                 list.Add(new KeyValuePair<string, string>(item.SubCategory, result));
             }
 
+            // whats our total correct?
             var correct = list.Count(x => x.Key == x.Value);
             var over = (double) list.Count;
             var percentage = correct / over;
             Console.WriteLine(percentage.ToString("P5"));
 
-            percentage.Should().BeGreaterThan(.8);
+            percentage.Should().BeGreaterThan(.9);
         }
 
         [Theory]
@@ -102,17 +104,24 @@ namespace Vita.Predictor.Tests
             Console.WriteLine($"LogLoss: {metrics.LogLoss}");
             Console.WriteLine("Log Loss quantifies the accuracy of a classifier by penalising false classifications. Minimising the Log Loss is basically equivalent to maximising the accuracy of the classifier but has a twist see https://www.r-bloggers.com/making-sense-of-logarithmic-loss/");
             Console.WriteLine();
-            Console.WriteLine($"TopKAccuracy: {metrics.TopKAccuracy}");
-            Console.WriteLine("Log Loss quantifies the accuracy of a classifier by penalising false classifications. Minimising the Log Loss is basically equivalent to maximising the accuracy of the classifier but has a twist see https://www.r-bloggers.com/making-sense-of-logarithmic-loss/");
             Console.WriteLine();
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"confusion matrix: {metrics.ConfusionMatrix}");
-
+            Console.WriteLine("table that is often used to describe the performance of a classification model (or 'classifier') on a set of test data for which the true values are known.");
+            Console.WriteLine();
+      
             metrics.AccuracyMicro.Should().BeGreaterOrEqualTo(0.95);
 
             /*
              *
-             * Micro- and macro-averages (for whatever metric) will compute slightly different things, and thus their interpretation differs. A macro-average will compute the metric independently for each class and then take the average (hence treating all classes equally), whereas a micro-average will aggregate the contributions of all classes to compute the average metric. In a multi-class classification setup, micro-average is preferable if you suspect there might be class imbalance (i.e you may have many more examples of one class than of other classes).
+             * Micro- and macro-averages (for whatever metric) will compute slightly different things,
+             * and thus their interpretation differs.
+             *
+             * A macro-average will compute the metric independently for each class and then take the average (hence treating all classes equally),
+             * whereas a micro-average will aggregate the contributions of all classes to compute the average metric.
+             *
+             * In a multi-class classification setup, micro-average is preferable if you suspect there might be class imbalance
+             * (i.e you may have many more examples of one class than of other classes).
              */
         }
 

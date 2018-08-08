@@ -28,6 +28,12 @@ namespace Vita.Domain.BankStatements
 
 
 
+
+
+
+
+
+
     public AccountType? AccountType { get; set; }
     public string AccountNumber { get; set; }
     public DateTime TransactionUtcDate  { get; set; }

@@ -20,7 +20,7 @@ namespace Vita.Predictor
             // pipeline encapsulates the data loading, data processing/featurization, and learning algorithm
             var pipeline = new LearningPipeline
             {
-                // load from CSV --> SubCategory manually classified), Description, Bank, Amount,
+                // load from CSV --> SubCategory, Description, Bank, Amount,
                 new TextLoader(trainpath).CreateFrom<BankStatementLineItem>(separator: ',', useHeader: true),
                 
                 //Converts input values (words, numbers, etc.) to index in a dictionary.
@@ -33,7 +33,8 @@ namespace Vita.Predictor
                     TextCase = TextNormalizerTransformCaseNormalizationMode.Lower,
                     WordFeatureExtractor = new NGramNgramExtractor()
                     {
-                        Weighting = NgramTransformWeightingCriteria.TfIdf,
+                       // Term frequency -- the number of times that term t occurs in document d
+                        Weighting = NgramTransformWeightingCriteria.Tf,
                     }
                 },
                 new TextFeaturizer("Bank", "Bank")

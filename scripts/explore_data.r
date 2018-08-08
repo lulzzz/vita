@@ -8,8 +8,6 @@ source(paste0(getwd(), '/include.r'))
 
 data_path <- "C:/dev/vita/data/";
 
-
-
 data.cats = read.csv(paste0(data_path, "cats.csv"), header = FALSE, sep = ",")
 colnames(data.cats) <- c("category", "total")
 
