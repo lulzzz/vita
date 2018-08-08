@@ -6,8 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Category\**" />
     <Compile Remove="Search\**" />
+    <EmbeddedResource Remove="Category\**" />
     <EmbeddedResource Remove="Search\**" />
+    <None Remove="Category\**" />
     <None Remove="Search\**" />
   </ItemGroup>
 
@@ -81,7 +84,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Category\" />
     <Folder Include="Infrastructure\Data\" />
   </ItemGroup>
 
