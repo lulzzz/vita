@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using ExtensionMinder;
 using FluentAssertions;
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests.BankStatements.Models.Fixtures;
 using Vita.Predictor;
 using Xunit;
-using ExtensionMinder;
 
-namespace Vita.Domain.Tests.BankStatements.Tsv
+namespace Vita.Domain.Tests.Infrastructure
 {
     public class FileUtilShould
 

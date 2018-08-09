@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -98,6 +99,21 @@ namespace Vita.Predictor
             return prediction.SubCategory;
         }
 
+        public async Task<IEnumerable<PredictionResult>> PredictManyAsync(IEnumerable<PredictionRequest> requests)
+        {
+            var results = new List<PredictionResult>();
+            foreach (var item in requests)
+            {
+                var result = new PredictionResult()
+                {
+                    Request = item,
+                    PredictedValue = await PredictAsync(item)
+                };
+                results.Add(result);
+            }
+
+            return results;
+        }
 
         public async Task<ClassificationMetrics> EvaluateAsync(string testPath)
         {

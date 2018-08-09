@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
+using Vita.Domain.BankStatements.Download;
 using Vita.Domain.Infrastructure;
+using Vita.Domain.Tests.BankStatements.Models.Fixtures;
 using Xunit;
 
 namespace Vita.Predictor.Tests
@@ -125,5 +128,30 @@ namespace Vita.Predictor.Tests
              */
         }
 
+
+        [Fact]
+        public async Task PredictMany_will_run_through_transactions()
+        {
+            var json = BankStatementsFixture.Statement2;
+            var response = new BankStatementDownload(json).FetchAllResponse;
+            var account = response.Accounts.First();
+            var statementData = account.StatementData;
+            var data = statementData.Details.Select(x => new {Bank = account.Institution, Description = x.Text, x.Amount});
+            var results = new List<PredictionResult>();
+            foreach (var x in data)
+            {
+                var pr = new PredictionRequest
+                {
+                    Description = x.Description,
+                    Amount = x.Amount,
+                    Bank = x.Bank
+                };
+
+                var result = new PredictionResult();
+                result.Request = pr;
+                result.PredictedValue = await _predict.PredictAsync(pr);
+                results.Add(result);
+            }
+        }
     }
 }

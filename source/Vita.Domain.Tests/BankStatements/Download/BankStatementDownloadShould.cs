@@ -51,7 +51,6 @@ namespace Vita.Domain.Tests.BankStatements.Download
       });
     }
 
-
     [Fact]
     public void Parse_accounts()
     {

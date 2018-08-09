@@ -212,9 +212,7 @@ private void RunFromTsv()
 		var charge = FindCharge(searchPhrase);
 		charge.BankName = x.Bank;
 		charge.Amount = x.Amount;
-		charge.AccountNumber = x.AccountNumber;
-		charge.SearchPhrase = searchPhrase;
-		charge.TransactionUtcDate = x.TransactionUtcDate;
+		charge.SearchPhrase = searchPhrase;		
 		charge.Notes = x.Notes;
 		charge.Tags = x.Tags;
 		charges.Add(charge);
