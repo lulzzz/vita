@@ -16,8 +16,10 @@ describe "ANZ Login"
 url "https://www.anz.com/INETBANK/login.asp"
 //click "#skip_logon"
 sleep 1 
-"#crn" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-test-username")
-"#Password" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-test-password")
+"#crn" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-cdm-username")
+"#Password" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-cdm-password")
 click "#SignonButton"
+sleep 1
+click "#cssButtonText"
 sleep 10
 quit()
