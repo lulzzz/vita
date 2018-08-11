@@ -152,6 +152,15 @@ namespace Vita.Predictor.Tests
                 result.PredictedValue = await _predict.PredictAsync(pr);
                 results.Add(result);
             }
+          var groupedList = from r in results.Select(x=>x.PredictedValue)
+            group r by r
+            into newGroup
+            select new {
+              Category = newGroup.Key,
+              Total = newGroup.Count(),
+            };
+
+          groupedList.Count().Should().BeGreaterThan(0);
         }
     }
 }
