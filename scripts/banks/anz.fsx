@@ -19,7 +19,15 @@ sleep 1
 "#crn" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-cdm-username")
 "#Password" << Vita.Domain.Infrastructure.SecretMan.Get("bankstatements-anz-cdm-password")
 click "#SignonButton"
+click "#proceedToIBButton"
 sleep 1
-click "#cssButtonText"
-sleep 10
+click "div.backgroundView:nth-child(6) div.mainContentClass div.dispBlock:nth-child(9) div.normalLayoutAccounts:nth-child(2) div.listViewAccountWrapperYourAccounts.listViewFirstAccount:nth-child(1) a.accountNavLink div.accountNameTD > div.accountNameSection"
+sleep 1
+click "div.mainContentClass.ng-scope:nth-child(14) form.ng-pristine.ng-valid:nth-child(1) div.TranOutAutSec.TranOutAutSecLzyLdFx:nth-child(25) div.tabsContainer.tabsContainerMail.tabsContainerAcctTranAuth:nth-child(2) div.searchDwnldTransHistoryLinkSec.border-left-right:nth-child(1) div.dwnldTransHistoryDiv a:nth-child(1) > span.searchDwnldLinkSpan"
+sleep 1
+"#ANZSrchDtRng" << "5"
+sleep 5
+check "#extendedTxnDetailsChkBx"
+click "#searchButton"
+sleep 30
 quit()
