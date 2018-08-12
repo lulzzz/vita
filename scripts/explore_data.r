@@ -22,7 +22,7 @@ data.test = read_file_csv(paste0(data_path, "test.csv"))
 data.all <- merge(data.train, data.test)
 
 # view the data
-data.subcategories.amount = sqldf("select SubCategory, sum(Amount) as SubCategoryAmount from [data.all] where SubCategory not in ('Wages', 'OtherTransferringMoney', 'CreditCard', 'Interest') group by SubCategory")
+data.subcategories.amount <- sqldf("select SubCategory, sum(Amount) as SubCategoryAmount from [data.all] where SubCategory not in ('Wages', 'OtherTransferringMoney', 'CreditCard', 'Interest') group by SubCategory")
 data.subcategories <- sqldf("select a.SubCategory, b.SubCategoRYAmount, count(a.SubCategory) as Total from [data.all] as a inner join [data.subcategories.amount] as b on a.SubCategory = b.SubCategory group by a.SubCategory order by count(a.SubCategory) desc")
 
 data.cats = sqldf("select * from [data.cats] where total > 50 and category <> 'Uncategorised'")

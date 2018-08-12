@@ -17,12 +17,15 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="EventFlow.Autofac" Version="0.63.3581" />
+    <PackageReference Include="EventFlow.Sql" Version="0.63.3581" />
+    <PackageReference Include="EventFlow.TestHelpers" Version="0.63.3581" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.ML" Version="0.4.0" />
-    <PackageReference Include="NSwag.Annotations" Version="11.18.2" />
-    <PackageReference Include="NSwag.AspNetCore" Version="11.18.2" />
-    <PackageReference Include="NSwag.Core" Version="11.18.2" />
-    <PackageReference Include="NSwag.SwaggerGeneration.WebApi" Version="11.18.2" />
+    <PackageReference Include="NSwag.Annotations" Version="11.18.5" />
+    <PackageReference Include="NSwag.AspNetCore" Version="11.18.5" />
+    <PackageReference Include="NSwag.Core" Version="11.18.5" />
+    <PackageReference Include="NSwag.SwaggerGeneration.WebApi" Version="11.18.5" />
     <PackageReference Include="StackifyMiddleware" Version="2.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>

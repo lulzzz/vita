@@ -19,10 +19,13 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="EventFlow.Autofac" Version="0.63.3581" />
+    <PackageReference Include="EventFlow.Sql" Version="0.63.3581" />
+    <PackageReference Include="EventFlow.TestHelpers" Version="0.63.3581" />
     <PackageReference Include="extensionminder" Version="3.0.1" />
     <PackageReference Include="Flurl" Version="2.8.0" />
     <PackageReference Include="Flurl.Http" Version="2.3.2" />
-    <PackageReference Include="GoogleApi" Version="3.4.0" />
+    <PackageReference Include="GoogleApi" Version="3.6.7" />
     <PackageReference Include="LiteDB" Version="4.1.4" />
     <PackageReference Include="MassTransit.Autofac" Version="5.1.2" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.2" />
