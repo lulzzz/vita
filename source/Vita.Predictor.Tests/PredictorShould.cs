@@ -136,22 +136,11 @@ namespace Vita.Predictor.Tests
             var response = new BankStatementDownload(json).FetchAllResponse;
             var account = response.Accounts.First();
             var statementData = account.StatementData;
-            var data = statementData.Details.Select(x => new {Bank = account.Institution, Description = x.Text, x.Amount});
-            var results = new List<PredictionResult>();
-            foreach (var x in data)
-            {
-                var pr = new PredictionRequest
-                {
-                    Description = x.Description,
-                    Amount = x.Amount,
-                    Bank = x.Bank
-                };
-
-                var result = new PredictionResult();
-                result.Request = pr;
-                result.PredictedValue = await _predict.PredictAsync(pr);
-                results.Add(result);
-            }
+            var data = statementData.Details.Select(x => new PredictionRequest() {Bank = account.Institution, Description = x.Text,Amount = x.Amount});
+          
+            var results = await _predict.PredictManyAsync(data.AsEnumerable());
+            results.Count(x => x.Method == (Contracts.PredictionMethod.MultiClassClassifier)).Should().Be(results.Count());
+          
           var groupedList = from r in results.Select(x=>x.PredictedValue)
             group r by r
             into newGroup

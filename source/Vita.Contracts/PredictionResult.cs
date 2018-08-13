@@ -4,5 +4,6 @@
     {
         public PredictionRequest Request = new PredictionRequest();
         public string PredictedValue { get; set; }
+        public PredictionMethod Method { get; set; }
     }
 }

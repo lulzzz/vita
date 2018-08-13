@@ -107,7 +107,8 @@ namespace Vita.Predictor
                 var result = new PredictionResult()
                 {
                     Request = item,
-                    PredictedValue = await PredictAsync(item)
+                    PredictedValue = await PredictAsync(item),
+                    Method = Contracts.PredictionMethod.MultiClassClassifier
                 };
                 results.Add(result);
             }
