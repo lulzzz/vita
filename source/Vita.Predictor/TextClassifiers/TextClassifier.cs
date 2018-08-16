@@ -153,6 +153,8 @@ namespace Vita.Predictor.TextClassifiers
     private TextClassificationResult GetResult(bool classifyOnly = false)
     {
       var result = new TextClassificationResult {Ngrams = Ngrams};
+
+      result.SearchPhrase = _sentence;
       // why      
       result.Classifier = Why(_sentence);
 
