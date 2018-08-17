@@ -16,19 +16,16 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="Dapper" Version="1.50.5" />
-    <PackageReference Include="EventFlow.Autofac" Version="0.63.3581" />
-    <PackageReference Include="EventFlow.Sql" Version="0.63.3581" />
-    <PackageReference Include="EventFlow.TestHelpers" Version="0.63.3581" />
     <PackageReference Include="extensionminder" Version="3.0.1" />
     <PackageReference Include="Flurl" Version="2.8.0" />
     <PackageReference Include="Flurl.Http" Version="2.3.2" />
     <PackageReference Include="GoogleApi" Version="3.6.7" />
     <PackageReference Include="LiteDB" Version="4.1.4" />
-    <PackageReference Include="MassTransit.Autofac" Version="5.1.2" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.2" />
+    <PackageReference Include="MassTransit.Autofac" Version="5.1.4" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.4" />
     <PackageReference Include="Microsoft.Azure.DocumentDB" Version="1.22.0" />
     <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="1.9.1" />
     <PackageReference Include="Microsoft.Azure.DocumentDB.TransientFaultHandling" Version="1.5.0" />
@@ -43,11 +40,11 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
     <PackageReference Include="Microsoft.Recognizers.Text.DateTime" Version="1.0.10" />
-    <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Polly" Version="6.1.0" />
     <PackageReference Include="Serilog" Version="2.7.1" />
-    <PackageReference Include="SpreadsheetGear" Version="8.1.30" />
+    <PackageReference Include="SpreadsheetGear" Version="8.1.33" />
     <PackageReference Include="StackExchange.Redis.StrongName" Version="1.2.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
@@ -87,6 +84,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BankStatements\Commands\" />
     <Folder Include="Infrastructure\Data\" />
   </ItemGroup>
 

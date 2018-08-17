@@ -7,7 +7,7 @@ namespace Vita.Contracts
   {
     Task<TextClassificationResult> Match(string sentence);
     Task<IEnumerable<TextClassificationResult>> MatchMany(string sentence);
-    IDictionary<int, IEnumerable<string>> CreateNgrams(string sentence);
+    IDictionary<int, IEnumerable<string>> CreateNgrams(string arg = null);
     void FlushCache();
     bool UseCache { get; set; }
   }

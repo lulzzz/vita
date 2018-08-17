@@ -49,8 +49,8 @@ namespace Vita.Predictor.TextClassifiers
     public async Task<TextClassificationResult> Match(string sentence)
     {
       if (string.IsNullOrWhiteSpace(sentence)) return null;
-      
-      await Init(sentence);
+       _sentence = sentence;
+      await Init();
 
       var result = GetResult();
 
@@ -64,7 +64,9 @@ namespace Vita.Predictor.TextClassifiers
     public async Task<IEnumerable<TextClassificationResult>> MatchMany(string sentence)
     {
       if (string.IsNullOrWhiteSpace(sentence)) return null;
-      await Init(sentence);
+        _sentence = sentence.ToLowerInvariant();
+        if (string.IsNullOrWhiteSpace(_sentence)) return null;
+      await Init();
 
       _results = new List<TextClassificationResult>();
       int iteractions = 1;
@@ -88,12 +90,11 @@ namespace Vita.Predictor.TextClassifiers
 
     public bool UseCache { get; set; } = true;
 
-    public IDictionary<int, IEnumerable<string>> CreateNgrams(string sentence)
+    public IDictionary<int, IEnumerable<string>> CreateNgrams(string arg = null)
     {
-      Log.Verbose("text classifier {ngram} {text}", sentence);
-      
-      _sentence = sentence.ToLowerInvariant();
-      if (string.IsNullOrWhiteSpace(_sentence)) return null;
+      if (!string.IsNullOrEmpty(arg)) _sentence = arg;
+
+      Log.Verbose("text classifier {ngram} {text}", _sentence);
 
       _words = _sentence.SplitSentenceIntoWords()
         .ToList()
@@ -121,19 +122,9 @@ namespace Vita.Predictor.TextClassifiers
       return Ngrams;
     }
 
-    private bool _started = false;
-    private async Task Init(string sentence)
+    private async Task Init()
     {
-
-      if (_started) return;
-
-      _started = true;
-
-      if (!string.IsNullOrWhiteSpace(sentence))
-        _sentence = sentence.ToLowerInvariant();
-
-      Ngrams = CreateNgrams(_sentence.ToLowerInvariant());
-
+      Ngrams = CreateNgrams();
       //  _companyCache = await Cacher.GetOrSetAsync<IEnumerable<Company>>("companies", () => Task.FromResult(_companies.GetAll()));
       if (!UseCache)
       {
@@ -189,7 +180,7 @@ namespace Vita.Predictor.TextClassifiers
     }
 
 
-    public DateTime? When(string sentence =  null)
+    public DateTime? When(string text)
     {
       // Get DateTime for the specified culture
       var results = DateTimeRecognizer.RecognizeDateTime(_sentence, Culture.English, DateTimeOptions.ExtendedTypes);
@@ -236,7 +227,7 @@ namespace Vita.Predictor.TextClassifiers
       return classifier => classifier.Keywords.Contains(text.Trim());
     }
 
-    public Classifier Why(string sentence = null)
+    public Classifier Why(string text)
     {
       var subCache = ClassifierCache.ToArray();
       if (_results != null && _results.Any())
@@ -354,7 +345,7 @@ namespace Vita.Predictor.TextClassifiers
 
     public TransactionType? What(TextClassificationResult result, string sentence)
     {
-      AsyncUtil.RunSync(()=>Init(sentence));
+      AsyncUtil.RunSync(()=>Init());
       if (result.Classifier == null) return TransactionType.Unknown;
 
       switch (result.Classifier.SubCategory)
@@ -404,9 +395,9 @@ namespace Vita.Predictor.TextClassifiers
     }
 
 
-    public Locality Where(string sentence)
+    public Locality Where(string text)
     {
-      AsyncUtil.RunSync(()=>Init(sentence));
+      AsyncUtil.RunSync(Init);
       Locality locality = new Locality {Suburb = FindSuburb()};
 
       if (!string.IsNullOrWhiteSpace(locality.Suburb))
@@ -430,7 +421,7 @@ namespace Vita.Predictor.TextClassifiers
 
     public PaymentMethodType How(string sentence)
     {
-      AsyncUtil.RunSync(()=>Init(sentence));
+      AsyncUtil.RunSync(()=>Init());
 
       foreach (var word in _wordsAlpha)
         switch (word.Trim())
