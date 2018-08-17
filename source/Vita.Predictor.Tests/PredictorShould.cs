@@ -8,6 +8,7 @@ using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.Infrastructure;
+using Vita.Domain.Tests;
 using Vita.Domain.Tests.BankStatements.Models.Fixtures;
 using Vita.Predictor.Tests.TextClassifiers;
 using Vita.Predictor.TextClassifiers;
@@ -23,7 +24,7 @@ namespace Vita.Predictor.Tests
     public static string Test = PredictionModelWrapper.GetFilePath("test.csv");
 
     private readonly IPredict _predict;
-    private ITextClassifier _textClassifier;
+    private readonly ITextClassifier _textClassifier;
     private readonly DataFixture _dataFixture;
 
     public PredictorShould()
@@ -31,7 +32,7 @@ namespace Vita.Predictor.Tests
       _dataFixture = new DataFixture();
       _dataFixture.Init();
       _predict = new Predict();
-      _textClassifier =  new TextClassifier(_dataFixture.Companies, _dataFixture.Localities, _dataFixture.Classifiers)
+      _textClassifier = new TextClassifier(_dataFixture.Companies, _dataFixture.Localities, _dataFixture.Classifiers)
       {
         UseCache = false
       };
@@ -146,7 +147,8 @@ namespace Vita.Predictor.Tests
     public async Task PredictMany_will_run_through_transactions()
     {
       var predictionModel = await GetPredictionResults();
-      predictionModel.Count(x => x.Method == Contracts.PredictionMethod.MultiClassClassifier).Should().Be(predictionModel.Count());
+      predictionModel.Count(x => x.Method == Contracts.PredictionMethod.MultiClassClassifier).Should()
+        .Be(predictionModel.Count());
 
       var groupedList = from r in predictionModel.Select(x => x.PredictedValue)
         group r by r
@@ -160,7 +162,6 @@ namespace Vita.Predictor.Tests
       groupedList.Count().Should().BeGreaterThan(0);
     }
 
-   
 
     [Fact(Skip = "")]
     public async Task Predict_vs_text_classifier()
@@ -186,14 +187,15 @@ namespace Vita.Predictor.Tests
           Total = newGroup.Count()
         };
 
-        var arr = totals2.ToList();
+      var predictedSupermarkets = totals1.SingleOrDefault(x => x.Category == Categories.Groceries.Supermarkets);
+      
+      var textmatchedSupermarkets = totals2.SingleOrDefault(x => x.Category == Categories.Groceries.Supermarkets);
 
-      foreach (var predicted in totals1)
-      {
-        var match = arr.SingleOrDefault(x => x.Category == predicted.Category.ToString());
-        match?.Total.Should().Be(predicted.Total);
+      predictionModel.Where(x=>x.PredictedValue == Categories.Groceries.Supermarkets).Select(x=>x.Request.Description).Dump("Predicted supermarkets");
+      textClassifiers.Where(x=>x.Classifier?.SubCategory == Categories.Groceries.Supermarkets).Select(x=>x.SearchPhrase).Dump("Test classified supermarkets");
 
-      }
+      textmatchedSupermarkets.Total.Should().Be(predictedSupermarkets.Total);
+
     }
 
     private async Task<IEnumerable<PredictionResult>> GetPredictionResults()
@@ -218,15 +220,15 @@ namespace Vita.Predictor.Tests
       var statementData = account.StatementData;
 
       var list = new List<TextClassificationResult>();
-      
+
       foreach (var det in statementData.Details)
       {
-        var match = (await _textClassifier.Match(det.Text));
-          Console.WriteLine(match.Classifier != null
-              ? $"{det.Text}  {match.Classifier.SubCategory}"
-              : $"{det.Text}  NONE");
+        var match = await _textClassifier.Match(det.Text);
+        Console.WriteLine(match.Classifier != null
+          ? $"{det.Text}  {match.Classifier.SubCategory}"
+          : $"{det.Text}  NONE");
 
-          list.Add(match);
+        list.Add(match);
       }
 
       return list;

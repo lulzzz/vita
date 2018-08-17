@@ -91,7 +91,6 @@ namespace Vita.Domain.Infrastructure
         using (var repo = new LiteRepository(new LiteDatabase(GetPath())))
         {
           var found =  repo.Database.GetCollection<T>().FindAll();
-          Trace.WriteLine($"GetAll() {found.Count()}");
           return found;
         }
       }     

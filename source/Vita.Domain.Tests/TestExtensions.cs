@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using FluentAssertions;
 using FluentAssertions.Equivalency;
@@ -11,6 +12,20 @@ namespace Vita.Domain.Tests
 {
     public static class TestExtensions
     {
+
+      public static string Dump<T>(this T obj,string title = null, bool indent = false)
+      {
+        var data = JsonConvert.SerializeObject(obj, indent ? Formatting.Indented : Formatting.None,
+          new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore});
+
+        string titletext = title ?? "Data Dump";
+
+        Trace.WriteLine("-----------------------------------------------------");
+        Trace.WriteLine(titletext);
+        Trace.WriteLine(data);
+        Trace.WriteLine("-----------------------------------------------------");
+        return data;
+      }
 
       public static void ShouldContainItem<T>(this IEnumerable<T> collection, Func<T, bool> predicate, string message=null)
       {
