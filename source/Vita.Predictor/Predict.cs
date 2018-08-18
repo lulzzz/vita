@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -7,6 +9,8 @@ using Microsoft.ML.Models;
 using Microsoft.ML.Runtime;
 using Microsoft.ML.Trainers;
 using Microsoft.ML.Transforms;
+using Serilog;
+using Serilog.Core;
 using Vita.Contracts;
 using Vita.Domain.BankStatements;
 
@@ -75,6 +79,9 @@ namespace Vita.Predictor
             return PredictionModelWrapper.Model1Path;
         }
 
+        //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
+        private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1,1);
+
         public async Task<string> PredictAsync(PredictionRequest request)
         {
             if (_model == null)
@@ -94,9 +101,25 @@ namespace Vita.Predictor
                 //Tags = request.Tags
             };
 
-            var prediction = _model.Predict(item);
+            await SemaphoreSlim.WaitAsync();
+            PredictedLabel predicted = null;
+            try
+            {
+                predicted = _model.Predict(item);
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "error {err}", request);
+                throw;
+            }
+            finally
+            {
+                //When the task is ready, release the semaphore. It is vital to ALWAYS release the semaphore when we are ready, or else we will end up with a Semaphore that is forever locked.
+                //This is why it is important to do the Release within a try...finally clause; program execution may crash or take a different path, this way you are guaranteed execution
+                SemaphoreSlim.Release();
+            }
 
-            return prediction.SubCategory;
+            return predicted.SubCategory;
         }
 
         public async Task<IEnumerable<PredictionResult>> PredictManyAsync(IEnumerable<PredictionRequest> requests)

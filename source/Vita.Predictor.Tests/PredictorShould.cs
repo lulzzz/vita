@@ -7,6 +7,7 @@ using FluentAssertions;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.Download;
+using Vita.Domain.BankStatements.Models;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests;
 using Vita.Domain.Tests.BankStatements.Models.Fixtures;
@@ -26,6 +27,7 @@ namespace Vita.Predictor.Tests
         private readonly IPredict _predict;
         private readonly ITextClassifier _textClassifier;
         private readonly DataFixture _dataFixture;
+        private readonly Account _account;
 
         public PredictorShould()
         {
@@ -37,6 +39,7 @@ namespace Vita.Predictor.Tests
                 {
                     UseCache = false
                 };
+            _account = _dataFixture.GetTestBankAccount();
         }
 
         // [Fact(Skip = "run on demand")]
@@ -165,15 +168,21 @@ namespace Vita.Predictor.Tests
         }
 
 
-        [Fact]
-        public async Task Predict_vs_text_classifier()
+        [Theory]
+        [InlineData(Categories.Transport.Fuel)]
+        //[InlineData(Categories.HouseholdUtilities.ElectricityGas)]
+        //[InlineData(Categories.Income.SalaryWages)]
+        public async Task Predict_vs_text_classifier(string expected)
         {
             var predictionModel = await GetPredictionResults();
             var textClassifiers = await GetTextClassifiers();
 
-            predictionModel.Count().Should().Be(textClassifiers.Count(), "Not comparing the same inputs");
+            var predictionResults = predictionModel as PredictionResult[] ?? predictionModel.ToArray();
+            var textClassificationResults = textClassifiers as TextClassificationResult[] ?? textClassifiers.ToArray();
+            
+            predictionResults.Count().Should().Be(textClassificationResults.Count(), "Not comparing the same inputs");
 
-            var totals1 = from r in predictionModel.Select(x => x.PredictedValue)
+            var totals1 = from r in predictionResults.Select(x => x.PredictedValue)
                 group r by r
                 into newGroup
                 select new
@@ -182,7 +191,7 @@ namespace Vita.Predictor.Tests
                     Total = newGroup.Count()
                 };
 
-            var totals2 = from r in textClassifiers.Select(x => x.Classifier?.SubCategory)
+            var totals2 = from r in textClassificationResults.Select(x => x.Classifier?.SubCategory)
                 group r by r
                 into newGroup
                 select new
@@ -190,31 +199,35 @@ namespace Vita.Predictor.Tests
                     Category = newGroup.Key,
                     Total = newGroup.Count()
                 };
-
-
-            string expected = Categories.Groceries.LiquorStores;
 
             var predicted = totals1.SingleOrDefault(x => x.Category ==expected);
 
             var textmatched = totals2.SingleOrDefault(x => x.Category ==expected);
 
-            predictionModel.Where(x => x.PredictedValue == expected)
-                .Select(x => x.Request.Description).Dump($"Predicted {expected}");
-            textClassifiers.Where(x => x.Classifier?.SubCategory == expected)
-                .Select(x => x.SearchPhrase).Dump($"Test classified {expected}");
+            predictionResults
+                .Where(x => x.PredictedValue == expected)
+                .Select(x => x.Request.Description)
+                .Dump($"Predicted {expected}");
 
-            textmatched.Total.Should().Be(predicted.Total);
+            textClassificationResults
+                .Where(x => x.Classifier?.SubCategory == expected)
+                .Select(x => x.SearchPhrase)
+                .Dump($"Test classified {expected}");
+
+            
+            int totalpredicted = predicted?.Total ?? 0;
+            int totaltextmatched = textmatched?.Total ?? 0;
+
+            totaltextmatched
+                .Should()
+                .Be(totalpredicted, $"{expected} - predicted {totalpredicted} textmatched {totaltextmatched}");
         }
 
         private async Task<IEnumerable<PredictionResult>> GetPredictionResults()
         {
-            var json = BankStatementsFixture.Statement2;
-            var response = new BankStatementDownload(json).FetchAllResponse;
-            var account = response.Accounts.First();
-            var statementData = account.StatementData;
 
-            var data = statementData.Details.Select(x =>
-                new PredictionRequest {Bank = account.Institution, Description = x.Text, Amount = x.Amount});
+            var data = _account.StatementData.Details
+                .Select(x =>new PredictionRequest {Bank = _account.Institution, Description = x.Text, Amount = x.Amount});
 
             var predictionModel = await _predict.PredictManyAsync(data.AsEnumerable());
             return predictionModel;
@@ -222,14 +235,9 @@ namespace Vita.Predictor.Tests
 
         private async Task<IEnumerable<TextClassificationResult>> GetTextClassifiers()
         {
-            var json = BankStatementsFixture.Statement2;
-            var response = new BankStatementDownload(json).FetchAllResponse;
-            var account = response.Accounts.First();
-            var statementData = account.StatementData;
-
+            
             var list = new List<TextClassificationResult>();
-
-            foreach (var det in statementData.Details)
+            foreach (var det in _account.StatementData.Details)
             {
                 var match = await _textClassifier.Match(det.Text);
                 Console.WriteLine(match.Classifier != null
