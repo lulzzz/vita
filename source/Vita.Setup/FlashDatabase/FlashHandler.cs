@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 using DbUp;
 using EventFlow;
 using EventFlow.Autofac.Extensions;
-using EventFlow.Configuration;
 using EventFlow.MsSql;
 using EventFlow.MsSql.EventStores;
 using EventFlow.MsSql.Extensions;
-using MediatR;
-using MongoDB.Driver.Core.Misc;
+using MediatR;s
 using Vita.Domain.Infrastructure;
 
 namespace Vita.Setup.FlashDatabase
@@ -27,6 +22,8 @@ namespace Vita.Setup.FlashDatabase
       var connection = 
         System.Configuration.ConfigurationManager.
           ConnectionStrings["Vita"].ConnectionString;
+
+      EnsureDatabase.For.SqlDatabase(connection);
 
       // EventFlow Schema
       EventFlowEventStoresMsSql.MigrateDatabase(
@@ -44,13 +41,22 @@ namespace Vita.Setup.FlashDatabase
         .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
         .LogToConsole()
         .Build()
-        .PerformUpgrade(); 
+        .PerformUpgrade();
 
+      foreach (var script in result.Scripts)
+      {
+        Consoler.Write($"script: {script.Name}");
+      }
+
+      if (result.Error != null)
+      {
+        Consoler.ShowError(result.Error);
+      }
 
       await Task.CompletedTask;
 
       Consoler.TitleEnd("flash database finished");
-      return true;
+      return  result.Successful;
     }
   }
 }
