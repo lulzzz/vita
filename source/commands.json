@@ -1,24 +1,24 @@
 {
-  "commands": {
-    "dotnet-run": {
-      "fileName": "cmd.exe",
-      "workingDirectory": ".",
-      "arguments": "/c \"C:\\dev\\vita\\scripts\\dotnet-run.cmd"
-    },
-    "local-save-database": {
-      "fileName": "cmd.exe",
-      "workingDirectory": ".",
-      "arguments": "/c ..\\scripts\\database\\local-save-database.bat"
-    },
-    "local-flash-database": {
-      "fileName": "cmd.exe",
-      "workingDirectory": ".",
-      "arguments": "/c ..\\scripts\\database\\local-flash-database.bat"
-    },
-    "local-purge-database": {
-      "fileName": "cmd.exe",
-      "workingDirectory": ".",
-      "arguments": "/c ..\\scripts\\database\\local-purge-database.bat"
+    "commands": {
+        "dotnet-run": {
+            "fileName": "cmd.exe",
+            "workingDirectory": ".",
+            "arguments": "/c \"C:\\dev\\vita\\scripts\\dotnet-run.cmd"
+        },
+        "local-save-database": {
+            "fileName": "cmd.exe",
+            "workingDirectory": ".",
+            "arguments": "/c ..\\scripts\\database\\local-save-database.bat"
+        },
+        "local-flash-database": {
+            "fileName": "cmd.exe",
+            "workingDirectory": ".",
+            "arguments": "/c ..\\scripts\\database\\local-flash-database.bat"
+        },
+        "local-seed-database": {
+            "fileName": "cmd.exe",
+            "workingDirectory": ".",
+            "arguments": "/c ..\\scripts\\database\\local-seed-database.bat"
+        }
     }
-  }
 }
