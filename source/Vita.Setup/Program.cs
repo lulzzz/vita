@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using Autofac.Extensions.DependencyInjection;
 using CommandLine;
 using MediatR;
 using MediatR.Extensions.Autofac.DependencyInjection;
+using Vita.Domain.Companies.Commands;
 using Vita.Domain.Infrastructure;
 using Vita.Setup.FlashDatabase;
 using Vita.Setup.SeedDatabase;
@@ -33,13 +35,15 @@ namespace Vita.Setup
         public static void Main(string[] args)
         {
             ShowHeader();
-            var builder = IocContainer.GetBuilder(Assembly.GetExecutingAssembly());
+            var builder = IocContainer.GetBuilder(Assembly.GetAssembly(typeof(Domain.CollectionBase)));
             // this will add all your Request- and Notificationhandler
             // that are located in the same project as your program-class
             builder.AddMediatR(typeof(Program).Assembly);
             IocContainer.CreateContainer(builder);
 
             _mediator =  IocContainer.Container.Resolve<IMediator>();
+            var found = IocContainer.Container.Resolve<CreateCompanyCommandHandler>();
+            Debug.Assert(found!=null);
 
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(async opts => await ParseOptions(opts))

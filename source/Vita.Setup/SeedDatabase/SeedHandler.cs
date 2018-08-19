@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 using EventFlow;
 using MediatR;
-using Vita.Contracts;
 using Vita.Domain.Companies;
 using Vita.Domain.Companies.Commands;
 using Vita.Domain.Infrastructure;
@@ -18,11 +16,11 @@ namespace Vita.Setup.SeedDatabase
         public async Task<bool> Handle(SeedCommand request, CancellationToken cancellationToken)
         {
             Consoler.TitleStart("seed database start");
-           
-            //var companies = CompanySpreadsheet.Import();
 
-            var chance = new ChanceNET.Chance();
-            var companies = new List<Company> {chance.Object<Company>()};
+            var companies = CompanySpreadsheet.Import();
+
+            //var chance = new ChanceNET.Chance();
+            //var companies = new List<Company> {chance.Object<Company>()};
 
             var bus = IocContainer.Container.Resolve<ICommandBus>();
 
@@ -31,16 +29,16 @@ namespace Vita.Setup.SeedDatabase
                 var command = new CreateCompanyCommand(CompanyId.New) {Company = company};
                 try
                 {
-                    await bus.PublishAsync(command, CancellationToken.None);
+                    AsyncUtil.RunSync(() => bus.PublishAsync(command, cancellationToken));
+                    await Task.CompletedTask;
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                     throw;
                 }
-                
             }
-            
+
             Consoler.TitleEnd("seed database finished");
             return true;
         }

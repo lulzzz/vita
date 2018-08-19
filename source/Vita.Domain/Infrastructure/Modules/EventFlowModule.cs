@@ -35,14 +35,14 @@ namespace Vita.Domain.Infrastructure.Modules
         private IContainer ConfigEventFlowAndBuildContainer(ContainerBuilder builder,
             Func<IEventFlowOptions, IEventFlowOptions> extraConfig)
         {
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetAssembly(typeof(Domain.CollectionBase));
 
             var eventFlowOptions = EventFlowOptions.New
                 .UseAutofacContainerBuilder(builder)
                 .AddDefaults(assembly)
-                .AddCommands(typeof(CreateCompanyCommand))
-                .AddCommandHandlers(typeof(CreateCompanyCommandHandler))
-                .AddEvents(typeof(CompanyCreatedEvent))
+                //.AddCommands(typeof(CreateCompanyCommand))
+                //.AddCommandHandlers(typeof(CreateCompanyCommandHandler))
+                //.AddEvents(typeof(CompanyCreatedEvent))
                 .Configure(c => c.ThrowSubscriberExceptions = true)
                 .RegisterServices(sr =>
                 {

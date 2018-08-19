@@ -9,19 +9,23 @@ namespace Vita.Domain.Companies
     [AggregateName("Company")]
     public class CompanyAggregate  : AggregateRoot<CompanyAggregate, CompanyId>
     {
+        public CompanyState State { get; private set; }
+
         public CompanyAggregate(CompanyId id) : base(id)
         {
+            State = new CompanyState();
+            Register(State);
         }
 
-        public async Task CreateCompanyAsync(CreateCompanyCommand command)
+        public async Task<CompanyExecutionResult> CreateCompanyAsync(CreateCompanyCommand command)
         {
             if (!IsNew)
             {
                 throw DomainError.With("company exists");
             }
 
-            await Task.CompletedTask;
-            Emit(new CompanyCreatedEvent());
+            Emit(new CompanyCreatedEvent(){Company = command.Company});
+            return await Task.FromResult(new CompanyExecutionResult() {IsSuccess = true});
         }
     }
 }

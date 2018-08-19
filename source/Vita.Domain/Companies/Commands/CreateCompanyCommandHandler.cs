@@ -4,11 +4,11 @@ using EventFlow.Commands;
 
 namespace Vita.Domain.Companies.Commands
 {
-    public class CreateCompanyCommandHandler  : EventFlow.Commands.CommandHandler<CompanyAggregate, CompanyId, CreateCompanyCommand>
+    public class CreateCompanyCommandHandler : EventFlow.Commands.CommandHandler<CompanyAggregate, CompanyId, CreateCompanyCommand>
     {
         public override async Task ExecuteAsync(CompanyAggregate aggregate, CreateCompanyCommand command, CancellationToken cancellationToken)
         {
-            await aggregate.CreateCompanyAsync(command);
+            var result = await aggregate.CreateCompanyAsync(command);
         }
     }
 }

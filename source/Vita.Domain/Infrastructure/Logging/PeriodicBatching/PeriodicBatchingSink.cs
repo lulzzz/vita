@@ -15,6 +15,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Serilog.Core;
@@ -33,6 +34,7 @@ namespace Vita.Domain.Infrastructure.Logging.PeriodicBatching
     /// that want to change this behavior need to either implement from scratch, or
     /// embed retry logic in the batch emitting functions.
     /// </remarks>
+    [DebuggerStepThrough]
     public abstract class PeriodicBatchingSink : ILogEventSink, IDisposable
     {
         readonly int _batchSizeLimit;
