@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 
 namespace Vita.Contracts
 {
   public static class Constant
   {
-    public static readonly string ConnectionString =
-      @"Data Source=(local)\;Database=viso-20180420; Integrated Security=SSPI;Trusted_Connection=true";
+      public static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["Vita"].ConnectionString;
 
     public const string WaTimeZone = "W. Australia Standard Time";
     public const string ArchiveMessage = "[Archived By Website] ";

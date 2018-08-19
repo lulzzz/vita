@@ -6,22 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Chance.NET" Version="2.0.0" />
     <PackageReference Include="CommandLineParser" Version="2.3.0" />
     <PackageReference Include="dbup" Version="4.1.0" />
     <PackageReference Include="EventFlow.Autofac" Version="0.63.3581" />
     <PackageReference Include="EventFlow.MsSql" Version="0.63.3581" />
+    <PackageReference Include="eventflow.sql" Version="0.63.3581" />
     <PackageReference Include="MediatR" Version="5.1.0" />
     <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vita.Domain\Vita.Domain.csproj" />
+    <ProjectReference Include="..\Vita.Predictor\Vita.Predictor.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Microsoft.CodeAnalysis">
       <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.codeanalysis.common\2.8.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Sql\" />
   </ItemGroup>
 
 </Project>

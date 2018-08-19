@@ -1,62 +1,61 @@
-﻿using System.Reflection;
+﻿using System.Configuration;
+using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Core;
 using DbUp;
 using EventFlow;
 using EventFlow.Autofac.Extensions;
 using EventFlow.MsSql;
 using EventFlow.MsSql.EventStores;
 using EventFlow.MsSql.Extensions;
-using MediatR;s
+using MediatR;
 using Vita.Domain.Infrastructure;
 
 namespace Vita.Setup.FlashDatabase
 {
-  public class FlashHandler : IRequestHandler<FlashCommand, bool>
-  {
-    public async Task<bool> Handle(FlashCommand request, CancellationToken cancellationToken)
+    public class FlashHandler : IRequestHandler<FlashCommand, bool>
     {
-      Consoler.TitleStart("flash database start");
+        public async Task<bool> Handle(FlashCommand request, CancellationToken cancellationToken)
+        {
+            Consoler.TitleStart("flash database start");
 
-      var connection = 
-        System.Configuration.ConfigurationManager.
-          ConnectionStrings["Vita"].ConnectionString;
+            var connectionString =
+                ConfigurationManager.ConnectionStrings["Vita"].ConnectionString;
 
-      EnsureDatabase.For.SqlDatabase(connection);
+            Consoler.TitleStart("Create Database if not exist ...");
+            EnsureDatabase.For.SqlDatabase(connectionString);
+            Consoler.TitleEnd("Completed");
 
-      // EventFlow Schema
-      EventFlowEventStoresMsSql.MigrateDatabase(
-        EventFlowOptions.New
-          .UseAutofacContainerBuilder(new ContainerBuilder())
-          .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(connection))
-          .CreateResolver()
-          .Resolve<IMsSqlDatabaseMigrator>()
-      );
-      Consoler.Write("EventFlow Schema Created...");
-      // Fasti Schema
-      var result = DeployChanges.To
-        .SqlDatabase(connection)
-        .WithTransaction()
-        .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
-        .LogToConsole()
-        .Build()
-        .PerformUpgrade();
+            // EventFlow Schema
+            EventFlowEventStoresMsSql.MigrateDatabase(
+                EventFlowOptions.New
+                    .UseAutofacContainerBuilder(IocContainer.GetBuilder(Assembly.GetExecutingAssembly()))
+                    .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(connectionString))
+                    .CreateResolver()
+                    .Resolve<IMsSqlDatabaseMigrator>()
+            );
+            Consoler.Write("EventFlow Schema Created...");
 
-      foreach (var script in result.Scripts)
-      {
-        Consoler.Write($"script: {script.Name}");
-      }
+            // Schema
+            var result = DeployChanges.To
+                .SqlDatabase(connectionString)
+                .WithTransaction()
+                .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                .LogToConsole()
+                .Build()
+                .PerformUpgrade();
 
-      if (result.Error != null)
-      {
-        Consoler.ShowError(result.Error);
-      }
+            foreach (var script in result.Scripts) Consoler.Write($"script: {script.Name}");
 
-      await Task.CompletedTask;
+            if (result.Error != null) Consoler.ShowError(result.Error);
 
-      Consoler.TitleEnd("flash database finished");
-      return  result.Successful;
+            await Task.CompletedTask;
+
+            Consoler.TitleEnd("flash database finished");
+            return result.Successful;
+        }
     }
-  }
 }

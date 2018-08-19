@@ -35,6 +35,9 @@
     <Reference Include="Serilog">
       <HintPath>..\..\..\..\Users\chris\.nuget\packages\serilog\2.0.0\lib\netstandard1.3\Serilog.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\..\..\..\Users\chris\.nuget\packages\system.configuration.configurationmanager\4.5.0\ref\netstandard2.0\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@ using Microsoft.Azure.Documents;
 using Serilog;
 using Serilog.Context;
 using Vita.Contracts;
+using Vita.Domain.Companies.Old;
 using Vita.Domain.Infrastructure;
 
 namespace Vita.Domain.Companies

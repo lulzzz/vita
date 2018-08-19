@@ -169,9 +169,31 @@ namespace Vita.Predictor.Tests
 
 
         [Theory]
-        [InlineData(Categories.Transport.Fuel)]
+        //[InlineData(Categories.Transport.Fuel)]
+        //[InlineData(Categories.Transport.PublicTransport)]
+        //[InlineData(Categories.Transport.TaxiRideshare)]
         //[InlineData(Categories.HouseholdUtilities.ElectricityGas)]
+        //[InlineData(Categories.HouseholdUtilities.PhoneInternet)]
+        //[InlineData(Categories.HouseholdUtilities.Water)]
         //[InlineData(Categories.Income.SalaryWages)]
+        //[InlineData(Categories.Income.Deposits)]
+        //[InlineData(Categories.Income.OtherIncome)]
+        //[InlineData(Categories.Entertainment.BettingLotteries)]
+        //[InlineData(Categories.Entertainment.Events)]
+        //[InlineData(Categories.Entertainment.MediaSubscriptions)]
+        //[InlineData(Categories.Entertainment.Movies)]
+        //[InlineData(Categories.HealthBeauty.Chemists)]
+        //[InlineData(Categories.HealthBeauty.DoctorsDentist)]
+        //[InlineData(Categories.HealthBeauty.Eyewear)]
+        //[InlineData(Categories.HealthBeauty.GymsFitness)]
+        //[InlineData(Categories.HealthBeauty.HairBeauty)]
+        //[InlineData(Categories.HealthBeauty.OtherHealthBeauty)]
+        //[InlineData(Categories.HolidayTravel.Flights)]
+        //[InlineData(Categories.HolidayTravel.HotelsAccomodation)]
+        [InlineData(Categories.HolidayTravel.OtherTravel)]
+        //[InlineData(Categories.Insurance.CarInsurance)]
+        //[InlineData(Categories.Insurance.HealthLifeInsurance)]
+        //[InlineData(Categories.Insurance.HomeInsurance)]
         public async Task Predict_vs_text_classifier(string expected)
         {
             var predictionModel = await GetPredictionResults();

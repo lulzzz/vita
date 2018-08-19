@@ -24,12 +24,29 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
       return records.Select(x=>x.TrimAllStrings());
     }
   }
-
-  public sealed class AsicCompanyMap : ClassMap<Company>
+    /*
+     *
+     *
+     * Company Name  
+       ACN  Type  
+       Class  
+       Sub Class  
+       Status  
+       Date of Registration  
+       Previous State of Registration  
+       State Registration number  
+       Modified since last report  
+       Current Name Indicator  
+       ABN  
+       Current Name  
+       Current Name Start Date
+     */
+    
+   public sealed class AsicCompanyMap : ClassMap<Company>
   {
     public AsicCompanyMap()
     {
-      var count = 1;
+      var count = 0;
       Map(m => m.CompanyName).Index(0);
       Map(m => m.AustralianCompanyNumber).Index(count++);
       Map(m => m.CompanyType).Index(count++);
@@ -44,10 +61,10 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
       Map(m => m.AustralianBusinessNumber).Index(count++);
       Map(m => m.CurrentName).Index(count++);
       Map(m => m.CurrentNameStartDate).Index(count++);
-      Map(m => m.CompanyCurrentInd).Index(count++);
-      Map(m => m.CompanyCurrentName).Index(count++);
-      Map(m => m.CompanyCurrentNameStartDt).Index(count++);
-      Map(m => m.CompanyModifiedSinceLast).Index(count++);
+      //Map(m => m.CompanyCurrentInd).Index(count++);
+      //Map(m => m.CompanyCurrentName).Index(count++);
+      //Map(m => m.CompanyCurrentNameStartDt).Index(count++);
+      //Map(m => m.CompanyModifiedSinceLast).Index(count++);
     }
   }
 }

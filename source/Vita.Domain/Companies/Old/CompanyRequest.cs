@@ -1,6 +1,6 @@
 ﻿using Vita.Contracts;
 
-namespace Vita.Domain.Companies
+namespace Vita.Domain.Companies.Old
 {
     public class CompanyRequest
     {

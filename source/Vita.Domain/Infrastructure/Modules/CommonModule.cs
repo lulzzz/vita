@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Net;
+using System.Reflection;
 using Autofac;
 using MassTransit;
 using Vita.Contracts;
@@ -9,19 +11,21 @@ using Module = Autofac.Module;
 namespace Vita.Domain.Infrastructure.Modules
 {
     public class CommonModule : Module
-  {
-    protected override void Load(ContainerBuilder builder)
     {
-      base.Load(builder);
-      System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+        protected override void Load(ContainerBuilder builder)
+        {
+            base.Load(builder);
 
-      builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.Name.Contains("Vita"))
+                .AsImplementedInterfaces();
 
-      builder.RegisterGeneric(typeof(Repository<>))
-        .As(typeof(IRepository<>)).SingleInstance();
-      builder.RegisterConsumers(Assembly.GetAssembly(typeof(GoogleApiSearchHandler)));
+            builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
 
-    
+            builder.RegisterGeneric(typeof(Repository<>))
+                .As(typeof(IRepository<>)).SingleInstance();
+
+            builder.RegisterConsumers(Assembly.GetAssembly(typeof(GoogleApiSearchHandler)));
+        }
     }
-  }
 }
