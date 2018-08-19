@@ -6,6 +6,7 @@ using EventFlow.Aggregates.ExecutionResults;
 using EventFlow.Commands;
 using EventFlow.Core;
 using Vita.Contracts;
+using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Domain.Companies.Commands
 {
@@ -27,6 +28,7 @@ namespace Vita.Domain.Companies.Commands
  
         public async Task<IExecutionResult> PublishAsync(ICommandBus commandBus, CancellationToken cancellationToken)
         {
+            Company.Id = AggregateId.Value.ToVitaGuid();
             var result =
                 await commandBus.PublishAsync(this,cancellationToken);
             return new CompanyExecutionResult(){IsSuccess = result.IsSuccess};

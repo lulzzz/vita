@@ -13,6 +13,7 @@ using EventFlow.MsSql.EventStores;
 using EventFlow.MsSql.Extensions;
 using MediatR;
 using Vita.Domain.Infrastructure;
+using Vita.Setup.Util;
 
 namespace Vita.Setup.FlashDatabase
 {
@@ -25,18 +26,18 @@ namespace Vita.Setup.FlashDatabase
             var connectionString =
                 ConfigurationManager.ConnectionStrings["Vita"].ConnectionString;
 
+            if (DatabaseUtil.CheckDatabaseExists(connectionString.Replace("Vita", "master"), "Vita"))
+            {
+                DatabaseUtil.DeleteAllTables(connectionString);
+            }
+          
             Consoler.TitleStart("Create Database if not exist ...");
             EnsureDatabase.For.SqlDatabase(connectionString);
             Consoler.TitleEnd("Completed");
+            Consoler.Write("EventFlow Schema Created...");
 
             // EventFlow Schema
-            EventFlowEventStoresMsSql.MigrateDatabase(
-                EventFlowOptions.New
-                    .UseAutofacContainerBuilder(IocContainer.GetBuilder(Assembly.GetExecutingAssembly()))
-                    .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(connectionString))
-                    .CreateResolver()
-                    .Resolve<IMsSqlDatabaseMigrator>()
-            );
+            EventFlowEventStoresMsSql.MigrateDatabase(IocContainer.Container.Resolve<IMsSqlDatabaseMigrator>());
             Consoler.Write("EventFlow Schema Created...");
 
             // Schema

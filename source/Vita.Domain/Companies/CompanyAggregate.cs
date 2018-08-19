@@ -3,6 +3,7 @@ using EventFlow.Aggregates;
 using EventFlow.Exceptions;
 using Vita.Domain.Companies.Commands;
 using Vita.Domain.Companies.Events;
+using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Domain.Companies
 {
@@ -24,6 +25,7 @@ namespace Vita.Domain.Companies
                 throw DomainError.With("company exists");
             }
 
+            command.Company.Id = this.Id.ToVitaGuid();
             Emit(new CompanyCreatedEvent(){Company = command.Company});
             return await Task.FromResult(new CompanyExecutionResult() {IsSuccess = true});
         }
