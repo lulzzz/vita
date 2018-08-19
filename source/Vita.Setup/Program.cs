@@ -22,16 +22,11 @@ namespace Vita.Setup
         private static IMediator _mediator;
 
         /// <summary>
-        ///     Debug args -- /d /b /u /t /c "Data Source=(local)\;Database=Fasti; Integrated Security=SSPI;" /w
-        ///     /c = connection string		[required]
-        ///     /b = Build				    Create database if not exist
-        ///     /d = Delete					Delete database (database must exist, use with /b use not sure)
-        ///     /u = Update					Apply sql scripts to database (database must exist, use with /b use not sure)
-        ///     /n = NoPrompts              Uses this flag on build server to skip any prompt
-        ///     /hangfire     Upgrade hangfire
-        ///     /f = flash local muto
+        ///     Debug arg
+        ///     -f = flash local
+        ///     -s = seed local 
         /// </summary>
-        /// <param name="args">/d /b /u  /n /w /c "Data Source=(local)\;Database=Fasti; Integrated Security=SSPI;"</param>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             ShowHeader();
@@ -81,7 +76,7 @@ namespace Vita.Setup
         {
             var sb = new StringBuilder();
             sb.AppendLine("This utility performs actions such as.");
-            sb.AppendLine("Database build/flash/purge");
+            sb.AppendLine("Database flash/seed");
             Consoler.ShowHeader("Vita Build Tools", sb.ToString());
         }
 
@@ -89,8 +84,8 @@ namespace Vita.Setup
         {
             Consoler.Title("Usage:");
             Consoler.Write("/help\t\t\tShow help");
-            Consoler.Write("Example:");
-            Consoler.Write(@"Vita.Setup.exe /b /u /c CONNECTION STRING GOES HERE");
+            Consoler.Write("Examples:");
+            Consoler.Write(@"see scripts/database folder");
             Consoler.Write("");
             ShowPauseAndExit(noPrompt);
         }
