@@ -39,7 +39,7 @@ namespace Vita.Setup.SeedDatabase
     PEND - Pending - Schemes.
     
     */
-            foreach (var company in companies.Where(x=>x.Status =="REGD"))
+            foreach (var company in companies)//.Where(x=>x.Status =="REGD"))
             {
                 var command = new CreateCompanyCommand(CompanyId.New) {Company = company};
                 try
