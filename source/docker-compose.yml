@@ -6,10 +6,41 @@ services:
     build:
       context: .
       dockerfile: Vita.Api\Dockerfile
+    depends_on: 
+    - db
+    - db-init
 
-  vita.api.chargeid:
-    image: vitaapichargeid
-    build:
-      context: .
-      dockerfile: Vita.Api.ChargeId\Dockerfile
+  db:
+    image: microsoft/mssql-server-linux
+    volumes:
+     - ".\\data:C:\\sql"
 
+    ports: 
+      - "1533:1433"
+    environment:
+      - "sa_password=sUper45!pas5word"
+      - "ACCEPT_EULA=Y"
+      #- 'attach_dbs=[{"dbName":"customDB_test","dbFiles":["C:\\data\\customDB_test.mdf","C:\\data\\customDB_test.ldf"]}]'
+
+  db-init:
+    image: microsoft/mssql-server-linux
+    volumes:
+       - ".\\data:C:\\sql"
+
+    #command: powershell -executionpolicy bypass "C:\\data\\initialize_db.ps1 -insertTestData"
+
+    environment:
+      - "sa_password=sUper45!pas5word"
+      - "ACCEPT_EULA=Y"
+
+
+    depends_on: 
+      - db
+
+volumes:
+  db-data: 
+
+networks:
+  default:
+    external:
+      name: nat

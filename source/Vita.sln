@@ -43,7 +43,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "banks", "banks", "{98B72A5A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Api.Prediction", "Vita.Api.Prediction\Vita.Api.Prediction.csproj", "{278EF474-5CA3-4F22-A4FF-B19C198FE5EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Setup", "Vita.Setup\Vita.Setup.csproj", "{4C35FE98-4354-4457-82BA-741BEDE912AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Setup", "Vita.Setup\Vita.Setup.csproj", "{4C35FE98-4354-4457-82BA-741BEDE912AF}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +108,12 @@ Global
 		{4C35FE98-4354-4457-82BA-741BEDE912AF}.Production|Any CPU.Build.0 = Debug|Any CPU
 		{4C35FE98-4354-4457-82BA-741BEDE912AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C35FE98-4354-4457-82BA-741BEDE912AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Production|Any CPU.Build.0 = Production|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C5EAC5B-76ED-4EE7-82DF-4A8FB544F24A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
