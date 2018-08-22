@@ -5,7 +5,7 @@ services:
     image: vitaapi
     build:
       context: .
-      dockerfile: Vita.Api\Dockerfile
+      dockerfile: ./Vita.Api/Dockerfile
     depends_on: 
     - db
     - db-init
@@ -13,7 +13,7 @@ services:
   db:
     image: microsoft/mssql-server-linux
     volumes:
-     - ".\\data:C:\\sql"
+     - "C:/sql"
 
     ports: 
       - "1533:1433"
@@ -25,7 +25,7 @@ services:
   db-init:
     image: microsoft/mssql-server-linux
     volumes:
-       - ".\\data:C:\\sql"
+       -  "C:/sql"
 
     #command: powershell -executionpolicy bypass "C:\\data\\initialize_db.ps1 -insertTestData"
 
