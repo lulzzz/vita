@@ -22,21 +22,6 @@ services:
       - "ACCEPT_EULA=Y"
       #- 'attach_dbs=[{"dbName":"customDB_test","dbFiles":["C:\\data\\customDB_test.mdf","C:\\data\\customDB_test.ldf"]}]'
 
-  db-init:
-    image: microsoft/mssql-server-linux
-    volumes:
-       -  "C:/sql"
-
-    #command: powershell -executionpolicy bypass "C:\\data\\initialize_db.ps1 -insertTestData"
-
-    environment:
-      - "sa_password=sUper45!pas5word"
-      - "ACCEPT_EULA=Y"
-
-
-    depends_on: 
-      - db
-
 volumes:
   db-data: 
 
