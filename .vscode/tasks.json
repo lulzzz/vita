@@ -9,7 +9,20 @@
                 "build",
                 "${workspaceFolder}/source/Vita.Api/Vita.Api.csproj"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "docker-compose",
+            "command": "cmd",
+            "type": "process",
+            "args": [
+                "/c ${workspaceFolder}\\scripts\\docker\\local-docker-compose-build.cmd"
+            ],
+            "problemMatcher": []
         }
     ]
 }

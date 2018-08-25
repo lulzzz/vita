@@ -2,27 +2,29 @@ version: '3.4'
 
 services:
   vita.api:
-    image: vitaapi
+    image: microsoft/dotnet
+    container_name: vitaapi
     build:
       context: .
       dockerfile: ./Vita.Api/Dockerfile
     depends_on: 
-    - db
+    - mssql
 
-  db:
+  mssql:
     image: microsoft/mssql-server-linux
+    container_name: mssql
     volumes:
-     - "d:/sql"
+     - d:/sql
 
     ports: 
       - "1533:1433"
     environment:
-      - "sa_password=sUper45!pas5word"
+      - "SA_PASSWORD=Vita123!@#"
       - "ACCEPT_EULA=Y"
       #- 'attach_dbs=[{"dbName":"customDB_test","dbFiles":["C:\\data\\customDB_test.mdf","C:\\data\\customDB_test.ldf"]}]'
 
 volumes:
-  db-data: 
+  mssqldata: 
 
 networks:
   default:

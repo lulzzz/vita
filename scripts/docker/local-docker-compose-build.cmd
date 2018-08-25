@@ -1,2 +1,1 @@
-docker-compose  -f "C:\dev\vita\source\docker-compose.yml" -f "C:\dev\vita\source\docker-compose.override.yml" -f "C:\dev\vita\source\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose1090894666772466760 --no-ansi up -d --build --force-recreate --remove-orphans
-pause
+docker-compose  -f "C:\dev\vita\source\docker-compose.yml" -f "C:\dev\vita\source\docker-compose.override.yml" -f "C:\dev\vita\source\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose1090894666772466760 --no-ansi up -d
