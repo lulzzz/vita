@@ -12,7 +12,7 @@ services:
   db:
     image: microsoft/mssql-server-linux
     volumes:
-     - "C:/sql"
+     - "d:/sql"
 
     ports: 
       - "1533:1433"

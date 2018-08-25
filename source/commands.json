@@ -19,6 +19,11 @@
             "fileName": "cmd.exe",
             "workingDirectory": ".",
             "arguments": "/c ..\\scripts\\database\\local-seed-database.bat"
+        },
+		"local-docker-compose-build": {
+            "fileName": "cmd.exe",
+            "workingDirectory": ".",
+            "arguments": "/c ..\\scripts\\docker\\local-docker-compose-build.cmd"
         }
     }
 }
