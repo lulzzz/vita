@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Threading;
-using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +15,7 @@ using Newtonsoft.Json;
 using NSwag;
 using NSwag.AspNetCore;
 using StackifyMiddleware;
+using Vita.Domain;
 using Vita.Domain.Infrastructure;
 using Vita.Predictor;
 using Module = Autofac.Module;
@@ -25,7 +25,6 @@ namespace Vita.Api
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public IContainer Container { get; set; }
 
         public Startup(IConfiguration configuration)
         {
@@ -62,23 +61,10 @@ namespace Vita.Api
                 options.Audience = Configuration["Auth0:ApiIdentifier"];
             });
 
-
-            var builder = IocContainer.GetBuilder(Assembly.GetExecutingAssembly(),
-                new List<Module> {new PredictionModule()});
+            var builder = IocContainer.GetBuilder(Assembly.GetAssembly(typeof(CollectionBase)), new List<Module>(){new PredictionModule()});
             builder.Populate(services);
-
-            //Create Autofac ContainerBuilder 
-            Container = builder.Build();
-            //var container = ConfigureServicesSingleInstance(containerBuilder, services);
-            //var container = ConfigureServicesInstancePerLifetimeScope(containerBuilder, services);
-            //var container = ConfigureServicesInstancePerMatchingLifetimeScope
-            //                (containerBuilder, services);
-            //var container = ConfigureServicesInstancePerRequest(containerBuilder, services);
-            //var container = ConfigureServicesInstancePerOwned(containerBuilder, services);
-            //var container = ConfigureServicesThreadScope(containerBuilder, services);
-            //Create Autofac Service Provider & assign Autofac container 
-            var autofacServiceProvider = new AutofacServiceProvider(Container);
-            //Finally return Autofac Service Provider.
+            IocContainer.CreateContainer(builder);
+            var autofacServiceProvider = new AutofacServiceProvider(IocContainer.Container);
             return autofacServiceProvider;
         }
 
@@ -90,8 +76,9 @@ namespace Vita.Api
 
             if (env.IsDevelopment())
             {
-                app.UseMiddleware<RequestTracerMiddleware>();
+                //app.UseMiddleware<RequestTracerMiddleware>();
                 app.UseDeveloperExceptionPage();
+                //app.UseDatabaseErrorPage();                
             }
             else
             {
@@ -117,7 +104,7 @@ namespace Vita.Api
             });
 
             //app.UseHttpsRedirection();
-            // app.UseCorsMiddleware();
+            //app.UseCorsMiddleware();
             app.UseCors("AllowAll");
             app.UseMvc();
         }

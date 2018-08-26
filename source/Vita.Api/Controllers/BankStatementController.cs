@@ -1,40 +1,55 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using Vita.Contracts;
 using Vita.Contracts.ChargeId;
 using Vita.Domain.BankStatements;
-using Vita.Domain.BankStatements.Login;
+using Vita.Domain.Infrastructure;
+using BankLogin = Vita.Domain.BankStatements.Login.BankLogin;
 
 namespace Vita.Api.Controllers
 {
-  [Produces("application/json")]
-  [Route("[controller]")]
-  public class BankStatementController : Controller
-  {
-    public IBankStatementService BankStatementService { get; }
-
-    public BankStatementController(IBankStatementService bankStatementService)
+    [Produces("application/json")]
+    [Route("[controller]")]
+    public class BankStatementController : Controller
     {
-      BankStatementService = bankStatementService;
- 
-    }
+        public IBankStatementService BankStatementService { get; }
+        public IPredict Predict { get; }
+        public ITextClassifier TextClassifier { get; }
 
-    [HttpPost("login/{userIdentifier}")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<SearchResponse>))]
-    public async Task<IActionResult> Login(string userIdentifier, [FromBody]  BankLogin bankLogin)
-    {
-      var result = await BankStatementService.LoginAsync(userIdentifier, bankLogin);
-      return Ok(result);
-    }
+        public BankStatementController(IBankStatementService bankStatementService, IPredict predict,
+            ITextClassifier textClassifier)
+        {
+            BankStatementService = bankStatementService;
+            Predict = predict;
+            TextClassifier = textClassifier;
+        }
 
-    [HttpPost("loginfetchall/{userIdentifier}")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<SearchResponse>))]
-    public async Task<IActionResult> LoginFetchAllAsync(string userIdentifier, [FromBody]  BankLogin bankLogin)
-    {
-      var result = await BankStatementService.LoginFetchAllAsync(userIdentifier, bankLogin);
-      return Ok(result);
+        [HttpPost("classify/{bankName}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<SearchResponse>))]
+        public async Task<IActionResult> Classify(string bankName = "anz")
+        {
+            var anz = new BankLogin("anz", "username", SecretMan.Get("bankstatements-anz-test-username") , "password",SecretMan.Get("bankstatements-anz-test-password"));
+            var test = new BankLogin("bank_of_statements", "username", "12345678", "password", "TestMyMoney");
+            BankLogin bank;
+
+            switch (bankName)
+            {
+                case "anz":
+                    bank = anz;
+                    break;
+                default:
+                    bank = test;
+                    break;
+            }
+
+            var result = await BankStatementService.LoginFetchAllAsync(bankName, bank);
+            var request = result.ToPredictionRequests();
+            var predictions = await Predict.PredictManyAsync(request);
+            return Ok(predictions);
+        }
     }
-  }
 }

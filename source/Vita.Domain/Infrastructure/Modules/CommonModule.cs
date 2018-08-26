@@ -4,6 +4,7 @@ using System.Reflection;
 using Autofac;
 using MassTransit;
 using Vita.Contracts;
+using Vita.Domain.BankStatements;
 using Vita.Domain.Companies.Commands;
 using Vita.Domain.Companies.Events;
 using Vita.Domain.Places;
@@ -24,12 +25,19 @@ namespace Vita.Domain.Infrastructure.Modules
             builder.RegisterType<CreateCompanyCommand>();
             builder.RegisterType<CompanyCreatedEvent>();
 
-            builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
-
+         
+            //bank
+            builder.RegisterType<BankStatementService>()
+                .As<IBankStatementService>()
+                .WithParameter("bankStatementsConfiguration",new BankStatementsConfiguration())
+                ;
+            //
             builder.RegisterGeneric(typeof(Repository<>))
                 .As(typeof(IRepository<>)).SingleInstance();
 
             builder.RegisterConsumers(Assembly.GetAssembly(typeof(GoogleApiSearchHandler)));
+
+            builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
 
             base.Load(builder);
         }
