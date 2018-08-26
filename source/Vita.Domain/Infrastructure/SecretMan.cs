@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.KeyVault;
@@ -10,6 +11,7 @@ namespace Vita.Domain.Infrastructure
     {
         public static string Get(string key)
         {
+            Trace.WriteLine($"SecretMan.Get {key}");
             return AsyncUtil.RunSync(() => GetAsync(key));
         }
 

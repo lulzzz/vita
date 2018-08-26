@@ -6,7 +6,8 @@ namespace Vita.Contracts
 {
   public static class Constant
   {
-      public static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["Vita"].ConnectionString;
+      //public static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["Vita"].ConnectionString;
+      public static readonly string ConnectionString = "Server=localhost,1533;Database=Vita;User ID=sa;Password=Vita123!@#;";
 
     public const string WaTimeZone = "W. Australia Standard Time";
     public const string ArchiveMessage = "[Archived By Website] ";
