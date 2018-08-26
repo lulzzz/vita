@@ -29,7 +29,7 @@ namespace Vita.Domain.Infrastructure.Modules
             //bank
             builder.RegisterType<BankStatementService>()
                 .As<IBankStatementService>()
-                .WithParameter("bankStatementsConfiguration",new BankStatementsConfiguration())
+                .WithParameter("bankStatementsConfiguration",new BankStatementsConfiguration(Mode.Test.ApiUrl,Mode.Test.ApiUrl, Mode.Test.Prefix))
                 ;
             //
             builder.RegisterGeneric(typeof(Repository<>))
