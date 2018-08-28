@@ -32,6 +32,14 @@ namespace Vita.Api.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<SearchResponse>))]
         public async Task<IActionResult> Classify(string bankName = "anz")
         {
+
+            // command to extract
+
+            // saga to predict
+
+            // saga to text match
+
+
             var anz = new BankLogin("anz", "username", SecretMan.Get("bankstatements-anz-test-username") , "password",SecretMan.Get("bankstatements-anz-test-password"));
             var test = new BankLogin("bank_of_statements", "username", "12345678", "password", "TestMyMoney");
             BankLogin bank;
