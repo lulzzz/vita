@@ -42,7 +42,8 @@ namespace Vita.Api.Controllers
         {
 
             // command to extract
-            await _bus.PublishAsync(new ExtractBankStatement1Command(),new CancellationToken(false));
+            var cmd = new ExtractBankStatement1Command {AggregateId = BankStatementId.NewComb()};
+            await _bus.PublishAsync(cmd,new CancellationToken(false));
 
             // saga to predict
 

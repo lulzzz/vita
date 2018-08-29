@@ -9,7 +9,7 @@ using Vita.Domain.BankStatements.Events;
 namespace Vita.Domain.BankStatements
 {
   public class BankStatementSaga : AggregateSaga<BankStatementSaga, BankStatementSagaId, BankStatementSagaLocator>,
-    ISagaIsStartedBy<BankStatementAggregate, BankStatementId, BankStatementExtractedEvent>
+    ISagaIsStartedBy<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event>
   {
     public BankStatementSaga(BankStatementSagaId id) : base(id)
     {
@@ -17,7 +17,7 @@ namespace Vita.Domain.BankStatements
 
 
     public Task HandleAsync(
-      IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementExtractedEvent> domainEvent,
+      IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
       throw new NotImplementedException();

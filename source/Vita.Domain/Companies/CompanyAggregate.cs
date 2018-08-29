@@ -25,7 +25,7 @@ namespace Vita.Domain.Companies
                 throw DomainError.With("company exists");
             }
 
-            command.Company.Id = this.Id.ToVitaGuid();
+           
             Emit(new CompanyCreatedEvent(){Company = command.Company});
             return await Task.FromResult(new CompanyExecutionResult() {IsSuccess = true});
         }
