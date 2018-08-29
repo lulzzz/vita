@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Vita.Api.Controllers
             // saga to text match
 
 
-            var anz = new BankLogin("anz", "username", SecretMan.Get("bankstatements-anz-test-username") , "password",SecretMan.Get("bankstatements-anz-test-password"));
+            var anz = new BankLogin("anz", "username", Environment.GetEnvironmentVariable("bankstatements-anz-test-username") , "password",Environment.GetEnvironmentVariable("bankstatements-anz-test-password"));
             var test = new BankLogin("bank_of_statements", "username", "12345678", "password", "TestMyMoney");
             BankLogin bank;
 

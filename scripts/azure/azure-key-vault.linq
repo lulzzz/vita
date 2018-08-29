@@ -39,27 +39,45 @@
   <Namespace>System.Threading.Tasks</Namespace>
 </Query>
 
+/*
+
+Retrieves secrets from Azure Key Vault and set the as Environment Variables
+
+needs to run as admin
+
+*/
+
 private static HttpClient client = new HttpClient();
 
 ///https://medium.com/statuscode/getting-key-vault-secrets-in-azure-functions-37620fd20a0b
 async System.Threading.Tasks.Task Main()
 { 
+	
+	await SetEnvironmentVariable("bankstatements-service-apiurl-test","bankstatements-service-apiurl");
+	await SetEnvironmentVariable("bankstatements-service-apikey-test","bankstatements-service-apikey");
+	await SetEnvironmentVariable("bankstatements-service-prefix-test","bankstatements-service-prefix");
+
+	await SetEnvironmentVariable("bankstatements-anz-test-username");
+	await SetEnvironmentVariable("bankstatements-anz-test-password");
+
+	await SetEnvironmentVariable("bankstatements-cba-test-username");
+	await SetEnvironmentVariable("bankstatements-cba-test-password");
+
+	//
+	await SetEnvironmentVariable("SpreadsheetGearLicense");
+
+
+}
+
+private async Task SetEnvironmentVariable(string name, string envName = null) {
+
+	if (envName == null) envName = name;
+	
 	AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
 	var kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback), client);
- 	var bundle = await kvClient.GetSecretAsync("https://chargeid-prod.vault.azure.net/","SpreadsheetGearLicense");
-	bundle.Value.Dump();
-
-//	GetSecretFromKeyVault(azureServiceTokenProvider).Wait();
-//
-//	GetResourceGroups(azureServiceTokenProvider).Wait();
-//
-//	if (azureServiceTokenProvider.PrincipalUsed != null)
-//	{
-//		Console.WriteLine($"{Environment.NewLine}Principal used: {azureServiceTokenProvider.PrincipalUsed}");
-//	}
-
-	//Console.ReadLine();
-
+	var value = await kvClient.GetSecretAsync("https://chargeid-prod.vault.azure.net/", name);
+	Console.WriteLine($"{name} = {value.Value}");
+	Environment.SetEnvironmentVariable(envName, value.Value, EnvironmentVariableTarget.Machine);
 }
 
 private static async Task GetSecretFromKeyVault(AzureServiceTokenProvider azureServiceTokenProvider)
