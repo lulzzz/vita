@@ -92,7 +92,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BankStatements\Commands\" />
     <Folder Include="Infrastructure\Data\" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@ using EventFlow.Commands;
 
 namespace Vita.Domain.Companies.Commands
 {
-    public class CreateCompanyCommandHandler : EventFlow.Commands.CommandHandler<CompanyAggregate, CompanyId, CreateCompanyCommand>
+    public class CreateCompanyCommandHandler : CommandHandler<CompanyAggregate, CompanyId, CreateCompanyCommand>
     {
         public override async Task ExecuteAsync(CompanyAggregate aggregate, CreateCompanyCommand command, CancellationToken cancellationToken)
         {

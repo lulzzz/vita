@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
+using EventFlow;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using Vita.Contracts;
 using Vita.Contracts.ChargeId;
 using Vita.Domain.BankStatements;
+using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.Infrastructure;
 using BankLogin = Vita.Domain.BankStatements.Login.BankLogin;
 
@@ -17,14 +20,18 @@ namespace Vita.Api.Controllers
     [Route("[controller]")]
     public class BankStatementController : Controller
     {
-        public IBankStatementService BankStatementService { get; }
+      private readonly ICommandBus _bus;
+      public IBankStatementService BankStatementService { get; }
         public IPredict Predict { get; }
         public ITextClassifier TextClassifier { get; }
 
-        public BankStatementController(IBankStatementService bankStatementService, IPredict predict,
-            ITextClassifier textClassifier)
+        public BankStatementController(IBankStatementService bankStatementService, 
+            IPredict predict,
+            ITextClassifier textClassifier,
+          ICommandBus bus)
         {
-            BankStatementService = bankStatementService;
+          _bus = bus;
+          BankStatementService = bankStatementService;
             Predict = predict;
             TextClassifier = textClassifier;
         }
@@ -35,6 +42,7 @@ namespace Vita.Api.Controllers
         {
 
             // command to extract
+            await _bus.PublishAsync(new ExtractBankStatement1Command(),new CancellationToken(false));
 
             // saga to predict
 
