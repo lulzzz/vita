@@ -13,8 +13,8 @@
     <ShowServer>true</ShowServer>
   </Connection>
   <Reference>&lt;RuntimeDirectory&gt;\System.Threading.Tasks.dll</Reference>
-  <Reference Relative="..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll</Reference>
-  <Reference Relative="..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
   <NuGetReference>CsvHelper</NuGetReference>
   <NuGetReference>GoogleApi</NuGetReference>
   <NuGetReference>LiteDB</NuGetReference>
@@ -33,6 +33,68 @@
   <Namespace>GoogleApi.Entities.Common.Enums.Extensions</Namespace>
   <Namespace>GoogleApi.Entities.Common.Extensions</Namespace>
   <Namespace>GoogleApi.Entities.Interfaces</Namespace>
+  <Namespace>GoogleApi.Entities.Maps</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Common</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Common.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Directions.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Directions.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Directions.Response.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.DistanceMatrix.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.DistanceMatrix.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Elevation.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Elevation.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.Address.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.Common</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.Common.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.Location.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.Place.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.PlusCode.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geocoding.PlusCode.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geolocation.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geolocation.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Geolocation.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.Common</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.Common.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.NearestRoads.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.NearestRoads.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.SnapToRoads.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.SnapToRoads.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.SpeedLimits.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.Roads.SpeedLimits.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StaticMaps.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StaticMaps.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StaticMaps.Request.Enums.Extensions</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StaticMaps.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StreetView.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.StreetView.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.TimeZone.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Maps.TimeZone.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places</Namespace>
+  <Namespace>GoogleApi.Entities.Places.AutoComplete.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.AutoComplete.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.AutoComplete.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Common</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Common.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Details.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Details.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Details.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Photos.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Photos.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.QueryAutoComplete.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.QueryAutoComplete.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Common</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Common.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Find.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Find.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Find.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.NearBy.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.NearBy.Request.Enums</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.NearBy.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Text.Request</Namespace>
+  <Namespace>GoogleApi.Entities.Places.Search.Text.Response</Namespace>
+  <Namespace>GoogleApi.Entities.Search</Namespace>
   <Namespace>LiteDB</Namespace>
   <Namespace>LiteDB.Shell</Namespace>
   <Namespace>Serilog</Namespace>
