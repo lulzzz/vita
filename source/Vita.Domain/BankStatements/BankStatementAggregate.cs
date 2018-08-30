@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EventFlow.Aggregates;
+using EventFlow.Core;
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Events;
 
@@ -30,7 +31,7 @@ namespace Vita.Domain.BankStatements
         await Task.CompletedTask;
       }
 
-      public async Task TextMatchAsync(ExtractBankStatement1Command command)
+      public async Task TextMatchAsync(TextMatchBankStatement3Command command)
       {
         //TODO text match unclassified each transaction
         Emit(new BankStatementTextMatched3Event(){});

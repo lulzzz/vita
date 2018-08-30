@@ -4,9 +4,9 @@ using EventFlow.Commands;
 
 namespace Vita.Domain.BankStatements.Commands
 {
-    public class TextMatchBankStatement3CommandHandler  : CommandHandler<BankStatementAggregate, BankStatementId, ExtractBankStatement1Command>
+    public class TextMatchBankStatement3CommandHandler  : CommandHandler<BankStatementAggregate, BankStatementId, TextMatchBankStatement3Command>
     {
-        public override async Task ExecuteAsync(BankStatementAggregate aggregate, ExtractBankStatement1Command command,
+        public override async Task ExecuteAsync(BankStatementAggregate aggregate, TextMatchBankStatement3Command command,
             CancellationToken cancellationToken)
         {
             await aggregate.TextMatchAsync(command);

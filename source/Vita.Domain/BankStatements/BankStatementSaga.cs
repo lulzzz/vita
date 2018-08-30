@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using EventFlow.Aggregates;
+using EventFlow.Core;
 using EventFlow.Sagas;
 using EventFlow.Sagas.AggregateSagas;
 using Vita.Domain.BankStatements.Commands;
@@ -26,7 +27,11 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
-      Publish(new PredictBankStatement2Command());
+      Publish(new PredictBankStatement2Command()
+      {
+          AggregateId = domainEvent.AggregateIdentity,
+          SourceId = SourceId.New
+      });
 
       await Task.CompletedTask;
     }
@@ -42,7 +47,13 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
-      Publish(new PredictBankStatement2Command());
+
+      Publish(new TextMatchBankStatement3Command()
+      {
+          AggregateId = domainEvent.AggregateIdentity,
+          SourceId = SourceId.New
+         // SourceId = new SourceId(domainEvent.GetIdentity().Value)
+      });
 
       await Task.CompletedTask;
     }
@@ -51,8 +62,6 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
-      Publish(new TextMatchBankStatement3Command());
-
       await Task.CompletedTask;
     }
 
@@ -77,8 +86,7 @@ public class BankStatementSagaLocator : ISagaLocator
     CancellationToken cancellationToken)
   {
     var id = domainEvent.Metadata["aggregate_id"];
-    var sagaId =
-      new BankStatementSagaId($"BankStatementSagaId-{id.Replace("bankstatement-", string.Empty)}".ToLowerInvariant());
+    var sagaId = new BankStatementSagaId(id.Replace("bankstatement-", string.Empty));
 
     return Task.FromResult<ISagaId>(sagaId);
   }

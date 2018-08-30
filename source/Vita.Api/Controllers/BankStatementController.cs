@@ -35,15 +35,17 @@ namespace Vita.Api.Controllers
       TextClassifier = textClassifier;
     }
 
-    [HttpPost("classify/{bankName}")]
+    //[HttpPost("classify/{bankName}")]
+      [HttpPost("classify/")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<SearchResponse>))]
-    public async Task<IActionResult> Classify(string bankName = "anz")
+    public async Task<IActionResult> Classify()
     {
+        string bankName = "anz";
       try
       {
         // command to extract
         var id = BankStatementId.NewComb();
-        var cmd = new ExtractBankStatement1Command {AggregateId = id, SourceId = new SourceId(id.ToString())};
+        var cmd = new ExtractBankStatement1Command {AggregateId = id, SourceId = SourceId.New};
         // saga to predict, text match and populate read models / elastic search
         await _bus.PublishAsync(cmd, new CancellationToken(false));
       }
