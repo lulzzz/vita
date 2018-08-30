@@ -8,7 +8,7 @@ using EventFlow.Core;
 
 namespace Vita.Domain.BankStatements.Commands
 {
-  public class ExtractBankStatement1Command : ICommand<BankStatementAggregate, BankStatementId, IExecutionResult>
+  public class PredictBankStatement2Command : ICommand<BankStatementAggregate, BankStatementId, IExecutionResult>
   {
     public BankStatementId AggregateId { get; set; }
 

@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
 using EventFlow.Aggregates;
-using Vita.Domain.BankStatements;
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Events;
 
-
-namespace Vita.Domain
+namespace Vita.Domain.BankStatements
 {
     [AggregateName("BankStatement")]
     public class BankStatementAggregate : AggregateRoot<BankStatementAggregate, BankStatementId>
@@ -20,8 +18,23 @@ namespace Vita.Domain
 
         public async Task ExtractBankStatementAsync(ExtractBankStatement1Command command)
         {
+            //TODO extract bank statements
             Emit(new BankStatementExtracted1Event(){});
             await Task.CompletedTask;
         }
+
+      public async Task PredictAsync(PredictBankStatement2Command command)
+      {
+        //TODO predict each transaction
+        Emit(new BankStatementPredicted2Event(){});
+        await Task.CompletedTask;
+      }
+
+      public async Task TextMatchAsync(ExtractBankStatement1Command command)
+      {
+        //TODO text match unclassified each transaction
+        Emit(new BankStatementTextMatched3Event(){});
+        await Task.CompletedTask;
+      }
     }
 }
