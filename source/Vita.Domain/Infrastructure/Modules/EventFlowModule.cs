@@ -56,7 +56,7 @@ namespace Vita.Domain.Infrastructure.Modules
         .UseReadModels()
         .AddCommandHandlers()
         .AddMetadataProviders()
-        .AddMetadataProvider<AddGuidMetadataProvider>()
+        //.AddMetadataProvider<AddGuidMetadataProvider>()
        // .AddMetadataProvider<AddUriMetadataProvider>()
       //  .AddMetadataProvider<AddUserHostAddressMetadataProvider>()
         ;
