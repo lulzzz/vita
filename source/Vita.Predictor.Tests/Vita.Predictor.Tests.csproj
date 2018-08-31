@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chance.NET" Version="2.0.0" />
+    <PackageReference Include="Chance.NET" Version="2.0.2" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="ExtensionMinder" Version="3.0.1" />
     <PackageReference Include="Microsoft.ML" Version="0.4.0" />

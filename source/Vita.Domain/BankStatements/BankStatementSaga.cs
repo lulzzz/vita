@@ -9,6 +9,9 @@ using Vita.Domain.BankStatements.Events;
 
 namespace Vita.Domain.BankStatements
 {
+  /// <summary>
+  /// http://docs.geteventflow.net/Sagas.html
+  /// </summary>
   public class BankStatementSaga : AggregateSaga<BankStatementSaga, BankStatementSagaId, BankStatementSagaLocator>,
     ISagaIsStartedBy<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event>
   {
@@ -17,7 +20,7 @@ namespace Vita.Domain.BankStatements
     }
 
     /// <summary>
-    /// extract bank statements
+    ///   extract bank statements
     /// </summary>
     /// <param name="domainEvent"></param>
     /// <param name="sagaContext"></param>
@@ -27,17 +30,17 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
-      Publish(new PredictBankStatement2Command()
+      Publish(new PredictBankStatement2Command
       {
-          AggregateId = domainEvent.AggregateIdentity,
-          SourceId = SourceId.New
+      //  AggregateId = domainEvent.AggregateIdentity,
+       // SourceId = SourceId.New
       });
 
       await Task.CompletedTask;
     }
 
     /// <summary>
-    /// predict bank statement lines
+    ///   predict bank statement lines
     /// </summary>
     /// <param name="domainEvent"></param>
     /// <param name="sagaContext"></param>
@@ -47,12 +50,11 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
-
-      Publish(new TextMatchBankStatement3Command()
+      Publish(new TextMatchBankStatement3Command
       {
-          AggregateId = domainEvent.AggregateIdentity,
-          SourceId = SourceId.New
-         // SourceId = new SourceId(domainEvent.GetIdentity().Value)
+      //  AggregateId = domainEvent.AggregateIdentity,
+      //  SourceId = SourceId.New
+        // SourceId = new SourceId(domainEvent.GetIdentity().Value)
       });
 
       await Task.CompletedTask;
@@ -62,10 +64,10 @@ namespace Vita.Domain.BankStatements
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent,
       ISagaContext sagaContext, CancellationToken cancellationToken)
     {
+      // As this is the last event, we complete the saga by calling Complete()
+      Complete();
       await Task.CompletedTask;
     }
-
-
   }
 }
 

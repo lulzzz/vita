@@ -9,10 +9,11 @@
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
     <PackageReference Include="CommandLineParser" Version="2.3.0" />
-    <PackageReference Include="EventFlow" Version="0.63.3581" />
-    <PackageReference Include="EventFlow.Autofac" Version="0.63.3581" />
-    <PackageReference Include="EventFlow.MsSql" Version="0.63.3581" />
-    <PackageReference Include="EventFlow.Sql" Version="0.63.3581" />
+    <PackageReference Include="EventFlow" Version="0.64.3598" />
+    <PackageReference Include="EventFlow.Autofac" Version="0.64.3598" />
+    <PackageReference Include="EventFlow.MsSql" Version="0.64.3598" />
+    <PackageReference Include="EventFlow.Owin" Version="0.64.3598" />
+    <PackageReference Include="EventFlow.Sql" Version="0.64.3598" />
     <PackageReference Include="MediatR" Version="5.1.0" />
     <PackageReference Include="MediatR.Extensions" Version="0.6.0" />
     <PackageReference Include="MediatR.Extensions.Autofac" Version="0.6.0" />
