@@ -28,18 +28,21 @@ namespace Vita.Predictor
         return Path.Combine(GetAppPath(), filename);
       }
 
-      if (throwIfNotFound) throw new FileNotFoundException(filename);
+      if (throwIfNotFound)
+      {
+        File.Create(filename);
+      }
 
       return null;
     }
 
     //private static string AppPath => @"c:\dev\vita\data\";
-    public static string Model1Path => GetFilePath("vita-model-1.zip");
+    public static string Model1Path => GetFilePath("vita-model-1.onnx");
 
     public static Stream GetModel()
     {
       var assembly = Assembly.GetExecutingAssembly();
-      var resourceName = "Vita.Predictor.vita-model-1.zip";
+      var resourceName = "Vita.Predictor.vita-model-1.onnx";
 
       var names = assembly.GetManifestResourceNames();
       foreach (var name in names) Console.WriteLine(name);

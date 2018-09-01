@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ML;
@@ -20,7 +22,7 @@ namespace Vita.Predictor
     {
         private static PredictionModel<BankStatementLineItem, PredictedLabel> _model;
 
-        public async Task<string> TrainAsync(string trainpath, bool writeToDisk = true)
+        public async Task<string> TrainAsync(string trainpath, bool writeToDisk = true, bool exportOnnx = false)
         {
             // pipeline encapsulates the data loading, data processing/featurization, and learning algorithm
             var pipeline = new LearningPipeline
@@ -65,18 +67,39 @@ namespace Vita.Predictor
             // training 
             //********************************************************************
             Console.WriteLine("=============== Start training ===============");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             _model = pipeline.Train<BankStatementLineItem, PredictedLabel>();
             await _model.WriteAsync(PredictionModelWrapper.Model1Path);
 
             watch.Stop();
+
             Console.WriteLine($"=============== End training ===============");
             Console.WriteLine($"training took {watch.ElapsedMilliseconds} milliseconds");
             Console.WriteLine("The model is saved to {0}", PredictionModelWrapper.Model1Path);
             //********************************************************************
 
-            return PredictionModelWrapper.Model1Path;
+          var converter = new OnnxConverter()
+          {
+            Onnx =  PredictionModelWrapper.Model1Path,
+            Json =  PredictionModelWrapper.Model1Path.Replace(".onnx", ".json"),
+            Domain = "io.chargeid"
+          };
+
+          converter.Convert(_model);
+
+          if (writeToDisk)
+          {
+            // Strip the version.
+            var fileText = File.ReadAllText(converter.Json);
+            fileText = Regex.Replace(fileText, "\"producerVersion\": \"([^\"]+)\"", "\"producerVersion\": \"##VERSION##\"");
+            File.WriteAllText(converter.Json, fileText);
+
+          }
+
+   
+          return PredictionModelWrapper.Model1Path;
         }
 
         //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.

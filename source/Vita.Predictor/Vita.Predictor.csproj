@@ -15,7 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\..\data\vita-model-1.zip" Link="vita-model-1.zip" />
+    <EmbeddedResource Include="..\..\data\vita-model-1.zip" Link="vita-model-1.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\data\vita-model-1.onnx" Link="vita-model-1.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
