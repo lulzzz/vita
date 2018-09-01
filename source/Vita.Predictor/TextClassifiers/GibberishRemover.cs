@@ -15,7 +15,7 @@ namespace Vita.Predictor.TextClassifiers
         try
         {
           var chars = word.ToCharArray();
-          if (chars == null || !chars.Any()) return true;
+          if (!chars.Any()) return true;
 
           var numbers = chars.Count(Char.IsDigit);
           var letters = chars.Count(x => !Char.IsDigit(x));
