@@ -8,7 +8,7 @@ namespace Vita.Contracts
     {
         Task<string> PredictAsync(PredictionRequest request);
         Task<IEnumerable<PredictionResult>> PredictManyAsync(IEnumerable<PredictionRequest> requests);
-        Task<string> TrainAsync(string trainpath, bool writeToDisk = true, bool exportOnnx = false);
+        Task<string> TrainAsync(string trainpath, bool writeToDisk = true);
         Task<ClassificationMetrics> EvaluateAsync(string testPath);
     }
 }

@@ -13,6 +13,7 @@
     <PackageReference Include="ExtensionMinder" Version="3.0.1" />
     <PackageReference Include="Microsoft.ML" Version="0.4.0" />
     <PackageReference Include="Microsoft.ML.LightGBM" Version="0.4.0" />
+    <PackageReference Include="Microsoft.ML.Onnx" Version="0.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="NBuilder" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
