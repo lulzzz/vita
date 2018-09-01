@@ -15,7 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\..\data\vita-model-1.zip" Link="vita-model-1.zip" />
+    <EmbeddedResource Include="..\..\data\vita-model-1.zip" Link="vita-model-1.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\data\vita-model-1.onnx" Link="vita-model-1.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +32,7 @@
     <PackageReference Include="ExtensionMinder" Version="3.0.1" />
     <PackageReference Include="Microsoft.ML" Version="0.4.0" />
     <PackageReference Include="Microsoft.ML.LightGBM" Version="0.4.0" />
+    <PackageReference Include="Microsoft.ML.Onnx" Version="0.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
