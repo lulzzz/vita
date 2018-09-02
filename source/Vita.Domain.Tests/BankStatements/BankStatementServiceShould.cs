@@ -6,6 +6,7 @@ using System.Xml;
 using FluentAssertions;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
+using Vita.Contracts;
 using Vita.Domain.BankStatements;
 using Vita.Domain.BankStatements.Login;
 using Vita.Domain.BankStatements.Models;

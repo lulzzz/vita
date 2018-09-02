@@ -10,6 +10,7 @@ using ExtensionMinder;
 using Flurl.Http;
 using Newtonsoft.Json;
 using Polly;
+using Vita.Contracts;
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.BankStatements.Login;
 using Vita.Domain.BankStatements.Models;

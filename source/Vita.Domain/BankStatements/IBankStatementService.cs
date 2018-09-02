@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Vita.Contracts;
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.BankStatements.Login;
 using Vita.Domain.BankStatements.Models;

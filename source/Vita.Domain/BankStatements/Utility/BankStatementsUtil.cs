@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Vita.Contracts;
 using Vita.Domain.BankStatements.Login;
 using Vita.Domain.BankStatements.Models;
 

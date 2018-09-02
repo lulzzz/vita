@@ -1,5 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using EventFlow.Aggregates;
+using Vita.Contracts;
+using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Events;
 
@@ -16,26 +22,51 @@ namespace Vita.Domain.BankStatements
             Register(State);
         }
 
-        public async Task ExtractBankStatementAsync(ExtractBankStatement1Command command)
+        public async Task ExtractBankStatementAsync(ExtractBankStatement1Command command,
+            IEnumerable<PredictionRequest> request)
         {
-            //TODO extract bank statements
-            Emit(new BankStatementExtracted1Event(){});
+            Emit(new BankStatementExtracted1Event
+            {
+                PredictionRequests = request
+            });
             await Task.CompletedTask;
         }
 
-      public async Task PredictAsync(PredictBankStatement2Command command)
-      {
-        //TODO predict each transaction
-        Emit(new BankStatementPredicted2Event(){});
-        await Task.CompletedTask;
-      }
+        public async Task PredictAsync(PredictBankStatement2Command command, IPredict predict)
+        {
+            var results = await predict.PredictManyAsync(State.PredictionRequests);
+            Emit(new BankStatementPredicted2Event
+            {
+                PredictionResults = results
+            });
+            await Task.CompletedTask;
+        }
 
-      public async Task TextMatchAsync(TextMatchBankStatement3Command command)
-      {
-        //TODO text match unclassified each transaction
-        Emit(new BankStatementTextMatched3Event(){});
-        await Task.CompletedTask;
+        public async Task TextMatchAsync(TextMatchBankStatement3Command command, ITextClassifier textClassifier)
+        {
+            var unmatched = State.PredictionResults.Where(x => x.PredictedValue == Categories.Uncategorised);
+            Trace.WriteLine($"{this.Id} unmatched {unmatched.Count()}");
 
-      }
+            var matched = new List<Tuple<PredictionResult, TextClassificationResult>>();
+
+            var predictionResults = unmatched as PredictionResult[] ?? unmatched.ToArray();
+            foreach (var x in predictionResults.AsParallel())
+            {
+                //var many = await textClassifier.MatchMany(x.Request.Description);
+                //foreach (var item in many)
+                //{
+                //    matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, item));
+                //}
+                var result = await textClassifier.Match(x.Request.Description);
+                matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+            }
+
+            Emit(new BankStatementTextMatched3Event()
+            {
+                Unmatched = predictionResults,
+                Matched= matched
+            });
+            await Task.CompletedTask;
+        }
     }
 }

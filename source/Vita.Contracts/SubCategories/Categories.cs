@@ -3,6 +3,7 @@
 
   public static class Categories
   {
+      public const string Uncategorised = "Uncategorised";
 
     /// <summary>
     ///   see linqpad script 'categories.linq' for auto creation of this class

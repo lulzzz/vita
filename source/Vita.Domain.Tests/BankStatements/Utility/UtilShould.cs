@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
+using Vita.Contracts;
 using Vita.Domain.BankStatements.Login;
 using Vita.Domain.BankStatements.Models;
 using Vita.Domain.BankStatements.Utility;
