@@ -35,6 +35,7 @@ namespace Vita.Domain.BankStatements
         public async Task PredictAsync(PredictBankStatement2Command command, IPredict predict)
         {
             var results = await predict.PredictManyAsync(State.PredictionRequests);
+            
             Emit(new BankStatementPredicted2Event
             {
                 PredictionResults = results
@@ -59,6 +60,11 @@ namespace Vita.Domain.BankStatements
                 //}
                 var result = await textClassifier.Match(x.Request.Description);
                 if (result.Classifier!=null) matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+            }
+
+            foreach (var t in matched)
+            {
+                t.Item1.Method = PredictionMethod.KeywordMatch;
             }
             Trace.WriteLine($"{this.Id} matched {matched.Count()}");
             Emit(new BankStatementTextMatched3Event()

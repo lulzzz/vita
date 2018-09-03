@@ -167,7 +167,7 @@ namespace Vita.Predictor.Tests
 
 
         [Theory]
-        //[InlineData(Categories.Transport.Fuel)]
+        [InlineData(Categories.Transport.Fuel)]
         //[InlineData(Categories.Transport.PublicTransport)]
         //[InlineData(Categories.Transport.TaxiRideshare)]
         //[InlineData(Categories.HouseholdUtilities.ElectricityGas)]
@@ -188,7 +188,7 @@ namespace Vita.Predictor.Tests
         //[InlineData(Categories.HealthBeauty.OtherHealthBeauty)]
         //[InlineData(Categories.HolidayTravel.Flights)]
         //[InlineData(Categories.HolidayTravel.HotelsAccomodation)]
-        [InlineData(Categories.HolidayTravel.OtherTravel)]
+        //[InlineData(Categories.HolidayTravel.OtherTravel)]
         //[InlineData(Categories.Insurance.CarInsurance)]
         //[InlineData(Categories.Insurance.HealthLifeInsurance)]
         //[InlineData(Categories.Insurance.HomeInsurance)]
@@ -199,7 +199,7 @@ namespace Vita.Predictor.Tests
 
             var predictionResults = predictionModel as PredictionResult[] ?? predictionModel.ToArray();
             var textClassificationResults = textClassifiers as TextClassificationResult[] ?? textClassifiers.ToArray();
-            
+
             predictionResults.Count().Should().Be(textClassificationResults.Count(), "Not comparing the same inputs");
 
             var totals1 = from r in predictionResults.Select(x => x.PredictedValue)
@@ -220,9 +220,9 @@ namespace Vita.Predictor.Tests
                     Total = newGroup.Count()
                 };
 
-            var predicted = totals1.SingleOrDefault(x => x.Category ==expected);
+            var predicted = totals1.SingleOrDefault(x => x.Category == expected);
 
-            var textmatched = totals2.SingleOrDefault(x => x.Category ==expected);
+            var textmatched = totals2.SingleOrDefault(x => x.Category == expected);
 
             predictionResults
                 .Where(x => x.PredictedValue == expected)
@@ -234,9 +234,9 @@ namespace Vita.Predictor.Tests
                 .Select(x => x.SearchPhrase)
                 .Dump($"Test classified {expected}");
 
-            
-            int totalpredicted = predicted?.Total ?? 0;
-            int totaltextmatched = textmatched?.Total ?? 0;
+
+            var totalpredicted = predicted?.Total ?? 0;
+            var totaltextmatched = textmatched?.Total ?? 0;
 
             totaltextmatched
                 .Should()
@@ -245,9 +245,9 @@ namespace Vita.Predictor.Tests
 
         private async Task<IEnumerable<PredictionResult>> GetPredictionResults()
         {
-
             var data = _account.StatementData.Details
-                .Select(x =>new PredictionRequest {Bank = _account.Institution, Description = x.Text, Amount = x.Amount});
+                .Select(x =>
+                    new PredictionRequest {Bank = _account.Institution, Description = x.Text, Amount = x.Amount});
 
             var predictionModel = await _predict.PredictManyAsync(data.AsEnumerable());
             return predictionModel;
@@ -255,7 +255,6 @@ namespace Vita.Predictor.Tests
 
         private async Task<IEnumerable<TextClassificationResult>> GetTextClassifiers()
         {
-            
             var list = new List<TextClassificationResult>();
             foreach (var det in _account.StatementData.Details)
             {

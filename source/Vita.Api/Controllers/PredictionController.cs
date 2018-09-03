@@ -26,9 +26,10 @@ namespace Vita.Api.Controllers
         public async Task<IActionResult> Search(PredictionRequest request)
         {
             Guard.AgainstNull(request);
-            var requestId = Guid.NewGuid();
+            if (request.Id == Guid.Empty) request.Id = Guid.NewGuid();
+
             using (LogContext.PushProperty("request", request.ToJson()))
-            using (LogContext.PushProperty("requestId", requestId))
+            using (LogContext.PushProperty("requestId", request.Id))
             {
                 try
                 {

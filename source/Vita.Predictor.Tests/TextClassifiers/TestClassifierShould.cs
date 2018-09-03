@@ -44,7 +44,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("coles 6018", true, DataFixture.CompanyNames.Coles)]
     public async Task Classify_who(string sentence, bool companyExists, string companyName = null)
     {
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
 
       //who - what company,bank etc
       if (companyExists)
@@ -68,7 +68,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("card reversal", TransactionType.Reversal)]
     public async Task Classify_what(string sentence, TransactionType? tt)
     {
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
       result.TransactionType.Should().Be(tt);
     }
 
@@ -79,7 +79,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("MISCELLANEOUS DEBIT V6870 24/10 VIDEO EZY EXPRESS SHEPPARTON 74564455299", "2017-10-24")]
     public async Task Classify_when(string sentence, string date)
     {
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
 
       DateTime? dt = DateTime.Parse(date, CultureInfo.GetCultureInfo("en-AU"));
 
@@ -96,7 +96,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
       "5272")] //https://en.wikipedia.org/wiki/Coles,_South_Australia
     public async Task Classify_where(string sentence, AustralianState? australianState, string suburb, string postCode)
     {
-      var results = await _analyser.Match(sentence);
+      var results = await _analyser.Match(sentence,false);
       //where did it take place
       results.Locality.AustralianState.Should().Be(australianState);
       results.Locality.Suburb.Should().Be(suburb);
@@ -114,7 +114,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("advance", PaymentMethodType.CashWithdrawl)]
     public async Task Classify_how(string sentence, PaymentMethodType pmt)
     {
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
 
       result.PaymentMethodType.Should().Be(pmt);
     }
@@ -127,7 +127,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("advance", PaymentMethodType.CashWithdrawl)]
     public async Task Classify_by_keyword(string sentence, PaymentMethodType pmt)
     {
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
 
       result.PaymentMethodType.Should().Be(pmt);
     }
@@ -156,7 +156,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
       var ct = CategoryType.HealthBeauty;
       var sub = Categories.HealthBeauty.DoctorsDentist;
 
-      var result = await _analyser.Match(sentence);
+      var result = await _analyser.Match(sentence,false);
 
       _analyser.ClassifierCache.Count().Should().NotBe(0);
       _analyser.LocalityCache.Count().Should().NotBe(0);

@@ -2,7 +2,7 @@
 {
     public class PredictionResult
     {
-        public PredictionRequest Request = new PredictionRequest();
+        public PredictionRequest Request = PredictionRequest.New();
         public string PredictedValue { get; set; }
         public PredictionMethod Method { get; set; }
     }
