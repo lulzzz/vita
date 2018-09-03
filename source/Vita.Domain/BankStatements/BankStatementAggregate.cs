@@ -58,9 +58,9 @@ namespace Vita.Domain.BankStatements
                 //    matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, item));
                 //}
                 var result = await textClassifier.Match(x.Request.Description);
-                matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+                if (result.Classifier!=null) matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
             }
-
+            Trace.WriteLine($"{this.Id} matched {matched.Count()}");
             Emit(new BankStatementTextMatched3Event()
             {
                 Unmatched = predictionResults,
