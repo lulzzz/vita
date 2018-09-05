@@ -76,7 +76,7 @@ namespace Vita.Api
 
             if (env.IsDevelopment())
             {
-                //app.UseMiddleware<RequestTracerMiddleware>();
+                app.UseMiddleware<RequestTracerMiddleware>();
                 app.UseDeveloperExceptionPage();
                 //app.UseDatabaseErrorPage();                
             }

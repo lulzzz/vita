@@ -23,11 +23,17 @@ namespace Vita.Domain.BankStatements
         }
 
         public async Task ExtractBankStatementAsync(ExtractBankStatement1Command command,
-            IEnumerable<PredictionRequest> request)
+            IEnumerable<PredictionRequest> requests)
         {
+            var predictionRequests = requests as PredictionRequest[] ?? requests.ToArray();
+            foreach (var request in predictionRequests)
+            {
+                if (request.Id == Guid.Empty) request.Id = Guid.NewGuid();
+            }
+
             Emit(new BankStatementExtracted1Event
             {
-                PredictionRequests = request
+                PredictionRequests = predictionRequests
             });
             await Task.CompletedTask;
         }
