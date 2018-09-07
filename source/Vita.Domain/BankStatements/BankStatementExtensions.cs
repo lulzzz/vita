@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Vita.Contracts;
 using Vita.Domain.BankStatements.Download;
 
@@ -29,6 +31,8 @@ namespace Vita.Domain.BankStatements
                 }                
             }
 
+            var missing = list.Where(x => string.IsNullOrEmpty(x.Description));
+            Debug.Assert(!missing.Any());
             return list;
         }
     }

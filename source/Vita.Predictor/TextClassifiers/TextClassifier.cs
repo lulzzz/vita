@@ -46,7 +46,6 @@ namespace Vita.Predictor.TextClassifiers
 
         public IDictionary<int, IEnumerable<string>> Ngrams { get; set; }
 
-
         public async Task<TextClassificationResult> Match(string sentence, bool classifyOnly = true)
         {
             if (string.IsNullOrWhiteSpace(sentence)) return null;
@@ -60,7 +59,6 @@ namespace Vita.Predictor.TextClassifiers
 
             return await Task.FromResult(result);
         }
-
 
         public async Task<IEnumerable<TextClassificationResult>> MatchMany(string sentence, bool classifyOnly = true)
         {
@@ -231,9 +229,14 @@ namespace Vita.Predictor.TextClassifiers
             return null;
         }
 
-        private static Func<Classifier, bool> SearchCriteriaClassifier(string text)
+        private static Func<Classifier, bool> ScanCriteria(string text)
         {
             return classifier => classifier.Keywords.Contains(text.Trim());
+        }
+
+        private static Func<Classifier, bool> MatchExactCriteria(string text)
+        {
+            return classifier => classifier.Keywords.Any(x =>x == text.Trim());
         }
 
         public Classifier Why(string text)
@@ -255,11 +258,11 @@ namespace Vita.Predictor.TextClassifiers
                 foreach (var ngram in Ngrams[4])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 4, ngram);
-                    var found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
 
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
                     if (found != null) return found;
                 }
 
@@ -267,11 +270,11 @@ namespace Vita.Predictor.TextClassifiers
                 foreach (var ngram in Ngrams[3])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 3, ngram);
-                    var found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
                     ;
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
 
                     if (found != null) return found;
                 }
@@ -280,11 +283,11 @@ namespace Vita.Predictor.TextClassifiers
                 foreach (var ngram in Ngrams[2])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 2, ngram);
-                    var found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
                     ;
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(SearchCriteriaClassifier(ngram));
+                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
 
                     if (found != null) return found;
                 }

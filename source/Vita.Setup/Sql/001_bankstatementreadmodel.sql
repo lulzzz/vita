@@ -23,6 +23,8 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[Category] [nvarchar](100)  NULL,
 	[SubCategory] [nvarchar](100)  NULL,
 	[Description] [nvarchar](4000) NULL,
+	[Amount]  [decimal](18, 2) NULL,
+	[Method] [nvarchar](100)  NULL,
 
 	CONSTRAINT [PK_BankStatementReadModel] PRIMARY KEY CLUSTERED 
 	(

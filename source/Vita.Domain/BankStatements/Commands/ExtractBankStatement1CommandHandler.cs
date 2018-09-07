@@ -20,8 +20,8 @@ namespace Vita.Domain.BankStatements.Commands
         {
             //TODO extract bank statements
             string bankName = "anz";
-            var anz = new BankLogin("anz", "username", Environment.GetEnvironmentVariable("bankstatements-anz-test-username"),
-                "password", Environment.GetEnvironmentVariable("bankstatements-anz-test-password"));
+            var anz = new BankLogin("anz", "username", Environment.GetEnvironmentVariable("bankstatements-anz-cdm-username"),
+                "password", Environment.GetEnvironmentVariable("bankstatements-anz-cdm-password"));
             var test = new BankLogin("bank_of_statements", "username", "12345678", "password", "TestMyMoney");
             BankLogin bank;
 
@@ -31,7 +31,8 @@ namespace Vita.Domain.BankStatements.Commands
                     bank = anz;
                     break;
                 default:
-                    bank = test;
+                   // bank = test;
+                    bank = anz;
                     break;
             }
 

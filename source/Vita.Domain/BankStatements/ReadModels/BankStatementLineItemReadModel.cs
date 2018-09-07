@@ -9,14 +9,17 @@ namespace Vita.Domain.BankStatements.ReadModels
         public CategoryType Category { get; set; }
         public string SubCategory { get; set; }
         public string Description { get; set; }
+        public decimal Amount { get; }
+
 
         public BankStatementLineItemReadModel(BankStatementLineItemId id,
-            CategoryType category, string subCategory, string description) : base(id)
+            CategoryType category, string subCategory, string description, decimal amount) : base(id)
         {
             RequestId = id.Value;
             Category = category;
             SubCategory = subCategory;
             Description = description;
+            Amount = amount;
         }
     }
 }

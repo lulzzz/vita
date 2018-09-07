@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Vita.Contracts
 {
+  [JsonConverter(typeof(StringEnumConverter))]
   public enum CategoryType
   {
     [Description("Banking & Finance")] BankingFinance,

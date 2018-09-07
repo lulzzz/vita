@@ -25,7 +25,8 @@ namespace Vita.Domain.BankStatements.ReadModels
         public CategoryType Category { get; set; }
         public string SubCategory { get; set; }
         public string Description { get; set; }
-
+        public decimal Amount { get; set; }
+        public PredictionMethod Method { get; set; }
 
         //public IEnumerable<PredictionResult> PredictionResults { get; set; }
         //public IEnumerable<PredictionResult> Unmatched { get; set; }
@@ -47,23 +48,29 @@ namespace Vita.Domain.BankStatements.ReadModels
                 Category = CategoryType.BankingFinance;
                 SubCategory = rm.PredictedValue;
                 Description = rm.Request.Description;
+                Amount = Convert.ToDecimal(rm.Request.Amount);
+                Method = rm.Method;
             }
         }
 
         public void Apply(IReadModelContext context, IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
         {            
             AggregateId = domainEvent.AggregateIdentity.Value;
-            //RequestId = "missing-" + Guid.NewGuid().ToString();
-            //SubCategory = Categories.Uncategorised;
-            //Category = CategoryType.Uncategorised;
-            //if (Matched == null) Matched = new Dictionary<Guid, TextClassificationResult>();
+            var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
+                x.Item1.Request.Id.ToString() == context.ReadModelId);
 
-            //Unmatched = domainEvent.AggregateEvent.Unmatched;
+            if (rm != null)
+            {
+                var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+                // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
-            //foreach (var predictionResult in  domainEvent.AggregateEvent.Matched)
-            //{
-            //    Matched.Add(predictionResult.Item1.Request.Id, predictionResult.Item2);   
-            //}
+                RequestId = id.Value;
+                Category = CategoryType.BankingFinance;
+                SubCategory = rm.Item2.Classifier.SubCategory;
+                Description = rm.Item1.Request.Description;
+                Amount = Convert.ToDecimal(rm.Item1.Request.Amount);
+                Method = PredictionMethod.KeywordMatch;
+            }
         }
     }
 }
