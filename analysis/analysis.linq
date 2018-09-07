@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
+    <ID>2ebabf6f-d96f-4153-9675-7a230f7e370b</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>Vita</Database>
@@ -11,9 +11,10 @@
 
 void Main()
 {
-	var subcategories = from p in BankStatementReadModels
+	var subcategories = from p in BankStatementReadModels.Where(x=>x.TransactionUtcDate > DateTime.Now.AddMonths(-3))
 				  group p by p.SubCategory into g
-				  select new { SubCategory = g.Key, Total = BankStatementReadModels.Where(a=>a.SubCategory==g.Key).Sum(x=>x.Amount) };
+				  select new { SubCategory = g.Key, Total = BankStatementReadModels.Where(a=>a.SubCategory==g.Key).Sum(x=>x.Amount) }
+				  ;
 				  
 	subcategories.Dump();
 	

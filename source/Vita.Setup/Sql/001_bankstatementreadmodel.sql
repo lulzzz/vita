@@ -25,6 +25,7 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[Description] [nvarchar](4000) NULL,
 	[Amount]  [decimal](18, 2) NULL,
 	[Method] [nvarchar](100)  NULL,
+	[TransactionUtcDate] [datetimeoffset](7) NULL
 
 	CONSTRAINT [PK_BankStatementReadModel] PRIMARY KEY CLUSTERED 
 	(
