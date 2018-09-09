@@ -1,16 +1,14 @@
-import os # import OS dependant functionality
-import sys
-import pandas as pd #import data analysis library required
-import pandasql
-from pandasql import sqldf
-import pymssql
+import pandas as pd
+import pyodbc
 
+conn = (
+    r'DRIVER={SQL Server};'
+    r'SERVER=EARTH;'
+    r'DATABASE=Vita;'
+    r'Trusted_Connection=yes;')
 
-conn = pymssql.connect(server='earth', database='Vita',user='SqlAdmin', password='Mandurah4B!@#') 
-cursor = conn.cursor()
-cursor.execute("SELECT @@VERSION")
-print(cursor.fetchone()[0])
-stmt = "SELECT * FROM dbo.BankStatementReadModel"
-#print(stmt)
-df = pd.read_sql(stmt,conn)
-df.head()
+conn = pyodbc.connect(conn)
+df= pd.read_sql('select * from dbo.BankStatementReadModel',conn)
+
+if conn:
+    print("Yes, we are connected ")
