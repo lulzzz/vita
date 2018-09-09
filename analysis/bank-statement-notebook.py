@@ -3,7 +3,7 @@ import pyodbc
 
 conn = (
     r'DRIVER={SQL Server};'
-    r'SERVER=EARTH;'
+    r'SERVER=(local);'
     r'DATABASE=Vita;'
     r'Trusted_Connection=yes;')
 
