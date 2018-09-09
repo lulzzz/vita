@@ -331,3 +331,4 @@ ASALocalRun/
 /azure/*.PublishSettings
 /data/BankStatementModel.zip
 /data/*.tsv
+/venv
