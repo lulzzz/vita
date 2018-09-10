@@ -1,15 +1,9 @@
 <Query Kind="Program">
-  <Connection>
-    <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
-    <Persist>true</Persist>
-    <Server>.</Server>
-    <Database>viso-20180420</Database>
-    <ShowServer>true</ShowServer>
-  </Connection>
   <Output>DataGrids</Output>
   <Reference>&lt;RuntimeDirectory&gt;\System.Net.Http.dll</Reference>
-  <Reference Relative="..\source\Vita.Contracts\bin\Debug\netstandard2.0\Vita.Contracts.dll">C:\dev\vita\source\Vita.Contracts\bin\Debug\netstandard2.0\Vita.Contracts.dll</Reference>
-  <Reference Relative="..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Contracts\bin\Debug\netstandard2.0\Vita.Contracts.dll">C:\dev\vita\source\Vita.Contracts\bin\Debug\netstandard2.0\Vita.Contracts.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Predictor\bin\Debug\netstandard2.0\Vita.Predictor.dll">C:\dev\vita\source\Vita.Predictor\bin\Debug\netstandard2.0\Vita.Predictor.dll</Reference>
   <NuGetReference>ExtensionMinder</NuGetReference>
   <NuGetReference>GoogleApi</NuGetReference>
   <NuGetReference>Humanizer.Core</NuGetReference>
@@ -54,14 +48,58 @@
 
 void Main()
 {
-	var data = new Vita.Domain.Services.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
+	PrintFactory();
+	
+	
+	
+
+}
+
+void PrintFactory()
+{
+	var data = new Vita.Predictor.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
+	var cats = data.GroupBy(item => item.CategoryType)
+		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
+		.ToList();
+	cats.Dump();
+	var sb = new StringBuilder();
+
+	sb.AppendLine("public static CategoryType FromSubcategory(string subcategory){");
+
+	sb.AppendLine("    switch(subcategory)");
+	sb.AppendLine("    {");
+
+
+	foreach (var cat in cats)
+	{
+
+		foreach (var item in cat.Items)
+		{
+			sb.AppendLine("        case '" + item.SubCategory.Clean() + "':");
+		}
+		
+		sb.AppendLine("            return CategoryType." + cat.CategoryType.ToString() + ";");
+	}
+	sb.AppendLine("        default: return CategoryType." + CategoryType.Uncategorised + ";");
+	sb.AppendLine("        }");
+	sb.AppendLine("    }");
+	Console.WriteLine(sb.ToString().Replace("'", "\""));
+
+
+}
+
+void PrintCategories()
+{
+
+	var data = new Vita.Predictor.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
 	var cats = data.GroupBy(item => item.CategoryType)
 		.Select(group => new { CategoryType = group.Key.Humanize(), Items = group.ToList() })
 		.ToList();
 	cats.Dump();
 	var sb = new StringBuilder();
-	
-	foreach (var cat in cats) {
+
+	foreach (var cat in cats)
+	{
 
 		sb.AppendLine($"public static class {cat.CategoryType}");
 		sb.AppendLine("{");
@@ -71,7 +109,10 @@ void Main()
 		}
 		sb.AppendLine("}");
 	}
-	
-	Console.WriteLine(sb.ToString().Replace("'","\""));
- 
+
+	Console.WriteLine(sb.ToString().Replace("'", "\""));
 }
+
+
+
+

@@ -18,7 +18,7 @@ namespace Vita.Predictor.Tests.TextClassifiers
     [InlineData("aaaaaaa", CategoryType.Uncategorised)]
     public void Convert_from_enum_match(string text, CategoryType expected)
     {
-      CategoryTypeConverter.Convert(text).Should().Be(expected);
+      CategoryTypeConverter.FromPlace(text).Should().Be(expected);
     }
   }
 }

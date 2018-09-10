@@ -44,7 +44,7 @@ namespace Vita.Domain.Infrastructure
       {
         var item = new BankStatementLineItem
         {
-            //AccountType = AccountTypeConverter.Convert(account.AccountType)
+            //AccountType = AccountTypeConverter.FromPlace(account.AccountType)
         };
 
         foreach (var detail in account.StatementData.Details)
@@ -95,7 +95,7 @@ namespace Vita.Domain.Infrastructure
         item.Amount = Convert.ToDouble(pb.Amount);
         item.Tags = pb.Tags;
         item.Notes = pb.Tags;
-      //  item.TransactionUtcDate =  Convert.ToDateTime(pb.Date);
+      //  item.TransactionUtcDate =  FromPlace.ToDateTime(pb.Date);
         item.Bank = pb.Bank;
 
         list.Add(item);
