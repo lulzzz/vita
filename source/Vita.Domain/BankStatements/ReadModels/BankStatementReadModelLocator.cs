@@ -27,7 +27,7 @@ namespace Vita.Domain.BankStatements.ReadModels
                     break;
 
                 case BankStatementTextMatched3Event textMatched3Event:
-                    foreach (var message in textMatched3Event.Matched)
+                    foreach (var message in textMatched3Event.ExactMatched)
                     {
                         yield return message.Item1.Request.Id.ToString();
                     }

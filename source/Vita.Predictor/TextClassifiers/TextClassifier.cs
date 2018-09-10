@@ -35,6 +35,7 @@ namespace Vita.Predictor.TextClassifiers
         private IList<string> _wordsAlpha;
         private IList<string> _wordsAlphaNumeric;
         private IList<string> _wordsNumeric;
+        private bool _exact;
 
         public TextClassifier(IRepository<Company> companies, IRepository<Locality> localities,
             IRepository<Classifier> classifiers)
@@ -46,10 +47,11 @@ namespace Vita.Predictor.TextClassifiers
 
         public IDictionary<int, IEnumerable<string>> Ngrams { get; set; }
 
-        public async Task<TextClassificationResult> Match(string sentence, bool classifyOnly = true)
+        public async Task<TextClassificationResult> Match(string sentence, bool classifyOnly = true, bool exact = true)
         {
             if (string.IsNullOrWhiteSpace(sentence)) return null;
             _sentence = sentence;
+            _exact = exact;
             await Init();
 
             var result = GetResult(classifyOnly);
@@ -229,9 +231,14 @@ namespace Vita.Predictor.TextClassifiers
             return null;
         }
 
-        private static Func<Classifier, bool> ScanCriteria(string text)
+        private static Func<Classifier, bool> MatchSome(string text)
         {
             return classifier => classifier.Keywords.Contains(text.Trim());
+        }
+
+        private static Func<Classifier, bool> MatchExact(string text)
+        {
+            return classifier => classifier.Keywords.Any(x=> string.Equals(x, text, StringComparison.CurrentCultureIgnoreCase));
         }
 
         private static Func<Classifier, bool> MatchExactCriteria(string text)
@@ -258,11 +265,11 @@ namespace Vita.Predictor.TextClassifiers
                 foreach (var ngram in Ngrams[4])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 4, ngram);
-                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
+                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
 
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
+                    found = subCache.FirstOrDefault(MatchSome(ngram));
                     if (found != null) return found;
                 }
 
@@ -270,27 +277,34 @@ namespace Vita.Predictor.TextClassifiers
                 foreach (var ngram in Ngrams[3])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 3, ngram);
-                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
-                    ;
+                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
+                    
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
+                    found = subCache.FirstOrDefault(MatchSome(ngram));
 
                     if (found != null) return found;
                 }
 
-            if (_wordsAlphaNumeric.Count > 1)
+            if (_wordsAlphaNumeric.Count <= 1)
+                return (from word in _words.Where(x => x.Length > 1).Select(x => x.RemoveJunkWordsFromNumber())
+                    from cla in subCache
+                    from key in cla.Keywords.Select(x => x.ToLowerInvariant())
+                    where key == word
+                    select cla).FirstOrDefault();
+            {
                 foreach (var ngram in Ngrams[2])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 2, ngram);
-                    var found = subCache.FirstOrDefault(ScanCriteria(ngram));
-                    ;
+                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
+                    
                     if (found != null) return found;
 
-                    found = subCache.FirstOrDefault(ScanCriteria(ngram));
+                    found = subCache.FirstOrDefault(MatchSome(ngram));
 
                     if (found != null) return found;
                 }
+            }
 
             return (from word in _words.Where(x => x.Length > 1).Select(x => x.RemoveJunkWordsFromNumber())
                 from cla in subCache

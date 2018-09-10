@@ -59,13 +59,19 @@ namespace Vita.Domain.BankStatements
             var predictionResults = unmatched as PredictionResult[] ?? unmatched.ToArray();
             foreach (var x in predictionResults.AsParallel())
             {
-                //var many = await textClassifier.MatchMany(x.Request.Description);
-                //foreach (var item in many)
-                //{
-                //    matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, item));
-                //}
                 var result = await textClassifier.Match(x.Request.Description);
-                if (result.Classifier!=null) matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+                if (result.Classifier != null)
+                {
+                    matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+                }
+                else
+                {
+                    result = await textClassifier.Match(x.Request.Description,exact:false);
+                    if (result.Classifier != null)
+                    {
+                        matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+                    }
+                }
             }
 
             foreach (var t in matched)
@@ -76,7 +82,7 @@ namespace Vita.Domain.BankStatements
             Emit(new BankStatementTextMatched3Event()
             {
                 Unmatched = predictionResults,
-                Matched= matched
+                ExactMatched= matched
             });
             await Task.CompletedTask;
         }
