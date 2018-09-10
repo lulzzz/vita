@@ -6,6 +6,7 @@ using EventFlow.ReadStores;
 using EventFlow.Sql.ReadModels.Attributes;
 using Vita.Contracts;
 using Vita.Domain.BankStatements.Events;
+using Vita.Domain.Infrastructure;
 using Vita.Domain.Infrastructure.EventFlow;
 
 //#pragma warning disable 618
@@ -43,7 +44,7 @@ namespace Vita.Domain.BankStatements.ReadModels
         // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
         RequestId = id.Value;
-        Category = CategoryType.BankingFinance;
+        Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue);
         SubCategory = rm.PredictedValue;
         Description = rm.Request.Description;
         Amount = Convert.ToDecimal(rm.Request.Amount);

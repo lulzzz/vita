@@ -88,7 +88,7 @@ namespace Vita.Predictor
       converter.Convert(_model);
 
       if (writeToDisk)
-      { 
+      {
         await _model.WriteAsync(PredictionModelWrapper.Model1Path);
 
         // Strip the version.
@@ -151,7 +151,7 @@ namespace Vita.Predictor
         {
           Request = item,
           PredictedValue = await PredictAsync(item),
-          Method = Contracts.PredictionMethod.MultiClassClassifier,
+          Method = Contracts.PredictionMethod.MultiClassClassifier
         };
         results.Add(result);
       }
