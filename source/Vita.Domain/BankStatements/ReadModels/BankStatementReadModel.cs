@@ -19,6 +19,7 @@ namespace Vita.Domain.BankStatements.ReadModels
     IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
   {
     [SqlReadModelIdentityColumn] public string RequestId { get; set; }
+
     public CategoryType Category { get; set; }
     public string SubCategory { get; set; }
     public string Description { get; set; }
