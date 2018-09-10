@@ -7,7 +7,7 @@ namespace Vita.Domain.Infrastructure
 {
   public static class CategoryTypeConverter
   {
-    public static CategoryType Convert(string text)
+    public static CategoryType FromPlace(string text)
     {
       if (string.IsNullOrWhiteSpace(text)) throw new ArgumentException();
 
@@ -21,11 +21,10 @@ namespace Vita.Domain.Infrastructure
 
       if (!text.Contains("-")) return text;
 
-      return  text.Split(System.Convert.ToChar("-"))[1].Clean().Replace(" ", string.Empty).Trim();
-
+      return text.Split(Convert.ToChar("-"))[1].Clean().Replace(" ", string.Empty).Trim();
     }
 
-    public static CategoryType Convert(PlaceLocationType place)
+    public static CategoryType FromPlace(PlaceLocationType place)
     {
       switch (place)
       {
@@ -66,7 +65,7 @@ namespace Vita.Domain.Infrastructure
         case PlaceLocationType.Restaurant:
         case PlaceLocationType.Meal_Delivery:
         case PlaceLocationType.Meal_Takeaway:
-        
+
           return CategoryType.FoodDrinks;
 
         case PlaceLocationType.Car_Dealer:
@@ -106,7 +105,7 @@ namespace Vita.Domain.Infrastructure
         case PlaceLocationType.Jewelry_Store:
         case PlaceLocationType.Pet_Store:
         case PlaceLocationType.Home_Goods_Store:
-        case PlaceLocationType.Store:        
+        case PlaceLocationType.Store:
           return CategoryType.Shopping;
 
         case PlaceLocationType.Electrician:
@@ -137,7 +136,7 @@ namespace Vita.Domain.Infrastructure
     {
       if (text.Contains("-"))
       {
-        string first = text.Split(System.Convert.ToChar("-"))[0].Trim();
+        var first = text.Split(Convert.ToChar("-"))[0].Trim();
         try
         {
           var done = first.ParseAsEnumByDescriptionAttribute<CategoryType>();
@@ -196,6 +195,99 @@ namespace Vita.Domain.Infrastructure
 
       category = CategoryType.Uncategorised;
       return false;
+    }
+
+    public static CategoryType FromSubcategory(string subcategory)
+    {
+      switch (subcategory)
+      {
+        case "ATMWithdrawals":
+        case "Fees":
+        case "Interest":
+        case "Investment":
+        case "LoanRepayments":
+        case "OtherBankingFinance":
+        case "TaxesFines":
+        case "Reversal":
+        case "CreditCardPayments":
+        case "Overdrawn":
+        case "Governmentbenefits":
+          return CategoryType.BankingFinance;
+        case "BettingLotteries":
+        case "Events":
+        case "MediaSubscriptions":
+        case "Movies":
+        case "OtherEntertainment":
+          return CategoryType.Entertainment;
+        case "BarsPubs":
+        case "CafesCoffee":
+        case "OtherFoodDrinks":
+        case "Restaurants":
+        case "Takeaways":
+          return CategoryType.FoodDrinks;
+        case "ConvenienceStores":
+        case "LiquorStores":
+        case "OtherGroceries":
+        case "Supermarkets":
+          return CategoryType.Groceries;
+        case "Chemists":
+        case "DoctorsDentist":
+        case "Eyewear":
+        case "GymsFitness":
+        case "HairBeauty":
+        case "OtherHealthBeauty":
+          return CategoryType.HealthBeauty;
+        case "Flights":
+        case "HotelsAccomodation":
+        case "OtherTravel":
+          return CategoryType.HolidayTravel;
+        case "HomeImprovement":
+        case "Rates":
+        case "ServicesTrades":
+          return CategoryType.Home;
+        case "ElectricityGas":
+        case "PhoneInternet":
+        case "Water":
+          return CategoryType.HouseholdUtilities;
+        case "Deposits":
+        case "OtherIncome":
+        case "SalaryWages":
+          return CategoryType.Income;
+        case "CarInsurance":
+        case "HealthLifeInsurance":
+        case "HomeInsurance":
+          return CategoryType.Insurance;
+        case "ActivitiesEntertainment":
+        case "Childcare":
+        case "SchoolFees":
+          return CategoryType.Kids;
+        case "Charity":
+        case "Other":
+          return CategoryType.Miscellaneous;
+        case "ClothingFashion":
+        case "ElectronicsAppliances":
+        case "Furniture":
+        case "Jewellery":
+        case "OtherShopping":
+        case "SportsOutdoor":
+        case "Gifts":
+          return CategoryType.Shopping;
+        case "CreditCard":
+        case "OtherTransferringMoney":
+          return CategoryType.TransferringMoney;
+        case "Fuel":
+        case "OtherTransport":
+        case "ParkingTolls":
+        case "PublicTransport":
+        case "TaxiRideshare":
+        case "VehicleMaintenance":
+          return CategoryType.Transport;
+        case "BooksStationery":
+        case "NewsSubscriptions":
+        case "OtherWorkStudy":
+          return CategoryType.WorkStudy;
+        default: return CategoryType.Uncategorised;
+      }
     }
   }
 }
