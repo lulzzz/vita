@@ -6,7 +6,7 @@ using CsvHelper.Configuration;
 using ExtensionMinder;
 using Vita.Contracts;
 
-namespace Vita.Predictor.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.SpreadSheets
 {
   public static class CompanySpreadsheet
   {

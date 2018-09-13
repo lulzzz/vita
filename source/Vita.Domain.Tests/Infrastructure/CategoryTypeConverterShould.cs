@@ -2,10 +2,9 @@
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.Infrastructure;
-using Vita.Predictor.TextClassifiers;
 using Xunit;
 
-namespace Vita.Predictor.Tests.TextClassifiers
+namespace Vita.Domain.Tests.Infrastructure
 {
   public class CategoryTypeConverterShould
   {

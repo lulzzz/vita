@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using Vita.Predictor.TextClassifiers.SpreadSheets;
+using Vita.Contracts;
+using Vita.Predictor.SpreadSheets;
 using Xunit;
 
-namespace Vita.Predictor.Tests.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.Tests.SpreadSheets
 {
   public class SuburbsSpreadsheetShould
   {
@@ -12,9 +13,10 @@ namespace Vita.Predictor.Tests.TextClassifiers.SpreadSheets
     {
       var spreadsheet = new LocalitiesSpreadsheet();
       var results = spreadsheet.LoadData();
-      Assert.NotEmpty(results);
+        var collection = results as Locality[] ?? results.ToArray();
+        Assert.NotEmpty(collection);
 
-      var data = results.Single(x => x.Postcode == "6023");
+      var data = collection.Single(x => x.Postcode == "6023");
       data.Suburb.Should().Be("DUNCRAIG");
        
     }

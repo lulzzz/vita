@@ -1,7 +1,7 @@
 ﻿using System;
 using Serilog;
 
-namespace Vita.Predictor.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.SpreadSheets
 {
     public static class SpreadsheetExtensions
     {

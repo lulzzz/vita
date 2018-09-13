@@ -3,7 +3,7 @@ using System.Reflection;
 using SpreadsheetGear;
 using Vita.Domain.Infrastructure;
 
-namespace Vita.Predictor.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.SpreadSheets
 {
   public abstract class SpreadSheetBase
   {
@@ -31,7 +31,7 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
 
       if (string.IsNullOrWhiteSpace(resourcename))
       {
-        resourcename = "Vita.Predictor.TextClassifiers.SpreadSheets.keywords.xlsx";
+        resourcename = "Vita.Predictor.SpreadSheets.keywords.xlsx";
       }
 
       using (var stream = assembly.GetManifestResourceStream(resourcename))

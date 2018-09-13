@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Vita.Contracts;
 using Vita.Predictor.TextClassifiers;
+using Vita.Predictor.TextMatch;
 
 namespace Vita.Predictor
 {
@@ -8,7 +9,7 @@ namespace Vita.Predictor
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<TextClassifier>()
+            builder.RegisterType<TextMatcher>()
                 .As<ITextClassifier>()
                 .SingleInstance()
                 //.WithParameter((info, context) => info.Name == "companies", (info, context) => context.Resolve<IRepository<Company>>().GetAll())

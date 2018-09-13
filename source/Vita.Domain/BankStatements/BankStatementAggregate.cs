@@ -52,11 +52,12 @@ namespace Vita.Domain.BankStatements
         public async Task TextMatchAsync(TextMatchBankStatement3Command command, ITextClassifier textClassifier)
         {
             var unmatched = State.PredictionResults.Where(x => x.PredictedValue == Categories.Uncategorised);
-            Trace.WriteLine($"{this.Id} unmatched {unmatched.Count()}");
+            var results = unmatched as PredictionResult[] ?? unmatched.ToArray();
+            Trace.WriteLine($"{this.Id} unmatched {results.Count()}");
 
             var matched = new List<Tuple<PredictionResult, TextClassificationResult>>();
 
-            var predictionResults = unmatched as PredictionResult[] ?? unmatched.ToArray();
+            var predictionResults = unmatched as PredictionResult[] ?? results.ToArray();
             foreach (var x in predictionResults.AsParallel())
             {
                 var result = await textClassifier.Match(x.Request.Description);

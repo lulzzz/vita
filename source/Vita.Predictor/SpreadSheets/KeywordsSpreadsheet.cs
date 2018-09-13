@@ -6,7 +6,7 @@ using Serilog;
 using SpreadsheetGear;
 using Vita.Contracts;
 
-namespace Vita.Predictor.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.SpreadSheets
 {
   public class KeywordsSpreadsheet : SpreadSheetBase
   {

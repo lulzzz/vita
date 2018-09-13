@@ -7,7 +7,7 @@ using Vita.Domain.BankStatements.Models;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests;
 using Vita.Domain.Tests.BankStatements.Models.Fixtures;
-using Vita.Predictor.TextClassifiers.SpreadSheets;
+using Vita.Predictor.SpreadSheets;
 using Xunit;
 
 namespace Vita.Predictor.Tests.TextClassifiers

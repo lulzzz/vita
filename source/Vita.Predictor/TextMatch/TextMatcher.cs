@@ -11,11 +11,12 @@ using Serilog;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.Infrastructure;
+using Vita.Predictor.TextClassifiers;
 
-namespace Vita.Predictor.TextClassifiers
+namespace Vita.Predictor.TextMatch
 {
-    public class TextClassifier : ITextClassifier, IClassifyWho, IClassifyWhat, IClassifyWhere, IClassifyWhen,
-        IClassifyWhy, IClassifyHow
+    public class TextMatcher : ITextClassifier, IMatchWho, IMatchWhat, IMatchWhere, IMatchWhen,
+        IMatchWhy, IMatchHow
     {
         public static readonly IEnumerable<AustralianState> AustralianStates =
             AustralianState.NSW.GetAllItems<AustralianState>();
@@ -32,12 +33,11 @@ namespace Vita.Predictor.TextClassifiers
         private string _sentence;
 
         private IList<string> _words;
-        private IList<string> _wordsAlpha;
-        private IList<string> _wordsAlphaNumeric;
-        private IList<string> _wordsNumeric;
-        private bool _exact;
 
-        public TextClassifier(IRepository<Company> companies, IRepository<Locality> localities,
+        private bool _exact;
+        private List<string> _wordsCleaned;
+
+        public TextMatcher(IRepository<Company> companies, IRepository<Locality> localities,
             IRepository<Classifier> classifiers)
         {
             _companies = companies;
@@ -62,7 +62,7 @@ namespace Vita.Predictor.TextClassifiers
             return await Task.FromResult(result);
         }
 
-        public async Task<IEnumerable<TextClassificationResult>> MatchMany(string sentence, bool classifyOnly = true)
+        public async Task<IEnumerable<TextClassificationResult>> MatchMany(string sentence, bool whyOnly = true)
         {
             if (string.IsNullOrWhiteSpace(sentence)) return null;
             _sentence = sentence.ToLowerInvariant();
@@ -74,9 +74,9 @@ namespace Vita.Predictor.TextClassifiers
             var hasResult = false;
             do
             {
-                var result = GetResult(_results.Any() && classifyOnly);
+                var result = GetResult(_results.Any() && whyOnly);
                 hasResult = result.HasResult();
-                classifyOnly = true;
+                whyOnly = true;
                 if (hasResult) _results.Add(result);
                 iteractions++;
             } while (hasResult && iteractions < 3);
@@ -101,24 +101,22 @@ namespace Vita.Predictor.TextClassifiers
             _words = _sentence.SplitSentenceIntoWords()
                 .ToList()
                 .ConvertAll(x => x.ToLowerInvariantWithOutSpaces())
-                .Where(x => !Gibberish.IsGibberish(x))
+                .Where(x => !x.IsGibberish())
                 .ToList();
 
-            _wordsAlpha = _words.Select(x => x.ToAlphaOnly()).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
-            _wordsNumeric = _words.Select(x => x.ToNumericOnly()).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
-            _wordsAlphaNumeric =
-                _words.Select(x => x.ToAlphaNumericOnly()).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+            _wordsCleaned = _words.Select(x => x.ToAlphaNumericOnly()).Where(x => !string.IsNullOrWhiteSpace(x))
+                .ToList();
 
-            var text = string.Join(" ", _wordsAlphaNumeric);
+            var text = string.Join(" ", _wordsCleaned);
 
             Ngrams = new ConcurrentDictionary<int, IEnumerable<string>>();
-            if (_wordsAlphaNumeric.Count > 3)
+            if (_wordsCleaned.Count > 3)
                 Ngrams.Add(new KeyValuePair<int, IEnumerable<string>>(4, NGramProcessor.MakeNgrams(text, 4)));
 
-            if (_wordsAlphaNumeric.Count > 2)
+            if (_wordsCleaned.Count > 2)
                 Ngrams.Add(new KeyValuePair<int, IEnumerable<string>>(3, NGramProcessor.MakeNgrams(text, 3)));
 
-            if (_wordsAlphaNumeric.Count > 1)
+            if (_wordsCleaned.Count > 1)
                 Ngrams.Add(new KeyValuePair<int, IEnumerable<string>>(2, NGramProcessor.MakeNgrams(text, 2)));
 
             return Ngrams;
@@ -207,7 +205,7 @@ namespace Vita.Predictor.TextClassifiers
                 if (subType.Contains("date") && !subType.Contains("range"))
                 {
                     // a date (or date & time) or multiple
-                    var moment = resolutionValues.Select(v => TextUtil.ParseAuDate(v["value"])).FirstOrDefault();
+                    var moment = resolutionValues.Select(v => v["value"].ToAustralianDate()).FirstOrDefault();
                     return moment;
                 }
 
@@ -215,7 +213,7 @@ namespace Vita.Predictor.TextClassifiers
                     resolutionValues.Any(x => x.ContainsKey("start")))
                 {
                     // range
-                    var from = TextUtil.ParseAuDate(resolutionValues.First()["start"]);
+                    var from = resolutionValues.First()["start"].ToAustralianDate();
                     //var to = DateTime.Parse(resolutionValues.First()["end"]);
                     return from;
                 }
@@ -223,7 +221,7 @@ namespace Vita.Predictor.TextClassifiers
                 if (subType.Contains("time"))
                 {
                     Console.WriteLine(subType);
-                    var moment = resolutionValues.Select(v => TextUtil.ParseAuDate(v["value"])).FirstOrDefault();
+                    var moment = resolutionValues.Select(v => v["value"].ToAustralianDate()).FirstOrDefault();
                     return moment;
                 }
             }
@@ -233,118 +231,94 @@ namespace Vita.Predictor.TextClassifiers
 
         private static Func<Classifier, bool> MatchSome(string text)
         {
-            return classifier => classifier.Keywords.Contains(text.Trim());
+            return classifier => classifier.Keywords.Any(x => x.Contains(text));
         }
 
         private static Func<Classifier, bool> MatchExact(string text)
         {
-            return classifier => classifier.Keywords.Any(x=> string.Equals(x, text, StringComparison.CurrentCultureIgnoreCase));
-        }
-
-        private static Func<Classifier, bool> MatchExactCriteria(string text)
-        {
-            return classifier => classifier.Keywords.Any(x =>x == text.Trim());
+            return classifier =>
+                classifier.Keywords.Any(x => string.Equals(x, text, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public Classifier Why(string text)
         {
-            var subCache = ClassifierCache.ToArray();
-            if (_results != null && _results.Any())
-                subCache = ClassifierCache.Where(x =>
-                {
-                    string Selector(TextClassificationResult y)
-                    {
-                        return y.Classifier?.SubCategory;
-                    }
+            Classifier found;
 
-                    return !_results.Select(classificationResult => Selector(classificationResult))
-                        .Any(z => x.SubCategory.Contains(z));
-                }).ToArray();
-
-            if (_wordsAlphaNumeric.Count > 3)
-                foreach (var ngram in Ngrams[4])
-                {
-                    Log.Verbose("text classifier {ngram} {text}", 4, ngram);
-                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
-
-                    if (found != null) return found;
-
-                    found = subCache.FirstOrDefault(MatchSome(ngram));
-                    if (found != null) return found;
-                }
-
-            if (_wordsAlphaNumeric.Count > 2)
-                foreach (var ngram in Ngrams[3])
-                {
-                    Log.Verbose("text classifier {ngram} {text}", 3, ngram);
-                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
-                    
-                    if (found != null) return found;
-
-                    found = subCache.FirstOrDefault(MatchSome(ngram));
-
-                    if (found != null) return found;
-                }
-
-            if (_wordsAlphaNumeric.Count <= 1)
-                return (from word in _words.Where(x => x.Length > 1).Select(x => x.RemoveJunkWordsFromNumber())
-                    from cla in subCache
-                    from key in cla.Keywords.Select(x => x.ToLowerInvariant())
-                    where key == word
-                    select cla).FirstOrDefault();
+            if (_wordsCleaned.Count >= 4)
             {
-                foreach (var ngram in Ngrams[2])
-                {
-                    Log.Verbose("text classifier {ngram} {text}", 2, ngram);
-                    Classifier found = subCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
-                    
-                    if (found != null) return found;
+                found = SearchNgrams(4);
+                if (found != null) return found;
+            }
 
-                    found = subCache.FirstOrDefault(MatchSome(ngram));
+            if (_wordsCleaned.Count > 3)
+            {
+                found = SearchNgrams(3);
+                if (found != null) return found;
+            }
 
-                    if (found != null) return found;
-                }
+            if (_wordsCleaned.Count > 2)
+            {
+                found = SearchNgrams(2);
+                if (found != null) return found;
             }
 
             return (from word in _words.Where(x => x.Length > 1).Select(x => x.RemoveJunkWordsFromNumber())
-                from cla in subCache
+                from cla in ClassifierCache
                 from key in cla.Keywords.Select(x => x.ToLowerInvariant())
                 where key == word
                 select cla).FirstOrDefault();
         }
 
+
+        private Classifier SearchNgrams(int ngramindex)
+        {
+            foreach (var ngram in Ngrams[ngramindex])
+            {
+                Log.Verbose("text classifier {ngram} {text}", ngramindex, ngram);
+                var found = ClassifierCache.FirstOrDefault(_exact ? MatchExact(ngram) : MatchSome(ngram));
+
+                if (found != null) return found;
+
+                found = ClassifierCache.FirstOrDefault(MatchSome(ngram));
+
+                if (found != null) return found;
+            }
+
+            return null;
+        }
+
         public Company Who(string sentence = null)
         {
             //Debug.Assert(_companies.GetAll().Count()>1);
-            var found = _companies.Find(SearchCriteriaCompany(sentence));
+            var found = _companies.Find(SearchCriteriaCompany(sentence)).ToArray();
             if (found.Any()) return found.FirstOrDefault();
-            if (_wordsAlphaNumeric.Count > 3)
+            if (_wordsCleaned.Count > 3)
                 foreach (var ngram in Ngrams[4])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 4, ngram);
-                    found = _companies.Find(SearchCriteriaCompany(ngram));
+                    found = _companies.Find(SearchCriteriaCompany(ngram)).ToArray();
                     if (found.Any()) return found.FirstOrDefault();
                 }
 
-            if (_wordsAlphaNumeric.Count > 2)
+            if (_wordsCleaned.Count > 2)
                 foreach (var ngram in Ngrams[3])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 3, ngram);
-                    found = _companies.Find(SearchCriteriaCompany(ngram));
+                    found = _companies.Find(SearchCriteriaCompany(ngram)).ToArray();
                     if (found.Any()) return found.FirstOrDefault();
                 }
 
-            if (_wordsAlphaNumeric.Count > 1)
+            if (_wordsCleaned.Count > 1)
                 foreach (var ngram in Ngrams[2])
                 {
                     Log.Verbose("text classifier {ngram} {text}", 2, ngram);
-                    found = _companies.Find(SearchCriteriaCompany(ngram));
+                    found = _companies.Find(SearchCriteriaCompany(ngram)).ToArray();
                     if (found.Any()) return found.FirstOrDefault();
                 }
 
-            foreach (var word in _wordsAlphaNumeric)
+            foreach (var word in _wordsCleaned)
             {
-                found = _companies.Find(SearchCriteriaCompany(word));
+                found = _companies.Find(SearchCriteriaCompany(word)).ToArray();
                 if (found.Any()) return found.FirstOrDefault();
             }
 
@@ -392,7 +366,7 @@ namespace Vita.Predictor.TextClassifiers
                     return TransactionType.Credit;
             }
 
-            foreach (var word in _wordsAlpha)
+            foreach (var word in _wordsCleaned)
                 switch (word.Trim())
                 {
                     case "eftpos":
@@ -437,9 +411,9 @@ namespace Vita.Predictor.TextClassifiers
 
         public PaymentMethodType How(string sentence)
         {
-            AsyncUtil.RunSync(() => Init());
+            AsyncUtil.RunSync(Init);
 
-            foreach (var word in _wordsAlpha)
+            foreach (var word in _wordsCleaned)
                 switch (word.Trim())
                 {
                     case "eftpos":
@@ -463,7 +437,7 @@ namespace Vita.Predictor.TextClassifiers
 
         private string FindSuburb()
         {
-            return (from word in _wordsAlpha
+            return (from word in _wordsCleaned
                 from sub in LocalityCache.Where(x => !string.IsNullOrWhiteSpace(x.Suburb))
                 where sub.Suburb.Trim().ToLowerInvariant() == word
                 select sub.Suburb).FirstOrDefault();
@@ -471,7 +445,7 @@ namespace Vita.Predictor.TextClassifiers
 
         private string FindPostCode()
         {
-            return (from word in _wordsNumeric
+            return (from word in _wordsCleaned
                 from sub in LocalityCache.Where(x => !string.IsNullOrWhiteSpace(x.Postcode))
                 where sub.Postcode.Trim().ToLowerInvariant() == word
                 select sub.Postcode).FirstOrDefault();
@@ -479,7 +453,7 @@ namespace Vita.Predictor.TextClassifiers
 
         private AustralianState? FindAustralianState()
         {
-            foreach (var word in _wordsAlpha)
+            foreach (var word in _wordsCleaned)
             foreach (var state in AustralianStates)
             {
                 var st = state.ToString().ToUpperInvariant();

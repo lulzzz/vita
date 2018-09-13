@@ -8,7 +8,7 @@ using MediatR;
 using Vita.Domain.Companies;
 using Vita.Domain.Companies.Commands;
 using Vita.Domain.Infrastructure;
-using Vita.Predictor.TextClassifiers.SpreadSheets;
+using Vita.Predictor.SpreadSheets;
 
 namespace Vita.Setup.SeedDatabase
 {

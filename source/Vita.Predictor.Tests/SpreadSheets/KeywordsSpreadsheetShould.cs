@@ -2,10 +2,10 @@
 using ExtensionMinder;
 using FluentAssertions;
 using Vita.Contracts;
-using Vita.Predictor.TextClassifiers.SpreadSheets;
+using Vita.Predictor.SpreadSheets;
 using Xunit;
 
-namespace Vita.Predictor.Tests.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.Tests.SpreadSheets
 {
     public class KeywordsSpreadsheetShould
     {

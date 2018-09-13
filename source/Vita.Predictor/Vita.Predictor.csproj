@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="TextClassifiers\SpreadSheets\keywords.xlsx" />
-    <None Remove="TextClassifiers\SpreadSheets\localities.xlsx" />
+    <None Remove="SpreadSheets\keywords.xlsx" />
+    <None Remove="SpreadSheets\localities.xlsx" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="TextClassifiers\SpreadSheets\keywords.xlsx" />
-    <EmbeddedResource Include="TextClassifiers\SpreadSheets\localities.xlsx" />
+    <EmbeddedResource Include="SpreadSheets\keywords.xlsx" />
+    <EmbeddedResource Include="SpreadSheets\localities.xlsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="CsvHelper" Version="7.1.1" />
-    <PackageReference Include="ExtensionMinder" Version="3.0.1" />
+    <PackageReference Include="ExtensionMinder" Version="3.1.0" />
     <PackageReference Include="Microsoft.ML" Version="0.4.0" />
     <PackageReference Include="Microsoft.ML.LightGBM" Version="0.4.0" />
     <PackageReference Include="Microsoft.ML.Onnx" Version="0.4.0" />

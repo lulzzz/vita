@@ -11,6 +11,7 @@ using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests;
 using Vita.Predictor.Tests.TextClassifiers;
 using Vita.Predictor.TextClassifiers;
+using Vita.Predictor.TextMatch;
 using Xunit;
 
 namespace Vita.Predictor.Tests
@@ -33,7 +34,7 @@ namespace Vita.Predictor.Tests
             _dataFixture.Init();
             _predict = new Predict();
             _textClassifier =
-                new TextClassifier(_dataFixture.Companies, _dataFixture.Localities, _dataFixture.Classifiers)
+                new TextMatcher(_dataFixture.Companies, _dataFixture.Localities, _dataFixture.Classifiers)
                 {
                     UseCache = false
                 };
@@ -167,10 +168,10 @@ namespace Vita.Predictor.Tests
 
 
         [Theory]
-        [InlineData(Categories.Transport.Fuel)]
+        //[InlineData(Categories.Transport.Fuel)]
         //[InlineData(Categories.Transport.PublicTransport)]
         //[InlineData(Categories.Transport.TaxiRideshare)]
-        //[InlineData(Categories.HouseholdUtilities.ElectricityGas)]
+        [InlineData(Categories.HouseholdUtilities.ElectricityGas)]
         //[InlineData(Categories.HouseholdUtilities.PhoneInternet)]
         //[InlineData(Categories.HouseholdUtilities.Water)]
         //[InlineData(Categories.Income.SalaryWages)]

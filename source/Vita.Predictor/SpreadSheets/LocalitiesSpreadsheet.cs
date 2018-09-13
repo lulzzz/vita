@@ -2,7 +2,7 @@
 using ExtensionMinder;
 using Vita.Contracts;
 
-namespace Vita.Predictor.TextClassifiers.SpreadSheets
+namespace Vita.Predictor.SpreadSheets
 {
   public class LocalitiesSpreadsheet : SpreadSheetBase
   {
@@ -11,7 +11,7 @@ namespace Vita.Predictor.TextClassifiers.SpreadSheets
 
     public LocalitiesSpreadsheet()
     {
-      LoadExcelSheet("Vita.Predictor.TextClassifiers.SpreadSheets.localities.xlsx");
+      LoadExcelSheet("Vita.Predictor.SpreadSheets.localities.xlsx");
     }
 
     public IEnumerable<Locality> LoadData()
