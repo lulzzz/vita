@@ -29,6 +29,8 @@
     <PackageReference Include="NSwag.AspNetCore" Version="11.19.2" />
     <PackageReference Include="NSwag.Core" Version="11.19.2" />
     <PackageReference Include="NSwag.SwaggerGeneration.WebApi" Version="11.19.2" />
+    <PackageReference Include="StackifyLib.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="StackifyLib.CoreLogger" Version="2.1.1" />
     <PackageReference Include="StackifyMiddleware" Version="2.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
