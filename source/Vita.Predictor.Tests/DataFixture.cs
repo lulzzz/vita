@@ -10,7 +10,7 @@ using Vita.Domain.Tests.BankStatements.Models.Fixtures;
 using Vita.Predictor.SpreadSheets;
 using Xunit;
 
-namespace Vita.Predictor.Tests.TextClassifiers
+namespace Vita.Predictor.Tests
 {
     public class DataFixture
     {

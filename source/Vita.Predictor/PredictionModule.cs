@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Vita.Contracts;
-using Vita.Predictor.TextClassifiers;
 using Vita.Predictor.TextMatch;
 
 namespace Vita.Predictor

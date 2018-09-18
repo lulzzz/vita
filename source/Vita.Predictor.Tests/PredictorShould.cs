@@ -9,8 +9,6 @@ using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.Models;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests;
-using Vita.Predictor.Tests.TextClassifiers;
-using Vita.Predictor.TextClassifiers;
 using Vita.Predictor.TextMatch;
 using Xunit;
 

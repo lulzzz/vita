@@ -11,7 +11,6 @@ using Serilog;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.Infrastructure;
-using Vita.Predictor.TextClassifiers;
 
 namespace Vita.Predictor.TextMatch
 {

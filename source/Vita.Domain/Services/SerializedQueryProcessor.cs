@@ -6,7 +6,7 @@ using EventFlow.Core;
 using EventFlow.Logs;
 using EventFlow.Queries;
 
-namespace Vita.Api
+namespace Vita.Domain.Services
 {
     public class SerializedQueryProcessor : ISerializedQueryProcessor
     {

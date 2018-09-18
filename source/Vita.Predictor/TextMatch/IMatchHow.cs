@@ -1,6 +1,6 @@
 ﻿using Vita.Contracts;
 
-namespace Vita.Predictor.TextClassifiers
+namespace Vita.Predictor.TextMatch
 {
     public interface IMatchHow
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Vita.Api
+namespace Vita.Domain.Services
 {
     public interface ISerializedQueryProcessor
     {

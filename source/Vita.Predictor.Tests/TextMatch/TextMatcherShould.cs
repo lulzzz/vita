@@ -9,7 +9,6 @@ using Microsoft.Azure.Search.Common;
 using Vita.Contracts;
 using Vita.Contracts.SubCategories;
 using Vita.Domain.Infrastructure;
-using Vita.Predictor.Tests.TextClassifiers;
 using Vita.Predictor.TextMatch;
 using Xunit;
 

@@ -24,6 +24,7 @@ namespace Vita.Domain.Infrastructure.Modules
 {
     public class EventFlowModule : Module
     {
+        public static readonly Assembly DomainAssembly = typeof(EventFlowModule).Assembly;
         public IContainer Container { get; }
 
         public EventFlowModule(ContainerBuilder builder, Func<IEventFlowOptions, IEventFlowOptions> extraConfig = null)
@@ -35,11 +36,10 @@ namespace Vita.Domain.Infrastructure.Modules
         private IContainer ConfigEventFlowAndBuildContainer(ContainerBuilder builder,
             Func<IEventFlowOptions, IEventFlowOptions> extraConfig)
         {
-            var assembly = Assembly.GetAssembly(typeof(CollectionBase));
-
+            
             var eventFlowOptions = EventFlowOptions.New
                 .UseAutofacContainerBuilder(builder)
-                .AddDefaults(assembly)
+                .AddDefaults(DomainAssembly)
                 //.AddCommands(typeof(CreateCompanyCommand))
                 //.AddCommandHandlers(typeof(CreateCompanyCommandHandler))
                 //.AddEvents(typeof(CompanyCreatedEvent))
