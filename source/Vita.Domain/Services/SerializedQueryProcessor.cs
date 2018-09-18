@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using EventFlow.Core;
@@ -13,7 +14,8 @@ namespace Vita.Domain.Services
         private readonly ILog _log;
         private readonly IJsonSerializer _jsonSerializer;
         private readonly IQueryProcessor _queryProcessor;
-        public static QueryDefinition[] QueryDefinitions => new QueryDefinition[] { };
+        public static QueryDefinition[] QueryDefinitions => BuildQueryDefinitions();
+        public static readonly Assembly DomainAssembly = typeof(SerializedQueryProcessor).Assembly;
 
         public SerializedQueryProcessor(ILog log, IJsonSerializer jsonSerializer, IQueryProcessor queryProcessor)
         {
@@ -45,7 +47,24 @@ namespace Vita.Domain.Services
                 throw new ArgumentException($"Failed to deserilize query '{name}': {e.Message}", e);
             }
 
-            return await _queryProcessor.ProcessAsync(query, CancellationToken.None).ConfigureAwait(false);
+            return await _queryProcessor.ProcessAsync(query, cancellationToken).ConfigureAwait(false);
         }
+
+        private static QueryDefinition[] BuildQueryDefinitions()
+        {
+            bool IsIQueryInterface(Type i) => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQuery<>);
+            var defs = DomainAssembly.GetTypes()
+                .Where(t => t.GetInterfaces().Any(IsIQueryInterface))
+                .Select(t => new QueryDefinition
+                {
+                    Name = t.Name,
+                    QueryType = t,
+                    ResultType = t.GetInterfaces().Single(IsIQueryInterface).GetGenericArguments().Single()
+                })
+                .ToArray();
+
+            return defs;
+        }
+
     }
 }
