@@ -23,20 +23,19 @@ namespace Vita.Predictor.Tests
 
         private readonly IPredict _predict;
         private readonly ITextClassifier _textClassifier;
-        private readonly DataFixture _dataFixture;
         private readonly Account _account;
 
         public PredictorShould()
         {
-            _dataFixture = new DataFixture();
-            _dataFixture.Init();
+            var dataFixture = new DataFixture();
+            dataFixture.Init();
             _predict = new Predict();
             _textClassifier =
-                new TextMatcher(_dataFixture.Companies, _dataFixture.Localities, _dataFixture.Classifiers)
+                new TextMatcher(dataFixture.Companies, dataFixture.Localities, dataFixture.Classifiers)
                 {
                     UseCache = false
                 };
-            _account = _dataFixture.GetTestBankAccount();
+            _account = dataFixture.GetTestBankAccount();
         }
 
         // [Fact(Skip = "run on demand")]
