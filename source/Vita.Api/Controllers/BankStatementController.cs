@@ -44,7 +44,10 @@ namespace Vita.Api.Controllers
         var token = new CancellationToken(false);
         await _bus.PublishAsync(cmd, token);
 
-        var thing = new BankStatementAnalysisSummaryQuery {BankStatementId = cmd.AggregateId};
+        var thing = new BankStatementAnalysisSummaryQuery
+        {
+          BankStatementId = cmd.AggregateId
+        };
 
         var result = await _queryProcessor.ProcessSerilizedQueryAsync(thing.GetType().Name, JsonConvert.SerializeObject(thing), token);
         return Ok(result);

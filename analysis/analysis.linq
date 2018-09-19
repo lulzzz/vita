@@ -29,7 +29,9 @@ void Main()
 {
 
 	var converted = BankStatementReadModels
-	.Where(x => x.TransactionUtcDate > DateTime.Now.AddMonths(-3)).ToList()
+	.Where(x => x.TransactionUtcDate > DateTime.Now.AddMonths(-3))
+	.ToList()
+	.Where(x=>!string.IsNullOrEmpty(x.SubCategory))
 	.Select(x => new { Category = x.Category.ToEnum<CategoryType>(), x.Amount});
 	
 	var cats = from p in converted
