@@ -176,6 +176,16 @@ namespace Vita.Domain.Infrastructure.Modules
             Log.Logger.Fatal(exception, format, args);
         }
 
+        public void Write(global::EventFlow.Logs.LogLevel logLevel, string format, params object[] args)
+        {
+            Write(logLevel, format, args);
+        }
+
+        public void Write(global::EventFlow.Logs.LogLevel logLevel, Exception exception, string format, params object[] args)
+        {
+            Write(logLevel, format, args);
+        }
+
         public void Write(LogLevel logLevel, string format, params object[] args)
         {
             switch (logLevel)
