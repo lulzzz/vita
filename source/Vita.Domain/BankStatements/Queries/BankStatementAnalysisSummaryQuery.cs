@@ -7,8 +7,8 @@ namespace Vita.Domain.BankStatements.Queries
     public class BankStatementAnalysisSummaryQuery : IQuery<BankStatementAnalysisSummaryView>
     {
         public BankStatementId BankStatementId { get; set; }
-        // default to last 30 days
+        // default to last 90 days
         public DateTime FromUtcDateTime { get; set; } = DateTime.UtcNow;
-        public DateTime? ToUtcDateTime { get; set; }  = DateTime.UtcNow.AddDays(-30);
+        public DateTime ToUtcDateTime { get; set; }  = DateTime.UtcNow.AddDays(-90);
     }
 }

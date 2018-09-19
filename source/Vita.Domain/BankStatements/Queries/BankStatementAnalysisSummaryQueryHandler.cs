@@ -44,12 +44,16 @@ namespace Vita.Domain.BankStatements.Queries
       var readModels = await _msSqlConnection.QueryAsync<BankStatementReadModel>(
           Label.Named("mssql-fetch-BankStatementReadModel"),
           cancellationToken,
-          "SELECT * FROM [BankStatementReadModel] WHERE AggregateId = @AggregateId",
-          new {AggregateId = query.BankStatementId.Value})
+          "SELECT * FROM [BankStatementReadModel] WHERE AggregateId = @AggregateId AND TransactionUtcDate BETWEEN('@FromDate', '@ToDate')",
+          new
+          {
+              AggregateId = query.BankStatementId.Value,
+              FromDate = query.FromUtcDateTime,
+              ToDate = query.ToUtcDateTime
+          })
         .ConfigureAwait(false);
 
       var converted = readModels
-       //.Where(x => x.TransactionUtcDate > query.FromUtcDateTime && x.TransactionUtcDate < query.ToUtcDateTime)
         .ToList()
         .Select(x => new {x.Category, x.SubCategory, x.Amount})
         .ToList();
