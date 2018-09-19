@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Vita.Contracts
 {
-    public class BankStatementAnalysisSummaryView
-    {
-         
-    }
+  public class BankStatementAnalysisSummaryView
+  {
+    public IDictionary<CategoryType, decimal> CategoryTotals{ get; set; }
+
+    public IDictionary<string, decimal> SubCategoryTotals{ get; set; }
+
+    public IEnumerable<string> Unmatched { get; set; }
+    public string BankStatementId { get; set; }
+  }
 }

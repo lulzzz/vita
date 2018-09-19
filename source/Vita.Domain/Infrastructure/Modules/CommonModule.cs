@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Reflection;
 using Autofac;
 using MassTransit;
@@ -13,33 +12,36 @@ using Module = Autofac.Module;
 
 namespace Vita.Domain.Infrastructure.Modules
 {
-    public class CommonModule : Module
+  public class CommonModule : Module
+  {
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                .Where(t => t.Name.Contains("Vita"))
-                .AsImplementedInterfaces();
+      builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+        .Where(t => t.Name.Contains("Vita"))
+        .AsImplementedInterfaces();
 
-            builder.RegisterType<CreateCompanyCommandHandler>();
-            builder.RegisterType<CreateCompanyCommand>();
-            builder.RegisterType<CompanyCreatedEvent>();
+      builder.RegisterType<SerializedQueryProcessor>().As<ISerializedQueryProcessor>();
 
-         
-            //bank
-            builder.RegisterType<BankStatementService>()
-                .As<IBankStatementService>()
-                .WithParameter("bankStatementsConfiguration",new BankStatementsConfiguration(Mode.Test.ApiUrl,Mode.Test.ApiKey, Mode.Test.Prefix))
-                ;
-            //
-            builder.RegisterGeneric(typeof(Repository<>))
-                .As(typeof(IRepository<>)).SingleInstance();
+      builder.RegisterType<CreateCompanyCommandHandler>();
+      builder.RegisterType<CreateCompanyCommand>();
+      builder.RegisterType<CompanyCreatedEvent>();
 
-            builder.RegisterConsumers(Assembly.GetAssembly(typeof(GoogleApiSearchHandler)));
 
-            builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
+      //bank
+      builder.RegisterType<BankStatementService>()
+        .As<IBankStatementService>()
+        .WithParameter("bankStatementsConfiguration",
+          new BankStatementsConfiguration(Mode.Test.ApiUrl, Mode.Test.ApiKey, Mode.Test.Prefix))
+        ;
+      //
+      builder.RegisterGeneric(typeof(Repository<>))
+        .As(typeof(IRepository<>)).SingleInstance();
 
-            base.Load(builder);
-        }
+      builder.RegisterConsumers(Assembly.GetAssembly(typeof(GoogleApiSearchHandler)));
+
+      builder.RegisterType<GooglePlacesSearcher>().As<IGooglePlacesSearcher>();
+
+      base.Load(builder);
     }
+  }
 }

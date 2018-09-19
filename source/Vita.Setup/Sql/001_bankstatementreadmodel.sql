@@ -15,8 +15,8 @@ GO
 CREATE TABLE [dbo].BankStatementReadModel(
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[AggregateId] [nvarchar](64) NOT NULL,
-	[CreatedUtcDate] [datetimeoffset](7) NOT NULL,
-	[ModifiedUtcDate] [datetimeoffset](7) NOT NULL,
+	[CreatedUtcDate] [datetime] NOT NULL,
+	[ModifiedUtcDate] [datetime] NOT NULL,
 	[LastAggregateSequenceNumber] [int] NOT NULL,
 	-------------------------------------------------
 	[RequestId] [nvarchar](150) NULL,
@@ -25,7 +25,7 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[Description] [nvarchar](4000) NULL,
 	[Amount]  [decimal](18, 2) NULL,
 	[Method] [nvarchar](100)  NULL,
-	[TransactionUtcDate] [datetimeoffset](7) NULL
+	[TransactionUtcDate] [datetime] NULL
 
 	CONSTRAINT [PK_BankStatementReadModel] PRIMARY KEY CLUSTERED 
 	(
