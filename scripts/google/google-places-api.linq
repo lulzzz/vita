@@ -13,8 +13,10 @@
     <ShowServer>true</ShowServer>
   </Connection>
   <Reference>&lt;RuntimeDirectory&gt;\System.Threading.Tasks.dll</Reference>
-  <Reference Relative="..\..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Contracts.dll</Reference>
-  <Reference Relative="..\..\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll">C:\dev\vita\source\Vita.Domain\bin\Debug\netstandard2.0\Vita.Domain.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Api.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Api.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Contracts.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Contracts.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Domain.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Domain.dll</Reference>
+  <Reference Relative="..\..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Predictor.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Predictor.dll</Reference>
   <NuGetReference>CsvHelper</NuGetReference>
   <NuGetReference>GoogleApi</NuGetReference>
   <NuGetReference>LiteDB</NuGetReference>
@@ -101,7 +103,6 @@
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
-  <Namespace>Vita.Domain.Infrastructure</Namespace>
 </Query>
 
 const string PlacePath = @"D:\Dropbox\Dropbox (Personal)\Red-Trout\chargeid\data\Place.db";
@@ -260,7 +261,7 @@ private async System.Threading.Tasks.Task RunSearch() {
 private void RunFromTsv()
 {
 	string contents = File.ReadAllText(@"C:\dev\vita\data\test.tsv");
-	var tsv = FileUtil.Read(contents);
+	var tsv = Vita.Domain.Infrastructure.FileUtil.Read(contents);
 	foreach (var x in tsv)
 	{
 		string searchPhrase = x.Description.ToLowerInvariant();

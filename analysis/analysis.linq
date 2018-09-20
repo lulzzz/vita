@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>2ebabf6f-d96f-4153-9675-7a230f7e370b</ID>
+    <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>Vita</Database>
@@ -23,37 +23,53 @@
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
   <Namespace>Vita.Contracts.SubCategories</Namespace>
+  <Namespace>Vita.Domain.Infrastructure</Namespace>
 </Query>
+
+// default one year
+public DateTime FromUtcDateTime { get; set; } = DateTime.UtcNow.AddYears(-1);
+public DateTime ToUtcDateTime { get; set; } = DateTime.UtcNow;
 
 void Main()
 {
 
-	var converted = BankStatementReadModels
-	.Where(x => x.TransactionUtcDate > DateTime.Now.AddMonths(-3))
-	.ToList()
-	.Where(x=>!string.IsNullOrEmpty(x.SubCategory))
-	.Select(x => new { Category = x.Category.ToEnum<CategoryType>(), x.Amount});
+	var readModels = BankStatementReadModels.Where(x => x.TransactionUtcDate > FromUtcDateTime && x.TransactionUtcDate < ToUtcDateTime).ToList();
+
+	var cats = from p in readModels
+			   group p by p.Category
+	  into g
+			   select new
+			   {
+				   Category = g.Key.ToEnum<CategoryType>().GetDescription(),
+				   Total = readModels.Where(a => a.Category == g.Key)
+				 .Sum(x => x.Amount)
+			   };
+			   
+	cats.Dump("cats");
+
+	var subs = from p in readModels.Where(x => !string.IsNullOrEmpty(x.SubCategory))
+			   group p by p.SubCategory
+	  into g
+			   select new
+			   {
+				   SubCategory = g.Key,
+				   Total = readModels.Where(a => a.SubCategory == g.Key)
+				 .Sum(x => x.Amount)
+			   };
+
+
+	subs.Dump("subs");
+
+	var unmatched = from p in readModels.Where(x => string.IsNullOrEmpty(x.SubCategory))
+			   group p by p.SubCategory
+	  into g
+			   select new
+			   {
+				   SubCategory = g.Key,
+				   Total = readModels.Where(a => a.SubCategory == g.Key)
+				 .Sum(x => x.Amount)
+			   };
 	
-	var cats = from p in converted
-						group p by p.Category into g
-						select new { Category = g.Key, Total = converted.Where(a => a.Category == g.Key).Sum(x => x.Amount) }
-				  ;
+	unmatched.Dump("unmatched");
 
-	cats.Dump("Category");
-
-	var subcategories = from p in BankStatementReadModels
-	.Where(x => x.TransactionUtcDate > DateTime.Now.AddMonths(-3))
-						group p by p.SubCategory into g
-						select new { SubCategory = g.Key, Total = BankStatementReadModels.Where(a => a.SubCategory == g.Key).Sum(x => x.Amount) }
-				  ;
-
-	subcategories.Dump("Subcategories");
-
-
-	//	subcategories.Sum(x=>x.Total).Dump("Total spending");
-
-	BankStatementReadModels
-	.Where(x => x.SubCategory == "Uncategorised")
-	.Select(x => new {x.Category,x.SubCategory,x.Description, x.Amount})
-	.Dump("Uncategorised");
 }
