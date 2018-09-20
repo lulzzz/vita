@@ -60,7 +60,7 @@ void Main()
 
 	subs.Dump("subs");
 
-	var unmatched = from p in readModels.Where(x => string.IsNullOrEmpty(x.SubCategory))
+	var unmatched = from p in readModels.Where(x=>x.SubCategory == Categories.Uncategorised).Dump("unmatched")
 			   group p by p.SubCategory
 	  into g
 			   select new
@@ -70,6 +70,6 @@ void Main()
 				 .Sum(x => x.Amount)
 			   };
 	
-	unmatched.Dump("unmatched");
+	unmatched.Dump("unmatched-totals");
 
 }
