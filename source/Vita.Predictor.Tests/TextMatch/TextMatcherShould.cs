@@ -32,7 +32,7 @@ namespace Vita.Predictor.Tests.TextMatch
         }
 
         [Theory]
-        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.BankingFinance,Categories.BankingFinance.OtherBankingFinance)]
+        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.TransferringMoney,Categories.TransferringMoney.OtherTransferringMoney)]
         [InlineData("Kidz", CategoryType.Kids, Categories.Kids.Childcare)]
         [InlineData("Liquorland North Perth Aus", CategoryType.Groceries, Categories.Groceries.LiquorStores)]
         [InlineData("St John Of God", CategoryType.HealthBeauty, Categories.HealthBeauty.DoctorsDentist)]
