@@ -62,7 +62,7 @@ namespace Vita.Predictor.TextMatch
         {
             if (string.IsNullOrWhiteSpace(sentence)) return true;
             Sentence = sentence.ToLowerInvariant();
-            CreateNgrams();
+            CreateNgrams(sentence);
             return false;
         }
 

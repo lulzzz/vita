@@ -32,11 +32,11 @@ namespace Vita.Predictor.Tests.TextMatch
         }
 
         [Theory]
-        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.TransferringMoney,Categories.TransferringMoney.OtherTransferringMoney)]
+        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.TransferringMoney, Categories.TransferringMoney.OtherTransferringMoney)]
         [InlineData("Kidz", CategoryType.Kids, Categories.Kids.Childcare)]
-        [InlineData("Liquorland North Perth Aus", CategoryType.Groceries, Categories.Groceries.LiquorStores)]
+        [InlineData("Liquorland", CategoryType.Groceries, Categories.Groceries.LiquorStores)]
         [InlineData("St John Of God", CategoryType.HealthBeauty, Categories.HealthBeauty.DoctorsDentist)]
-        [InlineData("minimart", CategoryType.Shopping, Categories.Groceries.Supermarkets)]
+        [InlineData("minimart", CategoryType.Groceries, Categories.Groceries.OtherGroceries)]
         public async Task MatchMany_why(string sentence, CategoryType ct, string sub)
         {
             var results = await Matcher.MatchMany(sentence);
@@ -44,11 +44,12 @@ namespace Vita.Predictor.Tests.TextMatch
             var textClassificationResults = results as TextClassificationResult[] ?? results.ToArray();
 
             var cats = textClassificationResults.Select(x => x.Classifier.CategoryType);
-            cats.Should().Contain(ct, cats.ToCommaSeparatedString());
+            cats.Should().Contain(ct);
 
             var subs = textClassificationResults.Select(x => x.Classifier.SubCategory);
             var enumerable = subs as string[] ?? subs.ToArray();
-            enumerable.Should().Contain(sub, enumerable.ToCommaSeparatedString());
+            Console.WriteLine(string.Join(',', enumerable.ToArray()));
+            enumerable.Should().Contain(sub);
         }
 
         [Fact]
@@ -58,7 +59,7 @@ namespace Vita.Predictor.Tests.TextMatch
             var ct = CategoryType.HealthBeauty;
             var sub = Categories.HealthBeauty.DoctorsDentist;
 
-            var result = await Matcher.Match(sentence,true,false);
+            var result = await Matcher.Match(sentence,true,true);
 
             Matcher.ClassifierCache.Count().Should().NotBe(0);
             Matcher.LocalityCache.Count().Should().NotBe(0);

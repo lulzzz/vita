@@ -4,7 +4,7 @@ namespace Vita.Contracts
 {
   public class BankStatementAnalysisSummaryView
   {
-    public IDictionary<CategoryType, decimal> CategoryTotals{ get; set; }
+    public IDictionary<string, decimal> CategoryTotals{ get; set; }
 
     public IDictionary<string, decimal> SubCategoryTotals{ get; set; }
 

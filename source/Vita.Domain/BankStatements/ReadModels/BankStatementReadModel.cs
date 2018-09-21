@@ -4,6 +4,7 @@ using System.Linq;
 using EventFlow.Aggregates;
 using EventFlow.ReadStores;
 using EventFlow.Sql.ReadModels.Attributes;
+using ExtensionMinder;
 using Vita.Contracts;
 using Vita.Domain.BankStatements.Events;
 using Vita.Domain.Infrastructure;
@@ -20,7 +21,7 @@ namespace Vita.Domain.BankStatements.ReadModels
   {
     [SqlReadModelIdentityColumn] public string RequestId { get; set; }
 
-    public CategoryType Category { get; set; }
+    public string Category { get; set; }
     public string SubCategory { get; set; }
     public string Description { get; set; }
     public decimal Amount { get; set; }
@@ -45,7 +46,7 @@ namespace Vita.Domain.BankStatements.ReadModels
         // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
         RequestId = id.Value;
-        Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue);
+        Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue).GetDescription();
         SubCategory = rm.PredictedValue;
         Description = rm.Request.Description;
         Amount = Convert.ToDecimal(rm.Request.Amount);
@@ -67,7 +68,7 @@ namespace Vita.Domain.BankStatements.ReadModels
         // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
         RequestId = id.Value;
-        Category = CategoryType.BankingFinance;
+        Category = CategoryType.BankingFinance.GetDescription();
         SubCategory = rm.Item2.Classifier.SubCategory;
         Description = rm.Item1.Request.Description;
         Amount = Convert.ToDecimal(rm.Item1.Request.Amount);

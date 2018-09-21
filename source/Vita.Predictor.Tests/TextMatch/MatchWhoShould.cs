@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using FluentAssertions;
-using Vita.Contracts;
+﻿using FluentAssertions;
 using Vita.Predictor.TextMatch;
 using Xunit;
 

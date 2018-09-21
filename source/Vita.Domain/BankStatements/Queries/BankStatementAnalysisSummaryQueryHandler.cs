@@ -60,7 +60,6 @@ namespace Vita.Domain.BankStatements.Queries
 
       Logger.Debug($"query results: {converted.Count}");
 
-
       var cats = from p in converted
         group p by p.Category
         into g
@@ -76,12 +75,14 @@ namespace Vita.Domain.BankStatements.Queries
       var view = new BankStatementAnalysisSummaryView
       {
         BankStatementId = query.BankStatementId.Value,
-        CategoryTotals = new ConcurrentDictionary<CategoryType, decimal>(),
+        CategoryTotals = new ConcurrentDictionary<string, decimal>(),
         SubCategoryTotals = new ConcurrentDictionary<string, decimal>(),
-        Unmatched = readModels.Where(x=>x.SubCategory == Categories.Uncategorised).Select(x=>x.Description).ToList()
+        Unmatched = readModels.Where(x=>x.SubCategory == Categories.Uncategorised)
+            .Select(x=>x.Description)
+            .ToList()
       };
 
-      cats.AsParallel().ForAll(x => view.CategoryTotals.Add(new KeyValuePair<CategoryType, decimal>(x.Category, x.Total)));
+      cats.AsParallel().ForAll(x => view.CategoryTotals.Add(new KeyValuePair<string, decimal>(x.Category, x.Total)));
       subs.AsParallel().ForAll((x => view.SubCategoryTotals.Add(new KeyValuePair<string, decimal>(x.SubCategory, x.Total))));
 
       return view;

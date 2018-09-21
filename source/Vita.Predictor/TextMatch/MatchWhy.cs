@@ -34,11 +34,11 @@ namespace Vita.Predictor.TextMatch
                 if (found != null) return found;
             }
 
-            return (from word in Words.Where(x => x.Length > 1).Select(x => x.RemoveJunkWordsFromNumber())
-                from cla in ClassifierCache
-                from key in cla.Keywords.Select(x => x.ToLowerInvariant())
-                where key == word
-                select cla).FirstOrDefault();
+
+            found = SearchNgrams(1);
+
+            return found;
+
         }
     }
 }

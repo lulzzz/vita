@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="SpreadSheets\keywords.xlsx" />
+    <EmbeddedResource Include="SpreadSheets\keywords.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpreadSheets\localities.xlsx" />
   </ItemGroup>
 

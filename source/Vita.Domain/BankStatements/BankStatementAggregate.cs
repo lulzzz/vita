@@ -58,7 +58,7 @@ namespace Vita.Domain.BankStatements
             var matched = new List<Tuple<PredictionResult, TextClassificationResult>>();
 
             var predictionResults = unmatched as PredictionResult[] ?? results.ToArray();
-            foreach (var x in predictionResults.AsParallel())
+            foreach (var x in predictionResults)
             {
                 var result = await textClassifier.Match(x.Request.Description);
                 if (result.Classifier != null)

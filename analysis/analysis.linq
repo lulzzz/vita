@@ -40,7 +40,7 @@ void Main()
 	  into g
 			   select new
 			   {
-				   Category = g.Key.ToEnum<CategoryType>().GetDescription(),
+				   Category = g.Key,
 				   Total = readModels.Where(a => a.Category == g.Key)
 				 .Sum(x => x.Amount)
 			   };

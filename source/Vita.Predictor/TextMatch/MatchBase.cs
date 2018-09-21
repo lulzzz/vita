@@ -68,6 +68,8 @@ namespace Vita.Predictor.TextMatch
             if (WordsCleaned.Count > 1)
                 Ngrams.Add(new KeyValuePair<int, IEnumerable<string>>(2, NGramProcessor.MakeNgrams(text, 2)));
 
+            Ngrams.Add(new KeyValuePair<int, IEnumerable<string>>(1, WordsCleaned));
+
         }
 
         private async Task Init()
@@ -96,7 +98,7 @@ namespace Vita.Predictor.TextMatch
 
         protected Classifier SearchNgrams(int ngramindex)
         {
-            Classifier found;
+            Classifier found = null;
 
             Parallel.ForEach(Ngrams[ngramindex], (ngram,state) =>
             {
@@ -106,6 +108,8 @@ namespace Vita.Predictor.TextMatch
                 state.Break();
             });
 
+            if (found != null) return found;
+
             Parallel.ForEach(Ngrams[ngramindex], (ngram,state) =>
             {
                 Log.Verbose("text match {ngram} {text}", ngramindex, ngram);
@@ -114,20 +118,20 @@ namespace Vita.Predictor.TextMatch
                 Log.Verbose("text match MatchSome {ngram} {text}", ngramindex, ngram);
                 state.Break();
             });
-            
-            Log.Warning("text match NotFound {ngram} {text}", ngramindex);
-            return null;
+          
+            if (found == null)Log.Warning("text match NotFound {ngram} {text}", ngramindex);
+            return found;
         }
 
         protected static Func<Classifier, bool> MatchSome(string text)
         {
-            return classifier => classifier.Keywords.Any(x => x.Contains(text));
+            return classifier => classifier.Keywords.Any(x => x.Contains(text.Trim()));
         }
 
         protected static Func<Classifier, bool> MatchExact(string text)
         {
             return classifier =>
-                classifier.Keywords.Any(x => string.Equals(x, text, StringComparison.CurrentCultureIgnoreCase));
+                classifier.Keywords.Any(x => string.Equals(x.Trim(), text.Trim(), StringComparison.CurrentCultureIgnoreCase));
         }
 
     }
