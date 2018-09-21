@@ -13,7 +13,7 @@ namespace Vita.Domain.BankStatements
     {
         public IEnumerable<PredictionRequest> PredictionRequests { get; set; }
         public IEnumerable<PredictionResult> PredictionResults { get; set; }
-        public IDictionary<PredictionResult, TextClassificationResult> Matched { get; set; }
+        public IList<KeyValuePair<PredictionResult, TextClassificationResult>> Matched { get; set; }
 
         public void Apply(BankStatementExtracted1Event aggregateEvent)
         {

@@ -55,20 +55,17 @@ namespace Vita.Domain.BankStatements
 
             Trace.WriteLine($"{Id} unmatched {unmatched.Count()}");
 
-            var matched = new ConcurrentDictionary<PredictionResult, TextClassificationResult>();
+            var matched = new List<KeyValuePair<PredictionResult, TextClassificationResult>>();
 
-            unmatched.AsParallel().ForAll(async predictionResult =>
+            foreach (var item in unmatched)
             {
-                if (!matched.ContainsKey(predictionResult))
+                item.Method = PredictionMethod.KeywordMatch;
+                var result = await matcher.Match(item.Request.Description);
+                if (result.Classifier != null)
                 {
-                    var result = await matcher.Match(predictionResult.Request.Description);
-                    if (result.Classifier != null)
-                    {
-                        predictionResult.Method = PredictionMethod.KeywordMatch;
-                        matched.TryAdd(predictionResult, result);
-                    }
+                    matched.Add(new KeyValuePair<PredictionResult, TextClassificationResult>(item,result));
                 }
-            });
+            }
 
             Trace.WriteLine($"{Id} matched {matched.Count()}");
             Emit(new BankStatementTextMatched3Event
