@@ -29,7 +29,7 @@ namespace Vita.Domain.BankStatements.ReadModels
                 case BankStatementTextMatched3Event textMatched3Event:
                     foreach (var message in textMatched3Event.Matched)
                     {
-                        yield return message.Item1.Request.Id.ToString();
+                        yield return message.Key.Request.Id.ToString();
                     }
                     break;
             }

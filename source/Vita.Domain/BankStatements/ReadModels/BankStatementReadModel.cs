@@ -60,20 +60,20 @@ namespace Vita.Domain.BankStatements.ReadModels
     {
       AggregateId = domainEvent.AggregateIdentity.Value;
       var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
-        x.Item1.Request.Id.ToString() == context.ReadModelId);
+        x.Key.Request.Id.ToString() == context.ReadModelId);
 
-      if (rm != null)
+      if (rm.Key!=null)
       {
         var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
         // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
         RequestId = id.Value;
         Category = CategoryType.BankingFinance.GetDescription();
-        SubCategory = rm.Item2.Classifier.SubCategory;
-        Description = rm.Item1.Request.Description;
-        Amount = Convert.ToDecimal(rm.Item1.Request.Amount);
+        SubCategory = rm.Value.Classifier.SubCategory;
+        Description = rm.Key.Request.Description;
+        Amount = Convert.ToDecimal(rm.Key.Request.Amount);
         Method = PredictionMethod.KeywordMatch;
-        TransactionUtcDate = rm.Item1.Request.TransactionUtcDate;
+        TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
       }
     }
   }

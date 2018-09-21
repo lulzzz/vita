@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,9 +28,8 @@ namespace Vita.Domain.BankStatements
         {
             var predictionRequests = requests as PredictionRequest[] ?? requests.ToArray();
             foreach (var request in predictionRequests)
-            {
-                if (request.Id == Guid.Empty) request.Id = Guid.NewGuid();
-            }
+                if (request.Id == Guid.Empty)
+                    request.Id = Guid.NewGuid();
 
             Emit(new BankStatementExtracted1Event
             {
@@ -41,7 +41,7 @@ namespace Vita.Domain.BankStatements
         public async Task PredictAsync(PredictBankStatement2Command command, IPredict predict)
         {
             var results = await predict.PredictManyAsync(State.PredictionRequests);
-            
+
             Emit(new BankStatementPredicted2Event
             {
                 PredictionResults = results
@@ -49,41 +49,32 @@ namespace Vita.Domain.BankStatements
             await Task.CompletedTask;
         }
 
-        public async Task TextMatchAsync(TextMatchBankStatement3Command command, ITextClassifier textClassifier)
+        public async Task TextMatchAsync(TextMatchBankStatement3Command command, ITextClassifier matcher)
         {
-            var unmatched = State.PredictionResults.Where(x => x.PredictedValue == Categories.Uncategorised);
-            var results = unmatched as PredictionResult[] ?? unmatched.ToArray();
-            Trace.WriteLine($"{this.Id} unmatched {results.Count()}");
+            var unmatched = State.PredictionResults.Where(x => x.PredictedValue == Categories.Uncategorised).ToArray();
 
-            var matched = new List<Tuple<PredictionResult, TextClassificationResult>>();
+            Trace.WriteLine($"{Id} unmatched {unmatched.Count()}");
 
-            var predictionResults = unmatched as PredictionResult[] ?? results.ToArray();
-            foreach (var x in predictionResults)
+            var matched = new ConcurrentDictionary<PredictionResult, TextClassificationResult>();
+
+            unmatched.AsParallel().ForAll(async predictionResult =>
             {
-                var result = await textClassifier.Match(x.Request.Description);
-                if (result.Classifier != null)
+                if (!matched.ContainsKey(predictionResult))
                 {
-                    matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
-                }
-                else
-                {
-                    result = await textClassifier.Match(x.Request.Description);
+                    var result = await matcher.Match(predictionResult.Request.Description);
                     if (result.Classifier != null)
                     {
-                        matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
+                        predictionResult.Method = PredictionMethod.KeywordMatch;
+                        matched.TryAdd(predictionResult, result);
                     }
                 }
-            }
+            });
 
-            foreach (var t in matched)
+            Trace.WriteLine($"{Id} matched {matched.Count()}");
+            Emit(new BankStatementTextMatched3Event
             {
-                t.Item1.Method = PredictionMethod.KeywordMatch;
-            }
-            Trace.WriteLine($"{this.Id} matched {matched.Count()}");
-            Emit(new BankStatementTextMatched3Event()
-            {
-                Unmatched = unmatched.Except(matched.Where(x=>x.Item1.PredictedValue!=Categories.Uncategorised).Select(x=>x.Item1)).ToList(),
-                Matched= matched
+                Unmatched = unmatched,
+                Matched = matched
             });
             await Task.CompletedTask;
         }

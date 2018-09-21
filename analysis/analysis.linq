@@ -34,7 +34,7 @@ void Main()
 {
 
 	var readModels = BankStatementReadModels.Where(x => x.TransactionUtcDate > FromUtcDateTime && x.TransactionUtcDate < ToUtcDateTime).ToList();
-
+	readModels.Count().Dump();
 	var cats = from p in readModels
 			   group p by p.Category
 	  into g
