@@ -61,7 +61,7 @@ namespace Vita.Domain.BankStatements
             {
                 item.Method = PredictionMethod.KeywordMatch;
                 var result = await matcher.Match(item.Request.Description);
-                if (result.Classifier != null)
+                if (result.Classifier != null && result.Classifier.SubCategory != Categories.Uncategorised)
                 {
                     matched.Add(new KeyValuePair<PredictionResult, TextClassificationResult>(item,result));
                 }

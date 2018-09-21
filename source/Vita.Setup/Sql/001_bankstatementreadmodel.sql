@@ -13,13 +13,12 @@ END
 GO
 
 CREATE TABLE [dbo].BankStatementReadModel(
-	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[AggregateId] [nvarchar](64) NOT NULL,
 	[CreatedUtcDate] [datetime] NOT NULL,
 	[ModifiedUtcDate] [datetime] NOT NULL,
 	[LastAggregateSequenceNumber] [int] NOT NULL,
 	-------------------------------------------------
-	[RequestId] [nvarchar](150) NULL,
+	[RequestId] [nvarchar](150) NOT NULL,
 	[Category] [nvarchar](100)  NULL,
 	[SubCategory] [nvarchar](100)  NULL,
 	[Description] [nvarchar](4000) NULL,
@@ -27,9 +26,9 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[Method] [nvarchar](100)  NULL,
 	[TransactionUtcDate] [datetime] NULL
 
-	CONSTRAINT [PK_BankStatementReadModel] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_BankStatementReadModel_RequestId] PRIMARY KEY CLUSTERED 
 	(
-		[Id] ASC
+		[RequestId] ASC
 	)
 )
 GO

@@ -14,10 +14,12 @@ namespace Vita.Domain.BankStatements
         public IEnumerable<PredictionRequest> PredictionRequests { get; set; }
         public IEnumerable<PredictionResult> PredictionResults { get; set; }
         public IList<KeyValuePair<PredictionResult, TextClassificationResult>> Matched { get; set; }
+        public IEnumerable<PredictionResult> Unmatched { get; set; }
 
         public void Apply(BankStatementExtracted1Event aggregateEvent)
         {
             PredictionRequests = aggregateEvent.PredictionRequests;
+            
         }
 
         public void Apply(BankStatementPredicted2Event aggregateEvent)
@@ -25,9 +27,10 @@ namespace Vita.Domain.BankStatements
             PredictionResults = aggregateEvent.PredictionResults;
         }
 
-        public void Apply(BankStatementTextMatched3Event aggregateEvent)
-        {
-            Matched = aggregateEvent.Matched;
-        }
+      public void Apply(BankStatementTextMatched3Event aggregateEvent)
+      {
+        Matched = aggregateEvent.Matched;
+        Unmatched = aggregateEvent.Unmatched;
+      }
     }
 }

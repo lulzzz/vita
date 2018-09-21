@@ -50,8 +50,11 @@ namespace Vita.Domain.BankStatements.ReadModels
         SubCategory = rm.PredictedValue;
         Description = rm.Request.Description;
         Amount = Convert.ToDecimal(rm.Request.Amount);
-        Method = rm.Method;
+        Method = PredictionMethod.MultiClassClassifier;
         TransactionUtcDate = rm.Request.TransactionUtcDate;
+      }  else
+      {
+        Logger.Warning($"bank statement read model BankStatementPredicted2Event failed {AggregateId}", AggregateId);
       }
     }
 
@@ -68,12 +71,16 @@ namespace Vita.Domain.BankStatements.ReadModels
         // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
 
         RequestId = id.Value;
-        Category = CategoryType.BankingFinance.GetDescription();
-        SubCategory = rm.Value.Classifier.SubCategory;
+        Category = CategoryTypeConverter.FromSubcategory(rm.Value.Classifier?.SubCategory).GetDescription();
+        SubCategory = rm.Value.Classifier?.SubCategory;
         Description = rm.Key.Request.Description;
         Amount = Convert.ToDecimal(rm.Key.Request.Amount);
         Method = PredictionMethod.KeywordMatch;
         TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
+      }
+      else
+      {
+        Logger.Warning($"bank statement read model BankStatementTextMatched3Event failed {AggregateId}", AggregateId);
       }
     }
   }
