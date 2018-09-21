@@ -59,7 +59,7 @@ namespace Vita.Domain.BankStatements.ReadModels
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
     {
       AggregateId = domainEvent.AggregateIdentity.Value;
-      var rm = domainEvent.AggregateEvent.ExactMatched.SingleOrDefault(x =>
+      var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
         x.Item1.Request.Id.ToString() == context.ReadModelId);
 
       if (rm != null)

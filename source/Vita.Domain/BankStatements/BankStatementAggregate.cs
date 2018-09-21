@@ -67,7 +67,7 @@ namespace Vita.Domain.BankStatements
                 }
                 else
                 {
-                    result = await textClassifier.Match(x.Request.Description,exact:false);
+                    result = await textClassifier.Match(x.Request.Description);
                     if (result.Classifier != null)
                     {
                         matched.Add(new Tuple<PredictionResult, TextClassificationResult>(x, result));
@@ -82,8 +82,8 @@ namespace Vita.Domain.BankStatements
             Trace.WriteLine($"{this.Id} matched {matched.Count()}");
             Emit(new BankStatementTextMatched3Event()
             {
-                Unmatched = predictionResults,
-                ExactMatched= matched
+                Unmatched = unmatched.Except(matched.Where(x=>x.Item1.PredictedValue!=Categories.Uncategorised).Select(x=>x.Item1)).ToList(),
+                Matched= matched
             });
             await Task.CompletedTask;
         }

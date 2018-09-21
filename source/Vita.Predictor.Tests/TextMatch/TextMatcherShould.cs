@@ -26,7 +26,7 @@ namespace Vita.Predictor.Tests.TextMatch
         [InlineData("advance", PaymentMethodType.CashWithdrawl)]
         public async Task Match_by_keyword(string sentence, PaymentMethodType pmt)
         {
-            var result = await Matcher.Match(sentence,false,true);
+            var result = await Matcher.Match(sentence,false);
 
             result.PaymentMethodType.Should().Be(pmt);
         }
@@ -59,7 +59,7 @@ namespace Vita.Predictor.Tests.TextMatch
             var ct = CategoryType.HealthBeauty;
             var sub = Categories.HealthBeauty.DoctorsDentist;
 
-            var result = await Matcher.Match(sentence,true,true);
+            var result = await Matcher.Match(sentence,true);
 
             Matcher.ClassifierCache.Count().Should().NotBe(0);
             Matcher.LocalityCache.Count().Should().NotBe(0);

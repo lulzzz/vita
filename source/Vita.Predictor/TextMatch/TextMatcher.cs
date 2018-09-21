@@ -28,10 +28,10 @@ namespace Vita.Predictor.TextMatch
             _matchHow = new MatchHow(Companies, Localities, Classifiers);
         }
 
-        public async Task<TextClassificationResult> Match(string sentence, bool classifyOnly = true, bool exact = true)
+        public async Task<TextClassificationResult> Match(string sentence, bool classifyOnly = true)
         {
             if (Guard(sentence)) return null;
-            Exact = exact;
+           
             var result = GetResult(classifyOnly);
 
             // fixes

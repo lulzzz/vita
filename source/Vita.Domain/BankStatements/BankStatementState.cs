@@ -27,7 +27,7 @@ namespace Vita.Domain.BankStatements
 
         public void Apply(BankStatementTextMatched3Event aggregateEvent)
         {
-            Matched = aggregateEvent.ExactMatched;
+            Matched = aggregateEvent.Matched;
         }
     }
 }

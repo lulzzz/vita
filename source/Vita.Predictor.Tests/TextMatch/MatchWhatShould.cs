@@ -20,7 +20,7 @@ namespace Vita.Predictor.Tests.TextMatch
         [InlineData("card reversal", TransactionType.Reversal)]
         public async Task Match_what(string sentence, TransactionType? tt)
         {
-            var result = await Matcher.Match(sentence, false, true);
+            var result = await Matcher.Match(sentence, false);
             result.TransactionType.Should().Be(tt);
         }
 
