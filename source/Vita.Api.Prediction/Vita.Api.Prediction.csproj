@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="0.5.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.21" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.22" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vita.Contracts\Vita.Contracts.csproj" />

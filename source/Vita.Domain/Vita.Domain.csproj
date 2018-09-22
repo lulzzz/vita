@@ -38,10 +38,10 @@
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="GoogleApi" Version="3.6.12" />
     <PackageReference Include="LiteDB" Version="4.1.4" />
-    <PackageReference Include="MassTransit.Autofac" Version="5.1.4" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.4" />
-    <PackageReference Include="Microsoft.Azure.DocumentDB" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.0.0" />
+    <PackageReference Include="MassTransit.Autofac" Version="5.1.5" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.Azure.DocumentDB.TransientFaultHandling" Version="1.5.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Search" Version="5.0.2" />

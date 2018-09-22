@@ -102,7 +102,6 @@
   <Namespace>Serilog</Namespace>
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
-  <Namespace>Vita.Contracts.SubCategories</Namespace>
 </Query>
 
 const string PlacePath = @"D:\Dropbox\Dropbox (Personal)\Red-Trout\chargeid\data\Place.db";

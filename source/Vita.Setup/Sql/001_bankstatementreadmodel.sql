@@ -18,7 +18,7 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[ModifiedUtcDate] [datetime] NOT NULL,
 	[LastAggregateSequenceNumber] [int] NOT NULL,
 	-------------------------------------------------
-	[RequestId] [nvarchar](150) NOT NULL,
+	[RequestId] [nvarchar](150) NOT NULL default newsequentialid(),
 	[Category] [nvarchar](100)  NULL,
 	[SubCategory] [nvarchar](100)  NULL,
 	[Description] [nvarchar](4000) NULL,
@@ -36,7 +36,7 @@ GO
 
 IF EXISTS (SELECT * FROM sys.indexes WHERE name='UQ_BankStatementReadModel' AND object_id = OBJECT_ID(N'BankStatementReadModel'))
 BEGIN
-  DROP TABLE [dbo].[BankStatementReadModel]
+  DROP INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
 END
 
 CREATE UNIQUE NONCLUSTERED INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
