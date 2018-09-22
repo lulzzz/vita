@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using EventFlow.Aggregates;
-using EventFlow.Core;
 using Vita.Contracts;
 
 namespace Vita.Domain.BankStatements.Events

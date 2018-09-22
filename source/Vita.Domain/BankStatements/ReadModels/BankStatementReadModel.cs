@@ -16,11 +16,11 @@ namespace Vita.Domain.BankStatements.ReadModels
 {
   [Table("BankStatementReadModel")]
   public class BankStatementReadModel : ReadModelBase, IReadModel,
+    IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event>,
     IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event>,
     IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
   {
-    [SqlReadModelIdentityColumn] 
-    public string RequestId { get; set; }
+    [SqlReadModelIdentityColumn] public string RequestId { get; set; }
 
     public string Category { get; set; }
     public string SubCategory { get; set; }
@@ -32,6 +32,29 @@ namespace Vita.Domain.BankStatements.ReadModels
     //public IEnumerable<PredictionResult> PredictionResults { get; set; }
     //public IEnumerable<PredictionResult> Unmatched { get; set; }
     //public Dictionary<Guid,TextClassificationResult> Matched { get; set; }
+
+    public void Apply(IReadModelContext context,
+      IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementExtracted1Event> domainEvent)
+    {
+      AggregateId = domainEvent.AggregateIdentity.Value;
+
+      var rm = domainEvent.AggregateEvent.PredictionRequests.SingleOrDefault(x =>
+        x.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
+      if (rm == null)
+      {
+        Logger.Warning($"read model not found {context.ReadModelId}");
+        return;
+      }
+
+      var id = context.ReadModelId;
+      RequestId = id;
+      Category = CategoryType.Uncategorised.GetDescription();
+      SubCategory = SubCategories.Uncategorised;
+      Description = rm.Description;
+      Amount = Convert.ToDecimal(rm.Amount);
+      Method = PredictionMethod.MultiClassClassifier;
+      TransactionUtcDate = rm.TransactionUtcDate;
+    }
 
     public void Apply(IReadModelContext context,
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent)
@@ -68,13 +91,18 @@ namespace Vita.Domain.BankStatements.ReadModels
       IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
     {
       AggregateId = domainEvent.AggregateIdentity.Value;
-      var rm = domainEvent.AggregateEvent.Matched.Single(x =>
+      var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
         x.Key.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
-
-      if (rm.Value.Classifier.SubCategory == SubCategories.Uncategorised)
-        Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
+      if (rm.Key == null)
+      {
+        Logger.Warning($"read model not found {context.ReadModelId}");
+        return;
+      }
 
       var subcategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
+
+      if (subcategory == SubCategories.Uncategorised)
+        Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
 
       var id = context.ReadModelId;
       if (string.IsNullOrEmpty(id))

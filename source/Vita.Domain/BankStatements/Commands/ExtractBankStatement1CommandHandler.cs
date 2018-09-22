@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EventFlow.Commands;
@@ -37,9 +38,12 @@ namespace Vita.Domain.BankStatements.Commands
             }
 
             var result = await _bankStatementService.LoginFetchAllAsync(bankName, bank);
-            var request = result.ToPredictionRequests();
+            var request = result.ToPredictionRequests().ToArray();
+            if (request.Any(x => x == null)) throw new ApplicationException();  
+            if (request.Any(x => string.IsNullOrEmpty(x.Description))) throw new ApplicationException();
 
-            await aggregate.ExtractBankStatementAsync(command,request);
+            var data = request.Take(100).ToList();
+            await aggregate.ExtractBankStatementAsync(command,data);
         }
     }
 }

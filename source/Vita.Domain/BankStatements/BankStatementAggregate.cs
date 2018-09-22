@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using EventFlow.Aggregates;
-using EventFlow.Core;
 using Vita.Contracts;
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Events;
@@ -26,32 +25,28 @@ namespace Vita.Domain.BankStatements
       IEnumerable<PredictionRequest> requests)
     {
       var predictionRequests = requests as PredictionRequest[] ?? requests.ToArray();
-      if (predictionRequests.Any(x => x == null))
+      if (predictionRequests.Any(x => x == null)) throw new ApplicationException();
+      var ev = new BankStatementExtracted1Event
       {
-        throw new ApplicationException();
-      }
-
-      Emit(new BankStatementExtracted1Event
-      {
-        PredictionRequests = predictionRequests,
-        SourceId = command.SourceId
-      });
+        PredictionRequests = predictionRequests
+      };
+      Emit(ev);
+      ApplyEvent(ev);
       await Task.CompletedTask;
     }
 
     public async Task PredictAsync(PredictBankStatement2Command command, IPredict predict)
     {
       var results = await predict.PredictManyAsync(State.PredictionRequests);
-
-      if (results.Any(x => x == null))
+     
+      var predictionResults = results as PredictionResult[] ?? results.ToArray();
+      if (predictionResults.Any(x => x == null)) throw new ApplicationException();
+      var ev = new BankStatementPredicted2Event
       {
-        throw new ApplicationException();
-      }
-
-      Emit(new BankStatementPredicted2Event
-      {
-        PredictionResults = results
-      });
+        PredictionResults = predictionResults
+      };
+      Emit(ev);
+      ApplyEvent(ev);
       await Task.CompletedTask;
     }
 
@@ -68,15 +63,19 @@ namespace Vita.Domain.BankStatements
         item.Method = PredictionMethod.KeywordMatch;
         var result = await matcher.Match(item.Request.Description);
         if (result.Classifier != null && result.Classifier.SubCategory != SubCategories.Uncategorised)
+        {
           matched.Add(new KeyValuePair<PredictionResult, TextClassificationResult>(item, result));
+        }
       }
 
       Trace.WriteLine($"{Id} matched {matched.Count()}");
-      Emit(new BankStatementTextMatched3Event
+      var ev = new BankStatementTextMatched3Event
       {
         Unmatched = unmatched,
         Matched = matched
-      });
+      };
+      Emit(ev);
+      ApplyEvent(ev);
       await Task.CompletedTask;
     }
   }
