@@ -39,7 +39,6 @@ namespace Vita.Domain.BankStatements.Commands
             var result = await _bankStatementService.LoginFetchAllAsync(bankName, bank);
             var request = result.ToPredictionRequests();
 
-
             await aggregate.ExtractBankStatementAsync(command,request);
         }
     }

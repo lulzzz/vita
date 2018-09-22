@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -146,7 +147,7 @@ namespace Vita.Predictor
         public async Task<IEnumerable<PredictionResult>> PredictManyAsync(IEnumerable<PredictionRequest> requests)
         {
             var results = new List<PredictionResult>();
-            foreach (var item in requests)
+            foreach (var item in requests.Where(x=>x!=null))
             {
                 var result = new PredictionResult
                 {

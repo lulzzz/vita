@@ -22,6 +22,7 @@ namespace Vita.Domain.BankStatements
                 {
                     var pr = new PredictionRequest
                     {
+                        Id = Guid.NewGuid(),
                         Description = item.Text,
                         AccountType = AccountTypeConverter.Convert(account.AccountType),
                         Amount = item.Amount,

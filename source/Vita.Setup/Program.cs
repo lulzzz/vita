@@ -80,31 +80,31 @@ namespace Vita.Setup
             Consoler.ShowHeader("Vita Build Tools", sb.ToString());
         }
 
-        public static void ShowHelpAndExit(bool noPrompt = false)
+        public static void ShowHelpAndExit(bool prompt = false)
         {
             Consoler.Title("Usage:");
             Consoler.Write("/help\t\t\tShow help");
             Consoler.Write("Examples:");
             Consoler.Write(@"see scripts/database folder");
             Consoler.Write("");
-            ShowPauseAndExit(noPrompt);
+            ShowPauseAndExit(prompt);
         }
 
-        public static void ShowCompletedAndExit(bool noPrompt = false)
+        public static void ShowCompletedAndExit(bool prompt = false)
         {
-            Consoler.Success(noPrompt);
+            Consoler.Success(prompt);
             Environment.Exit(0);
         }
 
-        public static void ShowErrorAndExit(Exception e, bool noPrompt = false)
+        public static void ShowErrorAndExit(Exception e, bool prompt = false)
         {
-            Consoler.ShowError(e, noPrompt);
+            Consoler.ShowError(e, prompt);
             Environment.Exit(1);
         }
 
-        public static void ShowPauseAndExit(bool noPrompt = false)
+        public static void ShowPauseAndExit(bool prompt = false)
         {
-            Consoler.Pause(noPrompt);
+            Consoler.Pause(prompt);
             Environment.Exit(0);
         }
     }

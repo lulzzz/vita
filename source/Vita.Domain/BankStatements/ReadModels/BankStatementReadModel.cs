@@ -19,7 +19,8 @@ namespace Vita.Domain.BankStatements.ReadModels
     IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event>,
     IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
   {
-    [SqlReadModelIdentityColumn] public string RequestId { get; set; }
+    [SqlReadModelIdentityColumn] 
+    public string RequestId { get; set; }
 
     public string Category { get; set; }
     public string SubCategory { get; set; }
@@ -48,6 +49,12 @@ namespace Vita.Domain.BankStatements.ReadModels
       var id = context.ReadModelId;
       var subcategory = GetSubCategory(rm.PredictedValue);
 
+      if (string.IsNullOrEmpty(id))
+      {
+        Logger.Warning($"read model no id found {context.ReadModelId}");
+        return;
+      }
+
       RequestId = id;
       Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
       SubCategory = GetSubCategory(subcategory);
@@ -70,6 +77,12 @@ namespace Vita.Domain.BankStatements.ReadModels
       var subcategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
 
       var id = context.ReadModelId;
+      if (string.IsNullOrEmpty(id))
+      {
+        Logger.Warning($"read model no id found {context.ReadModelId}");
+        return;
+      }
+
       RequestId = id;
       Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
       SubCategory = subcategory;
