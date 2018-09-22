@@ -25,7 +25,7 @@ namespace Vita.Domain.BankStatements
                         Id = Guid.NewGuid(),
                         Description = item.Text,
                         AccountType = AccountTypeConverter.Convert(account.AccountType),
-                        Amount = Convert.ToDecimal(item.Amount),
+                        Amount = Convert.ToDouble(item.Amount),
                         Bank = account.Institution,
                         TransactionUtcDate = item.DateObj.Date.UtcDateTime
                     };

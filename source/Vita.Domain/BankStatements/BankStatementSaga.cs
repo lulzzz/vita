@@ -81,12 +81,11 @@ namespace Vita.Domain.BankStatements
 
         public void Apply(BankStatementSagaExtractedEvent aggregateEvent)
         {
-      
+            
         }
 
         public void Apply(BankStatementSagaPredictedEvent aggregateEvent)
         {
-      
         }
 
         public void Apply(BankStatementSagaTextMatchedEvent aggregateEvent)

@@ -6,51 +6,43 @@ using Vita.Domain.BankStatements.Events;
 
 namespace Vita.Domain.BankStatements.ReadModels
 {
-  /// <summary>
-  ///   https://github.com/eventflow/EventFlow/issues/502
-  /// </summary>
-  public class BankStatementReadModelLocator : IReadModelLocator
-  {
-    public IEnumerable<string> GetReadModelIds(IDomainEvent domainEvent)
+    /// <summary>
+    ///     https://github.com/eventflow/EventFlow/issues/502
+    /// </summary>
+    public class BankStatementReadModelLocator : IReadModelLocator
     {
-      var aggregateEvent = domainEvent.GetAggregateEvent();
-      switch (aggregateEvent)
-      {
-        case BankStatementExtracted1Event pe:
+        public IEnumerable<string> GetReadModelIds(IDomainEvent domainEvent)
         {
-            foreach (var req  in pe.PredictionRequests)
+            var aggregateEvent = domainEvent.GetAggregateEvent();
+            switch (aggregateEvent)
             {
-                yield return BankStatementLineItemId.With(req.Id).ToString();
-            }
+                case BankStatementExtracted1Event pe:
+                {
+                    foreach (var id in pe.PredictionRequests.Select(x => x.Id).Distinct())
+                        yield return BankStatementLineItemId.With(id).ToString();
 
-            break;
+                    break;
+                }
+
+                case BankStatementPredicted2Event pe:
+                {
+                    foreach (var req in pe.PredictionResults.Select(x => x.Request.Id).Distinct())
+                        yield return BankStatementLineItemId.With(req).ToString();
+
+                    break;
+                }
+
+                case BankStatementTextMatched3Event pe:
+                {
+                    foreach (var req in pe.Matched.Select(x => x.Key.Request.Id).Distinct())
+                        yield return BankStatementLineItemId.With(req).ToString();
+
+                    foreach (var req in pe.Unmatched.Select(x => x.Request.Id).Distinct())
+                        yield return BankStatementLineItemId.With(req).ToString();
+
+                    break;
+                }
+            }
         }
-
-        case BankStatementPredicted2Event pe:
-        {
-            foreach (var req  in pe.PredictionResults)
-            {
-                yield return BankStatementLineItemId.With(req.Request.Id).ToString();
-            }
-
-            break;
-        }
-
-        case BankStatementTextMatched3Event pe:
-        {
-            foreach (var req  in pe.Matched)
-            {
-                yield return BankStatementLineItemId.With(req.Key.Request.Id).ToString();
-            }
-
-            foreach (var req  in pe.Unmatched)
-            {
-                yield return BankStatementLineItemId.With(req.Request.Id).ToString();
-            }
-
-            break;
-        }
-      }
     }
-  }
 }

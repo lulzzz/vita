@@ -1,25 +1,38 @@
-﻿using EventFlow.Entities;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using EventFlow.Aggregates;
+using EventFlow.Entities;
+using EventFlow.MsSql.ReadStores.Attributes;
+using EventFlow.ReadStores;
 using Vita.Contracts;
+using Vita.Domain.BankStatements.Events;
+using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Domain.BankStatements.ReadModels
 {
-    public class BankStatementLineItemReadModel : Entity<BankStatementLineItemId>
+    [Table("BankStatementReadModel")]
+    public class BankStatementLineItemReadModel  : ReadModelBase, IReadModel,
+        IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event>,
+        IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
     {
-        public string RequestId { get; set; }
-        public CategoryType Category { get; set; }
+        [MsSqlReadModelIdentityColumn] public string RequestId { get; set; }
+
+        public string Category { get; set; }
         public string SubCategory { get; set; }
         public string Description { get; set; }
-        public decimal Amount { get; }
+        public decimal Amount { get; set; }
+        public PredictionMethod Method { get; set; }
+        public DateTime? TransactionUtcDate { get; set; }
 
 
-        public BankStatementLineItemReadModel(BankStatementLineItemId id,
-            CategoryType category, string subCategory, string description, decimal amount) : base(id)
+        public void Apply(IReadModelContext context, IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent)
         {
-            RequestId = id.Value;
-            Category = category;
-            SubCategory = subCategory;
-            Description = description;
-            Amount = amount;
+             
+        }
+
+        public void Apply(IReadModelContext context, IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
+        {
+             
         }
     }
 }

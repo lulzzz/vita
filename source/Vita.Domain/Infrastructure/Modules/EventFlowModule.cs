@@ -57,8 +57,8 @@ namespace Vita.Domain.Infrastructure.Modules
                     .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(Constant.ConnectionString))
                     .UseMssqlEventStore()
                     .UseReadModels()
-                    .UseMssqlReadModelFor<BankStatementAggregate, BankStatementId, BankStatementReadModel>()
-                    .UseMssqlReadModel<BankStatementReadModel, BankStatementReadModelLocator>()
+                   // .UseMssqlReadModelFor<BankStatementAggregate, BankStatementId, BankStatementReadModel>()  - aggregate
+                    .UseMssqlReadModel<BankStatementReadModel, BankStatementReadModelLocator>() // this is per prediction for the read model
                     .AddCommandHandlers()
                     .AddMetadataProviders()
                 //.AddMetadataProvider<AddGuidMetadataProvider>()

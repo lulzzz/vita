@@ -22,7 +22,7 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[RequestId] [nvarchar](150) NULL,
 	[Category] [nvarchar](100)  NULL,
 	[SubCategory] [nvarchar](100)  NULL,
-	[Description] [nvarchar](4000) NULL,
+	[Description] [nvarchar](1000) NULL,
 	[Amount]  [decimal](18, 2) NULL,
 	[Method] [nvarchar](100)  NULL,
 	[TransactionUtcDate] [datetime] NULL
@@ -54,6 +54,7 @@ END
 CREATE UNIQUE NONCLUSTERED INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
 (
 	[SubCategory] ASC,
+	[Description] ASC,
 	[Amount] ASC,
 	[TransactionUtcDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]

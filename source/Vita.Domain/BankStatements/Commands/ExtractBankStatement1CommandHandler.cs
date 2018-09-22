@@ -40,14 +40,12 @@ namespace Vita.Domain.BankStatements.Commands
       }
 
       var result = await _bankStatementService.LoginFetchAllAsync(bankName, bank);
-      var request = result.ToPredictionRequests().ToArray();
-      if (request.Any(x => x == null)) throw new ApplicationException();
-      if (request.Any(x => string.IsNullOrEmpty(x.Description))) throw new ApplicationException();
-
-      var data = request.Take(100).ToList();
+      var requests = result.ToPredictionRequests().ToArray();
+      if (requests.Any(x => x == null)) throw new ApplicationException();
+      if (requests.Any(x => string.IsNullOrEmpty(x.Description))) throw new ApplicationException();
       try
       {
-        await aggregate.ExtractBankStatementAsync(command, data);
+        await aggregate.ExtractBankStatementAsync(command, requests);
       }
       catch (Exception e)
       {
