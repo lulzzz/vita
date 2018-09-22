@@ -18,22 +18,37 @@ namespace Vita.Domain.BankStatements.ReadModels
       {
         case BankStatementExtracted1Event pe:
         {
-          foreach (var message in pe.PredictionRequests.Where(x =>
-            !string.IsNullOrEmpty(x.Description))) yield return message.Id.ToString();
-          break;
+            foreach (var req  in pe.PredictionRequests)
+            {
+                yield return BankStatementLineItemId.With(req.Id).ToString();
+            }
+
+            break;
         }
 
-        case BankStatementPredicted2Event predicted2Event:
+        case BankStatementPredicted2Event pe:
         {
-          foreach (var message in predicted2Event.PredictionResults.Where(x =>
-            !string.IsNullOrEmpty(x.Request.Description))) yield return message.Request.Id.ToString();
-          break;
+            foreach (var req  in pe.PredictionResults)
+            {
+                yield return BankStatementLineItemId.With(req.Request.Id).ToString();
+            }
+
+            break;
         }
 
-        case BankStatementTextMatched3Event textMatched3Event:
+        case BankStatementTextMatched3Event pe:
         {
-          foreach (var message in textMatched3Event.Matched) yield return message.Key.Request.Id.ToString();
-          break;
+            foreach (var req  in pe.Matched)
+            {
+                yield return BankStatementLineItemId.With(req.Key.Request.Id).ToString();
+            }
+
+            foreach (var req  in pe.Unmatched)
+            {
+                yield return BankStatementLineItemId.With(req.Request.Id).ToString();
+            }
+
+            break;
         }
       }
     }

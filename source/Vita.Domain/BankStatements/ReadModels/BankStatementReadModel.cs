@@ -40,10 +40,10 @@ namespace Vita.Domain.BankStatements.ReadModels
 
             var rm = domainEvent.AggregateEvent.PredictionResults.Single(x => x.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
 
-            var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+            var id = context.ReadModelId;
             string subcategory = GetSubCategory(rm.PredictedValue);
 
-            RequestId = id.Value;
+            RequestId = id;
             Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
             SubCategory = GetSubCategory(subcategory);
             Description = rm.Request.Description;
@@ -63,8 +63,8 @@ namespace Vita.Domain.BankStatements.ReadModels
 
             string subcategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
 
-            var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
-            RequestId = id.Value;
+            var id = context.ReadModelId;
+            RequestId = id;
             Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
             SubCategory = subcategory;
             Description = rm.Key.Request.Description;
