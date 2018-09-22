@@ -25,11 +25,17 @@ namespace Vita.Domain.BankStatements
                         Id = Guid.NewGuid(),
                         Description = item.Text,
                         AccountType = AccountTypeConverter.Convert(account.AccountType),
-                        Amount = item.Amount,
+                        Amount = Convert.ToDecimal(item.Amount),
                         Bank = account.Institution,
                         TransactionUtcDate = item.DateObj.Date.UtcDateTime
                     };
-                    list.Add(pr);
+
+                    if (!list.Any(x =>
+                        x.Description == pr.Description && x.Amount == pr.Amount &&
+                        x.TransactionUtcDate == pr.TransactionUtcDate))
+                    {
+                        list.Add(pr);
+                    }
                 }                
             }
 

@@ -86,7 +86,7 @@ namespace Vita.Domain.Infrastructure
                 item.AccountName = pb.AccountName;
                 //item.AccountNumber = pb.AccountNumber;
                 item.Description = pb.Description;
-                item.Amount = Convert.ToDouble(pb.Amount);
+                item.Amount = Convert.ToDecimal(pb.Amount);
                 item.Tags = pb.Tags;
                 item.Notes = pb.Tags;
                 //  item.TransactionUtcDate =  FromPlace.ToDateTime(pb.Date);

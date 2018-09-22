@@ -19,7 +19,7 @@ CREATE TABLE [dbo].BankStatementReadModel(
 	[ModifiedUtcDate] [datetime] NOT NULL,
 	[LastAggregateSequenceNumber] [int] NOT NULL,
 	-------------------------------------------------
-	[RequestId] [nvarchar](150) NOT NULL,
+	[RequestId] [nvarchar](150) NULL,
 	[Category] [nvarchar](100)  NULL,
 	[SubCategory] [nvarchar](100)  NULL,
 	[Description] [nvarchar](4000) NULL,

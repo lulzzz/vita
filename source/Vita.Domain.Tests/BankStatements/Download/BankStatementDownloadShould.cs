@@ -94,7 +94,7 @@ namespace Vita.Domain.Tests.BankStatements.Download
       var result = acc.First().StatementData.Details.FirstOrDefault(x => x.Text == text);
 
       result.Text.Should().Be(text);
-      result.Amount.Should().Be(112.48);
+      result.Amount.Should().Be(112.48m);
       result.Type.Should().Be(TypeEnum.Debit);
       result.Balance.Should().Be(726.56);
       result.Date.Should().Be(("23-04-2018"));

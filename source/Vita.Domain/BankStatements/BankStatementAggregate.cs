@@ -31,7 +31,6 @@ namespace Vita.Domain.BankStatements
         PredictionRequests = predictionRequests
       };
       Emit(ev);
-      ApplyEvent(ev);
       await Task.CompletedTask;
     }
 
@@ -46,7 +45,7 @@ namespace Vita.Domain.BankStatements
         PredictionResults = predictionResults
       };
       Emit(ev);
-      ApplyEvent(ev);
+      
       await Task.CompletedTask;
     }
 
@@ -75,7 +74,7 @@ namespace Vita.Domain.BankStatements
         Matched = matched
       };
       Emit(ev);
-      ApplyEvent(ev);
+     
       await Task.CompletedTask;
     }
   }

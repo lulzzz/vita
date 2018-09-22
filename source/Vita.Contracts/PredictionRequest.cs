@@ -8,7 +8,7 @@ namespace Vita.Contracts
         public string Description { get; set; }
         public string Bank { get; set; }
 
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
         //public string AccountName { get; set; }
         //public string Notes { get; set; }

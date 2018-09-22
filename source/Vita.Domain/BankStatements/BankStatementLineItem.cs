@@ -17,7 +17,7 @@ namespace Vita.Domain.BankStatements
 
     [Column(ordinal: "2")] public string Bank;
 
-    [Column(ordinal: "3")] public double Amount;
+    [Column(ordinal: "3")] public decimal Amount;
 
     [Column(ordinal: "4")] public string AccountName;
 

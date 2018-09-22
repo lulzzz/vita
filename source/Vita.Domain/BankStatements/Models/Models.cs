@@ -658,7 +658,7 @@ namespace Vita.Domain.BankStatements.Models
     public object HashText { get; set; }
 
     [JsonProperty("amount")]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     [JsonProperty("type")]
     public TypeEnum Type { get; set; }
