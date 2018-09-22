@@ -22,21 +22,21 @@ namespace Vita.Domain.BankStatements.Utility
 
         private static void AddJsonNetRootAttribute(XmlDocument xml)
         {
-            var jsonNS = xml.CreateAttribute("xmlns", "json", "http://www.w3.org/2000/xmlns/");
-            jsonNS.Value = "http://james.newtonking.com/projects/json";
-            xml.DocumentElement.SetAttributeNode(jsonNS);
+            var jsonNs = xml.CreateAttribute("xmlns", "json", "http://www.w3.org/2000/xmlns/");
+            jsonNs.Value = "http://james.newtonking.com/projects/json";
+            xml.DocumentElement?.SetAttributeNode(jsonNs);
         }
 
         private static void AddJsonArrayAttributesForXPath(string xpath, XmlDocument doc)
         {
             var elements = doc.SelectNodes(xpath);
+            if (elements == null) return;
             foreach (var element in elements)
             {
-                var el = element as XmlElement;
-                if (el != null)
+                if (element is XmlElement el)
                 {
-
-                    var jsonArray = doc.CreateAttribute("json", "Array", "http://james.newtonking.com/projects/json");
+                    var jsonArray =
+                        doc.CreateAttribute("json", "Array", "http://james.newtonking.com/projects/json");
                     jsonArray.Value = "true";
                     el.SetAttributeNode(jsonArray);
                 }

@@ -20,7 +20,7 @@ namespace Vita.Domain.Infrastructure
                 foreach (var m in modules)
                     builder.RegisterModule(m);
 
-            builder.RegisterConsumers(Assembly.GetAssembly(typeof(ChargeClassifier)));
+            builder.RegisterConsumers(Assembly.GetAssembly(typeof(ChargeAggregate)));
             if (ass != null) builder.RegisterConsumers(ass);
 
             return builder;
