@@ -19,13 +19,17 @@ namespace Vita.Domain.Infrastructure.EventFlow
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentException(id);
 
+            if (Guid.TryParse(id, out Guid result))
+            {
+                return result;
+            }
+
             var splits = id.Split(Convert.ToChar("-"));
 
             if (splits.Length > 2)
             {
                 var str = $"{splits[1]}{splits[2]}{splits[3]}{splits[4]}{splits[5]}";
-                Guid guid = Guid.Empty;
-                if (Guid.TryParse(str, out guid))
+                if (Guid.TryParse(str, out var guid))
                 {
                     return guid;
                 }

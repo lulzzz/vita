@@ -38,56 +38,39 @@ namespace Vita.Domain.BankStatements.ReadModels
         {
             AggregateId = domainEvent.AggregateIdentity.Value;
 
-            var rm = domainEvent.AggregateEvent.PredictionResults.SingleOrDefault(x =>
-                x.Request.Id.ToString() == context.ReadModelId);
+            var rm = domainEvent.AggregateEvent.PredictionResults.Single(x => x.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
 
-            if (rm != null)
-            {
-                var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
-                // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
+            var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+            string subcategory = GetSubCategory(rm.PredictedValue);
 
-                RequestId = id.Value;
-                Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue).GetDescription();
-                SubCategory = GetSubCategory(rm.PredictedValue);
-                Description = rm.Request.Description;
-                Amount = Convert.ToDecimal(rm.Request.Amount);
-                Method = PredictionMethod.MultiClassClassifier;
-                TransactionUtcDate = rm.Request.TransactionUtcDate;
-            }
-            else
-            {
-                Logger.Warning($"bank statement read model BankStatementPredicted2Event failed {AggregateId}",
-                    AggregateId);
-            }
+            RequestId = id.Value;
+            Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
+            SubCategory = GetSubCategory(subcategory);
+            Description = rm.Request.Description;
+            Amount = Convert.ToDecimal(rm.Request.Amount);
+            Method = PredictionMethod.MultiClassClassifier;
+            TransactionUtcDate = rm.Request.TransactionUtcDate;
         }
 
         public void Apply(IReadModelContext context,
             IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
         {
             AggregateId = domainEvent.AggregateIdentity.Value;
-            var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
-                x.Key.Request.Id.ToString() == context.ReadModelId);
+            var rm = domainEvent.AggregateEvent.Matched.Single(x => x.Key.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
 
-            if (rm.Key != null)
-            {
-                if (rm.Value.Classifier.SubCategory == SubCategories.Uncategorised)
-                    Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
+            if (rm.Value.Classifier.SubCategory == SubCategories.Uncategorised)
+                Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
 
-                var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
-                RequestId = id.Value;
-                Category = CategoryTypeConverter.FromSubcategory(rm.Value.Classifier?.SubCategory).GetDescription();
-                SubCategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
-                Description = rm.Key.Request.Description;
-                Amount = Convert.ToDecimal(rm.Key.Request.Amount);
-                Method = PredictionMethod.KeywordMatch;
-                TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
-            }
-            else
-            {
-                Logger.Warning($"bank statement read model BankStatementTextMatched3Event failed {AggregateId}",
-                    AggregateId);
-                Debug.Fail("request id not found");
-            }
+            string subcategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
+
+            var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+            RequestId = id.Value;
+            Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
+            SubCategory = subcategory;
+            Description = rm.Key.Request.Description;
+            Amount = Convert.ToDecimal(rm.Key.Request.Amount);
+            Method = PredictionMethod.KeywordMatch;
+            TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
         }
 
 
@@ -96,6 +79,8 @@ namespace Vita.Domain.BankStatements.ReadModels
             if (CategoryTypeConverter.IsValidSubCategory(text)) return text;
 
             if (text == SubCategories.Uncategorised) return text;
+
+            if (text.ToLower() == "wages") return SubCategories.Income.SalaryWages;
 
             throw new ApplicationException($"not valid subcategory: {text}");
         }

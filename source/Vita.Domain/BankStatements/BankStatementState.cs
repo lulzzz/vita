@@ -19,7 +19,7 @@ namespace Vita.Domain.BankStatements
         public void Apply(BankStatementExtracted1Event aggregateEvent)
         {
             PredictionRequests = aggregateEvent.PredictionRequests;
-            
+
         }
 
         public void Apply(BankStatementPredicted2Event aggregateEvent)
