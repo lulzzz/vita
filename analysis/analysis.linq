@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>2ebabf6f-d96f-4153-9675-7a230f7e370b</ID>
+    <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>Vita</Database>
@@ -22,7 +22,6 @@
   <Namespace>Newtonsoft.Json.Serialization</Namespace>
   <Namespace>Vita.Contracts</Namespace>
   <Namespace>Vita.Contracts.ChargeId</Namespace>
-  <Namespace>Vita.Contracts.SubCategories</Namespace>
   <Namespace>Vita.Domain.Infrastructure</Namespace>
 </Query>
 
@@ -60,7 +59,7 @@ void Main()
 
 	subs.Dump("subs");
 
-	var unmatched = readModels.Where(x=>x.SubCategory == Categories.Uncategorised).Dump("unmatched");
+	var unmatched = readModels.Where(x=>x.SubCategory == SubCategories.Uncategorised).Dump("unmatched");
 	var unmatchedtotal = from p in  unmatched
 			   group p by p.SubCategory
 	  into g
@@ -75,9 +74,15 @@ void Main()
 
 	unmatched
 	.Select(x => new {AggregateId = x.AggregateId, RequestId = x.RequestId, Description = x.Description.ToLower(),Amount=x.Amount, x.TransactionUtcDate})
-	.OrderBy(x=>x.Description)
-	.Dump("unmatched");
+	.OrderBy(x=>x.Description);
 	
 	unmatchedtotal.Dump("unmatched-totals");
+	
+	
+	readModels.Where(x=>x.Category == CategoryType.Income.GetDescription()).Dump("income");
+	
+	readModels
+	.Where(x=>x.Amount > 400)
+	.Dump("read-models");
 
 }

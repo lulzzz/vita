@@ -4,7 +4,7 @@ namespace Vita.Contracts
 {
     public class PredictionRequest
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Description { get; set; }
         public string Bank { get; set; }
 
@@ -17,10 +17,5 @@ namespace Vita.Contracts
 
         //public string AccountNumber { get; set; }
         public DateTime TransactionUtcDate { get; set; }
-
-        public static PredictionRequest New()
-        {
-            return new PredictionRequest {Id = Guid.NewGuid()};
-        }
     }
 }

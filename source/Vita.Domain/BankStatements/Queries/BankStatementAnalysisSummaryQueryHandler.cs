@@ -9,9 +9,7 @@ using EventFlow.EventStores;
 using EventFlow.MsSql;
 using EventFlow.Queries;
 using EventFlow.ReadStores;
-using ExtensionMinder;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.ReadModels;
 using Vita.Domain.Infrastructure;
 
@@ -77,7 +75,7 @@ namespace Vita.Domain.BankStatements.Queries
         BankStatementId = query.BankStatementId.Value,
         CategoryTotals = new ConcurrentDictionary<string, decimal>(),
         SubCategoryTotals = new ConcurrentDictionary<string, decimal>(),
-        Unmatched = readModels.Where(x=>x.SubCategory == Categories.Uncategorised)
+        Unmatched = readModels.Where(x=>x.SubCategory == SubCategories.Uncategorised)
             .Select(x=>x.Description)
             .ToList()
       };

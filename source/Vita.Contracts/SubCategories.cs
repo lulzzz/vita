@@ -1,7 +1,7 @@
-﻿namespace Vita.Contracts.SubCategories
+﻿namespace Vita.Contracts
 {
 
-  public static class Categories
+  public static class SubCategories
   {
       public const string Uncategorised = "Uncategorised";
 

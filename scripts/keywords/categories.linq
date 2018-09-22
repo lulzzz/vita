@@ -48,52 +48,38 @@
 
 void Main()
 {
-	PrintFactory();
+	//PrintCategories();
 	
+	//PrintSubCategories();
 	
+	//PrintFactory();
 	
-
-}
-
-void PrintFactory()
-{
-	var data = new Vita.Predictor.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
-	var cats = data.GroupBy(item => item.CategoryType)
-		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
-		.ToList();
-	cats.Dump();
-	var sb = new StringBuilder();
-
-	sb.AppendLine("public static CategoryType FromSubcategory(string subcategory){");
-
-	sb.AppendLine("    switch(subcategory)");
-	sb.AppendLine("    {");
-
-
-	foreach (var cat in cats)
-	{
-
-		foreach (var item in cat.Items)
-		{
-			sb.AppendLine("        case '" + item.SubCategory.Clean() + "':");
-		}
-		
-		sb.AppendLine("            return CategoryType." + cat.CategoryType.ToString() + ";");
-	}
-	sb.AppendLine("        default: return CategoryType." + CategoryType.Uncategorised + ";");
-	sb.AppendLine("        }");
-	sb.AppendLine("    }");
-	Console.WriteLine(sb.ToString().Replace("'", "\""));
-
-
+	PrintIsValid();
 }
 
 void PrintCategories()
 {
+	var data = new Vita.Predictor.SpreadSheets.KeywordsSpreadsheet().LoadData();
+	var cats = data.Select(x=>x.CategoryType).ToList();
+	cats.Add(CategoryType.Uncategorised);
+	var sb = new StringBuilder();
+	sb.AppendLine($"[JsonConverter(typeof(StringEnumConverter))]");
+	sb.AppendLine($"public enum CategoryType");
+	sb.AppendLine("{");
+	foreach (var cat in cats.Distinct().OrderBy(x=>x))
+	{
+		sb.AppendLine($"[Description('{cat.Humanize()}')] {cat.ToString()},");
+	}
+	sb.AppendLine("}");
+	Console.WriteLine(sb.ToString().Replace("'", "\""));
+}
 
-	var data = new Vita.Predictor.TextClassifiers.SpreadSheets.KeywordsSpreadsheet().LoadData();
+void PrintSubCategories()
+{
+
+	var data = new Vita.Predictor.SpreadSheets.KeywordsSpreadsheet().LoadData();
 	var cats = data.GroupBy(item => item.CategoryType)
-		.Select(group => new { CategoryType = group.Key.Humanize(), Items = group.ToList() })
+		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
 		.ToList();
 	cats.Dump();
 	var sb = new StringBuilder();
@@ -113,6 +99,61 @@ void PrintCategories()
 	Console.WriteLine(sb.ToString().Replace("'", "\""));
 }
 
+void PrintFactory()
+{
+	var data = new Vita.Predictor.SpreadSheets.KeywordsSpreadsheet().LoadData();
+	var cats = data.GroupBy(item => item.CategoryType)
+		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
+		.ToList();
+	cats.Dump();
+	var sb = new StringBuilder();
+
+	sb.AppendLine("public static CategoryType FromSubcategory(string subcategory){");
+
+	sb.AppendLine("    switch(subcategory.ToLower())");
+	sb.AppendLine("    {");
 
 
+	foreach (var cat in cats)
+	{
 
+		foreach (var item in cat.Items)
+		{
+			sb.AppendLine("        case '" + item.SubCategory.Clean().ToLowerInvariant() + "':");
+		}
+
+		sb.AppendLine("            return CategoryType." + cat.CategoryType.ToString() + ";");
+	}
+	sb.AppendLine("        default: return CategoryType." + CategoryType.Uncategorised + ";");
+	sb.AppendLine("        }");
+	sb.AppendLine("    }");
+	Console.WriteLine(sb.ToString().Replace("'", "\""));
+
+
+}
+
+void PrintIsValid()
+{
+	var data = new Vita.Predictor.SpreadSheets.KeywordsSpreadsheet().LoadData();
+	var cats = data.GroupBy(item => item.CategoryType)
+		.Select(group => new { CategoryType = group.Key, Items = group.ToList() })
+		.ToList();
+	cats.Dump();
+	var sb = new StringBuilder();
+
+	sb.AppendLine("public static bool IsValidSubCategory(string subcategory){");
+	sb.AppendLine("var list = new List<string>();");
+
+	foreach (var cat in cats)
+	{
+		foreach (var item in cat.Items)
+		{
+			sb.AppendLine("list.Add('" + item.SubCategory.Clean().ToLowerInvariant() + "');");
+		}
+
+	}
+	sb.AppendLine("return list.Contains(subcategory.ToLower());");
+	sb.AppendLine("    }");
+	Console.WriteLine(sb.ToString().Replace("'", "\""));
+
+}

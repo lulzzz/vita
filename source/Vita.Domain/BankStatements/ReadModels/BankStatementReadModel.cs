@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using EventFlow.Aggregates;
 using EventFlow.ReadStores;
@@ -14,74 +15,89 @@ using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Domain.BankStatements.ReadModels
 {
-  [Table("BankStatementReadModel")]
-  public class BankStatementReadModel : ReadModelBase, IReadModel,
-    IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event>,
-    IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
-  {
-    [SqlReadModelIdentityColumn] public string RequestId { get; set; }
-
-    public string Category { get; set; }
-    public string SubCategory { get; set; }
-    public string Description { get; set; }
-    public decimal Amount { get; set; }
-    public PredictionMethod Method { get; set; }
-    public DateTime? TransactionUtcDate { get; set; }
-
-    //public IEnumerable<PredictionResult> PredictionResults { get; set; }
-    //public IEnumerable<PredictionResult> Unmatched { get; set; }
-    //public Dictionary<Guid,TextClassificationResult> Matched { get; set; }
-
-    public void Apply(IReadModelContext context,
-      IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent)
+    [Table("BankStatementReadModel")]
+    public class BankStatementReadModel : ReadModelBase, IReadModel,
+        IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event>,
+        IAmReadModelFor<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event>
     {
-      AggregateId = domainEvent.AggregateIdentity.Value;
+        [SqlReadModelIdentityColumn] public string RequestId { get; set; }
 
-      var rm = domainEvent.AggregateEvent.PredictionResults.SingleOrDefault(x =>
-        x.Request.Id.ToString() == context.ReadModelId);
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public string Description { get; set; }
+        public decimal Amount { get; set; }
+        public PredictionMethod Method { get; set; }
+        public DateTime? TransactionUtcDate { get; set; }
 
-      if (rm != null)
-      {
-        var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
-        // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
+        //public IEnumerable<PredictionResult> PredictionResults { get; set; }
+        //public IEnumerable<PredictionResult> Unmatched { get; set; }
+        //public Dictionary<Guid,TextClassificationResult> Matched { get; set; }
 
-        RequestId = id.Value;
-        Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue).GetDescription();
-        SubCategory = rm.PredictedValue;
-        Description = rm.Request.Description;
-        Amount = Convert.ToDecimal(rm.Request.Amount);
-        Method = PredictionMethod.MultiClassClassifier;
-        TransactionUtcDate = rm.Request.TransactionUtcDate;
-      }  else
-      {
-        Logger.Warning($"bank statement read model BankStatementPredicted2Event failed {AggregateId}", AggregateId);
-      }
+        public void Apply(IReadModelContext context,
+            IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementPredicted2Event> domainEvent)
+        {
+            AggregateId = domainEvent.AggregateIdentity.Value;
+
+            var rm = domainEvent.AggregateEvent.PredictionResults.SingleOrDefault(x =>
+                x.Request.Id.ToString() == context.ReadModelId);
+
+            if (rm != null)
+            {
+                var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+                // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
+
+                RequestId = id.Value;
+                Category = CategoryTypeConverter.FromSubcategory(rm.PredictedValue).GetDescription();
+                SubCategory = GetSubCategory(rm.PredictedValue);
+                Description = rm.Request.Description;
+                Amount = Convert.ToDecimal(rm.Request.Amount);
+                Method = PredictionMethod.MultiClassClassifier;
+                TransactionUtcDate = rm.Request.TransactionUtcDate;
+            }
+            else
+            {
+                Logger.Warning($"bank statement read model BankStatementPredicted2Event failed {AggregateId}",
+                    AggregateId);
+            }
+        }
+
+        public void Apply(IReadModelContext context,
+            IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
+        {
+            AggregateId = domainEvent.AggregateIdentity.Value;
+            var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
+                x.Key.Request.Id.ToString() == context.ReadModelId);
+
+            if (rm.Key != null)
+            {
+                if (rm.Value.Classifier.SubCategory == SubCategories.Uncategorised)
+                    Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
+
+                var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
+                RequestId = id.Value;
+                Category = CategoryTypeConverter.FromSubcategory(rm.Value.Classifier?.SubCategory).GetDescription();
+                SubCategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
+                Description = rm.Key.Request.Description;
+                Amount = Convert.ToDecimal(rm.Key.Request.Amount);
+                Method = PredictionMethod.KeywordMatch;
+                TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
+            }
+            else
+            {
+                Logger.Warning($"bank statement read model BankStatementTextMatched3Event failed {AggregateId}",
+                    AggregateId);
+                Debug.Fail("request id not found");
+            }
+        }
+
+
+        private string GetSubCategory(string text)
+        {
+            if (CategoryTypeConverter.IsValidSubCategory(text)) return text;
+
+            if (text == SubCategories.Uncategorised) return text;
+
+            throw new ApplicationException($"not valid subcategory: {text}");
+        }
     }
-
-    public void Apply(IReadModelContext context,
-      IDomainEvent<BankStatementAggregate, BankStatementId, BankStatementTextMatched3Event> domainEvent)
-    {
-      AggregateId = domainEvent.AggregateIdentity.Value;
-      var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>
-        x.Key.Request.Id.ToString() == context.ReadModelId);
-
-      if (rm.Key!=null)
-      {
-        var id = BankStatementLineItemId.With(Guid.Parse(context.ReadModelId));
-        // var model = new BankStatementLineItemReadModel(id, CategoryType.BankingFinance, rm.PredictedValue,rm.Request.Description);
-
-        RequestId = id.Value;
-        Category = CategoryTypeConverter.FromSubcategory(rm.Value.Classifier?.SubCategory).GetDescription();
-        SubCategory = rm.Value.Classifier?.SubCategory;
-        Description = rm.Key.Request.Description;
-        Amount = Convert.ToDecimal(rm.Key.Request.Amount);
-        Method = PredictionMethod.KeywordMatch;
-        TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
-      }
-      else
-      {
-        Logger.Warning($"bank statement read model BankStatementTextMatched3Event failed {AggregateId}", AggregateId);
-      }
-    }
-  }
 }

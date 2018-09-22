@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Azure.Search.Common;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
+
 using Vita.Domain.Infrastructure;
 using Xunit;
 
@@ -32,11 +32,11 @@ namespace Vita.Predictor.Tests.TextMatch
         }
 
         [Theory]
-        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.TransferringMoney, Categories.TransferringMoney.OtherTransferringMoney)]
-        [InlineData("Kidz", CategoryType.Kids, Categories.Kids.Childcare)]
-        [InlineData("Liquorland", CategoryType.Groceries, Categories.Groceries.LiquorStores)]
-        [InlineData("St John Of God", CategoryType.HealthBeauty, Categories.HealthBeauty.DoctorsDentist)]
-        [InlineData("minimart", CategoryType.Groceries, Categories.Groceries.OtherGroceries)]
+        [InlineData("Periodical Payment To Mc To Masterca", CategoryType.TransferringMoney, SubCategories.TransferringMoney.OtherTransferringMoney)]
+        [InlineData("Kidz", CategoryType.Kids, SubCategories.Kids.Childcare)]
+        [InlineData("Liquorland", CategoryType.Groceries, SubCategories.Groceries.LiquorStores)]
+        [InlineData("St John Of God", CategoryType.HealthBeauty, SubCategories.HealthBeauty.DoctorsDentist)]
+        [InlineData("minimart", CategoryType.Groceries, SubCategories.Groceries.OtherGroceries)]
         public async Task MatchMany_why(string sentence, CategoryType ct, string sub)
         {
             var results = await Matcher.MatchMany(sentence);
@@ -57,7 +57,7 @@ namespace Vita.Predictor.Tests.TextMatch
         {
             var sentence = "St John of God";
             var ct = CategoryType.HealthBeauty;
-            var sub = Categories.HealthBeauty.DoctorsDentist;
+            var sub = SubCategories.HealthBeauty.DoctorsDentist;
 
             var result = await Matcher.Match(sentence,true);
 

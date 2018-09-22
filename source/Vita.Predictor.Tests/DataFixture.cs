@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using FizzWare.NBuilder;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
+
 using Vita.Domain.BankStatements.Download;
 using Vita.Domain.BankStatements.Models;
 using Vita.Domain.Infrastructure;
@@ -62,9 +62,9 @@ namespace Vita.Predictor.Tests
             var data = new KeywordsSpreadsheet().LoadData().ToList();
             data.ForEach(x => Classifiers.Save(x));
 
-            data.Single(x => x.SubCategory == Categories.HealthBeauty.DoctorsDentist)
+            data.Single(x => x.SubCategory == SubCategories.HealthBeauty.DoctorsDentist)
                 .AddKeyword(CompanyNames.StJohnOfGod.ToLowerInvariant());
-            data.Single(x => x.SubCategory == Categories.Kids.Childcare)
+            data.Single(x => x.SubCategory == SubCategories.Kids.Childcare)
                 .AddKeyword(CompanyNames.Kidz.ToLowerInvariant());
         }
 

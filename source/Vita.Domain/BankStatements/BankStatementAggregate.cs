@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EventFlow.Aggregates;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
+
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Events;
 
@@ -27,9 +27,6 @@ namespace Vita.Domain.BankStatements
             IEnumerable<PredictionRequest> requests)
         {
             var predictionRequests = requests as PredictionRequest[] ?? requests.ToArray();
-            foreach (var request in predictionRequests)
-                if (request.Id == Guid.Empty)
-                    request.Id = Guid.NewGuid();
 
             Emit(new BankStatementExtracted1Event
             {
@@ -51,7 +48,7 @@ namespace Vita.Domain.BankStatements
 
         public async Task TextMatchAsync(TextMatchBankStatement3Command command, ITextClassifier matcher)
         {
-            var unmatched = State.PredictionResults.Where(x => x.PredictedValue == Categories.Uncategorised).ToArray();
+            var unmatched = State.PredictionResults.Where(x => x.PredictedValue == SubCategories.Uncategorised).ToArray();
 
             Trace.WriteLine($"{Id} unmatched {unmatched.Count()}");
 
@@ -61,7 +58,7 @@ namespace Vita.Domain.BankStatements
             {
                 item.Method = PredictionMethod.KeywordMatch;
                 var result = await matcher.Match(item.Request.Description);
-                if (result.Classifier != null && result.Classifier.SubCategory != Categories.Uncategorised)
+                if (result.Classifier != null && result.Classifier.SubCategory != SubCategories.Uncategorised)
                 {
                     matched.Add(new KeyValuePair<PredictionResult, TextClassificationResult>(item,result));
                 }

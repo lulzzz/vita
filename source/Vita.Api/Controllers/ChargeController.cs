@@ -12,7 +12,7 @@ using Serilog;
 using Serilog.Context;
 using Vita.Contracts;
 using Vita.Contracts.ChargeId;
-using Vita.Contracts.SubCategories;
+
 
 namespace Vita.Api.Controllers
 {
@@ -77,7 +77,7 @@ namespace Vita.Api.Controllers
       {
         Id = chargeId,
         Category = CategoryType.BankingFinance,
-        SubCategory = Categories.BankingFinance.AtmWithdrawals,
+        SubCategory = SubCategories.BankingFinance.AtmWithdrawals,
         BankName = "ANZ",
         PlaceId = "Google Place Id here",
         TransactionType = TransactionType.Debit,

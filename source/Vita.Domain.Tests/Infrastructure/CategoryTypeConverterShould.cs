@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
+
 using Vita.Domain.Infrastructure;
 using Xunit;
 
@@ -23,11 +23,11 @@ namespace Vita.Domain.Tests.Infrastructure
 
 
     [Theory]
-    [InlineData(Categories.Groceries.Supermarkets,CategoryType.Groceries)]
-    [InlineData(Categories.Groceries.OtherGroceries,CategoryType.Groceries)]
-    [InlineData(Categories.FoodDrinks.BarsPubs,CategoryType.FoodDrinks)]
-    [InlineData(Categories.HolidayTravel.OtherTravel,CategoryType.HolidayTravel)]
-    [InlineData(Categories.Miscellaneous.Other,CategoryType.Miscellaneous)]
+    [InlineData(SubCategories.Groceries.Supermarkets,CategoryType.Groceries)]
+    [InlineData(SubCategories.Groceries.OtherGroceries,CategoryType.Groceries)]
+    [InlineData(SubCategories.FoodDrinks.BarsPubs,CategoryType.FoodDrinks)]
+    [InlineData(SubCategories.HolidayTravel.OtherTravel,CategoryType.HolidayTravel)]
+    [InlineData(SubCategories.Miscellaneous.Other,CategoryType.Miscellaneous)]
     [InlineData("aaaaaaa", CategoryType.Uncategorised)]
     public void From_subcategory_enum_match(string text, CategoryType expected)
     {

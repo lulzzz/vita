@@ -1,5 +1,5 @@
 ﻿using Vita.Contracts;
-using Vita.Contracts.SubCategories;
+
 
 namespace Vita.Predictor.TextMatch
 {
@@ -17,21 +17,21 @@ namespace Vita.Predictor.TextMatch
 
             switch (result.Classifier.SubCategory)
             {
-                case Categories.TransferringMoney.CreditCard:
-                case Categories.BankingFinance.CreditCardPayments:
+                case SubCategories.TransferringMoney.CreditCard:
+                case SubCategories.BankingFinance.CreditCardPayments:
                     return TransactionType.Credit;
-                case Categories.TransferringMoney.OtherTransferringMoney:
-                case Categories.BankingFinance.OtherBankingFinance:
+                case SubCategories.TransferringMoney.OtherTransferringMoney:
+                case SubCategories.BankingFinance.OtherBankingFinance:
                     return TransactionType.Transfer;
-                case Categories.BankingFinance.Fees:
+                case SubCategories.BankingFinance.Fees:
                     return TransactionType.Fees;
-                case Categories.BankingFinance.Interest:
+                case SubCategories.BankingFinance.Interest:
                     return TransactionType.Interest;
-                case Categories.BankingFinance.Reversal:
+                case SubCategories.BankingFinance.Reversal:
                     return TransactionType.Reversal;
-                case Categories.BankingFinance.LoanRepayments:
+                case SubCategories.BankingFinance.LoanRepayments:
                     return TransactionType.Repayments;
-                case Categories.BankingFinance.Overdrawn:
+                case SubCategories.BankingFinance.Overdrawn:
                     return TransactionType.Overdrawn;
             }
 

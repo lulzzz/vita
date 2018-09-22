@@ -225,18 +225,6 @@ namespace Vita.Domain.Infrastructure
 
         #endregion
 
-        #region utils
-
-        public static void WarnScriptFailed(string message, object id = null, Exception ex = null,
-            [CallerFilePath] string sourceFilePath = "", [CallerMemberName] string memberName = "")
-        {
-            var method = GetClassMethodName(sourceFilePath, memberName);
-            Log.Warning(ex, "script failed: {message} {id} {method}", message, ToString(id), method);
-        }
-
-        #endregion
-
-
         private static string GetParameterDescription(object id, object parameter)
         {
             return $"{ToString(id)} : {ToString(parameter)}";

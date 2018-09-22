@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Vita.Contracts;
-using Vita.Contracts.SubCategories;
 using Vita.Domain.BankStatements.Models;
 using Vita.Domain.Infrastructure;
 using Vita.Domain.Tests;
@@ -82,13 +81,13 @@ namespace Vita.Predictor.Tests
         }
 
         [Theory]
-        [InlineData("EFTPOS ALDI 27 CARRUM DOWNS AU", "ANZ", Categories.Groceries.Supermarkets)]
-        [InlineData("Kmart Cannington Aus", "ANZ", Categories.Shopping.OtherShopping)]
-        [InlineData("Bunnings Innaloo", "ANZ", Categories.Home.HomeImprovement)]
-        [InlineData("City Of Perth Park1 Perth", "ParkingTolls", Categories.Transport.ParkingTolls)]
+        [InlineData("EFTPOS ALDI 27 CARRUM DOWNS AU", "ANZ", SubCategories.Groceries.Supermarkets)]
+        [InlineData("Kmart Cannington Aus", "ANZ", SubCategories.Shopping.OtherShopping)]
+        [InlineData("Bunnings Innaloo", "ANZ", SubCategories.Home.HomeImprovement)]
+        [InlineData("City Of Perth Park1 Perth", "ParkingTolls", SubCategories.Transport.ParkingTolls)]
         [InlineData("Virgin Australia Airli Spring Hill Aus", "WESTPAC_INTERNET_BANKING",
-            Categories.HolidayTravel.Flights)]
-        [InlineData("My Healthy Place Floreat", "WESTPAC_INTERNET_BANKING", Categories.HealthBeauty.Chemists)]
+            SubCategories.HolidayTravel.Flights)]
+        [InlineData("My Healthy Place Floreat", "WESTPAC_INTERNET_BANKING", SubCategories.HealthBeauty.Chemists)]
         public async Task Predict_test_sample(string description, string bank, string subcategory)
         {
             var result = await _predict.PredictAsync(new PredictionRequest
@@ -165,31 +164,31 @@ namespace Vita.Predictor.Tests
 
 
         [Theory]
-        //[InlineData(Categories.Transport.Fuel)]
-        //[InlineData(Categories.Transport.PublicTransport)]
-        //[InlineData(Categories.Transport.TaxiRideshare)]
-        [InlineData(Categories.HouseholdUtilities.ElectricityGas)]
-        //[InlineData(Categories.HouseholdUtilities.PhoneInternet)]
-        //[InlineData(Categories.HouseholdUtilities.Water)]
-        //[InlineData(Categories.Income.SalaryWages)]
-        //[InlineData(Categories.Income.Deposits)]
-        //[InlineData(Categories.Income.OtherIncome)]
-        //[InlineData(Categories.Entertainment.BettingLotteries)]
-        //[InlineData(Categories.Entertainment.Events)]
-        //[InlineData(Categories.Entertainment.MediaSubscriptions)]
-        //[InlineData(Categories.Entertainment.Movies)]
-        //[InlineData(Categories.HealthBeauty.Chemists)]
-        //[InlineData(Categories.HealthBeauty.DoctorsDentist)]
-        //[InlineData(Categories.HealthBeauty.Eyewear)]
-        //[InlineData(Categories.HealthBeauty.GymsFitness)]
-        //[InlineData(Categories.HealthBeauty.HairBeauty)]
-        //[InlineData(Categories.HealthBeauty.OtherHealthBeauty)]
-        //[InlineData(Categories.HolidayTravel.Flights)]
-        //[InlineData(Categories.HolidayTravel.HotelsAccomodation)]
-        //[InlineData(Categories.HolidayTravel.OtherTravel)]
-        //[InlineData(Categories.Insurance.CarInsurance)]
-        //[InlineData(Categories.Insurance.HealthLifeInsurance)]
-        //[InlineData(Categories.Insurance.HomeInsurance)]
+        [InlineData(SubCategories.Transport.Fuel)]
+        [InlineData(SubCategories.Transport.PublicTransport)]
+        [InlineData(SubCategories.Transport.TaxiRideshare)]
+        [InlineData(SubCategories.HouseholdUtilities.ElectricityGas)]
+        [InlineData(SubCategories.HouseholdUtilities.PhoneInternet)]
+        //[InlineData(SubCategories.HouseholdUtilities.Water)]
+        //[InlineData(SubCategories.Income.SalaryWages)]
+        //[InlineData(SubCategories.Income.Deposits)]
+        //[InlineData(SubCategories.Income.OtherIncome)]
+        //[InlineData(SubCategories.Entertainment.BettingLotteries)]
+        //[InlineData(SubCategories.Entertainment.Events)]
+        //[InlineData(SubCategories.Entertainment.MediaSubscriptions)]
+        //[InlineData(SubCategories.Entertainment.Movies)]
+        //[InlineData(SubCategories.HealthBeauty.Chemists)]
+        //[InlineData(SubCategories.HealthBeauty.DoctorsDentist)]
+        //[InlineData(SubCategories.HealthBeauty.Eyewear)]
+        //[InlineData(SubCategories.HealthBeauty.GymsFitness)]
+        //[InlineData(SubCategories.HealthBeauty.HairBeauty)]
+        //[InlineData(SubCategories.HealthBeauty.OtherHealthBeauty)]
+        //[InlineData(SubCategories.HolidayTravel.Flights)]
+        //[InlineData(SubCategories.HolidayTravel.HotelsAccomodation)]
+        //[InlineData(SubCategories.HolidayTravel.OtherTravel)]
+        //[InlineData(SubCategories.Insurance.CarInsurance)]
+        //[InlineData(SubCategories.Insurance.HealthLifeInsurance)]
+        //[InlineData(SubCategories.Insurance.HomeInsurance)]
         public async Task Predict_vs_text_classifier(string expected)
         {
             var predictionModel = await GetPredictionResults();

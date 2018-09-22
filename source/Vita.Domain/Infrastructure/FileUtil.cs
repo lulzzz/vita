@@ -141,12 +141,4 @@ namespace Vita.Domain.Infrastructure
             Map(m => m.Tags).Index(6);
         }
     }
-
-    public class SubCategoryTypeConverter : DefaultTypeConverter
-    {
-        public override string ConvertToString(object value, IWriterRow row, MemberMapData memberMapData)
-        {
-            return CategoryTypeConverter.ExtractSubCategory(Convert.ToString(value));
-        }
-    }
 }
