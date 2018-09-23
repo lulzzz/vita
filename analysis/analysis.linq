@@ -34,9 +34,7 @@ void Main()
 
 	var readModels = BankStatementReadModels.Where(x => x.TransactionUtcDate > FromUtcDateTime && x.TransactionUtcDate < ToUtcDateTime).ToList();
 	Console.WriteLine($"read models {readModels.Count()}");
-	var cats = from p in readModels
-			   group p by p.Category
-	  into g
+	var cats = from p in readModels group p by p.Category into g
 			   select new
 			   {
 				   Category = g.Key,
@@ -80,9 +78,15 @@ void Main()
 	
 	
 	readModels.Where(x=>x.Category == CategoryType.Income.GetDescription()).Dump("income");
-	
-	readModels
-	.Where(x=>x.Amount > 400)
-	.Dump("read-models");
+	var duplicates = readModels.Select(x => new {x.AggregateId,x.SubCategory, x.Description,x.TransactionUtcDate,x.Amount});
+	var dups = from p in duplicates
+			   group p by p.Description into g
+			   select new
+			   {
+				   Description = g.Key,
+				   Total = readModels.Select(x => new {x.AggregateId,x.SubCategory, x.Description,x.TransactionUtcDate,x.Amount}).Count(a => a.Description == g.Key)
+			   };
 
+	dups.Where(x=>x.Total>1).Dump("duplicates");
+	BankStatementReadModels.Where(x=>x.Description =="AEG OGDEN PERTH ARENA PERTH").Dump("example duplicate");
 }

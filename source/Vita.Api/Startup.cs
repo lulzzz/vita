@@ -15,12 +15,14 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NSwag;
 using NSwag.AspNetCore;
+using Serilog;
 using StackifyLib;
 using StackifyLib.Utils;
 using StackifyMiddleware;
 using Vita.Domain;
 using Vita.Domain.Infrastructure;
 using Vita.Predictor;
+using Logger = StackifyLib.Logger;
 using Module = Autofac.Module;
 
 namespace Vita.Api
@@ -132,7 +134,9 @@ namespace Vita.Api
 
     private static void StackifyAPILogger_OnLogMessage(string data)
     {
-      Debug.WriteLine(data);
+      Trace.WriteLine(data);
+      Log.Logger.Debug(data);
+
     }
   }
 }

@@ -50,13 +50,13 @@ namespace Vita.Setup
             if (opts.FlashDatabase)
             {
                 var result = await _mediator.Send(new FlashCommand());
-                if (result) Consoler.Success(true);
+                if (result) Consoler.Success(false);
             }
 
             if (opts.SeedDatabase)
             {
                 var result = await _mediator.Send(new SeedCommand());
-                if (result) Consoler.Success(true);
+                if (result) Consoler.Success(false);
             }
         }
 

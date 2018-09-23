@@ -84,19 +84,6 @@ namespace Vita.Domain.BankStatements.ReadModels
             AggregateId = domainEvent.AggregateIdentity.Value;
             if (context.ReadModelId == AggregateId.ToString()) throw new ApplicationException();
 
-            var rm = domainEvent.AggregateEvent.Matched.Single(x =>
-                x.Key.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
-            if (rm.Key == null)
-            {
-                Logger.Warning($"read model not found {context.ReadModelId}");
-                return;
-            }
-
-            var subcategory = GetSubCategory(rm.Value.Classifier?.SubCategory);
-
-            if (subcategory == SubCategories.Uncategorised)
-                Logger.Warning("SubCategory == SubCategories.Uncategorised", rm.Key.Request.Description);
-
             var id = context.ReadModelId;
             if (string.IsNullOrEmpty(id))
             {
@@ -104,13 +91,19 @@ namespace Vita.Domain.BankStatements.ReadModels
                 return;
             }
 
+            var rm = domainEvent.AggregateEvent.Matched.SingleOrDefault(x =>x.Key.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
+
+            var request = rm.Key ?? domainEvent.AggregateEvent.Unmatched.Single(x =>x.Request.Id.ToString() == context.ReadModelId.ToVitaGuid().ToString());
+
+            var subcategory = rm.Key !=null ? GetSubCategory(rm.Value.Classifier?.SubCategory) : SubCategories.Uncategorised;
+
             RequestId = id;
             Category = CategoryTypeConverter.FromSubcategory(subcategory).GetDescription();
             SubCategory = subcategory;
-            Description = rm.Key.Request.Description;
-            Amount = Convert.ToDecimal(rm.Key.Request.Amount);
+            Description = request.Request.Description;
+            Amount = Convert.ToDecimal(request.Request.Amount);
             Method = PredictionMethod.KeywordMatch;
-            TransactionUtcDate = rm.Key.Request.TransactionUtcDate;
+            TransactionUtcDate = request.Request.TransactionUtcDate;
         }
 
 
