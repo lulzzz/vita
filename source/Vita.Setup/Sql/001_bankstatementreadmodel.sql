@@ -46,19 +46,20 @@ CREATE UNIQUE NONCLUSTERED INDEX [UQ_BankStatementReadModel_RequestId] ON [dbo].
 GO
 
 
---IF EXISTS (SELECT * FROM sys.indexes WHERE name='UQ_BankStatementReadModel' AND object_id = OBJECT_ID(N'BankStatementReadModel'))
---BEGIN
---  DROP INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
---END
+IF EXISTS (SELECT * FROM sys.indexes WHERE name='UQ_BankStatementReadModel' AND object_id = OBJECT_ID(N'BankStatementReadModel'))
+BEGIN
+  DROP INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
+END
 
---CREATE UNIQUE NONCLUSTERED INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
---(
---	[SubCategory] ASC,
---	[Description] ASC,
---	[Amount] ASC,
---	[TransactionUtcDate] ASC
---)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
---GO
+CREATE UNIQUE NONCLUSTERED INDEX [UQ_BankStatementReadModel] ON [dbo].[BankStatementReadModel]
+(
+	[AggregateId] ASC,
+	[SubCategory] ASC,
+	[Description] ASC,
+	[Amount] ASC,
+	[TransactionUtcDate] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
 
 
 

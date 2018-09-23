@@ -29,19 +29,30 @@
 public DateTime FromUtcDateTime { get; set; } = DateTime.UtcNow.AddYears(-1);
 public DateTime ToUtcDateTime { get; set; } = DateTime.UtcNow;
 
+IList<BankStatementReadModel> readModels;
+
 void Main()
 {
-
-	var readModels = BankStatementReadModels.Where(x => x.TransactionUtcDate > FromUtcDateTime && x.TransactionUtcDate < ToUtcDateTime).ToList();
+	readModels = BankStatementReadModels.Where(x => x.TransactionUtcDate > FromUtcDateTime && x.TransactionUtcDate < ToUtcDateTime).ToList();
 	Console.WriteLine($"read models {readModels.Count()}");
-	var cats = from p in readModels group p by p.Category into g
+	
+	ShowSummary();
+	ShowIncome();
+	ShowLoans();
+
+}
+
+private void ShowSummary()
+{
+	var cats = from p in readModels
+			   group p by p.Category into g
 			   select new
 			   {
 				   Category = g.Key,
 				   Total = readModels.Where(a => a.Category == g.Key)
 				 .Sum(x => x.Amount)
 			   };
-			   
+
 	cats.Dump("cats");
 
 	var subs = from p in readModels.Where(x => !string.IsNullOrEmpty(x.SubCategory))
@@ -57,36 +68,79 @@ void Main()
 
 	subs.Dump("subs");
 
-	var unmatched = readModels.Where(x=>x.SubCategory == SubCategories.Uncategorised).Dump("unmatched");
-	var unmatchedtotal = from p in  unmatched
-			   group p by p.SubCategory
-	  into g
-			   select new
-			   {
-				   SubCategory = g.Key,
-				   Total = readModels.Where(a => a.SubCategory == g.Key)
-				 .Sum(x => x.Amount)
-			   };
+}
 
-	Console.WriteLine($"unmatched {unmatched}".Dump("unmatched").Count());
+private void ShowIncome()
+{
+	var income = readModels
+	.Where(x => x.Category == CategoryType.Income.GetDescription())
+	.OrderBy(x=>x.TransactionUtcDate)
+	.ToArray();
+	
+	var daysBetweenPay = new List<int>();
+	
+	for (int x = 0; x < income.Count() - 1; x++) {
+		
+		int y = x+1;
+		if (y >= income.Count()) continue;
+		
+		var arg = (income[y].TransactionUtcDate-income[x].TransactionUtcDate).Value.Days;
+		
+		daysBetweenPay.Add(arg);
+	}
 
-	unmatched
-	.Select(x => new {AggregateId = x.AggregateId, RequestId = x.RequestId, Description = x.Description.ToLower(),Amount=x.Amount, x.TransactionUtcDate})
-	.OrderBy(x=>x.Description);
+	var totalincome = income.Sum(x=>x.Amount);
 	
-	unmatchedtotal.Dump("unmatched-totals");
+	double paycycle = daysBetweenPay.Average();
+	var nextpay = income.Max(x=>x.TransactionUtcDate).Value.AddDays(paycycle);
 	
+	daysBetweenPay.Dump("days between pays");
 	
-	readModels.Where(x=>x.Category == CategoryType.Income.GetDescription()).Dump("income");
-	var duplicates = readModels.Select(x => new {x.AggregateId,x.SubCategory, x.Description,x.TransactionUtcDate,x.Amount});
+	Console.WriteLine($"income - avg days between pay {daysBetweenPay.Average()}");
+	Console.WriteLine($"income - nextpay {nextpay}");
+	Console.WriteLine($"income - totalincome {totalincome}");
+	Console.WriteLine($"income - average income {(totalincome/income.Count()).Value.TruncateDecimal(2)}");
+}
+
+private void ShowLoans() {
+	
+	var loans = readModels.Where(x=>x.SubCategory == "LoanRepayments");
+	loans.Dump("loans");
+}
+
+private void ShowDuplicates()
+{
+	var duplicates = readModels.Select(x => new { x.AggregateId, x.SubCategory, x.Description, x.TransactionUtcDate, x.Amount });
 	var dups = from p in duplicates
 			   group p by p.Description into g
 			   select new
 			   {
 				   Description = g.Key,
-				   Total = readModels.Select(x => new {x.AggregateId,x.SubCategory, x.Description,x.TransactionUtcDate,x.Amount}).Count(a => a.Description == g.Key)
+				   Total = readModels.Select(x => new { x.AggregateId, x.SubCategory, x.Description, x.TransactionUtcDate, x.Amount }).Count(a => a.Description == g.Key)
 			   };
 
-	dups.Where(x=>x.Total>1).Dump("duplicates");
-	BankStatementReadModels.Where(x=>x.Description =="AEG OGDEN PERTH ARENA PERTH").Dump("example duplicate");
+	dups.Where(x => x.Total > 1).Dump("duplicates");
+	BankStatementReadModels.Where(x => x.Description == "AEG OGDEN PERTH ARENA PERTH").Dump("example duplicate");
+}
+
+private void ShowUnmatched()
+{
+	var unmatched = readModels.Where(x => x.SubCategory == SubCategories.Uncategorised).Dump("unmatched");
+	var unmatchedtotal = from p in unmatched
+						 group p by p.SubCategory
+	  into g
+						 select new
+						 {
+							 SubCategory = g.Key,
+							 Total = readModels.Where(a => a.SubCategory == g.Key)
+						   .Sum(x => x.Amount)
+						 };
+
+	Console.WriteLine($"unmatched {unmatched}".Dump("unmatched").Count());
+
+	unmatched
+	.Select(x => new { AggregateId = x.AggregateId, RequestId = x.RequestId, Description = x.Description.ToLower(), Amount = x.Amount, x.TransactionUtcDate })
+	.OrderBy(x => x.Description);
+
+	unmatchedtotal.Dump("unmatched-totals");
 }
