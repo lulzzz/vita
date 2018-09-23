@@ -96,10 +96,14 @@ private void ShowIncome()
 	
 	daysBetweenPay.Dump("days between pays");
 	
-	Console.WriteLine($"income - avg days between pay {daysBetweenPay.Average()}");
-	Console.WriteLine($"income - nextpay {nextpay}");
-	Console.WriteLine($"income - totalincome {totalincome}");
-	Console.WriteLine($"income - average income {(totalincome/income.Count()).Value.TruncateDecimal(2)}");
+	var duration = income.Select(x => x.TransactionUtcDate).Max() - income.Select(x => x.TransactionUtcDate).Min();
+	
+	var messages = new List<string>();
+	messages.Add($"average days between pay {daysBetweenPay.Average()}");
+	messages.Add($"nextpay {nextpay}");
+	messages.Add($"total income over {duration.Value.TotalDays} days {((decimal)totalincome.Value).ToString("C")}");
+	messages.Add($"average pay {(totalincome/income.Count()).Value.TruncateDecimal(2)}");
+	messages.Dump("income");
 }
 
 private void ShowLoans() {
