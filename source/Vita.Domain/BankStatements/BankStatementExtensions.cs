@@ -29,13 +29,6 @@ namespace Vita.Domain.BankStatements
                         Bank = account.Institution,
                         TransactionUtcDate = item.DateObj.Date.UtcDateTime
                     };
-
-                    if (!list.Any(x =>
-                        x.Description == pr.Description && x.Amount == pr.Amount &&
-                        x.TransactionUtcDate == pr.TransactionUtcDate))
-                    {
-                        list.Add(pr);
-                    }
                 }                
             }
 

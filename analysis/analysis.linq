@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
+    <ID>2ebabf6f-d96f-4153-9675-7a230f7e370b</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>Vita</Database>
@@ -25,8 +25,8 @@
   <Namespace>Vita.Domain.Infrastructure</Namespace>
 </Query>
 
-// default one year
-public DateTime FromUtcDateTime { get; set; } = DateTime.UtcNow.AddYears(-1);
+// last 30 days
+public DateTime FromUtcDateTime { get; set; } = DateTime.UtcNow.AddDays(-90);
 public DateTime ToUtcDateTime { get; set; } = DateTime.UtcNow;
 
 IList<BankStatementReadModel> readModels;
@@ -37,9 +37,15 @@ void Main()
 	Console.WriteLine($"read models {readModels.Count()}");
 	
 	ShowSummary();
-	ShowIncome();
+    ShowIncome();
 	ShowLoans();
-
+	ShowCharity();
+	
+	const string search = "Uber Trip I7n2k Helpuber Sydney";
+	readModels
+	.Where(x=> x.Description.Equals(search,StringComparison.InvariantCultureIgnoreCase))
+	.Dump("search");
+	
 }
 
 private void ShowSummary()
@@ -89,27 +95,50 @@ private void ShowIncome()
 		daysBetweenPay.Add(arg);
 	}
 
-	var totalincome = income.Sum(x=>x.Amount);
-	
-	double paycycle = daysBetweenPay.Average();
-	var nextpay = income.Max(x=>x.TransactionUtcDate).Value.AddDays(paycycle);
-	
-	daysBetweenPay.Dump("days between pays");
-	
-	var duration = income.Select(x => x.TransactionUtcDate).Max() - income.Select(x => x.TransactionUtcDate).Min();
-	
+
+	var duration = readModels.Select(x => x.TransactionUtcDate).Max() - income.Select(x => x.TransactionUtcDate).Min();
+	var totalincome = income.Sum(x => x.Amount);
+	int paycycle = (int)daysBetweenPay.Average();
+	var nextpay = income.Max(x => x.TransactionUtcDate).Value.AddDays(paycycle);
+
+	string cycle = "weekly";
+
+	if (paycycle.IsBetween(11, 17))
+	{
+		cycle = "fortnightly";
+	}
+	if (paycycle.IsBetween(18, 26))
+	{
+		cycle = "triweekly";
+	}
+	if (paycycle.IsBetween(27, 35))
+	{
+		cycle = "monthly";
+	}
+
 	var messages = new List<string>();
+	messages.Add($"pay cycle {cycle}");
 	messages.Add($"average days between pay {daysBetweenPay.Average()}");
 	messages.Add($"nextpay {nextpay}");
 	messages.Add($"total income over {duration.Value.TotalDays} days {((decimal)totalincome.Value).ToString("C")}");
 	messages.Add($"average pay {(totalincome/income.Count()).Value.TruncateDecimal(2)}");
 	messages.Dump("income");
+	
+	income.Dump("income-records");
 }
 
 private void ShowLoans() {
 	
 	var loans = readModels.Where(x=>x.SubCategory == "LoanRepayments");
 	loans.Dump("loans");
+}
+
+private void ShowCharity() {
+	
+	var charity = readModels.Where(x=>x.SubCategory == SubCategories.Miscellaneous.Charity);
+	
+	charity.Dump();
+	//.Sum(x=>x.Amount).Dump("charity");
 }
 
 private void ShowDuplicates()
