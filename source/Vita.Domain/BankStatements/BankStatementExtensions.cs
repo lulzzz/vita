@@ -29,6 +29,9 @@ namespace Vita.Domain.BankStatements
                         Bank = account.Institution,
                         TransactionUtcDate = item.DateObj.Date.UtcDateTime
                     };
+
+                  list.Add(pr);
+
                 }                
             }
 
