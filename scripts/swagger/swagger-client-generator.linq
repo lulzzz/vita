@@ -1,4 +1,5 @@
 <Query Kind="Program">
+  <Output>DataGrids</Output>
   <Reference>&lt;RuntimeDirectory&gt;\System.Net.Http.dll</Reference>
   <NuGetReference>NSwag.CodeGeneration</NuGetReference>
   <NuGetReference>NSwag.CodeGeneration.CSharp</NuGetReference>
@@ -49,49 +50,45 @@ https://github.com/RSuter/NSwag
 Outputs .ts or .cs which can be copied into a project for consuming the API
 */
 
-const string SwaggerApiJsonUrl = @"http://chargeid-test.azurewebsites.net/swagger/v1/swagger.json";
+const string SwaggerApiJsonUrl = @"http://localhost:5001/swagger/v1/swagger.json";
 
 async void Main()
 {
 	var document = await SwaggerDocument.FromUrlAsync(SwaggerApiJsonUrl);
-	var yaml = SwaggerYamlDocument.ToYaml(document);
-	
+	//SwaggerYamlDocument.ToYaml(document).Dump();
+	CreateCSharpClient(document).Dump();
 	// paste the below into https://editor.swagger.io
 	// then on that website goto --> generate client --> angular typescript
-	yaml.Dump();
+	
 }
 
-private void CreateTs(SwaggerDocument document)
+private string CreateTs(SwaggerDocument document)
 {
 	var settings = new NSwag.CodeGeneration.TypeScript.SwaggerToTypeScriptClientGeneratorSettings()
 	{
 		ClassName = "VitaApi",
 		GenerateClientInterfaces = true,
 		GenerateClientClasses = true,
+ 
 
 
 	};
 	var generator = new NSwag.CodeGeneration.TypeScript.SwaggerToTypeScriptClientGenerator(document, settings);
 	var code = generator.GenerateFile();
-	System.IO.File.WriteAllText(@"C:\temp\VitaApi.ts", code);
+	return code;
 }
 
-private void CreateCSharpClient(SwaggerDocument doc)
+private string CreateCSharpClient(SwaggerDocument doc)
 {
 	var settings = new SwaggerToCSharpClientGeneratorSettings
 	{
-		ClassName = "Client",
-		CSharpGeneratorSettings =
-		{
-			Namespace = "Vita.Api",
-		}
+		ClassName = "VitaClient",
 	};
-	settings.GenerateClientInterfaces = true;
-	settings.GenerateClientClasses = true;
-	settings.GenerateResponseClasses = true;
-	settings.GenerateExceptionClasses = true;
+	var data = settings.GenerateControllerName("VitaApi");
+	data.Dump();;
+	
 	// settings.GenerateSyncMethods = true;
 	var generator = new SwaggerToCSharpClientGenerator(doc, settings);
 	var code = generator.GenerateFile();
-	System.IO.File.WriteAllText(@"C:\temp\ApiClient.cs", code);
+	return code;
 }

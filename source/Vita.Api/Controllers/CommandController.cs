@@ -24,10 +24,10 @@ namespace Vita.Api.Controllers
             const int version = 1;
            // if (!IsAuthorizedToPublish(name)) LoginManager.ReportSessionError("Invalid or expired login.");
 
-            var json = JsonConvert.SerializeObject(commandJson);
+          //  var json = JsonConvert.SerializeObject(commandJson);
             ISourceId sourceId =
                 await
-                    _serializedCommandPublisher.PublishSerilizedCommandAsync(name, version, json,
+                    _serializedCommandPublisher.PublishSerilizedCommandAsync(name, version, commandJson,
                         CancellationToken.None).ConfigureAwait(false);
             return Ok(new { SourceId = sourceId.Value });
         }

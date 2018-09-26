@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EventFlow.Aggregates;
 using Vita.Domain.Charges.Commands;
+using Vita.Domain.Charges.Events;
 
 namespace Vita.Domain.Charges
 {
@@ -18,6 +19,11 @@ namespace Vita.Domain.Charges
 
         public virtual async Task ImportCharges(IEnumerable<ImportChargesCommandHandler.ImportedCharge> data)
         {
+            var eve = new ChargesImportedEvent()
+            {
+                ImportedCharges = data
+            };
+            Emit(eve);
             await Task.CompletedTask;
         }
     }

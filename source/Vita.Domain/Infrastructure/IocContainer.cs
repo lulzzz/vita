@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
+using EventFlow.Owin.Middlewares;
 using MassTransit;
 using Vita.Domain.Charges;
 using Vita.Domain.Infrastructure.Modules;
@@ -15,6 +16,8 @@ namespace Vita.Domain.Infrastructure
             var builder = new ContainerBuilder();
             builder.RegisterModule<LoggingModule>();
             builder.RegisterModule<CommonModule>();
+
+            builder.RegisterType<CommandPublishMiddleware>().InstancePerRequest();
 
             if (modules != null)
                 foreach (var m in modules)
