@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EventFlow.Core;
+﻿using EventFlow.Core;
 using Newtonsoft.Json;
 
 namespace Vita.Domain.Infrastructure.EventFlow

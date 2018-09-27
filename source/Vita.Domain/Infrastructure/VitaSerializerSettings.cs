@@ -15,7 +15,7 @@ namespace Vita.Domain.Infrastructure
           ContractResolver = new CamelCasePropertyNamesContractResolver(),
           Formatting = Newtonsoft.Json.Formatting.None,
           ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
-          MaxDepth = 50
+          MaxDepth = 300
         };
 
         settings.Converters.Add(new StringEnumConverter());

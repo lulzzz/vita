@@ -1,13 +1,13 @@
 <Query Kind="Program">
   <Connection>
     <ID>c5e63f91-715c-4cdc-b87c-cc24ace9a884</ID>
-    <Persist>true</Persist>
     <Server>.</Server>
     <Database>Vita</Database>
     <ShowServer>true</ShowServer>
   </Connection>
   <Output>DataGrids</Output>
   <Reference>&lt;RuntimeDirectory&gt;\System.ComponentModel.DataAnnotations.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Net.dll</Reference>
   <Reference>&lt;RuntimeDirectory&gt;\System.Net.Http.dll</Reference>
   <Reference>&lt;RuntimeDirectory&gt;\System.Runtime.Serialization.dll</Reference>
   <Reference Relative="..\..\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Api.dll">C:\dev\vita\source\Vita.Api\bin\Debug\netcoreapp2.1\Vita.Api.dll</Reference>
@@ -74,20 +74,26 @@
 CommandController test
 
 */
+private static readonly System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient();
+
 async System.Threading.Tasks.Task Main()
 {
-	Vita.Domain.Charges.Commands.ImportChargesCommand cmd = new Vita.Domain.Charges.Commands.ImportChargesCommand(Vita.Domain.Charges.ChargeId.New,Vita.Domain.Infrastructure.EventFlow.VitaSourceId.New);
+	Vita.Domain.Charges.Commands.ImportChargesCommand cmd = new Vita.Domain.Charges.Commands.ImportChargesCommand();
+	cmd.AggregateId = Vita.Domain.Charges.ChargeId.New;
 	string json = JsonConvert.SerializeObject(cmd);
 	VitaClient client = new VitaClient();
-	await client.PublishCommandAsync(json, typeof(Vita.Domain.Charges.Commands.ImportChargesCommand).Name);
- 
+	var result = await client.PublishCommandAsync(json, typeof(Vita.Domain.Charges.Commands.ImportChargesCommand).Name);
+	StreamReader reader = new StreamReader(result.Stream);
+	string r = reader.ReadToEnd();
+	r.Dump();
+
 }
 
 
 [System.CodeDom.Compiler.GeneratedCode("NSwag", "11.18.5.0 (NJsonSchema v9.10.67.0 (Newtonsoft.Json v9.0.0.0))")]
 public partial class VitaClient
 {
-	private string _baseUrl = "http://localhost:5001";
+	private string _baseUrl = "http://localhost:51306";
 	private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
 	public VitaClient()

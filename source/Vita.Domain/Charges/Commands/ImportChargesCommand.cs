@@ -1,23 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EventFlow;
 using EventFlow.Aggregates.ExecutionResults;
 using EventFlow.Commands;
 using EventFlow.Core;
-using Newtonsoft.Json;
+using Vita.Domain.BankStatements;
 
 namespace Vita.Domain.Charges.Commands
 {
-    public class ImportChargesCommand  : Command<ChargeAggregate, ChargeId, IExecutionResult>
-    {
-        public ImportChargesCommand(ChargeId aggregateId) : base(aggregateId)
-        {
-        }
+  public class ImportChargesCommand  : ICommand<ChargeAggregate, ChargeId, IExecutionResult>
+  {
+    public ChargeId AggregateId { get; set; }
 
-        [JsonConstructor]
-        public ImportChargesCommand(ChargeId aggregateId, ISourceId sourceId) : base(aggregateId, sourceId)
-        {
-        }
+    public ISourceId SourceId { get; set; }
+
+    public ISourceId GetSourceId()
+    {
+      return new SourceId(Guid.NewGuid().ToString());
     }
+
+    public Task<IExecutionResult> PublishAsync(ICommandBus commandBus, CancellationToken cancellationToken)
+    {
+      var result = ExecutionResult.Failed("not run from here");
+      return Task.FromResult(result);
+    }
+  }
 }
