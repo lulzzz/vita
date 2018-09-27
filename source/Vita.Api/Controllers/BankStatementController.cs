@@ -13,6 +13,7 @@ using Vita.Contracts.ChargeId;
 using Vita.Domain.BankStatements;
 using Vita.Domain.BankStatements.Commands;
 using Vita.Domain.BankStatements.Queries;
+using Vita.Domain.Infrastructure.EventFlow;
 using Vita.Domain.Services;
 
 namespace Vita.Api.Controllers

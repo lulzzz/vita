@@ -4,15 +4,16 @@ using EventFlow.Commands;
 using EventFlow.Core;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Api.Controllers
 {
     [Route("api/[controller]")]
     public class CommandController : Controller
     {
-        private readonly ISerializedCommandPublisher _serializedCommandPublisher;
+        private readonly ICustomSerializedCommandPublisher _serializedCommandPublisher;
       
-        public CommandController(ISerializedCommandPublisher serializedCommandPublisher)
+        public CommandController(ICustomSerializedCommandPublisher serializedCommandPublisher)
         {
             _serializedCommandPublisher = serializedCommandPublisher;
         

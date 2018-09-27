@@ -18,7 +18,7 @@ namespace Vita.Domain.Tests.Charges.Commands
         {
             ImportChargesCommandHandler handler = new ImportChargesCommandHandler();
             var spy = new SpyChargeAggregate(ChargeId.New);
-            var cmd = new ImportChargesCommand();
+            var cmd = new ImportChargesCommand(ChargeId.New);
             await handler.ExecuteAsync(spy, cmd, CancellationToken.None);
 
             spy.ImportedData.Count().Should().NotBe(0);

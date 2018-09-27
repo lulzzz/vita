@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EventFlow.Core;
 using EventFlow.Logs;
 using EventFlow.Queries;
+using Vita.Domain.Infrastructure.EventFlow;
 
 namespace Vita.Domain.Services
 {

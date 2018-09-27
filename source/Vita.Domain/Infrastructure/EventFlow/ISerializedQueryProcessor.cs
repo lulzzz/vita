@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Vita.Domain.Services
+namespace Vita.Domain.Infrastructure.EventFlow
 {
     public interface ISerializedQueryProcessor
     {

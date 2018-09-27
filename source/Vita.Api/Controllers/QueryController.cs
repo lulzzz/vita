@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Vita.Domain.Infrastructure.EventFlow;
 using Vita.Domain.Services;
 
 namespace Vita.Api.Controllers

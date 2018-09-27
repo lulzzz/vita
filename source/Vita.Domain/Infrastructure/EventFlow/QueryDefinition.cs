@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vita.Domain.Services
+namespace Vita.Domain.Infrastructure.EventFlow
 {
     public class QueryDefinition
     {

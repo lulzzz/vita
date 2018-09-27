@@ -76,11 +76,10 @@ CommandController test
 */
 async System.Threading.Tasks.Task Main()
 {
-	Vita.Domain.Charges.Commands.ImportChargesCommand cmd = new Vita.Domain.Charges.Commands.ImportChargesCommand();
-	cmd.AggregateId = Vita.Domain.Charges.ChargeId.New;
+	Vita.Domain.Charges.Commands.ImportChargesCommand cmd = new Vita.Domain.Charges.Commands.ImportChargesCommand(Vita.Domain.Charges.ChargeId.New,Vita.Domain.Infrastructure.EventFlow.VitaSourceId.New);
 	string json = JsonConvert.SerializeObject(cmd);
 	VitaClient client = new VitaClient();
-	await client.PublishCommandAsync(json, typeof(Vita.Domain.Charges.Commands.ImportChargesCommand).FullName);
+	await client.PublishCommandAsync(json, typeof(Vita.Domain.Charges.Commands.ImportChargesCommand).Name);
  
 }
 
@@ -1931,6 +1930,3 @@ public partial class SwaggerException<TResult> : SwaggerException
 		Result = result;
 	}
 }
-
-
-

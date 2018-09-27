@@ -14,7 +14,6 @@ using EventFlow.MsSql;
 using EventFlow.MsSql.Extensions;
 using EventFlow.ReadStores;
 using Vita.Contracts;
-using Vita.Domain.BankStatements;
 using Vita.Domain.BankStatements.ReadModels;
 using Vita.Domain.Infrastructure.EventFlow;
 using Module = Autofac.Module;
@@ -35,35 +34,27 @@ namespace Vita.Domain.Infrastructure.Modules
         private IContainer ConfigEventFlowAndBuildContainer(ContainerBuilder builder,
             Func<IEventFlowOptions, IEventFlowOptions> extraConfig)
         {
-            
             var eventFlowOptions = EventFlowOptions.New
-                .UseAutofacContainerBuilder(builder)
-                .AddDefaults(DomainAssembly)
-                .AddCommands(GetCommandsToAdd())
-                //.AddCommandHandlers(typeof(CreateCompanyCommandHandler))
-                //.AddEvents(typeof(CompanyCreatedEvent))
-                .Configure(c => c.ThrowSubscriberExceptions = true)
-                .RegisterServices(sr =>
-                {
-                    sr.Register<ILog, LogAdapter>();
-                    sr.Decorate<ICommandBus>((r, o) => new LoggingCommandBus(o));
-                    sr.RegisterType(typeof(BankStatementReadModelLocator));
-                })
-                
-                ;
-
-            eventFlowOptions = eventFlowOptions
+                    .UseAutofacContainerBuilder(builder)
+                    .AddDefaults(DomainAssembly)
+                    .Configure(c => c.ThrowSubscriberExceptions = true)
+                    .RegisterServices(sr =>
+                    {
+                        sr.Register<ILog, LogAdapter>();
+                        sr.Decorate<ICommandBus>((r, o) => new LoggingCommandBus(o));
+                        sr.RegisterType(typeof(BankStatementReadModelLocator));
+                    })
                     .ConfigureMsSql(MsSqlConfiguration.New.SetConnectionString(Constant.ConnectionString))
                     .UseMssqlEventStore()
                     .UseReadModels()
-                   // .UseMssqlReadModelFor<BankStatementAggregate, BankStatementId, BankStatementReadModel>()  - aggregate
+                    // .UseMssqlReadModelFor<BankStatementAggregate, BankStatementId, BankStatementReadModel>()  - aggregate
                     .UseMssqlReadModel<BankStatementReadModel, BankStatementReadModelLocator>() // this is per prediction for the read model
                     .AddCommandHandlers()
                     .AddMetadataProviders()
-                //.AddMetadataProvider<AddGuidMetadataProvider>()
+                    .AddMetadataProvider<AddGuidMetadataProvider>()
                 // .AddMetadataProvider<AddUriMetadataProvider>()
                 //  .AddMetadataProvider<AddUserHostAddressMetadataProvider>()
-                ;
+                    ;
 
 
             var container = eventFlowOptions.CreateContainer(false);
@@ -74,18 +65,7 @@ namespace Vita.Domain.Infrastructure.Modules
         {
             base.Load(builder);
         }
-
-        private static IEnumerable<Type> GetCommandsToAdd()
-        {
-            var commands = DomainAssembly
-                .GetTypes()
-                .Where(t => !t.IsAbstract && typeof(ICommand).IsAssignableFrom(t));
-            return commands;
-        }
-
     }
-
-
 
 
     public static class VitaEventFlowOptionsExtensions

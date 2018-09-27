@@ -6,6 +6,7 @@ using Vita.Contracts;
 using Vita.Domain.BankStatements;
 using Vita.Domain.Companies.Commands;
 using Vita.Domain.Companies.Events;
+using Vita.Domain.Infrastructure.EventFlow;
 using Vita.Domain.Places;
 using Vita.Domain.Services;
 using Module = Autofac.Module;
@@ -22,10 +23,13 @@ namespace Vita.Domain.Infrastructure.Modules
 
       builder.RegisterType<SerializedQueryProcessor>().As<ISerializedQueryProcessor>();
 
+      builder.RegisterType<CustomSerializedCommandPublisher>().As<ICustomSerializedCommandPublisher>();
+
       builder.RegisterType<CreateCompanyCommandHandler>();
       builder.RegisterType<CreateCompanyCommand>();
       builder.RegisterType<CompanyCreatedEvent>();
 
+         
 
       //bank
       builder.RegisterType<BankStatementService>()

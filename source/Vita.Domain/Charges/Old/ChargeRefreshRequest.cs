@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vita.Domain.Charges
+namespace Vita.Domain.Charges.Old
 {
     public class ChargeRefreshRequest
     {

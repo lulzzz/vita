@@ -12,8 +12,7 @@ using Vita.Domain.Infrastructure;
 using Vita.Domain.Places;
 using Vita.Domain.Services;
 
-
-namespace Vita.Domain.Charges
+namespace Vita.Domain.Charges.Old
 {
   public class ChargeRefreshHandler : CollectionBase, IConsumer<ChargeRefreshRequest>
   {

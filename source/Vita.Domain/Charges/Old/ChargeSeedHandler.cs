@@ -7,7 +7,7 @@ using Serilog.Context;
 using Vita.Contracts;
 using Vita.Domain.Infrastructure;
 
-namespace Vita.Domain.Charges
+namespace Vita.Domain.Charges.Old
 {
   public class ChargeSeedHandler : CollectionBase, IConsumer<ChargeSeedRequest>
   {
